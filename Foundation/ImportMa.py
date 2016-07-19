@@ -54,9 +54,10 @@ class Create(Core.Core):
         """
         place the locators by the value in json file
         """
-        cmds.xform('allPos', t = self.locData['setupLoc']['allPos'], ws = True)
-        
-        for loc in self.locData['setupLoc'].keys():
-            if not loc == 'allPos':
-                print loc + '.......',  self.locData['setupLoc'][loc]
-                cmds.xform(loc, t = self.locData['setupLoc'][loc], ws = True)
+        if self.locData.has_key('setupLoc'):
+            cmds.xform('allPos', t = self.locData['setupLoc']['allPos'], ws = True)
+            
+            for loc in self.locData['setupLoc'].keys():
+                if not loc == 'allPos':
+                    print loc + '.......',  self.locData['setupLoc'][loc]
+                    cmds.xform(loc, t = self.locData['setupLoc'][loc], ws = True)

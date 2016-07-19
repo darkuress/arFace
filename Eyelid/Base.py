@@ -49,9 +49,12 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.eyelidCrvGrpName  = 'eyelidCrv' + self.grpSuffix
         
         #eyelid joints and location position 
-        self.upEyelidVtxs    = self.locData['upEyelidVtxs']
-        self.loEyelidVtxs    = self.locData['loEyelidVtxs']
-        self.lEyeLoc         = str([x for x in self.locData['setupLoc'] if 'eye' in x.lower()][0])
+        self.upEyelidVtxs    = self.locData.get('upEyelidVtxs', [])
+        self.loEyelidVtxs    = self.locData.get('loEyelidVtxs', [])
+        if self.locData.get('setupLoc', []):
+            self.lEyeLoc     = str([x for x in self.locData['setupLoc'] if 'eye' in x.lower()][0])
+        else:
+            self.lEyeLoc     = ''
         
         self.eyelidCrvJsonLoc = os.path.join(self.jsonBasePath, 'eyelidCrvData.json')
     
