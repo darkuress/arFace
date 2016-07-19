@@ -38,9 +38,9 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.parentJntName    = self.prefix[0] + 'BrowP'
         self.browCtlCrvName   = 'browCtrl' + self.crvSuffix
 
-        self.eyebrowJntGrpName  = 'eyebrowJnt' + self.grpSuffix
+        self.eyebrowJntGrpName = 'eyebrowJnt' + self.grpSuffix
         self.eyebrowCtlGrpName = 'eyebrowCtl' + self.grpSuffix
-        self.eyebrowCrvGrpName  = 'eyebrowCrv' + self.grpSuffix
+        self.eyebrowCrvGrpName = 'eyebrowCrv' + self.grpSuffix
         
         self.eyeBrowVtxs      = self.locData['eyebrowVtxs']
         self.eyeBrowLoc       = [x for x in self.locData['setupLoc'] if 'brow' in x.lower()]
