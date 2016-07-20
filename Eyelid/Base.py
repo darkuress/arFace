@@ -51,7 +51,7 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         #eyelid joints and location position 
         self.upEyelidVtxs    = self.locData.get('upEyelidVtxs', [])
         self.loEyelidVtxs    = self.locData.get('loEyelidVtxs', [])
-        if self.locData.get('setupLoc', []):
+        if self.locData.get('setupLoc'):
             self.lEyeLoc     = str([x for x in self.locData['setupLoc'] if 'eye' in x.lower()][0])
         else:
             self.lEyeLoc     = ''

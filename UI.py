@@ -31,7 +31,7 @@ class UI(Core.Core):
         #- select and save vertexes text field menus 
         cmds.rowColumnLayout(numberOfColumns=3)
         cmds.text(label='Setup Locators : ', w = 150)
-        if self.locData.has_key('setupLoc'):
+        if self.locData.get('setupLoc'):
             insertText = str(self.locData['setupLoc'].keys())
         else:
             insertText = ''
