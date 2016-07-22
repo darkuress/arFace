@@ -26,6 +26,7 @@ class Core(object):
                  panelTopNode   = 'Panel',
                  faceLocTopNode = 'faceLoc_grp',
                  locFileName    = 'locators.ma',
+                 faceFactors    = 'faceFactors',
                  **kw):
         """
         basic variables
@@ -71,6 +72,8 @@ class Core(object):
             
         jsonData = open(self.jsonPath)
         self.locData = json.load(jsonData)
+        
+        self.faceFactors = faceFactors
     
     def writeLocInfoData(self, data):
         """
