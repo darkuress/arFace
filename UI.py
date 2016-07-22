@@ -139,7 +139,7 @@ class UI(Core.Core):
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Import Control Panel', w = 200, c = partial(self.importControlPanel))
         cmds.setParent('..')
-        
+
         cmds.setParent('..' )
         #-}
         
@@ -211,6 +211,7 @@ class UI(Core.Core):
         
         #- forth tab{
         eyebrowTab = cmds.columnLayout()
+        
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Create Joints', c = partial(self.createEyebrowJoint))
         cmds.setParent('..')
@@ -310,11 +311,17 @@ class UI(Core.Core):
     def createHierarchy(self, *args):
         """
         create basic container structure for face rig
+        with FaceFactors
         """
         from Foundation import Container
         reload(Container)        
         ch = Container.Container()
         ch.placeFaceRig()
+
+        from Foundation import FaceFactor
+        reload(FaceFactor)
+        fcf = FaceFactor.FaceFactor()
+        faceFactorNode = fcf.create()
 
     def importControlPanel(self, *args):
         """
@@ -324,7 +331,7 @@ class UI(Core.Core):
         reload(ImportMa)
         ihp = ImportMa.Create()
         panelTopNode = ihp.importHelpPanel()
-           
+        
     def saveInfoFile(self, *args):
         """
         save/update info file
@@ -334,7 +341,7 @@ class UI(Core.Core):
         
         locData = {}
         locNameData              = cmds.textField(self.setupLocTextField, q = True, tx = True)
-        locData['setupLoc']      = SetupLoc.SetupLoc.saveLocPos(locNameData)
+        locData['setupLoc']      = SetupLoc.SetupLoc.saveLocPos(locNameData) if locNameData else {}
         locData['eyebrowVtxs']   = cmds.textField(self.eyebrowVertsTextField, q = True, tx = True)
         locData['upEyelidVtxs']  = cmds.textField(self.upEyelidVertsTextField, q = True, tx = True)
         locData['loEyelidVtxs']  = cmds.textField(self.loEyelidVertsTextField, q = True, tx = True)
