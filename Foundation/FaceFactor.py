@@ -14,7 +14,7 @@ reload(Core)
 from ..Misc import Util
 reload(Util)
 
-class Container(Core.Core, Util.Util):
+class FaceFactor(Core.Core, Util.Util):
     def __init__(self):
         """
         initializing variables
@@ -22,9 +22,9 @@ class Container(Core.Core, Util.Util):
         Core.Core.__init__(self)
         Util.Util.__init__(self)
 
-    def faceFactors(self):
+    def create(self):
         if not cmds.objExists('faceFactors'):
-            cmds.group( n = "faceFactors", em = 1, p = "faceMainRig" ) 
+            node = cmds.group( n = "faceFactors", em = 1, p = "faceMain" ) 
         
         level_sub = cmds.shadingNode( 'plusMinusAverage', asUtility =1, n ='blinkLevel_sub ')
         cmds.addAttr('faceFactors', longName= 'lidRotateX_scale', attributeType='float', dv = 20) 
@@ -51,4 +51,6 @@ class Container(Core.Core, Util.Util):
             cmds.setAttr (level_sub + '.input2D[0].input2Dy', 1 )
     
             cmds.connectAttr ( 'faceFactors.'+LR +"loBlinkLevel", level_sub + '.input2D[1].input2D'+XYZ )
-            cmds.connectAttr ( level_sub + '.output2D.output2D'+XYZ, 'faceFactors.'+LR +"upBlinkLevel" ) 
+            cmds.connectAttr ( level_sub + '.output2D.output2D'+XYZ, 'faceFactors.'+LR +"upBlinkLevel" )
+        
+        return node
