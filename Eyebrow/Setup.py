@@ -43,10 +43,10 @@ class Setup(Joints.Joints, Ctrls.Ctrls):
         """
         cmds.select(cl = True)
         self.ctrlInfo = self.createBrowCtrls(jnts)
-        self.group(self.ctrlInfo['browsCtlGrp'], self.eyebrowCtlGrpName)
-        self.group(self.ctrlInfo['browsCrvGrp'], self.eyebrowCrvGrpName)
-        cmds.parent(self.eyebrowCtlGrpName, self.ctlGrp)
-        cmds.parent(self.eyebrowCrvGrpName, self.crvGrp)
+        #self.group(self.ctrlInfo['browsCtlGrp'], self.eyebrowCtlGrpName)
+        #self.group(self.ctrlInfo['browsCrvGrp'], self.eyebrowCrvGrpName)
+        #cmds.parent(self.eyebrowCtlGrpName, self.ctlGrp)
+        #cmds.parent(self.eyebrowCrvGrpName, self.crvGrp)
         
         return self.eyebrowCtlGrpName, self.eyebrowCrvGrpName
 

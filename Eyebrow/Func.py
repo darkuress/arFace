@@ -14,6 +14,7 @@
 import maya.cmds as cmds
 import Base
 reload(Base)
+import re
 
 class Func(Base.Base):
     def __init__(self, rotateScale, **kw):
@@ -23,83 +24,132 @@ class Func(Base.Base):
         #local variables
         Base.Base.__init__(self, **kw)
 
-    def crvCtrlToJnt(self, browCtrl, jnt, ctrlP, pocNode, initialX, index, rotateScale):
+    def crvCtrlToJnt(self, browCtrl, browDetail, jnt, rotYJnt, ctlBase, rotYCtl, shapePOC, POC, initialX, index):
         #connect browCtrlCurve and controller to the brow joints
-        
-        #- temp way
-        browDMom = cmds.ls('browDetail*P', fl =True, type = "transform")
-        browDetails = cmds.listRelatives(browDMom, c=True, type = "transform")
-        browDetail = browDetails[index]
-        
-        ctrlMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = jnt.split('Base', 1)[0] +'CtrlMult'+ str(index))
-        crvMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = jnt.split('Base', 1)[0] +'CrvMult'+ str(index))
-        browSumY = cmds.shadingNode('plusMinusAverage', asUtility=True, n = jnt.split('Base', 1)[0] +'YSum'+ str(index))
-        browSumX = cmds.shadingNode('plusMinusAverage', asUtility=True, n = jnt.split('Base', 1)[0] +'XSum'+ str(index))
-        minusAvgX = cmds.shadingNode('plusMinusAverage', asUtility=True, n = jnt.split('Base', 1)[0] +'Xminus'+ str(index))
-        xyTotal = cmds.shadingNode('plusMinusAverage', asUtility=True, n = jnt.split('Base', 1)[0] +'XYtotal'+ str(index))
+        ctrlMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = jnt.split('Base', 1)[0] +'CtrlMult'+ str(index) )
+        jntMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = jnt.split('Base', 1)[0] +'JntMult'+ str(index) )
+        browXYZSum = cmds.shadingNode('plusMinusAverage', asUtility=True, n = jnt.split('Base', 1)[0] +'BrowXYZSum'+ str(index))
+        browCtlRotSum = cmds.shadingNode('plusMinusAverage', asUtility=True, n = jnt.split('Base', 1)[0] +'CtlRotSum'+ str(index))
+        addBrowCtl = cmds.shadingNode('plusMinusAverage', asUtility=True, n = jnt.split('Base', 1)[0] +'AddBrowCtl'+ str(index))
          
-        cmds.connectAttr(browCtrl + '.tx', browSumX + '.input1D[0]')
-        cmds.connectAttr(browCtrl + '.ty', browSumY + '.input1D[0]')
-        cmds.connectAttr(browDetail + '.tx', browSumX + '.input1D[1]')
-        cmds.connectAttr(browDetail + '.ty', browSumY + '.input1D[1]')
-    
-        #browCrv's pocNode.tx zero out 
-        cmds.connectAttr(pocNode + '.positionX', minusAvgX + '.input1D[1]')
-        cmds.setAttr(minusAvgX + '.input1D[2]', -initialX)
-        cmds.connectAttr(minusAvgX + '.output1D', crvMult + '.input1X')
-        cmds.connectAttr(pocNode + '.positionY', crvMult + '.input1Y')
-        cmds.setAttr(crvMult + '.input2X', rotateScale)
-        cmds.setAttr(crvMult + '.input2Y', -rotateScale)
-        cmds.connectAttr(crvMult + ".outputX", ctrlP + '.ry')
-        cmds.connectAttr(crvMult + ".outputY", ctrlP + '.rx')
-        #X total
-        cmds.connectAttr(browSumX + '.output1D', xyTotal + '.input2D[0].input2Dx')
-        cmds.connectAttr(minusAvgX + '.output1D', xyTotal + '.input2D[1].input2Dx')
-        #Y total
-        cmds.connectAttr(browSumY + '.output1D', xyTotal + '.input2D[0].input2Dy')   
-        cmds.connectAttr(pocNode + '.positionY', xyTotal + '.input2D[1].input2Dy')  
+        #brow TX sum      
+        cmds.connectAttr(browDetail + '.tx', browXYZSum + '.input3D[0].input3Dx')
+        #POC TX zero out 
+        cmds.connectAttr(POC + '.positionX', browXYZSum + '.input3D[1].input3Dx')
+        cmds.setAttr(browXYZSum + '.input3D[2].input3Dx', -initialX )
+        cmds.connectAttr(shapePOC + '.positionX', browXYZSum + '.input3D[3].input3Dx')
+        cmds.setAttr(browXYZSum + '.input3D[4].input3Dx', -initialX )
+        #browXYZSum.tx --> ctrlMult.ry 
+        cmds.connectAttr(browXYZSum + '.output3Dx', ctrlMult+'.input1X')
+        cmds.connectAttr('faceFactors.browRotateY_scale', ctrlMult +'.input2X')
+        cmds.connectAttr(ctrlMult+'.outputX', rotYCtl + '.ry' )    
         
-        cmds.connectAttr(xyTotal + '.output2Dx', ctrlMult + '.input1X')
-        cmds.connectAttr(xyTotal + '.output2Dy', ctrlMult + '.input1Y')
-        cmds.setAttr(ctrlMult + '.input2X', rotateScale)
-        cmds.setAttr(ctrlMult + '.input2Y', -rotateScale)
-            
-        cmds.connectAttr(ctrlMult + '.outputX', jnt + '.ry')
-        cmds.connectAttr(ctrlMult + '.outputY', jnt + '.rx')
+        #add browCtl.tx 
+        cmds.connectAttr(browXYZSum + '.output3Dx', addBrowCtl + '.input3D[0].input3Dx')
+        cmds.connectAttr(browCtrl + '.tx', addBrowCtl + '.input3D[1].input3Dx')    
+        #addBrowCtl.tx --> jntMult.ry 
+        cmds.connectAttr(addBrowCtl + '.output3Dx', jntMult+'.input1X')
+        cmds.connectAttr('faceFactors.browRotateY_scale', jntMult+'.input2X')
+        cmds.connectAttr(jntMult+'.outputX', rotYJnt + '.ry' )    
+        
+        
+        #brow TY sum    
+        #1. POC.ty sum
+        cmds.connectAttr(POC + '.positionY', browXYZSum +'.input3D[0].input3Dy')
+        cmds.connectAttr(shapePOC + '.positionY', browXYZSum + '.input3D[1].input3Dy')
+        #2. detail ctl.ty sum
+        cmds.connectAttr(browDetail + '.ty', browXYZSum + '.input3D[2].input3Dy')
+        #browXYZSum.ty --> ctrlMult.rx 
+        cmds.connectAttr(browXYZSum + '.output3Dy', ctrlMult+'.input1Y')
+        cmds.connectAttr('browReverse_mult.outputX', ctrlMult +'.input2Y')
+        cmds.connectAttr(ctrlMult+'.outputY', ctlBase + '.rx' )
+        
+        #add browCtl.ty
+        cmds.connectAttr(browXYZSum + '.output3Dy', addBrowCtl + '.input3D[0].input3Dy')
+        cmds.connectAttr(browCtrl + '.ty', addBrowCtl + '.input3D[1].input3Dy')        
+        #add BrowCtl.ty --> jntMult.rx 
+        cmds.connectAttr(addBrowCtl + '.output3Dy', jntMult+'.input1Y')
+        cmds.connectAttr('browReverse_mult.outputX', jntMult+'.input2Y')
+        cmds.connectAttr(jntMult+'.outputY', jnt + '.rx' ) 
+             
+        #brow TZ sum
+        browPCtl =cmds.listRelatives( cmds.listRelatives (rotYCtl, c =1, type = 'transform')[0], c =1, type = 'transform')
+        browPJnt = cmds.listRelatives(rotYJnt, c =1, type = 'joint')
+        browJnt = cmds.listRelatives(browPJnt[0], c =1, type = 'joint')
+        cmds.connectAttr(shapePOC + '.positionZ', browXYZSum + '.input3D[0].input3Dz')
+        cmds.connectAttr(browXYZSum + '.output3Dz', browPCtl[0]+'.tz' )
+         
+        #addBrowCtl.tz --> browJnt[0] + ".tz"   
+        cmds.connectAttr(browXYZSum + '.output3Dz', addBrowCtl + '.input3D[0].input3Dz')
+        cmds.connectAttr(browCtrl + '.tz', addBrowCtl + '.input3D[1].input3Dz')  
+        cmds.connectAttr(addBrowCtl + '.output3Dz', browJnt[0] + '.tz' ) 
+        
+        #extra rotate ctrl for browJnt[0]   
+        cmds.connectAttr(browCtrl + '.rx', browCtlRotSum + '.input3D[0].input3Dx') 
+        cmds.connectAttr(browDetail + '.rx', browCtlRotSum + '.input3D[1].input3Dx') 
+        cmds.connectAttr(browCtrl + '.ry', browCtlRotSum + '.input3D[0].input3Dy') 
+        cmds.connectAttr(browDetail + '.ry', browCtlRotSum + '.input3D[1].input3Dy')  
+        cmds.connectAttr(browCtrl + '.rz', browCtlRotSum + '.input3D[0].input3Dz') 
+        cmds.connectAttr(browDetail + '.rz', browCtlRotSum + '.input3D[1].input3Dz') 
+    
+        cmds.connectAttr(browCtlRotSum + '.output3Dx', browPJnt[0] + '.rx')
+        cmds.connectAttr(browCtlRotSum + '.output3Dy', browPJnt[0] + '.ry')
+        cmds.connectAttr(browCtlRotSum + '.output3Dz', browPJnt[0] + '.rz')    
 
-    def createBrowCtl(self, miNum, orderJnts):
+    def createBrowCtl(self, jntNum, orderJnts):
         """
         create extra controllor for the panel
         """
-        jntNum             = miNum
-        ctlP               = "browDetailCtrl0"
-        browDetailBaseName = 'browDetail'
-        kids = cmds.listRelatives(ctlP, ad=True, type ='transform')   
+        ctlP = "browDetailCtrl0"
+        kids = cmds.listRelatives (ctlP, ad=True, type ='transform')   
         if kids:
-            cmds.delete(kids)
+            cmds.delete (kids)
             
-        attTemp = ['scaleX','scaleY','scaleZ', 'rotateX','rotateY','rotateZ', 'tz', 'visibility']  
+        attTemp = ['scaleX','scaleY','scaleZ', 'rotateX','rotateY', 'tz', 'visibility' ]  
         index = 0
-        for jnt in orderJnts:
-            #- create detail control in panel                
-            detailCtl = cmds.circle(n = browDetailBaseName + str(index+1).zfill(2), ch=False, o =True, nr =(0, 0, 1), r = 0.2)
-            detailPlane = cmds.nurbsPlane(ax =(0, 0, 1), w = 0.1,  lengthRatio = 10, degree = 3, ch = False, n = browDetailBaseName + str(index+1).zfill(2) + 'P')
+
+        for jnt in orderJnts:                            
+            detailCtl = cmds.circle ( n = 'browDetail' + str(index+1).zfill(2), ch=False, o =True, nr = ( 0, 0, 1), r = 0.2 )
+            detailPlane = cmds.nurbsPlane ( ax = ( 0, 0, 1 ), w = 0.1,  lengthRatio = 10, degree = 3, ch=False, n = 'browDetail'+ str(index+1).zfill(2) + 'P' )
             increment = 2.0/(jntNum-1)
-            cmds.parent(detailCtl[0], detailPlane[0], relative=True)
-            cmds.parent(detailPlane[0], ctlP, relative=True)
-            cmds.setAttr(detailPlane[0] + '.tx', -2 + increment*index*2)
-            cmds.xform(detailCtl[0], r =True, s =(0.2, 0.2, 0.2))  
-            cmds.setAttr(detailCtl[0] + ".overrideEnabled", 1)
-            cmds.setAttr(detailCtl[0] + "Shape.overrideEnabled", 1)
-            cmds.setAttr(detailCtl[0] + "Shape.overrideColor", 20)        
+            cmds.parent (detailCtl[0], detailPlane[0], relative=True )
+            cmds.parent (detailPlane[0], ctlP, relative=True )
+            cmds.setAttr (detailPlane[0] + '.tx', -2 + increment*index*2 )
+            cmds.xform ( detailCtl[0], r =True, s = (0.2, 0.2, 0.2))  
+            cmds.setAttr (detailCtl[0] +".overrideEnabled", 1)
+            cmds.setAttr (detailCtl[0] +"Shape.overrideEnabled", 1)
+            cmds.setAttr( detailCtl[0]+"Shape.overrideColor", 20)        
             
-            cmds.transformLimits(detailCtl[0] , tx =(-.4, .4), etx=(True, True))
-            cmds.transformLimits(detailCtl[0], ty =(-.8, .8), ety=(True, True))
+            cmds.transformLimits ( detailCtl[0] , tx = ( -.4, .4), etx=( True, True) )
+            cmds.transformLimits ( detailCtl[0], ty = ( -.8, .8), ety=( True, True) )
             
             for att in attTemp:
-                cmds.setAttr(detailCtl[0] +"."+ att, lock = True, keyable = False, channelBox =False)
+                cmds.setAttr (detailCtl[0] +"."+ att, lock = True, keyable = False, channelBox =False)
                     
             index = index + 1
+
+    def LRBlendShapeWeight(self, lipCrv, lipCrvBS):
+        cvs = cmds.ls(lipCrv+'.cv[*]', fl =1)
+        length = len (cvs)
+        
+        increment = 1.0/(length-1)
+        targets = cmds.aliasAttr( lipCrvBS, q=1)
+        tNum = len(targets)   
+        
+        for t in range(0, tNum, 2):
+            if targets[t][0] == 'l' :
+                indexL=re.findall('\d+', targets[t+1])
+                cmds.setAttr(lipCrvBS + '.inputTarget[0].inputTargetGroup[%s].targetWeights[%s]'%(str(indexL[0]), str(length/2)), .5 ) 
+                for i in range(0, length/2):                
+                    cmds.setAttr(lipCrvBS + '.inputTarget[0].inputTargetGroup[%s].targetWeights[%s]'%(str(indexL[0]), str(i)), 0 ) 
+                    cmds.setAttr(lipCrvBS + '.inputTarget[0].inputTargetGroup[%s].targetWeights[%s]'%(str(indexL[0]), str(length-i-1)), 1 )   
+                    
+            if targets[t][0] == 'r' :
+                indexR=re.findall('\d+', targets[t+1])
+                cmds.setAttr(lipCrvBS + '.inputTarget[0].inputTargetGroup[%s].targetWeights[%s]'%(str(indexR[0]), str(length/2)), .5 ) 
+                for i in range(0, length/2):                
+                    cmds.setAttr(lipCrvBS + '.inputTarget[0].inputTargetGroup[%s].targetWeights[%s]'%(str(indexR[0]), str(i)), 1 ) 
+                    cmds.setAttr(lipCrvBS + '.inputTarget[0].inputTargetGroup[%s].targetWeights[%s]'%(str(indexR[0]), str(length-i-1)), 0 )     
 
     def browControlConnect(self):
         """
@@ -125,3 +175,4 @@ class Func(Base.Base):
         for num in range(1, 6):
             
             cmds.connectAttr('brow_arc' + sequence[num-1] + '.ty',  cvs[num] + '.yValue')
+            

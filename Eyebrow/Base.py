@@ -31,11 +31,14 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         #initializing local variables
         self.jntName          = 'Brow0'
         self.browBase         = 'BrowBase'
+        self.browRotY         = 'browRotY'
         self.baseCntJntName   = self.cPrefix + self.browBase
+        self.browRotYJntName  = self.cPrefix + self.browRotY
         self.parentCntJntName = self.cPrefix + 'BrowP'
         self.ljntName         = self.prefix[0] + self.jntName
         self.baseJntName      = self.prefix[0] + 'BrowBase'
         self.parentJntName    = self.prefix[0] + 'BrowP'
+        self.browRotYJntName  = self.prefix[0] + self.browRotY
         self.browCtlCrvName   = 'browCtrl' + self.crvSuffix
 
         self.eyebrowJntGrpName = 'eyebrowJnt' + self.grpSuffix
@@ -43,4 +46,12 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.eyebrowCrvGrpName = 'eyebrowCrv' + self.grpSuffix
         
         self.eyeBrowVtxs      = self.locData['eyebrowVtxs']
-        self.eyeBrowLoc       = [x for x in self.locData['setupLoc'] if 'brow' in x.lower()]
+        
+        #new
+        self.browRotXCrv      = [x for x in self.locData['setupLoc'] if 'rotXPivot' in x][0]
+        self.browRotYCrv      = [x for x in self.locData['setupLoc'] if 'rotYPivot' in x][0]
+        
+        self.browCrvGrp       = 'browCrv' + self.grpSuffix
+        self.attachCtlGrp     = 'attachCtl' + self.grpSuffix
+        self.browCtlGrp       = 'browCtl' + self.grpSuffix
+        self.bodyHeadTRS      = 'faceMain|spn|headSkel|bodyHeadTRSP|bodyHeadTRS|'

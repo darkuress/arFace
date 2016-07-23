@@ -20,12 +20,15 @@ class Joints(Base.Base):
         Base.Base.__init__(self, **kw)
         
         self.allBaseJnts = list()
+        
+        self.browRotXCrvPos = cmds.xform(self.browRotXCrv, t = True, q = True, ws = True)
+        self.browRotYCrvPos = cmds.xform(self.browRotYCrv, t = True, q = True, ws = True)
 
     def createJnts(self):
         """
         creating joints on selected vertaxes
         """
-        sel = eval(self.eyeBrowVtxs) + self.eyeBrowLoc
+        sel = eval(self.eyeBrowVtxs)
         tempVerts = sel[:-1]
         verts = self.sortSelected(tempVerts)
         browBall = sel[-1]
@@ -36,8 +39,11 @@ class Joints(Base.Base):
         for x in verts:
             vertPos = cmds.xform(x, t = True, q = True, ws = True)
             if vertPos[0] <= 0.05:
+
                 baseCntJnt = cmds.joint(n = self.baseCntJntName + str(index).zfill(2) + self.jntSuffix,
-                                        p = [ 0, browBallPos[1], browBallPos[2]])
+                                        p = [ 0, self.browRotXCrvPos[1], self.browRotXCrvPos[2]])
+                ryCntJnt   = cmds.joint(n = self.browRotYJntName + self.jntSuffix,
+                                        p = [ 0, self.browRotYCrvPos[1], self.browRotYCrvPos[2]])
                 parentCntJnt = cmds.joint(n = self.parentCntJntName + str(index).zfill(2) + self.jntSuffix,
                                           p = vertPos)
                 cmds.setAttr(baseCntJnt+'.rotateOrder', 2)
@@ -49,7 +55,8 @@ class Joints(Base.Base):
                 
             else:
                 baseJnt = cmds.joint(n = self.baseJntName + str(index).zfill(2) + self.jntSuffix,
-                                     p = [browBallPos[0], browBallPos[1], browBallPos[2]])
+                                     p = self.browRotXCrvPos)
+                ryJnt = cmds.joint(n = self.browRotYJntName + str(index).zfill(2)+ self.jntSuffix, p = self.browRotYCrvPos )
                 parentJnt = cmds.joint(n = self.parentJntName + str(index).zfill(2) + self.jntSuffix,
                                        p = vertPos)
                 cmds.setAttr(baseJnt+'.rotateOrder', 2)
