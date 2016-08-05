@@ -27,7 +27,17 @@ class UI(Core.Core):
 
         #- first tab{
         runAllTab = cmds.columnLayout()
-            
+        
+        cmds.rowColumnLayout(numberOfColumns=3)
+        cmds.text(label='Head Geo : ', w = 150)
+        if self.locData.get('headGeo'):
+            insertText = str(self.locData['headGeo'])
+        else:
+            insertText = ''
+        self.headGeoTextField = cmds.textField('headGeoTextField', tx = insertText, w = 300)
+        cmds.button(label = '        <<        ', c = self.updateHeadGeoTextField)
+        cmds.setParent('..' )
+        
         #- select and save vertexes text field menus 
         cmds.rowColumnLayout(numberOfColumns=3)
         cmds.text(label='Setup Locators : ', w = 150)
@@ -243,6 +253,16 @@ class UI(Core.Core):
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Connect To Control Panel', w = 200, c = partial(self.connectToEyebrowControlPanel))
         cmds.setParent('..')        
+
+        cmds.separator( height=20, width = 600, style='in' )
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Ng Skin Tool', w = 200, c = partial(self.openNgSkinTool))
+        cmds.setParent('..')  
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Copy Layers Tool', w = 200, c = partial(self.openCopyLayersTool))
+        cmds.setParent('..')          
         
         cmds.setParent('..' )
         #-}
@@ -341,6 +361,7 @@ class UI(Core.Core):
         
         locData = {}
         locNameData              = cmds.textField(self.setupLocTextField, q = True, tx = True)
+        locData['headGeo']       = cmds.textField(self.headGeoTextField, q = True, tx = True) 
         locData['setupLoc']      = SetupLoc.SetupLoc.saveLocPos(locNameData) if locNameData else {}
         locData['eyebrowVtxs']   = cmds.textField(self.eyebrowVertsTextField, q = True, tx = True)
         locData['upEyelidVtxs']  = cmds.textField(self.upEyelidVertsTextField, q = True, tx = True)
@@ -361,6 +382,14 @@ class UI(Core.Core):
         #- selected vertexes
         vtx = str(cmds.ls(sl = True, fl = True))
         cmds.textField(self.eyebrowVertsTextField, e = True, tx = vtx)
+
+    def updateHeadGeoTextField(self, *args):
+        """
+        updating save TextField
+        """
+        #- selected vertexes
+        headGeo = str(cmds.ls(sl = True, fl = True)[0])
+        cmds.textField(self.headGeoTextField, e = True, tx = headGeo)
 
     def updateSetupLocTextField(self, *args):
         """
@@ -568,6 +597,23 @@ class UI(Core.Core):
         connect eyebrow setup to control Panel
         """
         self.eyebrow.connectToControlPanel()
+
+    def openNgSkinTool(self, *args):
+        """
+        open ngskin tool
+        """
+        cmds.loadPlugin('ngSkinTools', quiet = True)
+        from ngSkinTools.ui.mainwindow import MainWindow
+        MainWindow.open()        
+
+    def openCopyLayersTool(self, *args):
+        """
+        open copyLayersTool
+        """
+        from External import copySkinLayers
+        reload(copySkinLayers)
+        cslWin = copySkinLayers.CopySkinLayersWindow.getInstance()
+        cslWin.showWindow()
 
     def __lipInstance(self, *args):
         """
