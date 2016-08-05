@@ -264,6 +264,11 @@ class UI(Core.Core):
         cmds.button(label = 'Copy Layers Tool', w = 200, c = partial(self.openCopyLayersTool))
         cmds.setParent('..')          
         
+        cmds.separator( height=20, width = 600, style='in' )
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Create Surface Map Geo', w = 200, c = partial(self.createBrowSurfaceMapGeo))
+        cmds.setParent('..')
+        
         cmds.setParent('..' )
         #-}
 
@@ -614,6 +619,14 @@ class UI(Core.Core):
         reload(copySkinLayers)
         cslWin = copySkinLayers.CopySkinLayersWindow.getInstance()
         cslWin.showWindow()
+
+    def createBrowSurfaceMapGeo(self, *args):
+        """
+        create eyebrow surface map geo for skinning
+        """
+        self.eyebrow = self.__eyebrowInstance()
+        headGeo = cmds.textField(self.headGeoTextField, q = True, tx = True)
+        self.eyebrow.createSurfMapGeo(headGeo)
 
     def __lipInstance(self, *args):
         """

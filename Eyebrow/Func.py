@@ -175,4 +175,21 @@ class Func(Base.Base):
         for num in range(1, 6):
             
             cmds.connectAttr('brow_arc' + sequence[num-1] + '.ty',  cvs[num] + '.yValue')
-            
+
+    def createMapSurf(self, faceGeo):
+        """
+        create browMapMesh
+        """
+        #xmin ymin zmin xmax ymax zmax (face bounding box)
+        facebbox    = cmds.xform (faceGeo, q =1, boundingBox =1 )
+        sizeX       = facebbox[3]*2
+        bboxSizeY   = facebbox[4] - facebbox[1]
+        browJntLen  = len(cmds.ls("*" + self.browBase + "*", type = "joint"))
+        browMapSurf = cmds.polyPlane(n = self.browMapGeo, w = sizeX, h =bboxSizeY/2, subdivisionsX = browJntLen, subdivisionsY = 1 )
+        cmds.xform(browMapSurf, p = 1, rp =(0, 0, bboxSizeY/4))
+        
+        #place the mapSurf at the upper part of the face
+        cmds.setAttr(browMapSurf[0] + ".rotateX", 90 )
+        cmds.xform(browMapSurf[0], ws =1, t = (0, facebbox[1] + bboxSizeY/2, 0))
+        
+        return browMapSurf

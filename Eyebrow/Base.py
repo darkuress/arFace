@@ -55,3 +55,5 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.attachCtlGrp     = 'attachCtl' + self.grpSuffix
         self.browCtlGrp       = 'browCtl' + self.grpSuffix
         self.bodyHeadTRS      = 'faceMain|spn|headSkel|bodyHeadTRSP|bodyHeadTRS|'
+        
+        self.browMapGeo       = "browMapSurf"

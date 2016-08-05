@@ -50,6 +50,13 @@ class Setup(Joints.Joints, Ctrls.Ctrls):
         
         return self.eyebrowCtlGrpName, self.eyebrowCrvGrpName
 
+    def createSurfMapGeo(self, faceGeo):
+        """
+        create surface map geo
+        """
+        return self.createMapSurf(faceGeo)
+        
+
     def connectToControlPanel(self):
         """
         connect brow control to panel
