@@ -208,56 +208,46 @@ class Func(Base.Base):
         
         return browMapSurf
 
-    def browMapSkinning(self):
+    def skinBrowSurfaceMap(self):
         """
         skin joints to surface map 
         """
-        print 'adsfasdf'
-        return True
-        #if not cmds.objExists(self.browMapGeo):
-        #    print "create browMapSurf first!!"
-        #else :
-        #    browMapSurf = self.browMapGeo
-        #browJnts = cmds.ls ("*" + self.browP + "*", type ="joint")
-        #x, y, z, orderJnts = self.orderJnts(browJnts)
-        #jntNum = len(orderJnts)
-        #orderChildren = cmds.listRelatives(orderJnts, c =1, type = "joint")
-        #
-        #print '1....'
-        #
-        ######
-        #edges= cmds.polyEvaluate(browMapSurf, e =1 )
-        #cmds.polyBevel(browMapSurf +'.e[0:%s]'%(edges-1), offset=0.01)
-        #cmds.delete(browMapSurf, constructionHistory =1)
-        ##edges= cmds.polyEvaluate("browMapSurf", e =1 )
-        ##cmds.polyBevel( "browMapSurf.e[0:%s]"%(edges-1), com =1, fraction= 0.1, offsetAsFraction= 1, autoFit= 1, segments= 1 )
-        #faces = []
-        #for i in range(0, jntNum):
-        #    face = browMapSurf+ ".f[%s]"% str(i)
-        #    faces.append(face)
-        #faces.sort()    
-        #faceLen = len(faces)
-        #cmds.select(cl=1)
-        #
-        #print '2....'
-        #
-        ##get the joints to be bound, check if "headSkel_jnt" exists
-        #if not objExists(self.headSkelJnt ):
-        #    headSkelPos = cmds.xform('headSkelPos', q =1, ws =1, t =1 )
-        #    cmds.joint(n = self.headSkelJnt , p = headSkelPos )
-        #orderChildren.append(self.headSkelJnt )
-        #
-        #skinCls = cmds.skinCluster(orderChildren , browMapSurf, toSelectedBones=1 )
-        #
-        ## 100% skinWeight to headSkel_jnt
-        #cmds.skinPercent(skinCls[0], browMapSurf, transformValue = [self.headSkelJnt , 1])
-        #
-        #print '3....'
-        #
-        ## skinWeight
-        #for i in range (0, jntNum):
-        #    vtxs = cmds.polyListComponentConversion(faces[i], ff=True, tv=True )
-        #    #cmds.select(vtxs, r=1)
-        #    print faces[i], orderChildren[i]
-        #    cmds.skinPercent( skinCls[0], vtxs, transformValue = [ orderChildren[i], 1])        
+        if not cmds.objExists(self.browMapGeo):
+            print "create browMapSurf first!!"
+        else :
+            browMapSurf = self.browMapGeo
+        browJnts = cmds.ls ("*" + self.browP + "*", type ="joint")
+        x, y, z, orderJnts = self.orderJnts(browJnts)
+        jntNum = len(orderJnts)
+        orderChildren = cmds.listRelatives(orderJnts, c =1, type = "joint")
+
+        edges= cmds.polyEvaluate(browMapSurf, e =1 )
+        cmds.polyBevel(browMapSurf +'.e[0:%s]'%(edges-1), offset=0.01)
+        cmds.delete(browMapSurf, constructionHistory =1)
+
+        faces = []
+        for i in range(0, jntNum):
+            face = browMapSurf+ ".f[%s]"% str(i)
+            faces.append(face)
+        faces.sort()    
+        faceLen = len(faces)
+        cmds.select(cl=1)
+        
+        #get the joints to be bound, check if "headSkel_jnt" exists
+        if not cmds.objExists(self.headSkelJnt):
+            headSkelPos = cmds.xform('headSkelPos', q =1, ws =1, t =1 )
+            cmds.joint(n = self.headSkelJnt , p = headSkelPos )
+        orderChildren.append(self.headSkelJnt )
+        
+        skinCls = cmds.skinCluster(orderChildren , browMapSurf, toSelectedBones=1 )
+        
+        # 100% skinWeight to headSkel_jnt
+        cmds.skinPercent(skinCls[0], browMapSurf, transformValue = [self.headSkelJnt , 1])
+                
+        # skinWeight
+        for i in range (0, jntNum):
+            vtxs = cmds.polyListComponentConversion(faces[i], ff=True, tv=True )
+            #cmds.select(vtxs, r=1)
+            print faces[i], orderChildren[i]
+            cmds.skinPercent( skinCls[0], vtxs, transformValue = [ orderChildren[i], 1])        
         

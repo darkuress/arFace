@@ -60,7 +60,7 @@ class Setup(Joints.Joints, Ctrls.Ctrls):
         """
         eyebrow map surface skinning 
         """
-        return self.browMapSkinning()
+        self.skinBrowSurfaceMap()
 
     def connectToControlPanel(self):
         """
