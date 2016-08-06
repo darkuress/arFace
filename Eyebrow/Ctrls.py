@@ -33,14 +33,8 @@ class Ctrls(Func.Func):
         """
         create and connect brow ctrl
         """
-        jntNum = len(jnts)
-        jnts.sort()
-        z = [ jnts[0] ]
-        y = jnts[1:jntNum/2+1]
-        jnts.reverse()
-        x = jnts[:jntNum/2]
-        orderJnts = x + z + y
-        #revese 'faceFactors.browRotateX_scale' 
+        x, y, z, orderJnts = self.orderJnts(jnts)
+        jntNum = len(orderJnts)
         reverseMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = 'browReverse_mult')
         cmds.connectAttr(self.faceFactors + '.browRotateX_scale',  reverseMult + '.input1X')
         cmds.setAttr(reverseMult + '.input2X', -1)

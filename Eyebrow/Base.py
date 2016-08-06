@@ -32,12 +32,13 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.jntName          = 'Brow0'
         self.browBase         = 'BrowBase'
         self.browRotY         = 'browRotY'
+        self.browP            = 'BrowP'
         self.baseCntJntName   = self.cPrefix + self.browBase
         self.browRotYJntName  = self.cPrefix + self.browRotY
         self.parentCntJntName = self.cPrefix + 'BrowP'
         self.ljntName         = self.prefix[0] + self.jntName
-        self.baseJntName      = self.prefix[0] + 'BrowBase'
-        self.parentJntName    = self.prefix[0] + 'BrowP'
+        self.baseJntName      = self.prefix[0] + self.browBase
+        self.parentJntName    = self.prefix[0] + self.browP
         self.browRotYJntName  = self.prefix[0] + self.browRotY
         self.browCtlCrvName   = 'browCtrl' + self.crvSuffix
 
@@ -57,3 +58,4 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.bodyHeadTRS      = 'faceMain|spn|headSkel|bodyHeadTRSP|bodyHeadTRS|'
         
         self.browMapGeo       = "browMapSurf"
+        self.headSkelJnt      = "headSkel" + self.jntSuffix

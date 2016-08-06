@@ -269,6 +269,10 @@ class UI(Core.Core):
         cmds.button(label = 'Create Surface Map Geo', w = 200, c = partial(self.createBrowSurfaceMapGeo))
         cmds.setParent('..')
         
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Skin Eyebrow Map Surface', w = 200, c = partial(self.skinBrowSurfaceMapGeo))
+        cmds.setParent('..')
+        
         cmds.setParent('..' )
         #-}
 
@@ -627,7 +631,14 @@ class UI(Core.Core):
         self.eyebrow = self.__eyebrowInstance()
         headGeo = cmds.textField(self.headGeoTextField, q = True, tx = True)
         self.eyebrow.createSurfMapGeo(headGeo)
-
+    
+    def skinBrowSurfaceMapGeo(self, *args):
+        """
+        skin brow surface geo 
+        """
+        self.eyebrow = self.__eyebrowInstance()
+        self.eyebrow.browMapSkinning()
+        
     def __lipInstance(self, *args):
         """
         making lipSetup instance

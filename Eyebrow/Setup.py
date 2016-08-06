@@ -55,7 +55,12 @@ class Setup(Joints.Joints, Ctrls.Ctrls):
         create surface map geo
         """
         return self.createMapSurf(faceGeo)
-        
+    
+    def browMapSkinning(self):
+        """
+        eyebrow map surface skinning 
+        """
+        return self.browMapSkinning()
 
     def connectToControlPanel(self):
         """
