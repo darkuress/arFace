@@ -23,14 +23,27 @@ class FaceFactor(Core.Core, Util.Util):
         Util.Util.__init__(self)
 
     def create(self):
-        if not cmds.objExists(self.faceFactors):
-            node = cmds.group( n = self.faceFactors, em = 1, p = 'faceMain' ) 
+        """
+        run
+        """
+        if not cmds.objExists(self.faceFactors['main']):
+            self.node = cmds.group( n = self.faceFactors['main'], em = 1, p = 'faceMain' )
+        
+        self.__browFactor()
+        return self.node
+        
+    def __browFactor(self):
+        """
+        create browFactor
+        """
+        self.browFactor = cmds.createNode('transform', n = self.faceFactors['eyebrow'])
+        cmds.parent(self.browFactor, self.node)
         
         level_sub = cmds.shadingNode( 'plusMinusAverage', asUtility =1, n ='blinkLevel_sub ')
-        cmds.addAttr(self.faceFactors, longName= 'lidRotateX_scale', attributeType='float', dv = 20) 
-        cmds.addAttr(self.faceFactors, longName= 'lidRotateY_scale', attributeType='float', dv = 20) 
-        cmds.addAttr(self.faceFactors, longName= 'browRotateX_scale', attributeType='float', dv = 20) 
-        cmds.addAttr(self.faceFactors, longName= 'browRotateY_scale', attributeType='float', dv = 20) 
+        cmds.addAttr(self.browFactor, longName= 'lidRotateX_scale', attributeType='float', dv = 20) 
+        cmds.addAttr(self.browFactor, longName= 'lidRotateY_scale', attributeType='float', dv = 20) 
+        cmds.addAttr(self.browFactor, longName= 'browRotateX_scale', attributeType='float', dv = 20) 
+        cmds.addAttr(self.browFactor, longName= 'browRotateY_scale', attributeType='float', dv = 20) 
         prefix = self.prefix
         for LR in prefix:
             if self.prefix[0] in LR:
@@ -38,19 +51,19 @@ class FaceFactor(Core.Core, Util.Util):
             else: XYZ = 'x' 
         
             #temporary ranges to jumperPaner 
-            cmds.addAttr(self.faceFactors, longName= 'range_'+LR + "eyeU", attributeType='float', dv = 1)                      
-            cmds.addAttr(self.faceFactors, longName= 'range_'+LR + "eyeD", attributeType='float', dv = 1) 
-            cmds.addAttr(self.faceFactors, longName= 'range_'+LR + "eyeL", attributeType='float', dv = 1)                      
-            cmds.addAttr(self.faceFactors, longName= 'range_'+LR + "eyeR", attributeType='float', dv = 1) 
+            cmds.addAttr(self.browFactor, longName= 'range_'+LR + "eyeU", attributeType='float', dv = 1)                      
+            cmds.addAttr(self.browFactor, longName= 'range_'+LR + "eyeD", attributeType='float', dv = 1) 
+            cmds.addAttr(self.browFactor, longName= 'range_'+LR + "eyeL", attributeType='float', dv = 1)                      
+            cmds.addAttr(self.browFactor, longName= 'range_'+LR + "eyeR", attributeType='float', dv = 1) 
             #'''
-            cmds.addAttr(self.faceFactors, longName= LR + "loBlinkLevel", attributeType='float', dv = 0.05)
-            cmds.addAttr(self.faceFactors, longName= LR + "upBlinkLevel", attributeType='float', dv = .95)
+            cmds.addAttr(self.browFactor, longName= LR + "loBlinkLevel", attributeType='float', dv = 0.05)
+            cmds.addAttr(self.browFactor, longName= LR + "upBlinkLevel", attributeType='float', dv = .95)
             
             cmds.setAttr (level_sub + '.operation', 2 )
             cmds.setAttr (level_sub + '.input2D[0].input2Dx', 1 )
             cmds.setAttr (level_sub + '.input2D[0].input2Dy', 1 )
     
-            cmds.connectAttr ( self.faceFactors + '.' +LR +"loBlinkLevel", level_sub + '.input2D[1].input2D'+XYZ )
-            cmds.connectAttr ( level_sub + '.output2D.output2D'+XYZ, 'faceFactors.'+LR +"upBlinkLevel" )
+            cmds.connectAttr ( self.browFactor + '.' +LR +"loBlinkLevel", level_sub + '.input2D[1].input2D'+XYZ )
+            cmds.connectAttr ( level_sub + '.output2D.output2D'+XYZ, self.browFactor + '.'+LR +"upBlinkLevel" )
         
-        return node
+        return self.browFactor

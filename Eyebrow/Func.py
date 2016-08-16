@@ -55,7 +55,7 @@ class Func(Base.Base):
         cmds.setAttr(browXYZSum + '.input3D[4].input3Dx', -initialX )
         #browXYZSum.tx --> ctrlMult.ry 
         cmds.connectAttr(browXYZSum + '.output3Dx', ctrlMult+'.input1X')
-        cmds.connectAttr('faceFactors.browRotateY_scale', ctrlMult +'.input2X')
+        cmds.connectAttr(self.faceFactors['eyebrow'] + '.browRotateY_scale', ctrlMult +'.input2X')
         cmds.connectAttr(ctrlMult+'.outputX', rotYCtl + '.ry' )    
         
         #add browCtl.tx 
@@ -63,7 +63,7 @@ class Func(Base.Base):
         cmds.connectAttr(browCtrl + '.tx', addBrowCtl + '.input3D[1].input3Dx')    
         #addBrowCtl.tx --> jntMult.ry 
         cmds.connectAttr(addBrowCtl + '.output3Dx', jntMult+'.input1X')
-        cmds.connectAttr('faceFactors.browRotateY_scale', jntMult+'.input2X')
+        cmds.connectAttr(self.faceFactors['eyebrow'] + '.browRotateY_scale', jntMult+'.input2X')
         cmds.connectAttr(jntMult+'.outputX', rotYJnt + '.ry' )    
         
         

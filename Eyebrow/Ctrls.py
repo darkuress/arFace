@@ -36,9 +36,9 @@ class Ctrls(Func.Func):
         x, y, z, orderJnts = self.orderJnts(jnts)
         jntNum = len(orderJnts)
         reverseMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = 'browReverse_mult')
-        cmds.connectAttr(self.faceFactors + '.browRotateX_scale',  reverseMult + '.input1X')
+        cmds.connectAttr(self.faceFactors['eyebrow'] + '.browRotateX_scale',  reverseMult + '.input1X')
         cmds.setAttr(reverseMult + '.input2X', -1)
-        cmds.connectAttr(self.faceFactors +  '.browRotateY_scale', reverseMult + '.input1Y')
+        cmds.connectAttr(self.faceFactors['eyebrow'] +  '.browRotateY_scale', reverseMult + '.input1Y')
         cmds.setAttr(reverseMult + '.input2Y', -1)
         
         if cmds.objExists(self.browCrvGrp):

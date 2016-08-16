@@ -26,7 +26,7 @@ class Core(object):
                  panelTopNode   = 'Panel',
                  faceLocTopNode = 'faceLoc_grp',
                  locFileName    = 'locators.ma',
-                 faceFactors    = 'faceFactors',
+                 faceFactors    = {},
                  **kw):
         """
         basic variables
@@ -73,8 +73,12 @@ class Core(object):
         jsonData = open(self.jsonPath)
         self.locData = json.load(jsonData)
         
-        self.faceFactors = faceFactors
-    
+        self.faceFactors = {'main'    : 'faceFactors',
+                            'eyebrow' : 'browFactor',
+                            'eyelid'  : 'lidFactor'}
+        
+        self.headSkelPos = self.locData['setupLoc']['headSkelPos']
+        
     def writeLocInfoData(self, data):
         """
         writing info data json file

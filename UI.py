@@ -49,7 +49,7 @@ class UI(Core.Core):
         cmds.button(label = '        <<        ', c = self.updateSetupLocTextField)
         cmds.setParent('..' )
 
-        cmds.rowColumnLayout(numberOfColumns=3)       
+        cmds.rowColumnLayout(numberOfColumns=4)       
         cmds.text(label='Eyebrow Vertexes : ', w = 150)
         if self.locData.has_key('eyebrowVtxs'):
             insertText = self.locData['eyebrowVtxs']
@@ -57,9 +57,10 @@ class UI(Core.Core):
             insertText = ''
         self.eyebrowVertsTextField = cmds.textField('eyebrowVertsTextField', tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateEyebrowVtxTextField)
+        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.eyebrowVertsTextField))
         cmds.setParent('..' )
 
-        cmds.rowColumnLayout(numberOfColumns=3)       
+        cmds.rowColumnLayout(numberOfColumns=4)       
         cmds.text(label='Up Eyelid Vertexes : ', w = 150)
         if self.locData.has_key('upEyelidVtxs'):
             insertText = self.locData['upEyelidVtxs']
@@ -67,9 +68,10 @@ class UI(Core.Core):
             insertText = ''            
         self.upEyelidVertsTextField = cmds.textField('upEyelidVertsTextField', tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateUpEyelidVtxTextField)
+        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.upEyelidVertsTextField))
         cmds.setParent('..' )
 
-        cmds.rowColumnLayout(numberOfColumns=3)       
+        cmds.rowColumnLayout(numberOfColumns=4)       
         cmds.text(label='Low Eyelid Vertexes : ', w = 150)
         if self.locData.has_key('loEyelidVtxs'):
             insertText = self.locData['loEyelidVtxs']
@@ -77,9 +79,21 @@ class UI(Core.Core):
             insertText = ''      
         self.loEyelidVertsTextField = cmds.textField('loEyelidVertsTextField', tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateLoEyelidVtxTextField)
+        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.loEyelidVertsTextField))
         cmds.setParent('..' )
 
-        cmds.rowColumnLayout(numberOfColumns=3)       
+        cmds.rowColumnLayout(numberOfColumns=4)
+        cmds.text(label='Corner Eyelid Vertexes : ', w = 150)
+        if self.locData.has_key('cnrEyelidVtxs'):
+            insertText = self.locData['cnrEyelidVtxs']
+        else:
+            insertText = ''      
+        self.cnrEyelidVertsTextField = cmds.textField('cnrEyelidVertsTextField', tx = insertText, w = 300)
+        cmds.button(label = '        <<        ', c = self.updateCnrEyelidVtxTextField)
+        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.cnrEyelidVertsTextField))
+        cmds.setParent('..' )
+
+        cmds.rowColumnLayout(numberOfColumns=4)
         cmds.text(label='Up lip Vertexes : ', w = 150)
         if self.locData.has_key('upLipVtxs'):
             insertText = self.locData['upLipVtxs']
@@ -87,9 +101,10 @@ class UI(Core.Core):
             insertText = ''      
         self.upLipVertsTextField = cmds.textField('upLipVertsTextField', tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateUpLipVtxTextField)
+        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.upLipVertsTextField))
         cmds.setParent('..' )
 
-        cmds.rowColumnLayout(numberOfColumns=3)       
+        cmds.rowColumnLayout(numberOfColumns=4)
         cmds.text(label='Low lip Vertexes : ', w = 150)
         if self.locData.has_key('loLipVtxs'):
             insertText = self.locData['loLipVtxs']
@@ -97,6 +112,7 @@ class UI(Core.Core):
             insertText = ''      
         self.loLipVertsTextField = cmds.textField('loLipVertsTextField', tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateLoLipVtxTextField)
+        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.loLipVertsTextField))
         cmds.setParent('..' )
         
         
@@ -248,11 +264,11 @@ class UI(Core.Core):
         cmds.setParent('..' )
         cmds.setParent('..' )
         
-        cmds.separator( height=20, width = 600, style='in' )
-        
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Connect To Control Panel', w = 200, c = partial(self.connectToEyebrowControlPanel))
-        cmds.setParent('..')        
+        #cmds.separator( height=20, width = 600, style='in' )
+        #
+        #cmds.rowColumnLayout(numberOfColumns = 2)
+        #cmds.button(label = 'Connect To Control Panel', w = 200, c = partial(self.connectToEyebrowControlPanel))
+        #cmds.setParent('..')        
 
         cmds.separator( height=20, width = 600, style='in' )
         
@@ -375,6 +391,7 @@ class UI(Core.Core):
         locData['eyebrowVtxs']   = cmds.textField(self.eyebrowVertsTextField, q = True, tx = True)
         locData['upEyelidVtxs']  = cmds.textField(self.upEyelidVertsTextField, q = True, tx = True)
         locData['loEyelidVtxs']  = cmds.textField(self.loEyelidVertsTextField, q = True, tx = True)
+        locData['cnrEyelidVtxs'] = cmds.textField(self.cnrEyelidVertsTextField, q = True, tx = True)
         locData['upLipVtxs']     = cmds.textField(self.upLipVertsTextField, q = True, tx = True)
         locData['loLipVtxs']     = cmds.textField(self.loLipVertsTextField, q = True, tx = True)
         
@@ -424,6 +441,14 @@ class UI(Core.Core):
         vtx = str(cmds.ls(sl = True, fl = True))
         cmds.textField(self.loEyelidVertsTextField, e = True, tx = vtx)
 
+    def updateCnrEyelidVtxTextField(self, *args):
+        """
+        updating save TextField
+        """
+        #- selected vertexes
+        vtx = str(cmds.ls(sl = True, fl = True))
+        cmds.textField(self.cnrEyelidVertsTextField, e = True, tx = vtx)
+        
     def updateUpLipVtxTextField(self, *args):
         """
         updating save TextField
@@ -439,7 +464,16 @@ class UI(Core.Core):
         #- selected vertexes
         vtx = str(cmds.ls(sl = True, fl = True))
         cmds.textField(self.loLipVertsTextField, e = True, tx = vtx)        
-
+        
+    def selectVertexes(self, txtField, *args):
+        """
+        select vertexes in text field
+        """
+        parts = cmds.textField(txtField, q = True, tx = True)
+        if parts:
+            cmds.select(eval(parts), r = True)
+        else:
+            cmds.select(cl = True)
     
     def __eyelidInstance(self, *args):
         """
