@@ -489,15 +489,20 @@ class UI(Core.Core):
         upperEyelid = EyelidSetup.Setup(size        = float(eyelidCtrlSize),
                                         offset      = float(eyelidCtrlOffset),
                                         rotateScale = float(eyelidRotateScale),
-                                        upDown      = self.uplo[0],
+                                        upDown      = self.uploPrefix[0],
                                         )
         lowerEyelid = EyelidSetup.Setup(size        = float(eyelidCtrlSize),
                                         offset      = float(eyelidCtrlOffset),
                                         rotateScale = float(eyelidRotateScale),
-                                        upDown      = self.uplo[1],
+                                        upDown      = self.uploPrefix[1],
+                                        )
+        cornerEyelid = EyelidSetup.Setup(size       = float(eyelidCtrlSize),
+                                        offset      = float(eyelidCtrlOffset),
+                                        rotateScale = float(eyelidRotateScale),
+                                        upDown      = self.cnrPrefix,
                                         )
         
-        return upperEyelid, lowerEyelid
+        return upperEyelid, lowerEyelid, cornerEyelid
         
     def createEyelidJoint(self, *args):
         """
@@ -505,8 +510,10 @@ class UI(Core.Core):
         """
         self.upperEyelid = self.__eyelidInstance()[0]
         self.lowerEyelid = self.__eyelidInstance()[1]
+        self.cornerEyelid = self.__eyelidInstance()[2]
         self.upperEyelid.createJoints()
         self.lowerEyelid.createJoints()
+        self.cornerEyelid.createJoints()
         
     def createEyelidCtrl(self, *args):
         """

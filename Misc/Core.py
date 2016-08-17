@@ -10,7 +10,8 @@ class Core(object):
     def __init__(self,
                  cPrefix        = 'c_',
                  prefix         = ['l_', 'r_'],
-                 uplo           = ['up', 'lo'],
+                 uploPrefix     = ['up', 'lo'],
+                 cnrPrefix      = 'cnr',
                  ctlSuffix      = '_ctl',
                  jntSuffix      = '_jnt',
                  grpSuffix      = '_grp',
@@ -42,7 +43,8 @@ class Core(object):
         
         self.cPrefix          = cPrefix
         self.prefix           = prefix
-        self.uplo             = uplo
+        self.uploPrefix       = uploPrefix
+        self.cnrPrefix        = cnrPrefix
         self.ctlSuffix        = ctlSuffix
         self.jntSuffix        = jntSuffix
         self.grpSuffix        = grpSuffix
@@ -78,6 +80,7 @@ class Core(object):
                             'eyelid'  : 'lidFactor'}
         
         self.headSkelPos = self.locData['setupLoc']['headSkelPos']
+        self.headGeo     = self.locData['headGeo'] 
         
     def writeLocInfoData(self, data):
         """

@@ -20,8 +20,8 @@ class Func(Base.Base):
         Base.Base.__init__(self, **kw)
         self.lrUplow = []
         for lr in self.prefix:
-            self.lrUplow.append(lr + self.uplo[0])
-            self.lrUplow.append(lr + self.uplo[1])
+            self.lrUplow.append(lr + self.uploPrefix[0])
+            self.lrUplow.append(lr + self.uploPrefix[1])
         
         
     def crvCtrlToJnt(self, uploPrefix, lidCtl, jnt, wideJnt, pocNode, wideJntPocNode, ctlPocNode, initialX, RotateScale ,miValue, index ):

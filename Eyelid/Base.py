@@ -31,8 +31,8 @@ class Base(Core.Core, Util.Util, Controller.Controller):
 
         self.lrUplow = []
         for lr in self.prefix:
-            self.lrUplow.append(lr + self.uplo[0])
-            self.lrUplow.append(lr + self.uplo[1])
+            self.lrUplow.append(lr + self.uploPrefix[0])
+            self.lrUplow.append(lr + self.uploPrefix[1])
         
         #initializing local variables
         #self.lidJnt = 'lidJntP'
@@ -44,6 +44,8 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.wideJntName  = 'Wide'
         self.scaleJntName = 'Scale'
         
+        self.innerOuter = ['inner','outer']
+        
         self.eyelidJntGrpName  = 'eyelidJnt' + self.grpSuffix
         self.eyelidCtlGrpName  = 'eyelidCtl' + self.grpSuffix
         self.eyelidCrvGrpName  = 'eyelidCrv' + self.grpSuffix
@@ -51,6 +53,7 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         #eyelid joints and location position 
         self.upEyelidVtxs    = self.locData.get('upEyelidVtxs', [])
         self.loEyelidVtxs    = self.locData.get('loEyelidVtxs', [])
+        self.cnrEyelidVtxs   = self.locData.get('cnrEyelidVtxs', [])
         if self.locData.get('setupLoc'):
             self.lEyeLoc     = str([x for x in self.locData['setupLoc'] if 'eye' in x.lower()][0])
         else:
