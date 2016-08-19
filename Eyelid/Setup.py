@@ -47,17 +47,17 @@ class Setup(Joints.Joints, Ctrls.Ctrls, HelpPanel.HelpPanel):
         """
         cmds.select(cl = True)
         self.ctrlInfo = self.createLidCtrls(jnts)
-        self.group(self.ctrlInfo['lidsCtlGrp'], self.eyelidCtlGrpName)
-        self.group(self.ctrlInfo['lidsCrvGrp'], self.eyelidCrvGrpName)
+        #self.group(self.ctrlInfo['lidsCtlGrp'], self.eyelidCtlGrpName)
+        #self.group(self.ctrlInfo['lidsCrvGrp'], self.eyelidCrvGrpName)
+        #
+        #if not cmds.listRelatives(self.eyelidCtlGrpName, p = True):
+        #    cmds.parent(self.eyelidCtlGrpName, self.ctlGrp)
+        #if not cmds.listRelatives(self.eyelidCrvGrpName, p = True):
+        #    cmds.parent(self.eyelidCrvGrpName, self.crvGrp)        
+        #
+        #self.allCrvs = self.hideAlLCrv()
         
-        if not cmds.listRelatives(self.eyelidCtlGrpName, p = True):
-            cmds.parent(self.eyelidCtlGrpName, self.ctlGrp)
-        if not cmds.listRelatives(self.eyelidCrvGrpName, p = True):
-            cmds.parent(self.eyelidCrvGrpName, self.crvGrp)        
-        
-        self.allCrvs = self.hideAlLCrv()
-        
-        return self.eyelidCtlGrpName, self.eyelidCrvGrpName
+        #return self.eyelidCtlGrpName, self.eyelidCrvGrpName
     
     def connectToControlPanel(self):
         """

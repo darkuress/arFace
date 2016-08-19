@@ -32,8 +32,110 @@ class Ctrls(Func.Func, Base.Base):
         #- local variables
         Func.Func.__init__(self, **kw)
         Base.Base.__init__(self, **kw)
-
+    
     def createLidCtrls(self, baseJnts):
+        """
+        create controller for lid
+        """
+        self.__createPanelCtrls(baseJnts)
+        
+    def __createPanelCtrls(self, baseJnts):
+        """
+        create controller for panel
+        """       
+        if not (self.lEyeLoc):
+            print "create the face locators"
+        if not cmds.objExists(self.eyelidCrvGrpName):
+            eyeLidCrvGrp = cmds.group (em =1, n = self.eyelidCrvGrpName, p = self.crvGrp)
+            
+        allLidsCtlGrp = []
+        
+        for lr in self.prefix:
+            #- left right + upper lower prefix
+            uploPrefix = lr + self.upDown
+            ctlP = uploPrefix + "Ctrl0"
+            kids = cmds.listRelatives (ctlP, ad=True, type ='transform')   
+            if kids:
+                cmds.delete (kids)
+            lidJnts = cmds.ls( uploPrefix +  self.blinkJntName + "*" + self.jntSuffix, type = 'joint')
+            lidJntsLen = len(lidJnts)
+
+            #- making lids Ctrl group
+            lidsCtrlGrp = cmds.group (em=True, w =True, n = uploPrefix + self.eyelidName + self.ctlSuffix + self.grpSuffix)
+            allLidsCtlGrp.append(lidsCtrlGrp)
+            cntPos = cmds.xform (ctlP, q=1, ws =1, t = 1 )
+            
+            #- creating controller 
+            if lr == self.prefix[0]:
+                cColor = 6
+            else:
+                cColor = 17
+                
+            for pos in ['Center', 'InCorner', 'OutCorner']:
+                lidCtl, lidCtlP = self.circleController(uploPrefix + pos + self.ctlSuffix,
+                                                        'xy',
+                                                        self.ctlSize * 0.1,
+                                                        color = cColor,
+                                                        lockAttr = ['tz',
+                                                                    'sc',
+                                                                    'ro',
+                                                                    'vi'])
+                cmds.xform(lidCtlP, ws = True, t =(cntPos[0], cntPos[1], cntPos[2]))
+                cmds.parent(lidCtlP, lidsCtrlGrp)
+                if pos == 'InCorner':
+                    cmds.setAttr(lidCtl +'.tx', -1 )
+                elif pos == 'OutCorner':
+                    cmds.setAttr(lidCtl +'.tx', 1 )
+            
+            details = []
+            for i in range(1, lidJntsLen+1):
+                detailCtl = self.circleController(uploPrefix + 'Detail'+ str(i).zfill(2),
+                                                  'xy',
+                                                  self.ctlSize * 0.05,
+                                                  color = cColor,
+                                                  lockAttr = ['tz',
+                                                              'sc',
+                                                              'ro',
+                                                              'vi'])
+                details.append(detailCtl[0])
+                detailCtlP = detailCtl[1]
+                cmds.parent (detailCtlP, ctlP )
+                increment = 2.0 /(lidJntsLen+1)
+                cmds.setAttr (detailCtlP + ".tx", increment*i - 1.0 )
+                cmds.setAttr (detailCtlP + ".ty", 0 )
+                cmds.setAttr (detailCtlP + ".tz", 0 )
+
+            #- eyelids controller curve shape ( different number of points )          
+            tempCtlCrv = cmds.curve(d = 3, p =([0,0,0],[0.33,0,0],[0.66,0,0],[1,0,0])) 
+            cmds.rebuildCurve(tempCtlCrv, rt = 0, d = 3, kr = 0, s = 2 )   
+            lidCtlCrv = cmds.rename(tempCtlCrv, uploPrefix +'Ctl' + self.crvSuffix)
+            cmds.parent(lidCtlCrv, self.eyelidCrvGrpName) 
+            ctlCrvCv = cmds.ls(lidCtlCrv + '.cv[*]', fl =True )#!!check same curve exist if Error : list index out of range
+                    
+            #- corner twist curves setup (curves for corner Adjust 06/23/2016)
+            cornerCrv = cmds.duplicate(lidCtlCrv, n = uploPrefix +'Corner' + self.crvSuffix )
+            cornerCrvCv = cmds.ls(cornerCrv[0] + '.cv[*]', fl =True )
+
+            if self.uploPrefix[0] in uploPrefix:
+                inCls = cmds.cluster(cornerCrvCv[0:2], n = uploPrefix[:2] +'inTwistCls')
+                cmds.percent(inCls[0], cornerCrvCv[1],  v = 0.3)    
+                outCls = cmds.cluster (cornerCrvCv[3:5], n = uploPrefix[:2] +'outTwistCls')
+                cmds.percent(outCls[0], cornerCrvCv[3], v = 0.3) 
+        
+            elif self.uploPrefix[1] in uploPrefix:
+                cmds.sets(cornerCrvCv[0:2], add = uploPrefix[:2] +'inTwistClsSet')
+                cmds.percent(uploPrefix[:2] +'inTwistCls', cornerCrvCv[1], v = 0.3) 
+                cmds.sets(cornerCrvCv[3:5], add = uploPrefix[:2] +'outTwistClsSet' )
+                cmds.percent(uploPrefix[:2] +'outTwistCls', cornerCrvCv[3], v = 0.3)
+                
+                #- corner twist setup (no need to use ClsHandle.rotateZ)
+                cmds.connectAttr(uploPrefix[:2] + "innerLidTwist.tx" , uploPrefix[:2] +'inTwistClsHandle.tx')
+                cmds.connectAttr(uploPrefix[:2] + "innerLidTwist.ty" , uploPrefix[:2] +'inTwistClsHandle.ty')
+                
+                cmds.connectAttr(uploPrefix[:2] + "outerLidTwist.tx" , uploPrefix[:2] +'outTwistClsHandle.tx')
+                cmds.connectAttr(uploPrefix[:2] + "outerLidTwist.ty" , uploPrefix[:2] +'outTwistClsHandle.ty')
+                 
+    def createLidCtrls2(self, baseJnts):
         """
         create controller for lid
         """       

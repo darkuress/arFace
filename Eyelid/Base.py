@@ -44,6 +44,8 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.wideJntName  = 'Wide'
         self.scaleJntName = 'Scale'
         
+        self.eyelidName   = 'EyeLid'
+        
         self.innerOuter = ['inner','outer']
         
         self.eyelidJntGrpName  = 'eyelidJnt' + self.grpSuffix

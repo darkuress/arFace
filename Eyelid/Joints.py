@@ -91,7 +91,7 @@ class Joints(Base.Base):
         self.match(dest = rNull, source = rLidJntP)
         cmds.parent(lidJntP, null)
         cmds.parent(rLidJntP, rNull)
-    
+        
         self.allBaseJnts.append(null)
         self.allBaseJnts.append(rNull)
         

@@ -1,367 +1,352 @@
-//Maya ASCII 2014 scene
-//Name: myTwitchPanel04test.ma
-//Last modified: Mon, Nov 16, 2015 11:39:09 AM
+//Maya ASCII 2016 scene
+//Name: myTwitchPanel07.ma
+//Last modified: Fri, Aug 19, 2016 10:47:48 AM
 //Codeset: ANSI_X3.4-1968
-requires maya "2014";
-requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
-		 -nodeType "mentalrayUserBuffer" -nodeType "mentalraySubdivApprox" -nodeType "mentalrayCurveApprox"
-		 -nodeType "mentalraySurfaceApprox" -nodeType "mentalrayDisplaceApprox" -nodeType "mentalrayOptions"
-		 -nodeType "mentalrayGlobals" -nodeType "mentalrayItemsList" -nodeType "mentalrayShader"
-		 -nodeType "mentalrayUserData" -nodeType "mentalrayText" -nodeType "mentalrayTessellation"
-		 -nodeType "mentalrayPhenomenon" -nodeType "mentalrayLightProfile" -nodeType "mentalrayVertexColors"
-		 -nodeType "mentalrayIblShape" -nodeType "mapVizShape" -nodeType "mentalrayCCMeshProxy"
-		 -nodeType "cylindricalLightLocator" -nodeType "discLightLocator" -nodeType "rectangularLightLocator"
-		 -nodeType "sphericalLightLocator" -nodeType "abcimport" -nodeType "mia_physicalsun"
-		 -nodeType "mia_physicalsky" -nodeType "mia_material" -nodeType "mia_material_x" -nodeType "mia_roundcorners"
-		 -nodeType "mia_exposure_simple" -nodeType "mia_portal_light" -nodeType "mia_light_surface"
-		 -nodeType "mia_exposure_photographic" -nodeType "mia_exposure_photographic_rev" -nodeType "mia_lens_bokeh"
-		 -nodeType "mia_envblur" -nodeType "mia_ciesky" -nodeType "mia_photometric_light"
-		 -nodeType "mib_texture_vector" -nodeType "mib_texture_remap" -nodeType "mib_texture_rotate"
-		 -nodeType "mib_bump_basis" -nodeType "mib_bump_map" -nodeType "mib_passthrough_bump_map"
-		 -nodeType "mib_bump_map2" -nodeType "mib_lookup_spherical" -nodeType "mib_lookup_cube1"
-		 -nodeType "mib_lookup_cube6" -nodeType "mib_lookup_background" -nodeType "mib_lookup_cylindrical"
-		 -nodeType "mib_texture_lookup" -nodeType "mib_texture_lookup2" -nodeType "mib_texture_filter_lookup"
-		 -nodeType "mib_texture_checkerboard" -nodeType "mib_texture_polkadot" -nodeType "mib_texture_polkasphere"
-		 -nodeType "mib_texture_turbulence" -nodeType "mib_texture_wave" -nodeType "mib_reflect"
-		 -nodeType "mib_refract" -nodeType "mib_transparency" -nodeType "mib_continue" -nodeType "mib_opacity"
-		 -nodeType "mib_twosided" -nodeType "mib_refraction_index" -nodeType "mib_dielectric"
-		 -nodeType "mib_ray_marcher" -nodeType "mib_illum_lambert" -nodeType "mib_illum_phong"
-		 -nodeType "mib_illum_ward" -nodeType "mib_illum_ward_deriv" -nodeType "mib_illum_blinn"
-		 -nodeType "mib_illum_cooktorr" -nodeType "mib_illum_hair" -nodeType "mib_volume"
-		 -nodeType "mib_color_alpha" -nodeType "mib_color_average" -nodeType "mib_color_intensity"
-		 -nodeType "mib_color_interpolate" -nodeType "mib_color_mix" -nodeType "mib_color_spread"
-		 -nodeType "mib_geo_cube" -nodeType "mib_geo_torus" -nodeType "mib_geo_sphere" -nodeType "mib_geo_cone"
-		 -nodeType "mib_geo_cylinder" -nodeType "mib_geo_square" -nodeType "mib_geo_instance"
-		 -nodeType "mib_geo_instance_mlist" -nodeType "mib_geo_add_uv_texsurf" -nodeType "mib_photon_basic"
-		 -nodeType "mib_light_infinite" -nodeType "mib_light_point" -nodeType "mib_light_spot"
-		 -nodeType "mib_light_photometric" -nodeType "mib_cie_d" -nodeType "mib_blackbody"
-		 -nodeType "mib_shadow_transparency" -nodeType "mib_lens_stencil" -nodeType "mib_lens_clamp"
-		 -nodeType "mib_lightmap_write" -nodeType "mib_lightmap_sample" -nodeType "mib_amb_occlusion"
-		 -nodeType "mib_fast_occlusion" -nodeType "mib_map_get_scalar" -nodeType "mib_map_get_integer"
-		 -nodeType "mib_map_get_vector" -nodeType "mib_map_get_color" -nodeType "mib_map_get_transform"
-		 -nodeType "mib_map_get_scalar_array" -nodeType "mib_map_get_integer_array" -nodeType "mib_fg_occlusion"
-		 -nodeType "mib_bent_normal_env" -nodeType "mib_glossy_reflection" -nodeType "mib_glossy_refraction"
-		 -nodeType "builtin_bsdf_architectural" -nodeType "builtin_bsdf_architectural_comp"
-		 -nodeType "builtin_bsdf_carpaint" -nodeType "builtin_bsdf_ashikhmin" -nodeType "builtin_bsdf_lambert"
-		 -nodeType "builtin_bsdf_mirror" -nodeType "builtin_bsdf_phong" -nodeType "contour_store_function"
-		 -nodeType "contour_store_function_simple" -nodeType "contour_contrast_function_levels"
-		 -nodeType "contour_contrast_function_simple" -nodeType "contour_shader_simple" -nodeType "contour_shader_silhouette"
-		 -nodeType "contour_shader_maxcolor" -nodeType "contour_shader_curvature" -nodeType "contour_shader_factorcolor"
-		 -nodeType "contour_shader_depthfade" -nodeType "contour_shader_framefade" -nodeType "contour_shader_layerthinner"
-		 -nodeType "contour_shader_widthfromcolor" -nodeType "contour_shader_widthfromlightdir"
-		 -nodeType "contour_shader_widthfromlight" -nodeType "contour_shader_combi" -nodeType "contour_only"
-		 -nodeType "contour_composite" -nodeType "contour_ps" -nodeType "mi_metallic_paint"
-		 -nodeType "mi_metallic_paint_x" -nodeType "mi_bump_flakes" -nodeType "mi_car_paint_phen"
-		 -nodeType "mi_metallic_paint_output_mixer" -nodeType "mi_car_paint_phen_x" -nodeType "physical_lens_dof"
-		 -nodeType "physical_light" -nodeType "dgs_material" -nodeType "dgs_material_photon"
-		 -nodeType "dielectric_material" -nodeType "dielectric_material_photon" -nodeType "oversampling_lens"
-		 -nodeType "path_material" -nodeType "parti_volume" -nodeType "parti_volume_photon"
-		 -nodeType "transmat" -nodeType "transmat_photon" -nodeType "mip_rayswitch" -nodeType "mip_rayswitch_advanced"
-		 -nodeType "mip_rayswitch_environment" -nodeType "mip_card_opacity" -nodeType "mip_motionblur"
-		 -nodeType "mip_motion_vector" -nodeType "mip_matteshadow" -nodeType "mip_cameramap"
-		 -nodeType "mip_mirrorball" -nodeType "mip_grayball" -nodeType "mip_gamma_gain" -nodeType "mip_render_subset"
-		 -nodeType "mip_matteshadow_mtl" -nodeType "mip_binaryproxy" -nodeType "mip_rayswitch_stage"
-		 -nodeType "mip_fgshooter" -nodeType "mib_ptex_lookup" -nodeType "rnk_ao" -nodeType "rnk_assembly"
-		 -nodeType "rnk_scalar_attribute" -nodeType "rnk_color_attribute" -nodeType "rnk_vector_attribute"
-		 -nodeType "rnk_integer_attribute" -nodeType "rnk_matrix_attribute" -nodeType "rnk_brownian"
-		 -nodeType "rnk_cellnoise" -nodeType "rnk_distort" -nodeType "rnk_worley" -nodeType "rnk_bump2d"
-		 -nodeType "rnk_clip_lens" -nodeType "rnk_color_to_float" -nodeType "rnk_core3" -nodeType "rnk_diffuse"
-		 -nodeType "rnk_displacement" -nodeType "rnk_displacement2" -nodeType "rnk_displacement_blender"
-		 -nodeType "rnk_distributor_sampler_info" -nodeType "rnk_eyeball_base" -nodeType "rnk_eyeball"
-		 -nodeType "rnk_eyeball2" -nodeType "rnk_eyeball3" -nodeType "rnk_eyeball4" -nodeType "rnk_fakefur"
-		 -nodeType "rnk_scalar_fb_writer" -nodeType "rnk_color_fb_writer" -nodeType "rnk_vector_fb_writer"
-		 -nodeType "rnk_fg" -nodeType "rnk_file" -nodeType "rnk_framebuffer" -nodeType "rnk_fur_sampler_info"
-		 -nodeType "rnk_geomcache" -nodeType "rnk_hair" -nodeType "rnk_hair2" -nodeType "rnk_hair3"
-		 -nodeType "rnk_hair_geo" -nodeType "rnk_hair_uv" -nodeType "rnk_indirect" -nodeType "rnk_indirect_translucency"
-		 -nodeType "rnk_layered" -nodeType "rnk_layered_color" -nodeType "rnk_lens" -nodeType "rnk_light"
-		 -nodeType "rnk_light_indirect" -nodeType "rnk_boolean_logic" -nodeType "rnk_mayabase"
-		 -nodeType "rnk_mix" -nodeType "rnk_multitexture" -nodeType "rnk_multitexture2" -nodeType "normalDeriv"
-		 -nodeType "rnk_normal_blender" -nodeType "rnk_normals" -nodeType "rnk_nullgeo" -nodeType "rnk_nullsurf"
-		 -nodeType "rnk_obj_data" -nodeType "rnk_obj_color" -nodeType "rnk_particle" -nodeType "rnk_particle_sampler_info"
-		 -nodeType "rnk_place2dtex" -nodeType "rnk_planar_cut" -nodeType "rnk_projected_eye_base"
-		 -nodeType "rnk_projected_eye" -nodeType "rnk_projection" -nodeType "rnk_ray_distance"
-		 -nodeType "rnk_reflection" -nodeType "rnk_reflection2" -nodeType "rnk_reflection3"
-		 -nodeType "rnk_refraction" -nodeType "rnk_refraction2" -nodeType "rnk_rim" -nodeType "rnk_root"
-		 -nodeType "rnk_rotblur" -nodeType "rnk_scalar_selector" -nodeType "rnk_color_selector"
-		 -nodeType "rnk_boolean_selector" -nodeType "rnk_shadow" -nodeType "rnk_shave_color"
-		 -nodeType "rnk_sparkles" -nodeType "rnk_specular" -nodeType "rnk_specular2" -nodeType "rnk_geomcache_data"
-		 -nodeType "rnk_single_scalar_data" -nodeType "rnk_single_color_data" -nodeType "rnk_single_vector_data"
-		 -nodeType "rnk_single_integer_data" -nodeType "rnk_single_boolean_data" -nodeType "rnk_single_string_data"
-		 -nodeType "rnk_single_matrix_data" -nodeType "rnk_single_scalar_array_data" -nodeType "rnk_single_string_array_data"
-		 -nodeType "rnk_particle_sampler_data" -nodeType "rnk_distributor_sampler_data" -nodeType "rnk_struct_adapter"
-		 -nodeType "rnk_transition" -nodeType "rnk_translucency" -nodeType "rnk_traversal"
-		 -nodeType "rnk_uvchooser" -nodeType "rnk_vertex_data" -nodeType "rnk_wireframe" -nodeType "misss_physical"
-		 -nodeType "misss_physical_phen" -nodeType "misss_fast_shader" -nodeType "misss_fast_shader_x"
-		 -nodeType "misss_skin_specular" -nodeType "misss_lightmap_write" -nodeType "misss_lambert_gamma"
-		 -nodeType "misss_call_shader" -nodeType "misss_fast_simple_phen" -nodeType "misss_fast_skin_phen"
-		 -nodeType "misss_fast_skin_phen_d" -nodeType "surfaceSampler" -nodeType "mib_data_bool"
-		 -nodeType "mib_data_int" -nodeType "mib_data_scalar" -nodeType "mib_data_vector"
-		 -nodeType "mib_data_color" -nodeType "mib_data_string" -nodeType "mib_data_texture"
-		 -nodeType "mib_data_shader" -nodeType "mib_data_bool_array" -nodeType "mib_data_int_array"
-		 -nodeType "mib_data_scalar_array" -nodeType "mib_data_vector_array" -nodeType "mib_data_color_array"
-		 -nodeType "mib_data_string_array" -nodeType "mib_data_texture_array" -nodeType "mib_data_shader_array"
-		 -nodeType "mib_data_get_bool" -nodeType "mib_data_get_int" -nodeType "mib_data_get_scalar"
-		 -nodeType "mib_data_get_vector" -nodeType "mib_data_get_color" -nodeType "mib_data_get_string"
-		 -nodeType "mib_data_get_texture" -nodeType "mib_data_get_shader" -nodeType "mib_data_get_shader_bool"
-		 -nodeType "mib_data_get_shader_int" -nodeType "mib_data_get_shader_scalar" -nodeType "mib_data_get_shader_vector"
-		 -nodeType "mib_data_get_shader_color" -nodeType "user_ibl_env" -nodeType "user_ibl_rect"
-		 -nodeType "mia_material_x_passes" -nodeType "mi_metallic_paint_x_passes" -nodeType "mi_car_paint_phen_x_passes"
-		 -nodeType "misss_fast_shader_x_passes" -nodeType "rnk_desaturate" -nodeType "rnk_hair_color_variation"
-		 -nodeType "rnk_hair_scalar_variation" -nodeType "rnk_skin" -nodeType "rnk_skin2"
-		 -nodeType "rnk_skin3" -nodeType "rnk_skin4" -nodeType "rnk_skin5" -nodeType "rnk_subsurface_lightmap"
-		 -nodeType "rnk_subsurface" -nodeType "rnk_surface" -nodeType "rnk_surface2" -dataType "byteArray"
-		 "Mayatomr" "2014.0 - 3.11.1.4 ";
+requires maya "2016";
+requires -dataType "byteArray" "Mayatomr" "2016.0 - 3.13.1.10 ";
+requires "stereoCamera" "10.0";
+requires "vrayformaya" "2.30.01";
+requires "stereoCamera" "10.0";
+requires "spMapInfoShader" "$Rev: 65400 $";
+requires "shaveNode" "1.1";
+requires "spCmptAsmbNd" "1.0";
+requires "rotatorNode.py" "Unknown";
+requires "mtoa" "1.2.3.0";
+requires "rpmaya" "2.0";
+requires "LXFMLImport" "5.0";
+requires "lgtUberManip" "8.0";
+requires "CGReader" "1.0";
+requires "CGL_Rivet" "3";
+requires "CGL_PolyWrap" "3";
+requires "MatUtilityGLSL" "1.0";
+requires "rivetConstraint" "1.0";
+requires "pointToPoint" "1.5";
+requires "CGL_PolyConstraint" "3";
+requires "CGDeformer" "1.0";
+requires "mgear_rigSolvers" "1.0";
+requires "AT_Scatter" "VersionTag_INSTALL_0-0-8298554";
+requires "FurSystemNode" "1.0";
+requires "AT_MPView" "RC 1";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
-fileInfo "product" "Maya 2014";
-fileInfo "version" "2014";
-fileInfo "cutIdentifier" "201310082342-890429";
-fileInfo "osv" "Linux 2.6.32-358.6.2.el6.x86_64 #1 SMP Thu May 16 20:59:36 UTC 2013 x86_64";
+fileInfo "product" "Maya 2016";
+fileInfo "version" "2016";
+fileInfo "cutIdentifier" "201511301000-979500";
+fileInfo "osv" "Linux 2.6.32-431.29.2.el6.x86_64 #1 SMP Tue Sep 9 21:36:05 UTC 2014 x86_64";
+createNode transform -s -n "persp";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D2D";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 4.3722520630279869 -50.835135034531405 64.854725028632515 ;
+	setAttr ".r" -type "double3" -6.3383527296025095 -2.2000000000000379 -4.9732824146399221e-17 ;
+createNode camera -s -n "perspShape" -p "persp";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D2E";
+	setAttr -k off ".v" no;
+	setAttr ".fl" 34.999999999999993;
+	setAttr ".fcp" 100000;
+	setAttr ".coi" 65.420167527544493;
+	setAttr ".imn" -type "string" "persp";
+	setAttr ".den" -type "string" "persp_depth";
+	setAttr ".man" -type "string" "persp_mask";
+	setAttr ".tp" -type "double3" 9.0193562795662459 -58.372215106714869 0 ;
+	setAttr ".hc" -type "string" "viewSet -p %camera";
+createNode transform -s -n "top";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D2F";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 0 100.1 0 ;
+	setAttr ".r" -type "double3" -89.999999999999986 0 0 ;
+createNode camera -s -n "topShape" -p "top";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D30";
+	setAttr -k off ".v" no;
+	setAttr ".rnd" no;
+	setAttr ".fcp" 100000;
+	setAttr ".coi" 100.1;
+	setAttr ".ow" 30;
+	setAttr ".imn" -type "string" "top";
+	setAttr ".den" -type "string" "top_depth";
+	setAttr ".man" -type "string" "top_mask";
+	setAttr ".hc" -type "string" "viewSet -t %camera";
+	setAttr ".o" yes;
+createNode transform -s -n "front";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D31";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 55.114914517237651 -0.31358298207014457 135.45832045038739 ;
+createNode camera -s -n "frontShape" -p "front";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D32";
+	setAttr -k off ".v" no;
+	setAttr ".rnd" no;
+	setAttr ".fcp" 100000;
+	setAttr ".coi" 100.1;
+	setAttr ".ow" 15.953760812169364;
+	setAttr ".imn" -type "string" "front";
+	setAttr ".den" -type "string" "front_depth";
+	setAttr ".man" -type "string" "front_mask";
+	setAttr ".hc" -type "string" "viewSet -f %camera";
+	setAttr ".o" yes;
+createNode transform -s -n "side";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D33";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 100.1 0 0 ;
+	setAttr ".r" -type "double3" 0 89.999999999999986 0 ;
+createNode camera -s -n "sideShape" -p "side";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D34";
+	setAttr -k off ".v" no;
+	setAttr ".rnd" no;
+	setAttr ".fcp" 100000;
+	setAttr ".coi" 100.1;
+	setAttr ".ow" 30;
+	setAttr ".imn" -type "string" "side";
+	setAttr ".den" -type "string" "side_depth";
+	setAttr ".man" -type "string" "side_mask";
+	setAttr ".hc" -type "string" "viewSet -s %camera";
+	setAttr ".o" yes;
 createNode transform -n "Twitch_Panel";
-	addAttr -ci true -sn "tonguebase_dir" -ln "tonguebase_dir" -at "message";
-	addAttr -ci true -sn "tongue_stickroll" -ln "tongue_stickroll" -at "message";
-	addAttr -ci true -sn "tongue_splay" -ln "tongue_splay" -at "message";
-	addAttr -ci true -sn "tonguetip_dir" -ln "tonguetip_dir" -at "message";
-	addAttr -ci true -sn "tongueWhole_move" -ln "tongueWhole_move" -at "message";
-	addAttr -ci true -sn "tongueWhole_swing" -ln "tongueWhole_swing" -at "message";
-	addAttr -ci true -sn "jaw_UDLRIO" -ln "jaw_UDLRIO" -at "message";
-	addAttr -ci true -sn "Swivel_ctrl" -ln "Swivel_ctrl" -at "message";
-	addAttr -ci true -sn "jaw_dir" -ln "jaw_dir" -at "message";
-	addAttr -ci true -sn "LlipHeight" -ln "LlipHeight" -at "message";
-	addAttr -ci true -sn "RlipHeight" -ln "RlipHeight" -at "message";
-	addAttr -ci true -sn "mouth_happysad_L" -ln "mouth_happysad_L" -at "message";
-	addAttr -ci true -sn "mouth_happysad_R" -ln "mouth_happysad_R" -at "message";
-	addAttr -ci true -sn "mouth_phoneme_L" -ln "mouth_phoneme_L" -at "message";
-	addAttr -ci true -sn "mouth_phoneme_R" -ln "mouth_phoneme_R" -at "message";
-	addAttr -ci true -sn "mouth_sh" -ln "mouth_sh" -at "message";
-	addAttr -ci true -sn "mouth_pout" -ln "mouth_pout" -at "message";
-	addAttr -ci true -sn "mouth_move" -ln "mouth_move" -at "message";
-	addAttr -ci true -sn "mouth_scaleR" -ln "mouth_scaleR" -at "message";
-	addAttr -ci true -sn "mouth_scaleL" -ln "mouth_scaleL" -at "message";
-	addAttr -ci true -sn "lipUpCtrlMid" -ln "lipUpCtrlMid" -at "message";
-	addAttr -ci true -sn "lipUpCtrlLA" -ln "lipUpCtrlLA" -at "message";
-	addAttr -ci true -sn "lipUpCtrlLB" -ln "lipUpCtrlLB" -at "message";
-	addAttr -ci true -sn "lipUpCtrlRA" -ln "lipUpCtrlRA" -at "message";
-	addAttr -ci true -sn "lipUpCtrlRB" -ln "lipUpCtrlRB" -at "message";
-	addAttr -ci true -sn "lipLoCtrlMid" -ln "lipLoCtrlMid" -at "message";
-	addAttr -ci true -sn "lipLoCtrlLA" -ln "lipLoCtrlLA" -at "message";
-	addAttr -ci true -sn "lipLoCtrlLB" -ln "lipLoCtrlLB" -at "message";
-	addAttr -ci true -sn "lipLoCtrlRA" -ln "lipLoCtrlRA" -at "message";
-	addAttr -ci true -sn "lipLoCtrlRB" -ln "lipLoCtrlRB" -at "message";
-	addAttr -ci true -sn "lipCtrlRTip" -ln "lipCtrlRTip" -at "message";
-	addAttr -ci true -sn "lipCtrlLTip" -ln "lipCtrlLTip" -at "message";
-	addAttr -ci true -sn "lipUpTension" -ln "lipUpTension" -at "message";
-	addAttr -ci true -sn "lipLoTension" -ln "lipLoTension" -at "message";
-	addAttr -ci true -sn "lipUpThickness" -ln "lipUpThickness" -at "message";
-	addAttr -ci true -sn "lipLoThickness" -ln "lipLoThickness" -at "message";
-	addAttr -ci true -sn "lipUpRollTCtrlMid" -ln "lipUpRollTCtrlMid" -at "message";
-	addAttr -ci true -sn "lipUpRollTCtrlLA" -ln "lipUpRollTCtrlLA" -at "message";
-	addAttr -ci true -sn "lipUpRollTCtrlLB" -ln "lipUpRollTCtrlLB" -at "message";
-	addAttr -ci true -sn "lipUpRollTCtrlRA" -ln "lipUpRollTCtrlRA" -at "message";
-	addAttr -ci true -sn "lipUpRollTCtrlRB" -ln "lipUpRollTCtrlRB" -at "message";
-	addAttr -ci true -sn "lipRollTCtrlRTip" -ln "lipRollTCtrlRTip" -at "message";
-	addAttr -ci true -sn "lipRollTCtrlLTip" -ln "lipRollTCtrlLTip" -at "message";
-	addAttr -ci true -sn "lipLoRollTCtrlMid" -ln "lipLoRollTCtrlMid" -at "message";
-	addAttr -ci true -sn "lipLoRollTCtrlLA" -ln "lipLoRollTCtrlLA" -at "message";
-	addAttr -ci true -sn "lipLoRollTCtrlLB" -ln "lipLoRollTCtrlLB" -at "message";
-	addAttr -ci true -sn "lipLoRollTCtrlRA" -ln "lipLoRollTCtrlRA" -at "message";
-	addAttr -ci true -sn "lipLoRollTCtrlRB" -ln "lipLoRollTCtrlRB" -at "message";
-	addAttr -ci true -sn "lipClose" -ln "lipClose" -at "message";
-	addAttr -ci true -sn "lipLevel" -ln "lipLevel" -at "message";
-	addAttr -ci true -sn "lipDetail0" -ln "lipDetail0" -at "message";
-	addAttr -ci true -sn "lipDetail1" -ln "lipDetail1" -at "message";
-	addAttr -ci true -sn "lipDetail2" -ln "lipDetail2" -at "message";
-	addAttr -ci true -sn "lipDetail3" -ln "lipDetail3" -at "message";
-	addAttr -ci true -sn "lipDetail4" -ln "lipDetail4" -at "message";
-	addAttr -ci true -sn "lipDetail5" -ln "lipDetail5" -at "message";
-	addAttr -ci true -sn "lipDetail6" -ln "lipDetail6" -at "message";
-	addAttr -ci true -sn "lipDetail7" -ln "lipDetail7" -at "message";
-	addAttr -ci true -sn "lipDetail8" -ln "lipDetail8" -at "message";
-	addAttr -ci true -sn "lipDetail9" -ln "lipDetail9" -at "message";
-	addAttr -ci true -sn "lipDetail10" -ln "lipDetail10" -at "message";
-	addAttr -ci true -sn "lipDetail11" -ln "lipDetail11" -at "message";
-	addAttr -ci true -sn "lipDetail12" -ln "lipDetail12" -at "message";
-	addAttr -ci true -sn "lipDetail13" -ln "lipDetail13" -at "message";
-	addAttr -ci true -sn "lipDetail14" -ln "lipDetail14" -at "message";
-	addAttr -ci true -sn "lipDetail15" -ln "lipDetail15" -at "message";
-	addAttr -ci true -sn "lipDetail16" -ln "lipDetail16" -at "message";
-	addAttr -ci true -sn "lipDetail17" -ln "lipDetail17" -at "message";
-	addAttr -ci true -sn "lipDetail18" -ln "lipDetail18" -at "message";
-	addAttr -ci true -sn "lipDetail19" -ln "lipDetail19" -at "message";
-	addAttr -ci true -sn "lipDetail20" -ln "lipDetail20" -at "message";
-	addAttr -ci true -sn "lipDetail21" -ln "lipDetail21" -at "message";
-	addAttr -ci true -sn "lipDetail22" -ln "lipDetail22" -at "message";
-	addAttr -ci true -sn "lipDetail23" -ln "lipDetail23" -at "message";
-	addAttr -ci true -sn "lipDetail24" -ln "lipDetail24" -at "message";
-	addAttr -ci true -sn "lipDetail25" -ln "lipDetail25" -at "message";
-	addAttr -ci true -sn "lipDetail26" -ln "lipDetail26" -at "message";
-	addAttr -ci true -sn "lipDetail27" -ln "lipDetail27" -at "message";
-	addAttr -ci true -sn "lipDetail28" -ln "lipDetail28" -at "message";
-	addAttr -ci true -sn "lipDetail29" -ln "lipDetail29" -at "message";
-	addAttr -ci true -sn "lipDetail30" -ln "lipDetail30" -at "message";
-	addAttr -ci true -sn "lipDetail31" -ln "lipDetail31" -at "message";
-	addAttr -ci true -sn "loteeth_motion" -ln "loteeth_motion" -at "message";
-	addAttr -ci true -sn "upteeth_motion" -ln "upteeth_motion" -at "message";
-	addAttr -ci true -sn "nose_move" -ln "nose_move" -at "message";
-	addAttr -ci true -sn "nose_swing" -ln "nose_swing" -at "message";
-	addAttr -ci true -sn "bridge_puffsuck_L" -ln "bridge_puffsuck_L" -at "message";
-	addAttr -ci true -sn "bridge_puffsuck_R" -ln "bridge_puffsuck_R" -at "message";
-	addAttr -ci true -sn "nose_flare_L" -ln "nose_flare_L" -at "message";
-	addAttr -ci true -sn "nose_flare_R" -ln "nose_flare_R" -at "message";
-	addAttr -ci true -sn "nose_sneer_L" -ln "nose_sneer_L" -at "message";
-	addAttr -ci true -sn "nose_sneer_R" -ln "nose_sneer_R" -at "message";
-	addAttr -ci true -sn "bridge_cheeks_L" -ln "bridge_cheeks_L" -at "message";
-	addAttr -ci true -sn "bridge_cheeks_R" -ln "bridge_cheeks_R" -at "message";
-	addAttr -ci true -sn "eye_squint_L" -ln "eye_squint_L" -at "message";
-	addAttr -ci true -sn "eye_squint_R" -ln "eye_squint_R" -at "message";
-	addAttr -ci true -sn "LLidPuffCtrlC" -ln "LLidPuffCtrlC" -at "message";
-	addAttr -ci true -sn "RLidPuffCtrlC" -ln "RLidPuffCtrlC" -at "message";
-	addAttr -ci true -sn "LLidPuffCtrlB" -ln "LLidPuffCtrlB" -at "message";
-	addAttr -ci true -sn "RLidPuffCtrlB" -ln "RLidPuffCtrlB" -at "message";
-	addAttr -ci true -sn "LLidPuffCtrlA" -ln "LLidPuffCtrlA" -at "message";
-	addAttr -ci true -sn "RLidPuffCtrlA" -ln "RLidPuffCtrlA" -at "message";
-	addAttr -ci true -sn "RPuffOriCtrl" -ln "RPuffOriCtrl" -at "message";
-	addAttr -ci true -sn "LPuffOriCtrl" -ln "LPuffOriCtrl" -at "message";
-	addAttr -ci true -sn "Leye_dir" -ln "Leye_dir" -at "message";
-	addAttr -ci true -sn "Reye_dir" -ln "Reye_dir" -at "message";
-	addAttr -ci true -sn "eyeblend_dir" -ln "eyeblend_dir" -at "message";
-	addAttr -ci true -sn "Lpupil_dial" -ln "Lpupil_dial" -at "message";
-	addAttr -ci true -sn "Rpupil_dial" -ln "Rpupil_dial" -at "message";
-	addAttr -ci true -sn "Liris_dial" -ln "Liris_dial" -at "message";
-	addAttr -ci true -sn "Riris_dial" -ln "Riris_dial" -at "message";
-	addAttr -ci true -sn "divergence" -ln "divergence" -at "message";
-	addAttr -ci true -sn "Leye_squach" -ln "Leye_squach" -at "message";
-	addAttr -ci true -sn "Reye_squach" -ln "Reye_squach" -at "message";
-	addAttr -ci true -sn "Leye_open" -ln "Leye_open" -at "message";
-	addAttr -ci true -sn "Reye_open" -ln "Reye_open" -at "message";
-	addAttr -ci true -sn "LblinkLevel" -ln "LblinkLevel" -at "message";
-	addAttr -ci true -sn "RblinkLevel" -ln "RblinkLevel" -at "message";
-	addAttr -ci true -sn "LlidLevel" -ln "LlidLevel" -at "message";
-	addAttr -ci true -sn "RlidLevel" -ln "RlidLevel" -at "message";
-	addAttr -ci true -sn "LUpCtrlOut" -ln "LUpCtrlOut" -at "message";
-	addAttr -ci true -sn "LUpCtrlIn" -ln "LUpCtrlIn" -at "message";
-	addAttr -ci true -sn "LUpCtrlA" -ln "LUpCtrlA" -at "message";
-	addAttr -ci true -sn "LUpCtrlB" -ln "LUpCtrlB" -at "message";
-	addAttr -ci true -sn "LLoCtrlOut" -ln "LLoCtrlOut" -at "message";
-	addAttr -ci true -sn "LLoCtrlIn" -ln "LLoCtrlIn" -at "message";
-	addAttr -ci true -sn "LLoCtrlA" -ln "LLoCtrlA" -at "message";
-	addAttr -ci true -sn "LLoCtrlB" -ln "LLoCtrlB" -at "message";
-	addAttr -ci true -sn "RLoCtrlOut" -ln "RLoCtrlOut" -at "message";
-	addAttr -ci true -sn "RLoCtrlIn" -ln "RLoCtrlIn" -at "message";
-	addAttr -ci true -sn "RLoCtrlA" -ln "RLoCtrlA" -at "message";
-	addAttr -ci true -sn "RLoCtrlB" -ln "RLoCtrlB" -at "message";
-	addAttr -ci true -sn "RUpCtrlOut" -ln "RUpCtrlOut" -at "message";
-	addAttr -ci true -sn "RUpCtrlIn" -ln "RUpCtrlIn" -at "message";
-	addAttr -ci true -sn "RUpCtrlA" -ln "RUpCtrlA" -at "message";
-	addAttr -ci true -sn "RUpCtrlB" -ln "RUpCtrlB" -at "message";
-	addAttr -ci true -sn "REyeTRSCtrl" -ln "REyeTRSCtrl" -at "message";
-	addAttr -ci true -sn "LEyeTRSCtrl" -ln "LEyeTRSCtrl" -at "message";
-	addAttr -ci true -sn "eye2getherCtrl" -ln "eye2getherCtrl" -at "message";
-	addAttr -ci true -sn "LLoEyeCtrl" -ln "LLoEyeCtrl" -at "message";
-	addAttr -ci true -sn "RLoEyeCtrl" -ln "RLoEyeCtrl" -at "message";
-	addAttr -ci true -sn "RUpEyeCtrl" -ln "RUpEyeCtrl" -at "message";
-	addAttr -ci true -sn "LUpEyeCtrl" -ln "LUpEyeCtrl" -at "message";
-	addAttr -ci true -sn "Llid_innertwist" -ln "Llid_innertwist" -at "message";
-	addAttr -ci true -sn "Rlid_innertwist" -ln "Rlid_innertwist" -at "message";
-	addAttr -ci true -sn "RInnerAdjCtrl" -ln "RInnerAdjCtrl" -at "message";
-	addAttr -ci true -sn "LInnerAdjCtrl" -ln "LInnerAdjCtrl" -at "message";
-	addAttr -ci true -sn "Llid_outertwist" -ln "Llid_outertwist" -at "message";
-	addAttr -ci true -sn "Rlid_outertwist" -ln "Rlid_outertwist" -at "message";
-	addAttr -ci true -sn "ROuterAdjCtrl" -ln "ROuterAdjCtrl" -at "message";
-	addAttr -ci true -sn "LOuterAdjCtrl" -ln "LOuterAdjCtrl" -at "message";
-	addAttr -ci true -sn "LOffsetAdjCtrl" -ln "LOffsetAdjCtrl" -at "message";
-	addAttr -ci true -sn "ROffsetAdjCtrl" -ln "ROffsetAdjCtrl" -at "message";
-	addAttr -ci true -sn "Leyelids_offset" -ln "Leyelids_offset" -at "message";
-	addAttr -ci true -sn "Reyelids_offset" -ln "Reyelids_offset" -at "message";
-	addAttr -ci true -sn "LUpDetail0" -ln "LUpDetail0" -at "message";
-	addAttr -ci true -sn "LLoDetail0" -ln "LLoDetail0" -at "message";
-	addAttr -ci true -sn "RUpDetail0" -ln "RUpDetail0" -at "message";
-	addAttr -ci true -sn "RLoDetail0" -ln "RLoDetail0" -at "message";
-	addAttr -ci true -sn "LUpDetail1" -ln "LUpDetail1" -at "message";
-	addAttr -ci true -sn "LLoDetail1" -ln "LLoDetail1" -at "message";
-	addAttr -ci true -sn "RUpDetail1" -ln "RUpDetail1" -at "message";
-	addAttr -ci true -sn "RLoDetail1" -ln "RLoDetail1" -at "message";
-	addAttr -ci true -sn "LUpDetail2" -ln "LUpDetail2" -at "message";
-	addAttr -ci true -sn "LLoDetail2" -ln "LLoDetail2" -at "message";
-	addAttr -ci true -sn "RUpDetail2" -ln "RUpDetail2" -at "message";
-	addAttr -ci true -sn "RLoDetail2" -ln "RLoDetail2" -at "message";
-	addAttr -ci true -sn "LUpDetail3" -ln "LUpDetail3" -at "message";
-	addAttr -ci true -sn "LLoDetail3" -ln "LLoDetail3" -at "message";
-	addAttr -ci true -sn "RUpDetail3" -ln "RUpDetail3" -at "message";
-	addAttr -ci true -sn "RLoDetail3" -ln "RLoDetail3" -at "message";
-	addAttr -ci true -sn "LUpDetail4" -ln "LUpDetail4" -at "message";
-	addAttr -ci true -sn "LLoDetail4" -ln "LLoDetail4" -at "message";
-	addAttr -ci true -sn "RUpDetail4" -ln "RUpDetail4" -at "message";
-	addAttr -ci true -sn "RLoDetail4" -ln "RLoDetail4" -at "message";
-	addAttr -ci true -sn "LUpDetail5" -ln "LUpDetail5" -at "message";
-	addAttr -ci true -sn "LLoDetail5" -ln "LLoDetail5" -at "message";
-	addAttr -ci true -sn "RUpDetail5" -ln "RUpDetail5" -at "message";
-	addAttr -ci true -sn "RLoDetail5" -ln "RLoDetail5" -at "message";
-	addAttr -ci true -sn "LUpDetail6" -ln "LUpDetail6" -at "message";
-	addAttr -ci true -sn "LLoDetail6" -ln "LLoDetail6" -at "message";
-	addAttr -ci true -sn "RUpDetail6" -ln "RUpDetail6" -at "message";
-	addAttr -ci true -sn "RLoDetail6" -ln "RLoDetail6" -at "message";
-	addAttr -ci true -sn "LUpDetail7" -ln "LUpDetail7" -at "message";
-	addAttr -ci true -sn "LLoDetail7" -ln "LLoDetail7" -at "message";
-	addAttr -ci true -sn "RUpDetail7" -ln "RUpDetail7" -at "message";
-	addAttr -ci true -sn "RLoDetail7" -ln "RLoDetail7" -at "message";
-	addAttr -ci true -sn "LUpDetail8" -ln "LUpDetail8" -at "message";
-	addAttr -ci true -sn "LLoDetail8" -ln "LLoDetail8" -at "message";
-	addAttr -ci true -sn "RUpDetail8" -ln "RUpDetail8" -at "message";
-	addAttr -ci true -sn "RLoDetail8" -ln "RLoDetail8" -at "message";
-	addAttr -ci true -sn "LUpDetail9" -ln "LUpDetail9" -at "message";
-	addAttr -ci true -sn "LLoDetail9" -ln "LLoDetail9" -at "message";
-	addAttr -ci true -sn "RUpDetail9" -ln "RUpDetail9" -at "message";
-	addAttr -ci true -sn "RLoDetail9" -ln "RLoDetail9" -at "message";
-	addAttr -ci true -sn "LUpDetail10" -ln "LUpDetail10" -at "message";
-	addAttr -ci true -sn "LLoDetail10" -ln "LLoDetail10" -at "message";
-	addAttr -ci true -sn "RUpDetail10" -ln "RUpDetail10" -at "message";
-	addAttr -ci true -sn "RLoDetail10" -ln "RLoDetail10" -at "message";
-	addAttr -ci true -sn "LUpDetail11" -ln "LUpDetail11" -at "message";
-	addAttr -ci true -sn "LLoDetail11" -ln "LLoDetail11" -at "message";
-	addAttr -ci true -sn "RUpDetail11" -ln "RUpDetail11" -at "message";
-	addAttr -ci true -sn "RLoDetail11" -ln "RLoDetail11" -at "message";
-	addAttr -ci true -sn "LUpDetail12" -ln "LUpDetail12" -at "message";
-	addAttr -ci true -sn "LLoDetail12" -ln "LLoDetail12" -at "message";
-	addAttr -ci true -sn "RUpDetail12" -ln "RUpDetail12" -at "message";
-	addAttr -ci true -sn "RLoDetail12" -ln "RLoDetail12" -at "message";
-	addAttr -ci true -sn "LUpDetail13" -ln "LUpDetail13" -at "message";
-	addAttr -ci true -sn "LLoDetail13" -ln "LLoDetail13" -at "message";
-	addAttr -ci true -sn "RUpDetail13" -ln "RUpDetail13" -at "message";
-	addAttr -ci true -sn "RLoDetail13" -ln "RLoDetail13" -at "message";
-	addAttr -ci true -sn "Brow_madsad_L" -ln "Brow_madsad_L" -at "message";
-	addAttr -ci true -sn "Brow_madsad_R" -ln "Brow_madsad_R" -at "message";
-	addAttr -ci true -sn "Lbrow_furrow" -ln "Lbrow_furrow" -at "message";
-	addAttr -ci true -sn "Rbrow_furrow" -ln "Rbrow_furrow" -at "message";
-	addAttr -ci true -sn "Brow_arcR" -ln "Brow_arcR" -at "message";
-	addAttr -ci true -sn "Brow_arcL" -ln "Brow_arcL" -at "message";
-	addAttr -ci true -sn "BrowRD_updown" -ln "BrowRD_updown" -at "message";
-	addAttr -ci true -sn "BrowRC_updown" -ln "BrowRC_updown" -at "message";
-	addAttr -ci true -sn "BrowRB_updown" -ln "BrowRB_updown" -at "message";
-	addAttr -ci true -sn "BrowRA_updown" -ln "BrowRA_updown" -at "message";
-	addAttr -ci true -sn "BrowLA_updown" -ln "BrowLA_updown" -at "message";
-	addAttr -ci true -sn "BrowLB_updown" -ln "BrowLB_updown" -at "message";
-	addAttr -ci true -sn "BrowLC_updown" -ln "BrowLC_updown" -at "message";
-	addAttr -ci true -sn "BrowLD_updown" -ln "BrowLD_updown" -at "message";
-	addAttr -ci true -sn "browTension" -ln "browTension" -at "message";
-	addAttr -ci true -sn "Brow_arcA" -ln "Brow_arcA" -at "message";
-	addAttr -ci true -sn "Brow_arcB" -ln "Brow_arcB" -at "message";
-	addAttr -ci true -sn "headSquach_ctrl" -ln "headSquach_ctrl" -at "message";
-	addAttr -ci true -sn "LEar_ctrl" -ln "LEar_ctrl" -at "message";
-	addAttr -ci true -sn "REar_ctrl" -ln "REar_ctrl" -at "message";
-	addAttr -ci true -sn "REarRotCtrl" -ln "REarRotCtrl" -at "message";
-	addAttr -ci true -sn "LEarRotCtrl" -ln "LEarRotCtrl" -at "message";
-	addAttr -ci true -sn "eyeTarget" -ln "eyeTarget" -at "message";
-	addAttr -ci true -sn "LeyeTarget_dir" -ln "LeyeTarget_dir" -at "message";
-	addAttr -ci true -sn "ReyeTarget_dir" -ln "ReyeTarget_dir" -at "message";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E0";
+	addAttr -s false -ci true -sn "tonguebase_dir" -ln "tonguebase_dir" -at "message";
+	addAttr -s false -ci true -sn "tongue_stickroll" -ln "tongue_stickroll" -at "message";
+	addAttr -s false -ci true -sn "tongue_splay" -ln "tongue_splay" -at "message";
+	addAttr -s false -ci true -sn "tonguetip_dir" -ln "tonguetip_dir" -at "message";
+	addAttr -s false -ci true -sn "tongueWhole_move" -ln "tongueWhole_move" -at "message";
+	addAttr -s false -ci true -sn "tongueWhole_swing" -ln "tongueWhole_swing" -at "message";
+	addAttr -s false -ci true -sn "jaw_UDLRIO" -ln "jaw_UDLRIO" -at "message";
+	addAttr -s false -ci true -sn "Swivel_ctrl" -ln "Swivel_ctrl" -at "message";
+	addAttr -s false -ci true -sn "jaw_dir" -ln "jaw_dir" -at "message";
+	addAttr -s false -ci true -sn "LlipHeight" -ln "LlipHeight" -at "message";
+	addAttr -s false -ci true -sn "RlipHeight" -ln "RlipHeight" -at "message";
+	addAttr -s false -ci true -sn "mouth_happysad_L" -ln "mouth_happysad_L" -at "message";
+	addAttr -s false -ci true -sn "mouth_happysad_R" -ln "mouth_happysad_R" -at "message";
+	addAttr -s false -ci true -sn "mouth_phoneme_L" -ln "mouth_phoneme_L" -at "message";
+	addAttr -s false -ci true -sn "mouth_phoneme_R" -ln "mouth_phoneme_R" -at "message";
+	addAttr -s false -ci true -sn "mouth_sh" -ln "mouth_sh" -at "message";
+	addAttr -s false -ci true -sn "mouth_pout" -ln "mouth_pout" -at "message";
+	addAttr -s false -ci true -sn "mouth_move" -ln "mouth_move" -at "message";
+	addAttr -s false -ci true -sn "mouth_scaleR" -ln "mouth_scaleR" -at "message";
+	addAttr -s false -ci true -sn "mouth_scaleL" -ln "mouth_scaleL" -at "message";
+	addAttr -s false -ci true -sn "lipUpCtrlMid" -ln "lipUpCtrlMid" -at "message";
+	addAttr -s false -ci true -sn "lipUpCtrlLA" -ln "lipUpCtrlLA" -at "message";
+	addAttr -s false -ci true -sn "lipUpCtrlLB" -ln "lipUpCtrlLB" -at "message";
+	addAttr -s false -ci true -sn "lipUpCtrlRA" -ln "lipUpCtrlRA" -at "message";
+	addAttr -s false -ci true -sn "lipUpCtrlRB" -ln "lipUpCtrlRB" -at "message";
+	addAttr -s false -ci true -sn "lipLoCtrlMid" -ln "lipLoCtrlMid" -at "message";
+	addAttr -s false -ci true -sn "lipLoCtrlLA" -ln "lipLoCtrlLA" -at "message";
+	addAttr -s false -ci true -sn "lipLoCtrlLB" -ln "lipLoCtrlLB" -at "message";
+	addAttr -s false -ci true -sn "lipLoCtrlRA" -ln "lipLoCtrlRA" -at "message";
+	addAttr -s false -ci true -sn "lipLoCtrlRB" -ln "lipLoCtrlRB" -at "message";
+	addAttr -s false -ci true -sn "lipCtrlRTip" -ln "lipCtrlRTip" -at "message";
+	addAttr -s false -ci true -sn "lipCtrlLTip" -ln "lipCtrlLTip" -at "message";
+	addAttr -s false -ci true -sn "lipUpTension" -ln "lipUpTension" -at "message";
+	addAttr -s false -ci true -sn "lipLoTension" -ln "lipLoTension" -at "message";
+	addAttr -s false -ci true -sn "lipUpThickness" -ln "lipUpThickness" -at "message";
+	addAttr -s false -ci true -sn "lipLoThickness" -ln "lipLoThickness" -at "message";
+	addAttr -s false -ci true -sn "lipUpRollTCtrlMid" -ln "lipUpRollTCtrlMid" -at "message";
+	addAttr -s false -ci true -sn "lipUpRollTCtrlLA" -ln "lipUpRollTCtrlLA" -at "message";
+	addAttr -s false -ci true -sn "lipUpRollTCtrlLB" -ln "lipUpRollTCtrlLB" -at "message";
+	addAttr -s false -ci true -sn "lipUpRollTCtrlRA" -ln "lipUpRollTCtrlRA" -at "message";
+	addAttr -s false -ci true -sn "lipUpRollTCtrlRB" -ln "lipUpRollTCtrlRB" -at "message";
+	addAttr -s false -ci true -sn "lipRollTCtrlRTip" -ln "lipRollTCtrlRTip" -at "message";
+	addAttr -s false -ci true -sn "lipRollTCtrlLTip" -ln "lipRollTCtrlLTip" -at "message";
+	addAttr -s false -ci true -sn "lipLoRollTCtrlMid" -ln "lipLoRollTCtrlMid" -at "message";
+	addAttr -s false -ci true -sn "lipLoRollTCtrlLA" -ln "lipLoRollTCtrlLA" -at "message";
+	addAttr -s false -ci true -sn "lipLoRollTCtrlLB" -ln "lipLoRollTCtrlLB" -at "message";
+	addAttr -s false -ci true -sn "lipLoRollTCtrlRA" -ln "lipLoRollTCtrlRA" -at "message";
+	addAttr -s false -ci true -sn "lipLoRollTCtrlRB" -ln "lipLoRollTCtrlRB" -at "message";
+	addAttr -s false -ci true -sn "lipClose" -ln "lipClose" -at "message";
+	addAttr -s false -ci true -sn "lipLevel" -ln "lipLevel" -at "message";
+	addAttr -s false -ci true -sn "lipDetail0" -ln "lipDetail0" -at "message";
+	addAttr -s false -ci true -sn "lipDetail1" -ln "lipDetail1" -at "message";
+	addAttr -s false -ci true -sn "lipDetail2" -ln "lipDetail2" -at "message";
+	addAttr -s false -ci true -sn "lipDetail3" -ln "lipDetail3" -at "message";
+	addAttr -s false -ci true -sn "lipDetail4" -ln "lipDetail4" -at "message";
+	addAttr -s false -ci true -sn "lipDetail5" -ln "lipDetail5" -at "message";
+	addAttr -s false -ci true -sn "lipDetail6" -ln "lipDetail6" -at "message";
+	addAttr -s false -ci true -sn "lipDetail7" -ln "lipDetail7" -at "message";
+	addAttr -s false -ci true -sn "lipDetail8" -ln "lipDetail8" -at "message";
+	addAttr -s false -ci true -sn "lipDetail9" -ln "lipDetail9" -at "message";
+	addAttr -s false -ci true -sn "lipDetail10" -ln "lipDetail10" -at "message";
+	addAttr -s false -ci true -sn "lipDetail11" -ln "lipDetail11" -at "message";
+	addAttr -s false -ci true -sn "lipDetail12" -ln "lipDetail12" -at "message";
+	addAttr -s false -ci true -sn "lipDetail13" -ln "lipDetail13" -at "message";
+	addAttr -s false -ci true -sn "lipDetail14" -ln "lipDetail14" -at "message";
+	addAttr -s false -ci true -sn "lipDetail15" -ln "lipDetail15" -at "message";
+	addAttr -s false -ci true -sn "lipDetail16" -ln "lipDetail16" -at "message";
+	addAttr -s false -ci true -sn "lipDetail17" -ln "lipDetail17" -at "message";
+	addAttr -s false -ci true -sn "lipDetail18" -ln "lipDetail18" -at "message";
+	addAttr -s false -ci true -sn "lipDetail19" -ln "lipDetail19" -at "message";
+	addAttr -s false -ci true -sn "lipDetail20" -ln "lipDetail20" -at "message";
+	addAttr -s false -ci true -sn "lipDetail21" -ln "lipDetail21" -at "message";
+	addAttr -s false -ci true -sn "lipDetail22" -ln "lipDetail22" -at "message";
+	addAttr -s false -ci true -sn "lipDetail23" -ln "lipDetail23" -at "message";
+	addAttr -s false -ci true -sn "lipDetail24" -ln "lipDetail24" -at "message";
+	addAttr -s false -ci true -sn "lipDetail25" -ln "lipDetail25" -at "message";
+	addAttr -s false -ci true -sn "lipDetail26" -ln "lipDetail26" -at "message";
+	addAttr -s false -ci true -sn "lipDetail27" -ln "lipDetail27" -at "message";
+	addAttr -s false -ci true -sn "lipDetail28" -ln "lipDetail28" -at "message";
+	addAttr -s false -ci true -sn "lipDetail29" -ln "lipDetail29" -at "message";
+	addAttr -s false -ci true -sn "lipDetail30" -ln "lipDetail30" -at "message";
+	addAttr -s false -ci true -sn "lipDetail31" -ln "lipDetail31" -at "message";
+	addAttr -s false -ci true -sn "loteeth_motion" -ln "loteeth_motion" -at "message";
+	addAttr -s false -ci true -sn "upteeth_motion" -ln "upteeth_motion" -at "message";
+	addAttr -s false -ci true -sn "nose_move" -ln "nose_move" -at "message";
+	addAttr -s false -ci true -sn "nose_swing" -ln "nose_swing" -at "message";
+	addAttr -s false -ci true -sn "bridge_puffsuck_L" -ln "bridge_puffsuck_L" -at "message";
+	addAttr -s false -ci true -sn "bridge_puffsuck_R" -ln "bridge_puffsuck_R" -at "message";
+	addAttr -s false -ci true -sn "nose_flare_L" -ln "nose_flare_L" -at "message";
+	addAttr -s false -ci true -sn "nose_flare_R" -ln "nose_flare_R" -at "message";
+	addAttr -s false -ci true -sn "nose_sneer_L" -ln "nose_sneer_L" -at "message";
+	addAttr -s false -ci true -sn "nose_sneer_R" -ln "nose_sneer_R" -at "message";
+	addAttr -s false -ci true -sn "bridge_cheeks_L" -ln "bridge_cheeks_L" -at "message";
+	addAttr -s false -ci true -sn "bridge_cheeks_R" -ln "bridge_cheeks_R" -at "message";
+	addAttr -s false -ci true -sn "eye_squint_L" -ln "eye_squint_L" -at "message";
+	addAttr -s false -ci true -sn "eye_squint_R" -ln "eye_squint_R" -at "message";
+	addAttr -s false -ci true -sn "LLidPuffCtrlC" -ln "LLidPuffCtrlC" -at "message";
+	addAttr -s false -ci true -sn "RLidPuffCtrlC" -ln "RLidPuffCtrlC" -at "message";
+	addAttr -s false -ci true -sn "LLidPuffCtrlB" -ln "LLidPuffCtrlB" -at "message";
+	addAttr -s false -ci true -sn "RLidPuffCtrlB" -ln "RLidPuffCtrlB" -at "message";
+	addAttr -s false -ci true -sn "LLidPuffCtrlA" -ln "LLidPuffCtrlA" -at "message";
+	addAttr -s false -ci true -sn "RLidPuffCtrlA" -ln "RLidPuffCtrlA" -at "message";
+	addAttr -s false -ci true -sn "RPuffOriCtrl" -ln "RPuffOriCtrl" -at "message";
+	addAttr -s false -ci true -sn "LPuffOriCtrl" -ln "LPuffOriCtrl" -at "message";
+	addAttr -s false -ci true -sn "Leye_dir" -ln "Leye_dir" -at "message";
+	addAttr -s false -ci true -sn "Reye_dir" -ln "Reye_dir" -at "message";
+	addAttr -s false -ci true -sn "eyeblend_dir" -ln "eyeblend_dir" -at "message";
+	addAttr -s false -ci true -sn "Lpupil_dial" -ln "Lpupil_dial" -at "message";
+	addAttr -s false -ci true -sn "Rpupil_dial" -ln "Rpupil_dial" -at "message";
+	addAttr -s false -ci true -sn "Liris_dial" -ln "Liris_dial" -at "message";
+	addAttr -s false -ci true -sn "Riris_dial" -ln "Riris_dial" -at "message";
+	addAttr -s false -ci true -sn "divergence" -ln "divergence" -at "message";
+	addAttr -s false -ci true -sn "Leye_squach" -ln "Leye_squach" -at "message";
+	addAttr -s false -ci true -sn "Reye_squach" -ln "Reye_squach" -at "message";
+	addAttr -s false -ci true -sn "Leye_open" -ln "Leye_open" -at "message";
+	addAttr -s false -ci true -sn "Reye_open" -ln "Reye_open" -at "message";
+	addAttr -s false -ci true -sn "LblinkLevel" -ln "LblinkLevel" -at "message";
+	addAttr -s false -ci true -sn "RblinkLevel" -ln "RblinkLevel" -at "message";
+	addAttr -s false -ci true -sn "LlidLevel" -ln "LlidLevel" -at "message";
+	addAttr -s false -ci true -sn "RlidLevel" -ln "RlidLevel" -at "message";
+	addAttr -s false -ci true -sn "LUpCtrlOut" -ln "LUpCtrlOut" -at "message";
+	addAttr -s false -ci true -sn "LUpCtrlIn" -ln "LUpCtrlIn" -at "message";
+	addAttr -s false -ci true -sn "LUpCtrlA" -ln "LUpCtrlA" -at "message";
+	addAttr -s false -ci true -sn "LUpCtrlB" -ln "LUpCtrlB" -at "message";
+	addAttr -s false -ci true -sn "LLoCtrlOut" -ln "LLoCtrlOut" -at "message";
+	addAttr -s false -ci true -sn "LLoCtrlIn" -ln "LLoCtrlIn" -at "message";
+	addAttr -s false -ci true -sn "LLoCtrlA" -ln "LLoCtrlA" -at "message";
+	addAttr -s false -ci true -sn "LLoCtrlB" -ln "LLoCtrlB" -at "message";
+	addAttr -s false -ci true -sn "RLoCtrlOut" -ln "RLoCtrlOut" -at "message";
+	addAttr -s false -ci true -sn "RLoCtrlIn" -ln "RLoCtrlIn" -at "message";
+	addAttr -s false -ci true -sn "RLoCtrlA" -ln "RLoCtrlA" -at "message";
+	addAttr -s false -ci true -sn "RLoCtrlB" -ln "RLoCtrlB" -at "message";
+	addAttr -s false -ci true -sn "RUpCtrlOut" -ln "RUpCtrlOut" -at "message";
+	addAttr -s false -ci true -sn "RUpCtrlIn" -ln "RUpCtrlIn" -at "message";
+	addAttr -s false -ci true -sn "RUpCtrlA" -ln "RUpCtrlA" -at "message";
+	addAttr -s false -ci true -sn "RUpCtrlB" -ln "RUpCtrlB" -at "message";
+	addAttr -s false -ci true -sn "REyeTRSCtrl" -ln "REyeTRSCtrl" -at "message";
+	addAttr -s false -ci true -sn "LEyeTRSCtrl" -ln "LEyeTRSCtrl" -at "message";
+	addAttr -s false -ci true -sn "eye2getherCtrl" -ln "eye2getherCtrl" -at "message";
+	addAttr -s false -ci true -sn "LLoEyeCtrl" -ln "LLoEyeCtrl" -at "message";
+	addAttr -s false -ci true -sn "RLoEyeCtrl" -ln "RLoEyeCtrl" -at "message";
+	addAttr -s false -ci true -sn "RUpEyeCtrl" -ln "RUpEyeCtrl" -at "message";
+	addAttr -s false -ci true -sn "LUpEyeCtrl" -ln "LUpEyeCtrl" -at "message";
+	addAttr -s false -ci true -sn "Llid_innertwist" -ln "Llid_innertwist" -at "message";
+	addAttr -s false -ci true -sn "Rlid_innertwist" -ln "Rlid_innertwist" -at "message";
+	addAttr -s false -ci true -sn "RInnerAdjCtrl" -ln "RInnerAdjCtrl" -at "message";
+	addAttr -s false -ci true -sn "LInnerAdjCtrl" -ln "LInnerAdjCtrl" -at "message";
+	addAttr -s false -ci true -sn "Llid_outertwist" -ln "Llid_outertwist" -at "message";
+	addAttr -s false -ci true -sn "Rlid_outertwist" -ln "Rlid_outertwist" -at "message";
+	addAttr -s false -ci true -sn "ROuterAdjCtrl" -ln "ROuterAdjCtrl" -at "message";
+	addAttr -s false -ci true -sn "LOuterAdjCtrl" -ln "LOuterAdjCtrl" -at "message";
+	addAttr -s false -ci true -sn "LOffsetAdjCtrl" -ln "LOffsetAdjCtrl" -at "message";
+	addAttr -s false -ci true -sn "ROffsetAdjCtrl" -ln "ROffsetAdjCtrl" -at "message";
+	addAttr -s false -ci true -sn "Leyelids_offset" -ln "Leyelids_offset" -at "message";
+	addAttr -s false -ci true -sn "Reyelids_offset" -ln "Reyelids_offset" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail0" -ln "LUpDetail0" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail0" -ln "LLoDetail0" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail0" -ln "RUpDetail0" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail0" -ln "RLoDetail0" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail1" -ln "LUpDetail1" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail1" -ln "LLoDetail1" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail1" -ln "RUpDetail1" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail1" -ln "RLoDetail1" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail2" -ln "LUpDetail2" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail2" -ln "LLoDetail2" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail2" -ln "RUpDetail2" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail2" -ln "RLoDetail2" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail3" -ln "LUpDetail3" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail3" -ln "LLoDetail3" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail3" -ln "RUpDetail3" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail3" -ln "RLoDetail3" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail4" -ln "LUpDetail4" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail4" -ln "LLoDetail4" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail4" -ln "RUpDetail4" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail4" -ln "RLoDetail4" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail5" -ln "LUpDetail5" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail5" -ln "LLoDetail5" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail5" -ln "RUpDetail5" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail5" -ln "RLoDetail5" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail6" -ln "LUpDetail6" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail6" -ln "LLoDetail6" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail6" -ln "RUpDetail6" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail6" -ln "RLoDetail6" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail7" -ln "LUpDetail7" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail7" -ln "LLoDetail7" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail7" -ln "RUpDetail7" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail7" -ln "RLoDetail7" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail8" -ln "LUpDetail8" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail8" -ln "LLoDetail8" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail8" -ln "RUpDetail8" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail8" -ln "RLoDetail8" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail9" -ln "LUpDetail9" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail9" -ln "LLoDetail9" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail9" -ln "RUpDetail9" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail9" -ln "RLoDetail9" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail10" -ln "LUpDetail10" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail10" -ln "LLoDetail10" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail10" -ln "RUpDetail10" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail10" -ln "RLoDetail10" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail11" -ln "LUpDetail11" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail11" -ln "LLoDetail11" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail11" -ln "RUpDetail11" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail11" -ln "RLoDetail11" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail12" -ln "LUpDetail12" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail12" -ln "LLoDetail12" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail12" -ln "RUpDetail12" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail12" -ln "RLoDetail12" -at "message";
+	addAttr -s false -ci true -sn "LUpDetail13" -ln "LUpDetail13" -at "message";
+	addAttr -s false -ci true -sn "LLoDetail13" -ln "LLoDetail13" -at "message";
+	addAttr -s false -ci true -sn "RUpDetail13" -ln "RUpDetail13" -at "message";
+	addAttr -s false -ci true -sn "RLoDetail13" -ln "RLoDetail13" -at "message";
+	addAttr -s false -ci true -sn "Brow_madsad_L" -ln "Brow_madsad_L" -at "message";
+	addAttr -s false -ci true -sn "Brow_madsad_R" -ln "Brow_madsad_R" -at "message";
+	addAttr -s false -ci true -sn "Lbrow_furrow" -ln "Lbrow_furrow" -at "message";
+	addAttr -s false -ci true -sn "Rbrow_furrow" -ln "Rbrow_furrow" -at "message";
+	addAttr -s false -ci true -sn "Brow_arcR" -ln "Brow_arcR" -at "message";
+	addAttr -s false -ci true -sn "Brow_arcL" -ln "Brow_arcL" -at "message";
+	addAttr -s false -ci true -sn "BrowRD_updown" -ln "BrowRD_updown" -at "message";
+	addAttr -s false -ci true -sn "BrowRC_updown" -ln "BrowRC_updown" -at "message";
+	addAttr -s false -ci true -sn "BrowRB_updown" -ln "BrowRB_updown" -at "message";
+	addAttr -s false -ci true -sn "BrowRA_updown" -ln "BrowRA_updown" -at "message";
+	addAttr -s false -ci true -sn "BrowLA_updown" -ln "BrowLA_updown" -at "message";
+	addAttr -s false -ci true -sn "BrowLB_updown" -ln "BrowLB_updown" -at "message";
+	addAttr -s false -ci true -sn "BrowLC_updown" -ln "BrowLC_updown" -at "message";
+	addAttr -s false -ci true -sn "BrowLD_updown" -ln "BrowLD_updown" -at "message";
+	addAttr -s false -ci true -sn "browTension" -ln "browTension" -at "message";
+	addAttr -s false -ci true -sn "Brow_arcA" -ln "Brow_arcA" -at "message";
+	addAttr -s false -ci true -sn "Brow_arcB" -ln "Brow_arcB" -at "message";
+	addAttr -s false -ci true -sn "headSquach_ctrl" -ln "headSquach_ctrl" -at "message";
+	addAttr -s false -ci true -sn "LEar_ctrl" -ln "LEar_ctrl" -at "message";
+	addAttr -s false -ci true -sn "REar_ctrl" -ln "REar_ctrl" -at "message";
+	addAttr -s false -ci true -sn "REarRotCtrl" -ln "REarRotCtrl" -at "message";
+	addAttr -s false -ci true -sn "LEarRotCtrl" -ln "LEarRotCtrl" -at "message";
+	addAttr -s false -ci true -sn "eyeTarget" -ln "eyeTarget" -at "message";
+	addAttr -s false -ci true -sn "LeyeTarget_dir" -ln "LeyeTarget_dir" -at "message";
+	addAttr -s false -ci true -sn "ReyeTarget_dir" -ln "ReyeTarget_dir" -at "message";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
 	setAttr ".ovc" 3;
-	setAttr ".t" -type "double3" 3.5368808848752225 13.360788191029062 -1.7763568394002509e-15 ;
+	setAttr ".t" -type "double3" 50 13.360788191029062 -1.7763568394002509e-15 ;
 	setAttr ".r" -type "double3" -2.3854160110976392e-15 -3.2302508483613835e-16 1.9878466759146975e-16 ;
 	setAttr ".s" -type "double3" 1.0000000000000002 0.99999999999999989 1 ;
 createNode transform -n "TONGUE_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E1";
 createNode transform -n "tongueTitle" -p "TONGUE_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E2";
 	setAttr -l on ".v";
 	setAttr -l on ".tz";
 	setAttr -l on ".ty";
@@ -375,6 +360,7 @@ createNode transform -n "tongueTitle" -p "TONGUE_panel";
 	setAttr ".rp" -type "double3" -0.2853550694224774 0 0.05 ;
 	setAttr ".sp" -type "double3" -0.2853550694224774 0 0.05 ;
 createNode nurbsCurve -n "tongueTitleShape" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E3";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -420,6 +406,7 @@ createNode nurbsCurve -n "tongueTitleShape" -p "tongueTitle";
 		-0.23137888817533489 -24.098291169518049 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "tongueTitleShape1" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E4";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -452,6 +439,7 @@ createNode nurbsCurve -n "tongueTitleShape1" -p "tongueTitle";
 		-0.13535682363412141 -23.855522895801094 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "tongueTitleShape2" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E5";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -521,6 +509,7 @@ createNode nurbsCurve -n "tongueTitleShape2" -p "tongueTitle";
 		-0.14627245349415238 -23.656300500777803 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "tongueTitleShape3" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E6";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -562,6 +551,7 @@ createNode nurbsCurve -n "tongueTitleShape3" -p "tongueTitle";
 		-0.13131327775542789 -23.542369221617601 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "tongueTitleShape4" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E7";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -599,6 +589,7 @@ createNode nurbsCurve -n "tongueTitleShape4" -p "tongueTitle";
 		-0.13535682363412141 -23.424885259720252 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "tongueTitleShape5" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E8";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -627,6 +618,7 @@ createNode nurbsCurve -n "tongueTitleShape5" -p "tongueTitle";
 		-0.23124766733552141 -24.048524451011051 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "tongueTitleShape6" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041E9";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -655,10 +647,12 @@ createNode nurbsCurve -n "tongueTitleShape6" -p "tongueTitle";
 		-0.13535682363412188 -24.347902367029704 -6.4948046940571658e-15
 		;
 createNode transform -n "tonguebase_dir_box" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041EA";
 	setAttr ".t" -type "double3" 1.0784909398457971 -23.975 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "tonguebase_dir_boxShape" -p "tonguebase_dir_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041EB";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -672,13 +666,18 @@ createNode nurbsCurve -n "tonguebase_dir_boxShape" -p "tonguebase_dir_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "tonguebase_dir0" -p "tonguebase_dir_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041EC";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 createNode locator -n "tonguebase_dirShape0" -p "tonguebase_dir0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041ED";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "tonguebase_dir" -p "tonguebase_dir0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041EE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -697,6 +696,7 @@ createNode transform -n "tonguebase_dir" -p "tonguebase_dir0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "tonguebase_dirShape" -p "tonguebase_dir";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041EF";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -718,10 +718,12 @@ createNode nurbsCurve -n "tonguebase_dirShape" -p "tonguebase_dir";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "tongue_stickroll_box" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F0";
 	setAttr ".t" -type "double3" 2.7307506078706041 -23.975337607949051 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "tongue_stickroll_boxShape" -p "tongue_stickroll_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F1";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -735,13 +737,18 @@ createNode nurbsCurve -n "tongue_stickroll_boxShape" -p "tongue_stickroll_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "tongue_stickroll0" -p "tongue_stickroll_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F2";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 createNode locator -n "tongue_stickrollShape0" -p "tongue_stickroll0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F3";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "tongue_stickroll" -p "tongue_stickroll0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -760,6 +767,7 @@ createNode transform -n "tongue_stickroll" -p "tongue_stickroll0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "tongue_stickrollShape" -p "tongue_stickroll";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -781,10 +789,12 @@ createNode nurbsCurve -n "tongue_stickrollShape" -p "tongue_stickroll";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "tongue_stickroll_box1" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F6";
 	setAttr ".t" -type "double3" 2.7307506078706041 -22.83875526360055 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "tongue_stickroll_box1Shape" -p "tongue_stickroll_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F7";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -798,13 +808,18 @@ createNode nurbsCurve -n "tongue_stickroll_box1Shape" -p "tongue_stickroll_box1"
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "tongue_stickroll1" -p "tongue_stickroll_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F8";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 createNode locator -n "tongue_stickroll1Shape" -p "tongue_stickroll1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041F9";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "tongue_splay" -p "tongue_stickroll1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041FA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -823,6 +838,7 @@ createNode transform -n "tongue_splay" -p "tongue_stickroll1";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "tongue_splayShape" -p "tongue_splay";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041FB";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -844,6 +860,7 @@ createNode nurbsCurve -n "tongue_splayShape" -p "tongue_splay";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "tongueIOTitle" -p "tongue_stickroll_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041FC";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" 1.0169350086413722 -1.1318245334524093 0 ;
 	setAttr ".s" -type "double3" 2 2 2 ;
@@ -851,6 +868,7 @@ createNode transform -n "tongueIOTitle" -p "tongue_stickroll_box1";
 	setAttr ".sp" -type "double3" -23.426447341845385 -5.5136464859493906 0.0500000000000064 ;
 	setAttr ".spt" -type "double3" -23.426447341845385 -5.5136464859493906 0.0500000000000064 ;
 createNode nurbsCurve -n "tongueIOTitleShape" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041FD";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -887,6 +905,7 @@ createNode nurbsCurve -n "tongueIOTitleShape" -p "tongueIOTitle";
 		-1.1617359794243314 -0.87534634110453868 -9.7144514654701197e-17
 		;
 createNode nurbsCurve -n "tongueIOTitleShape1" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041FE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -918,6 +937,7 @@ createNode nurbsCurve -n "tongueIOTitleShape1" -p "tongueIOTitle";
 		-1.1617359794243314 -0.69875238137299955 -9.7144514654701197e-17
 		;
 createNode nurbsCurve -n "tongueIOTitleShape2" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000041FF";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -936,6 +956,7 @@ createNode nurbsCurve -n "tongueIOTitleShape2" -p "tongueIOTitle";
 		-1.3419652859120277 -0.56592240374436364 -9.7144514654701197e-17
 		;
 createNode nurbsCurve -n "tongueIOTitleShape3" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004200";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -963,6 +984,7 @@ createNode nurbsCurve -n "tongueIOTitleShape3" -p "tongueIOTitle";
 		-1.2479465673717796 -0.36975349994124418 -9.7144514654701197e-17
 		;
 createNode nurbsCurve -n "tongueIOTitleShape4" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004201";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1007,6 +1029,7 @@ createNode nurbsCurve -n "tongueIOTitleShape4" -p "tongueIOTitle";
 		-1.248064541365081 -0.41449622924769342 -9.7144514654701197e-17
 		;
 createNode nurbsCurve -n "tongueIOTitleShape5" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004202";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1047,6 +1070,7 @@ createNode nurbsCurve -n "tongueIOTitleShape5" -p "tongueIOTitle";
 		-1.1581006326681793 -0.27431472407434393 -9.7144514654701197e-17
 		;
 createNode nurbsCurve -n "tongueIOTitleShape6" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004203";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1074,6 +1098,7 @@ createNode nurbsCurve -n "tongueIOTitleShape6" -p "tongueIOTitle";
 		-1.1617359794243312 -0.13555327622759344 -9.7144514654701197e-17
 		;
 createNode nurbsCurve -n "tongueIOTitle1Shape" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004204";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1092,6 +1117,7 @@ createNode nurbsCurve -n "tongueIOTitle1Shape" -p "tongueIOTitle";
 		-1.3419652859120277 0.066818440467273893 -9.7144514654701197e-17
 		;
 createNode nurbsCurve -n "tongueRollTitleShape6" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004205";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1132,6 +1158,7 @@ createNode nurbsCurve -n "tongueRollTitleShape6" -p "tongueIOTitle";
 		-1.1544628073581888 0.28793297800287393 -1.457167719820518e-16
 		;
 createNode nurbsCurve -n "tongueRollTitleShape7" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004206";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1166,6 +1193,7 @@ createNode nurbsCurve -n "tongueRollTitleShape7" -p "tongueIOTitle";
 		-1.2828839981200444 0.21324791501547499 -1.457167719820518e-16
 		;
 createNode nurbsCurve -n "tongueRollTitleShape8" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004207";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1193,6 +1221,7 @@ createNode nurbsCurve -n "tongueRollTitleShape8" -p "tongueIOTitle";
 		-1.2469310324631406 0.47014653529142342 -1.457167719820518e-16
 		;
 createNode nurbsCurve -n "tongueRollTitleShape9" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004208";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1237,6 +1266,7 @@ createNode nurbsCurve -n "tongueRollTitleShape9" -p "tongueIOTitle";
 		-1.2470575696557402 0.42215613337177343 -1.457167719820518e-16
 		;
 createNode nurbsCurve -n "tongueRollTitleShape10" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004209";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1260,6 +1290,7 @@ createNode nurbsCurve -n "tongueRollTitleShape10" -p "tongueIOTitle";
 		-1.1544628073581888 0.62116633133222354 -1.457167719820518e-16
 		;
 createNode nurbsCurve -n "tongueRollTitleShape11" -p "tongueIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000420A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1283,10 +1314,12 @@ createNode nurbsCurve -n "tongueRollTitleShape11" -p "tongueIOTitle";
 		-1.1544628073581888 0.76678720715702309 -1.457167719820518e-16
 		;
 createNode transform -n "tonguebase_dir_box1" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000420B";
 	setAttr ".t" -type "double3" 1.0784909398457971 -22.839 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "tonguebase_dir_box1Shape" -p "tonguebase_dir_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000420C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -1300,13 +1333,18 @@ createNode nurbsCurve -n "tonguebase_dir_box1Shape" -p "tonguebase_dir_box1";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "tonguebase_dir1" -p "tonguebase_dir_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000420D";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 createNode locator -n "tonguebase_dir1Shape" -p "tonguebase_dir1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000420E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "tonguetip_dir" -p "tonguebase_dir1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000420F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -1325,6 +1363,7 @@ createNode transform -n "tonguetip_dir" -p "tonguebase_dir1";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "tonguetip_dirShape" -p "tonguetip_dir";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004210";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1346,6 +1385,7 @@ createNode nurbsCurve -n "tonguetip_dirShape" -p "tonguetip_dir";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "tongueBaseTitle" -p "tonguebase_dir_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004211";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" 1.017 -1.1212827543637331 0 ;
 	setAttr ".s" -type "double3" 2 2 2 ;
@@ -1353,6 +1393,7 @@ createNode transform -n "tongueBaseTitle" -p "tonguebase_dir_box1";
 	setAttr ".sp" -type "double3" -23.424637379302276 -1.263366240614296 0.050000000000006435 ;
 	setAttr ".spt" -type "double3" -23.424637379302276 -1.263366240614296 0.050000000000006435 ;
 createNode nurbsCurve -n "tongueBaseTitleShape" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004212";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1393,6 +1434,7 @@ createNode nurbsCurve -n "tongueBaseTitleShape" -p "tongueBaseTitle";
 		-1.1562906701250744 -0.89987756083940917 -6.0281640790194047e-17
 		;
 createNode nurbsCurve -n "tongueBaseTitleShape1" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004213";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1411,6 +1453,7 @@ createNode nurbsCurve -n "tongueBaseTitleShape1" -p "tongueBaseTitle";
 		-1.3401553233689223 -0.69651879755640944 -6.0281640790194047e-17
 		;
 createNode nurbsCurve -n "tongueBaseTitleShape2" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004214";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1445,6 +1488,7 @@ createNode nurbsCurve -n "tongueBaseTitleShape2" -p "tongueBaseTitle";
 		-1.2460208155389765 -0.50342595639309951 -6.0281640790194047e-17
 		;
 createNode nurbsCurve -n "tongueBaseTitleShape3" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004215";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1479,6 +1523,7 @@ createNode nurbsCurve -n "tongueBaseTitleShape3" -p "tongueBaseTitle";
 		-1.2463812916295758 -0.54788904364142443 -6.0281640790194047e-17
 		;
 createNode nurbsCurve -n "tongueBaseTitleShape4" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004216";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1497,6 +1542,7 @@ createNode nurbsCurve -n "tongueBaseTitleShape4" -p "tongueBaseTitle";
 		-1.3401553233689223 -0.37996398771300954 -6.0281640790194047e-17
 		;
 createNode nurbsCurve -n "tongueBaseTitleShape5" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004217";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1520,6 +1566,7 @@ createNode nurbsCurve -n "tongueBaseTitleShape5" -p "tongueBaseTitle";
 		-1.1599260168812249 -0.22574139263470933 -6.0281640790194047e-17
 		;
 createNode nurbsCurve -n "tongueBaseTitleShape6" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004218";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1538,6 +1585,7 @@ createNode nurbsCurve -n "tongueBaseTitleShape6" -p "tongueBaseTitle";
 		-1.3401553233689223 -0.10731298100159949 -6.0281640790194047e-17
 		;
 createNode nurbsCurve -n "tongueBaseTitleShape7" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004219";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1578,6 +1626,7 @@ createNode nurbsCurve -n "tongueBaseTitleShape7" -p "tongueBaseTitle";
 		-1.1599260168812249 0.091232880295940705 -6.0281640790194047e-17
 		;
 createNode nurbsCurve -n "tongueBaseTitleShape8" -p "tongueBaseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000421A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1612,10 +1661,12 @@ createNode nurbsCurve -n "tongueBaseTitleShape8" -p "tongueBaseTitle";
 		-1.2796565118476744 0.02160200781271561 -6.0281640790194047e-17
 		;
 createNode transform -n "tongueWhole_box" -p "tongueTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000421B";
 	setAttr ".t" -type "double3" 3.9780226515429304 -22.839254928002727 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "tongueWhole_boxShape" -p "tongueWhole_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000421C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -1629,12 +1680,17 @@ createNode nurbsCurve -n "tongueWhole_boxShape" -p "tongueWhole_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "tongueWhole_move0" -p "tongueWhole_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000421D";
 createNode locator -n "tongueWhole_move0Shape" -p "tongueWhole_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000421E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "tongueWhole_move" -p "tongueWhole_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000421F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1666,6 +1722,7 @@ createNode transform -n "tongueWhole_move" -p "tongueWhole_move0";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "mouthmove_ctrl" -p "tongueWhole_move";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004220";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1687,6 +1744,7 @@ createNode nurbsCurve -n "mouthmove_ctrl" -p "tongueWhole_move";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode nurbsCurve -n "jaw_dir1_indShape" -p "tongueWhole_move";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004221";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1699,8 +1757,10 @@ createNode nurbsCurve -n "jaw_dir1_indShape" -p "tongueWhole_move";
 		-0.039759229433116793 0.091357724212454902 0
 		;
 createNode transform -n "null3" -p "tongueWhole_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004222";
 	setAttr ".t" -type "double3" 5.8817967857338576e-16 -1.4 0 ;
 createNode transform -n "tongueWhole_swingShell" -p "null3";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004223";
 	setAttr -l on ".v";
 	setAttr ".t" -type "double3" -2.5153490401663703e-16 0 0 ;
 	setAttr -l on ".tz";
@@ -1710,6 +1770,7 @@ createNode transform -n "tongueWhole_swingShell" -p "null3";
 	setAttr ".rp" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790446e-17 ;
 	setAttr ".sp" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790446e-17 ;
 createNode nurbsCurve -n "tongueWhole_swingShellShape" -p "tongueWhole_swingShell";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004224";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -1732,6 +1793,7 @@ createNode nurbsCurve -n "tongueWhole_swingShellShape" -p "tongueWhole_swingShel
 		-0.11754174373365968 0.11754174373365936 -6.9388939039273104e-18
 		;
 createNode transform -n "tongueWhole_swing" -p "null3";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004225";
 	setAttr -av ".v";
 	setAttr -l on -k off ".tz";
 	setAttr -l on ".tx";
@@ -1766,6 +1828,7 @@ createNode transform -n "tongueWhole_swing" -p "null3";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "tongueWhole_swingShape" -p "tongueWhole_swing";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004226";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -1787,8 +1850,10 @@ createNode nurbsCurve -n "tongueWhole_swingShape" -p "tongueWhole_swing";
 		-0.036467170078711843 0.036467170078708311 0.14155748173096599
 		;
 createNode transform -n "TEETH_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004227";
 	setAttr ".t" -type "double3" -6.4799951027181564 -3.6680642840046183 0 ;
 createNode transform -n "teethTitle" -p "TEETH_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004228";
 	setAttr -l on ".v";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
@@ -1802,6 +1867,7 @@ createNode transform -n "teethTitle" -p "TEETH_panel";
 	setAttr ".rp" -type "double3" -0.32106284572651411 0 0.05 ;
 	setAttr ".sp" -type "double3" -0.32106284572651411 0 0.05 ;
 createNode nurbsCurve -n "teethTitleShape" -p "teethTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004229";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -1839,6 +1905,7 @@ createNode nurbsCurve -n "teethTitleShape" -p "teethTitle";
 		11.491352633905636 -20.623816639390203 -0.00079434932558049287
 		;
 createNode nurbsCurve -n "teethTitleShape1" -p "teethTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000422A";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -1876,6 +1943,7 @@ createNode nurbsCurve -n "teethTitleShape1" -p "teethTitle";
 		11.491352633905636 -20.464767279243951 -0.00079434932558049287
 		;
 createNode nurbsCurve -n "teethTitleShape2" -p "teethTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000422B";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -1904,6 +1972,7 @@ createNode nurbsCurve -n "teethTitleShape2" -p "teethTitle";
 		11.491352633905636 -20.269611886190951 -0.00079434932558049287
 		;
 createNode nurbsCurve -n "teethTitleShape3" -p "teethTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000422C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -1941,6 +2010,7 @@ createNode nurbsCurve -n "teethTitleShape3" -p "teethTitle";
 		11.491352633905636 -19.98883796784845 -0.00079434932558049287
 		;
 createNode nurbsCurve -n "teethTitleShape4" -p "teethTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000422D";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -1969,12 +2039,14 @@ createNode nurbsCurve -n "teethTitleShape4" -p "teethTitle";
 		11.491352633905636 -20.745998235977652 -0.00079434932558049287
 		;
 createNode transform -n "loteeth_motion_box" -p "teethTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000422E";
 	setAttr ".t" -type "double3" 12.456365001159952 -20.307201091006998 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".rp" -type "double3" -8.8817841970012523e-16 0 0 ;
 	setAttr ".sp" -type "double3" -1.7763568394002505e-15 0 0 ;
 	setAttr ".spt" -type "double3" 8.8817841970012523e-16 0 0 ;
 createNode nurbsCurve -n "twitchDecaCrv283" -p "loteeth_motion_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000422F";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -1988,12 +2060,17 @@ createNode nurbsCurve -n "twitchDecaCrv283" -p "loteeth_motion_box";
 		-1.0000000000000011 -0.99999999999999989 -4.3334303866457556e-18
 		;
 createNode transform -n "loteeth_motion0" -p "loteeth_motion_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004230";
 createNode locator -n "loteeth_motionShape0" -p "loteeth_motion0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004231";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "loteeth_motionShell" -p "loteeth_motion0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004232";
 	setAttr -l on ".v";
 	setAttr -l on ".tz";
 	setAttr -l on ".rx";
@@ -2002,6 +2079,7 @@ createNode transform -n "loteeth_motionShell" -p "loteeth_motion0";
 	setAttr ".rp" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790449e-17 ;
 	setAttr ".sp" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790446e-17 ;
 createNode nurbsCurve -n "loteeth_motionShellShape" -p "loteeth_motionShell";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004233";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -2024,6 +2102,7 @@ createNode nurbsCurve -n "loteeth_motionShellShape" -p "loteeth_motionShell";
 		-0.11754174373365968 0.11754174373365936 -6.9388939039273104e-18
 		;
 createNode transform -n "loteeth_motion" -p "loteeth_motion0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004234";
 	setAttr -av ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -2058,6 +2137,7 @@ createNode transform -n "loteeth_motion" -p "loteeth_motion0";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "loteeth_motionShape" -p "loteeth_motion";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004235";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -2079,12 +2159,14 @@ createNode nurbsCurve -n "loteeth_motionShape" -p "loteeth_motion";
 		-0.066911824598155506 0.036467170078711475 0.14155748173096599
 		;
 createNode transform -n "upteeth_motion_box" -p "teethTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004236";
 	setAttr ".t" -type "double3" 12.458081459766102 -19.167377893066401 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".rp" -type "double3" -8.8817841970012523e-16 0 0 ;
 	setAttr ".sp" -type "double3" -1.7763568394002505e-15 0 0 ;
 	setAttr ".spt" -type "double3" 8.8817841970012523e-16 0 0 ;
 createNode nurbsCurve -n "upteeth_motion_boxShape" -p "upteeth_motion_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004237";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -2098,12 +2180,17 @@ createNode nurbsCurve -n "upteeth_motion_boxShape" -p "upteeth_motion_box";
 		-1.0000000000000011 -0.99999999999999989 -4.3334303866457556e-18
 		;
 createNode transform -n "upteeth_motion0" -p "upteeth_motion_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004238";
 createNode locator -n "upteeth_motionShape0" -p "upteeth_motion0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004239";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "upteeth_motionShell" -p "upteeth_motion0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000423A";
 	setAttr -l on ".v";
 	setAttr -l on ".tz";
 	setAttr -l on ".rx";
@@ -2113,6 +2200,7 @@ createNode transform -n "upteeth_motionShell" -p "upteeth_motion0";
 	setAttr ".sp" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790446e-17 ;
 	setAttr ".spt" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790446e-17 ;
 createNode nurbsCurve -n "upteeth_motionShellShape" -p "upteeth_motionShell";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000423B";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -2135,6 +2223,7 @@ createNode nurbsCurve -n "upteeth_motionShellShape" -p "upteeth_motionShell";
 		-0.11754174373365968 0.11754174373365936 -6.9388939039273104e-18
 		;
 createNode transform -n "upteeth_motion" -p "upteeth_motion0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000423C";
 	addAttr -ci true -sn "enhance" -ln "enhance" -dv 1 -smn 0 -smx 1 -at "double";
 	setAttr -av ".v";
 	setAttr ".ove" yes;
@@ -2172,6 +2261,7 @@ createNode transform -n "upteeth_motion" -p "upteeth_motion0";
 	setAttr ".xsze" yes;
 	setAttr ".enhance" 0;
 createNode nurbsCurve -n "upteeth_motionShape" -p "upteeth_motion";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000423D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -2193,10 +2283,12 @@ createNode nurbsCurve -n "upteeth_motionShape" -p "upteeth_motion";
 		-0.070136405670019511 0.036467170078236112 0.14155748173096599
 		;
 createNode transform -n "teethCtrlTitle" -p "teethTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000423E";
 	setAttr -av ".tmp" yes;
 	setAttr ".rp" -type "double3" -6.435835631584105 -32.842202780020799 0.05 ;
 	setAttr ".sp" -type "double3" -6.435835631584105 -32.842202780020799 0.05 ;
 createNode nurbsCurve -n "teethCtrlTitleShape" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000423F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2215,6 +2307,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape" -p "teethCtrlTitle";
 		11.627577631321548 -20.507120271818149 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape1" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004240";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2249,6 +2342,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape1" -p "teethCtrlTitle";
 		11.727733834832398 -20.301675463725303 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape2" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004241";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2283,6 +2377,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape2" -p "teethCtrlTitle";
 		11.727350299426297 -20.348982812728551 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape3" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004242";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2301,6 +2396,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape3" -p "teethCtrlTitle";
 		11.627577631321548 -20.1703157493546 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape4" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004243";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2389,6 +2485,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape4" -p "teethCtrlTitle";
 		11.824097470969509 -20.060538837244422 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape5" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004244";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2468,6 +2565,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape5" -p "teethCtrlTitle";
 		11.82439500146636 -19.878189833971575 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape6" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004245";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2495,6 +2593,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape6" -p "teethCtrlTitle";
 		11.820824635503859 -19.808532830847525 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape7" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004246";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2511,6 +2610,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape7" -p "teethCtrlTitle";
 		11.750012377247357 -19.703183790383378 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape8" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004247";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2534,6 +2634,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape8" -p "teethCtrlTitle";
 		11.820824635503859 -19.493448034655923 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape9" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004248";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2570,6 +2671,7 @@ createNode nurbsCurve -n "teethCtrlTitleShape9" -p "teethCtrlTitle";
 		11.820824635503859 -19.471430777887075 -0.0027782822092139933
 		;
 createNode nurbsCurve -n "teethCtrlTitleShape10" -p "teethCtrlTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004249";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -2610,8 +2712,10 @@ createNode nurbsCurve -n "teethCtrlTitleShape10" -p "teethCtrlTitle";
 		11.823203933017496 -20.723487703386105 -0.0027782822092139933
 		;
 createNode transform -n "MOUTH_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000424A";
 	setAttr ".t" -type "double3" -0.064628467580198024 -3.9239943519100842 0 ;
 createNode transform -n "mouthTitle" -p "MOUTH_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000424B";
 	setAttr -l on ".v";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
@@ -2625,6 +2729,7 @@ createNode transform -n "mouthTitle" -p "MOUTH_panel";
 	setAttr ".rp" -type "double3" -0.22872068055518424 0 0.05 ;
 	setAttr ".sp" -type "double3" -0.22872068055518424 0 0.05 ;
 createNode nurbsCurve -n "mouthTitleShape" -p "mouthTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000424C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -2653,6 +2758,7 @@ createNode nurbsCurve -n "mouthTitleShape" -p "mouthTitle";
 		-0.17461327846822722 -17.250173756613552 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthTitleShape1" -p "mouthTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000424D";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -2698,6 +2804,7 @@ createNode nurbsCurve -n "mouthTitleShape1" -p "mouthTitle";
 		-0.17474449930804076 -17.29994047512055 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthTitleShape2" -p "mouthTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000424E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -2739,6 +2846,7 @@ createNode nurbsCurve -n "mouthTitleShape2" -p "mouthTitle";
 		-0.074678888888133732 -17.144018527220052 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthTitleShape3" -p "mouthTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000424F";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -2767,6 +2875,7 @@ createNode nurbsCurve -n "mouthTitleShape3" -p "mouthTitle";
 		-0.078722434766827248 -16.98967608942845 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthTitleShape4" -p "mouthTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004250";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -2804,6 +2913,7 @@ createNode nurbsCurve -n "mouthTitleShape4" -p "mouthTitle";
 		-0.078722434766827248 -16.703050895027204 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthTitleShape5" -p "mouthTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004251";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -2843,9 +2953,11 @@ createNode nurbsCurve -n "mouthTitleShape5" -p "mouthTitle";
 		-0.078722434766827748 -17.464637209179649 -6.4948046940571658e-15
 		;
 createNode transform -n "mouth_happysad_box" -p "mouthTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004252";
 	setAttr ".t" -type "double3" -0.91708279472176213 -13.130513775251208 0 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "mouth_happysad_boxShape" -p "mouth_happysad_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004253";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -2859,7 +2971,9 @@ createNode nurbsCurve -n "mouth_happysad_boxShape" -p "mouth_happysad_box";
 		6.6613381477509392e-16 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "mouth_happysad0" -p "mouth_happysad_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004254";
 createNode transform -n "l_mouth_happysad" -p "mouth_happysad0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004255";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -2880,6 +2994,7 @@ createNode transform -n "l_mouth_happysad" -p "mouth_happysad0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "l_mouth_happysadShape" -p "l_mouth_happysad";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004256";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -2893,6 +3008,7 @@ createNode nurbsCurve -n "l_mouth_happysadShape" -p "l_mouth_happysad";
 		0 0.14559807819289663 0
 		;
 createNode transform -n "r_mouth_happysad" -p "mouth_happysad0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004257";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -2913,6 +3029,7 @@ createNode transform -n "r_mouth_happysad" -p "mouth_happysad0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "r_mouth_happysadShape" -p "r_mouth_happysad";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004258";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -2926,6 +3043,7 @@ createNode nurbsCurve -n "r_mouth_happysadShape" -p "r_mouth_happysad";
 		0 0.14559807819289663 0
 		;
 createNode nurbsCurve -n "mouth_happysad_boxShape1" -p "mouth_happysad_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004259";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -2936,12 +3054,14 @@ createNode nurbsCurve -n "mouth_happysad_boxShape1" -p "mouth_happysad_box";
 		1 0 0
 		;
 createNode transform -n "mouthHappySadTitle" -p "mouth_happysad_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000425A";
 	setAttr -av ".tmp" yes;
 	setAttr ".t" -type "double3" -15.435844236790194 -17.952765598111299 0 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
 	setAttr ".rp" -type "double3" -0.27499824578835841 16.680500350703749 0.05 ;
 	setAttr ".sp" -type "double3" -0.27499824578835841 16.680500350703749 0.05 ;
 createNode nurbsCurve -n "mouthHappySadTitleShape" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000425B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -2978,6 +3098,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape" -p "mouthHappySadTitle";
 		0.1643324187460401 1.1482532167734654 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape1" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000425C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3005,6 +3126,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape1" -p "mouthHappySadTitle";
 		0.18153040532322157 1.1482532167734654 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape2" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000425D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3021,6 +3143,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape2" -p "mouthHappySadTitle";
 		0.28054554094962159 1.2148080266168648 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape3" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000425E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3063,6 +3186,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape3" -p "mouthHappySadTitle";
 		0.49528879458496666 1.2663561075732639 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape4" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000425F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3101,6 +3225,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape4" -p "mouthHappySadTitle";
 		0.45082570733664662 1.2653183733730646 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape5" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004260";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3143,6 +3268,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape5" -p "mouthHappySadTitle";
 		0.65118924201226169 1.2663561075732639 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape6" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004261";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3181,6 +3307,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape6" -p "mouthHappySadTitle";
 		0.60672615476393665 1.2653183733730646 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape7" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004262";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3210,6 +3337,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape7" -p "mouthHappySadTitle";
 		0.81785590867892655 1.3207923666616177 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape8" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004263";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3228,6 +3356,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape8" -p "mouthHappySadTitle";
 		0.93125076326505685 1.3284825232611652 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape9" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004264";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3316,6 +3445,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape9" -p "mouthHappySadTitle";
 		1.0352044097864035 1.1458668744649732 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape10" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004265";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3343,6 +3473,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape10" -p "mouthHappySadTitle";
 		1.1136418223982636 1.1489429371047739 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape11" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004266";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3359,6 +3490,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape11" -p "mouthHappySadTitle";
 		1.2126569580246589 1.2154977469481736 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape12" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004267";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3393,6 +3525,7 @@ createNode nurbsCurve -n "mouthHappySadTitleShape12" -p "mouthHappySadTitle";
 		1.4486530080805884 1.2350377357625233 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "mouthHappySadTitleShape13" -p "mouthHappySadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004268";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3427,9 +3560,11 @@ createNode nurbsCurve -n "mouthHappySadTitleShape13" -p "mouthHappySadTitle";
 		1.4041899208322683 1.2353982118531237 -6.4948046940571658e-15
 		;
 createNode transform -n "mouth_move_box" -p "mouthTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004269";
 	setAttr ".t" -type "double3" 1.6047893180652304 -16.67951732887331 0 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "mouth_move_boxShape" -p "mouth_move_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000426A";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -3443,13 +3578,18 @@ createNode nurbsCurve -n "mouth_move_boxShape" -p "mouth_move_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "mouth_move0" -p "mouth_move_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000426B";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 createNode locator -n "mouth_moveShape0" -p "mouth_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000426C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "mouth_move" -p "mouth_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000426D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3479,6 +3619,7 @@ createNode transform -n "mouth_move" -p "mouth_move0";
 	setAttr ".msxe" yes;
 	setAttr ".xsxe" yes;
 createNode nurbsCurve -n "mouth_moveShape" -p "mouth_move";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000426E";
 	setAttr -k off ".v";
 	setAttr ".ovc" 23;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -3499,6 +3640,7 @@ createNode nurbsCurve -n "mouth_moveShape" -p "mouth_move";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode nurbsCurve -n "mouth_moveShape1" -p "mouth_move";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000426F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 10;
@@ -3511,6 +3653,7 @@ createNode nurbsCurve -n "mouth_moveShape1" -p "mouth_move";
 		-0.039759229433116793 0.091357724212454902 0
 		;
 createNode transform -n "uplip_roll" -p "mouth_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004270";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".rx";
@@ -3530,6 +3673,7 @@ createNode transform -n "uplip_roll" -p "mouth_move0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "uplip_rollShape" -p "uplip_roll";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004271";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3551,6 +3695,7 @@ createNode nurbsCurve -n "uplip_rollShape" -p "uplip_roll";
 		-0.051485617615787974 1.0470166974934734 -9.2541963937066913e-18
 		;
 createNode transform -n "lowlip_roll" -p "mouth_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004272";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".rx";
@@ -3570,6 +3715,7 @@ createNode transform -n "lowlip_roll" -p "mouth_move0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "lowlip_rollShape" -p "lowlip_roll";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004273";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -3591,12 +3737,14 @@ createNode nurbsCurve -n "lowlip_rollShape" -p "lowlip_roll";
 		-0.051485617615787974 -0.95298330250652652 -9.2541963937066913e-18
 		;
 createNode transform -n "mouth_scale_box" -p "mouth_move_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004274";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" 8.9381627099696781e-16 -1.3471457169726246 1.3904892862126594e-17 ;
 	setAttr ".s" -type "double3" 0.5 0.5 1 ;
 	setAttr ".rp" -type "double3" -7.6327832942979524e-17 1.4432899320127035e-15 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" 9.7144514654701197e-17 1.4432899320127035e-15 2.1684043449710089e-18 ;
 createNode nurbsCurve -n "twitchDecaCrv198" -p "mouth_scale_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004275";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -3610,15 +3758,20 @@ createNode nurbsCurve -n "twitchDecaCrv198" -p "mouth_scale_box";
 		-0.99999999999999989 0.10000000000000152 2.1684043449710089e-18
 		;
 createNode transform -n "mouth_scale0" -p "mouth_scale_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004276";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "mouth_scale0Shape" -p "mouth_scale0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004277";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "mouthSclTitle" -p "mouth_scale_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004278";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -5.5249982457883551 21.042673012221115 0.050000000000006498 ;
 createNode nurbsCurve -n "mouthSclTitleShape" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004279";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -3646,6 +3799,7 @@ createNode nurbsCurve -n "mouthSclTitleShape" -p "mouthSclTitle";
 		4.9056788911935501 -21.330905451014203 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape1" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000427A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -3690,6 +3844,7 @@ createNode nurbsCurve -n "mouthSclTitleShape1" -p "mouthSclTitle";
 		4.8617556230004855 -21.330789637709401 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape2" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000427B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -3730,6 +3885,7 @@ createNode nurbsCurve -n "mouthSclTitleShape2" -p "mouthSclTitle";
 		4.9993697100907202 -21.419105861387202 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape3" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000427C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -3757,6 +3913,7 @@ createNode nurbsCurve -n "mouthSclTitleShape3" -p "mouthSclTitle";
 		5.1355897481415997 -21.415537095846553 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape4" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000427D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -3793,6 +3950,7 @@ createNode nurbsCurve -n "mouthSclTitleShape4" -p "mouthSclTitle";
 		5.3885603208910506 -21.415537095846553 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape5" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000427E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -3881,6 +4039,7 @@ createNode nurbsCurve -n "mouthSclTitleShape5" -p "mouthSclTitle";
 		5.544215547241051 -21.4185568205348 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape6" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000427F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -3960,6 +4119,7 @@ createNode nurbsCurve -n "mouthSclTitleShape6" -p "mouthSclTitle";
 		5.7124622534524505 -21.418831340960999 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape7" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004280";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -3987,6 +4147,7 @@ createNode nurbsCurve -n "mouthSclTitleShape7" -p "mouthSclTitle";
 		5.7767322035472501 -21.415537095846553 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape8" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004281";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4003,6 +4164,7 @@ createNode nurbsCurve -n "mouthSclTitleShape8" -p "mouthSclTitle";
 		5.8739338813327509 -21.350201234409351 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape9" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004282";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4026,6 +4188,7 @@ createNode nurbsCurve -n "mouthSclTitleShape9" -p "mouthSclTitle";
 		6.0674493349001004 -21.415537095846553 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape10" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004283";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4062,6 +4225,7 @@ createNode nurbsCurve -n "mouthSclTitleShape10" -p "mouthSclTitle";
 		6.087763846439401 -21.415537095846553 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthSclTitleShape11" -p "mouthSclTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004284";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4100,6 +4264,7 @@ createNode nurbsCurve -n "mouthSclTitleShape11" -p "mouthSclTitle";
 		4.7163970573240599 -21.415537095846553 -0.050000000000006498
 		;
 createNode transform -n "mouth_scaleR" -p "mouth_scale_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004285";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -4127,6 +4292,7 @@ createNode transform -n "mouth_scaleR" -p "mouth_scale_box";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "mouth_scaleRShape" -p "mouth_scaleR";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004286";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -4140,6 +4306,7 @@ createNode nurbsCurve -n "mouth_scaleRShape" -p "mouth_scaleR";
 		-0.14559807819289752 -8.6531272422349251e-16 0
 		;
 createNode transform -n "mouth_scaleL" -p "mouth_scale_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004287";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -4167,6 +4334,7 @@ createNode transform -n "mouth_scaleL" -p "mouth_scale_box";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "mouth_scaleLShape" -p "mouth_scaleL";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004288";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -4180,10 +4348,12 @@ createNode nurbsCurve -n "mouth_scaleLShape" -p "mouth_scaleL";
 		-0.14559807819289752 -8.6531272422349251e-16 0
 		;
 createNode transform -n "mouthMoveTitle" -p "mouth_move_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004289";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -19.484219564631868 -6.442199800084758 0.050000000000006435 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
 createNode nurbsCurve -n "mouthMoveTitleShape" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000428A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4224,6 +4394,7 @@ createNode nurbsCurve -n "mouthMoveTitleShape" -p "mouthMoveTitle";
 		5.5406528306912 -18.314612278175119 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthMoveTitleShape1" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000428B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4242,6 +4413,7 @@ createNode nurbsCurve -n "mouthMoveTitleShape1" -p "mouthMoveTitle";
 		5.7440115939741947 -18.130747624931267 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthMoveTitleShape2" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000428C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4276,6 +4448,7 @@ createNode nurbsCurve -n "mouthMoveTitleShape2" -p "mouthMoveTitle";
 		5.9371044351375293 -18.224882132761273 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthMoveTitleShape3" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000428D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4310,6 +4483,7 @@ createNode nurbsCurve -n "mouthMoveTitleShape3" -p "mouthMoveTitle";
 		5.8926413478891844 -18.224521656670667 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthMoveTitleShape4" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000428E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4328,6 +4502,7 @@ createNode nurbsCurve -n "mouthMoveTitleShape4" -p "mouthMoveTitle";
 		6.0605664038175791 -18.130747624931267 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthMoveTitleShape5" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000428F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4351,6 +4526,7 @@ createNode nurbsCurve -n "mouthMoveTitleShape5" -p "mouthMoveTitle";
 		6.2147889988958793 -18.310976931418971 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthMoveTitleShape6" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004290";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4369,6 +4545,7 @@ createNode nurbsCurve -n "mouthMoveTitleShape6" -p "mouthMoveTitle";
 		6.3332174105290298 -18.130747624931267 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthMoveTitleShape7" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004291";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4409,6 +4586,7 @@ createNode nurbsCurve -n "mouthMoveTitleShape7" -p "mouthMoveTitle";
 		6.531763271826529 -18.310976931418971 -0.050000000000006498
 		;
 createNode nurbsCurve -n "mouthMoveTitleShape8" -p "mouthMoveTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004292";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -4443,20 +4621,25 @@ createNode nurbsCurve -n "mouthMoveTitleShape8" -p "mouthMoveTitle";
 		6.4621323993433286 -18.191246436452516 -0.050000000000006498
 		;
 createNode transform -n "phonemesCtrlGrp" -p "MOUTH_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004293";
 	addAttr -ci true -sn "type" -ln "type" -dt "string";
 	setAttr ".t" -type "double3" 1.6056551936465413 -13.116744069885412 0 ;
 	setAttr ".type" -type "string" "C";
 createNode transform -n "phonemesCtrlTextShape" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004294";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" 0 1.3 0 ;
 	setAttr ".s" -type "double3" 0.2 0.2 0.2 ;
 createNode transform -n "Char_p_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004295";
 	setAttr ".rp" -type "double3" -3.9500000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.9500000000000006 -0.35859388113221941 0 ;
 createNode transform -n "curve1" -p "Char_p_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004296";
 	setAttr ".rp" -type "double3" -3.9500000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.9500000000000006 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape1" -p "curve1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004297";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -4491,9 +4674,11 @@ createNode nurbsCurve -n "curveShape1" -p "curve1";
 		-3.850000000000001 -0.55859388113221942 0
 		;
 createNode transform -n "curve2" -p "Char_p_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004298";
 	setAttr ".rp" -type "double3" -3.9500000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.9500000000000006 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape2" -p "curve2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004299";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 11 1 no 3
@@ -4515,12 +4700,15 @@ createNode nurbsCurve -n "curveShape2" -p "curve2";
 		-3.75 -0.014843213550011392 0
 		;
 createNode transform -n "Char_h_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000429A";
 	setAttr ".rp" -type "double3" -3.2500000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.2500000000000004 -0.35859388113221941 0 ;
 createNode transform -n "curve3" -p "Char_h_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000429B";
 	setAttr ".rp" -type "double3" -3.2500000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.2500000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape3" -p "curve3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000429C";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 33 1 no 3
@@ -4566,12 +4754,15 @@ createNode nurbsCurve -n "curveShape3" -p "curve3";
 		-3.1500000000000004 -0.35859388113221941 0
 		;
 createNode transform -n "Char_o_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000429D";
 	setAttr ".rp" -type "double3" -2.5500000000000007 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -2.5500000000000007 -0.35859388113221941 0 ;
 createNode transform -n "curve4" -p "Char_o_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000429E";
 	setAttr ".rp" -type "double3" -2.5500000000000007 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -2.5500000000000007 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape4" -p "curve4";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000429F";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 13 1 no 3
@@ -4595,9 +4786,11 @@ createNode nurbsCurve -n "curveShape4" -p "curve4";
 		-2.4500000000000006 -0.0085931181811245705 0
 		;
 createNode transform -n "curve5" -p "Char_o_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A0";
 	setAttr ".rp" -type "double3" -2.5500000000000007 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -2.5500000000000007 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape5" -p "curve5";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A1";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 11 1 no 3
@@ -4619,12 +4812,15 @@ createNode nurbsCurve -n "curveShape5" -p "curve5";
 		-2.3500000000000005 -0.0085931181811245705 0
 		;
 createNode transform -n "Char_n_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A2";
 	setAttr ".rp" -type "double3" -1.8500000000000003 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.8500000000000003 -0.35859388113221941 0 ;
 createNode transform -n "curve6" -p "Char_n_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A3";
 	setAttr ".rp" -type "double3" -1.8500000000000003 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.8500000000000003 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape6" -p "curve6";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A4";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 32 1 no 3
@@ -4669,12 +4865,15 @@ createNode nurbsCurve -n "curveShape6" -p "curve6";
 		-1.7500000000000004 -0.35859388113221941 0
 		;
 createNode transform -n "Char_e_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A5";
 	setAttr ".rp" -type "double3" -1.1500000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.1500000000000004 -0.35859388113221941 0 ;
 createNode transform -n "curve7" -p "Char_e_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A6";
 	setAttr ".rp" -type "double3" -1.1500000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.1500000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape7" -p "curve7";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -4709,9 +4908,11 @@ createNode nurbsCurve -n "curveShape7" -p "curve7";
 		-0.6515609979400323 -0.15859388113221939 0
 		;
 createNode transform -n "curve8" -p "Char_e_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A8";
 	setAttr ".rp" -type "double3" -1.1500000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.1500000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape8" -p "curve8";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042A9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -4730,12 +4931,15 @@ createNode nurbsCurve -n "curveShape8" -p "curve8";
 		-0.9500000000000004 0.041406118867780617 0
 		;
 createNode transform -n "Char_m_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042AA";
 	setAttr ".rp" -type "double3" -0.45000000000000018 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -0.45000000000000018 -0.35859388113221941 0 ;
 createNode transform -n "curve9" -p "Char_m_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042AB";
 	setAttr ".rp" -type "double3" -0.45000000000000018 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -0.45000000000000018 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape9" -p "curve9";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042AC";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 51 1 no 3
@@ -4800,12 +5004,15 @@ createNode nurbsCurve -n "curveShape9" -p "curve9";
 		-0.35000000000000014 -0.35859388113221941 0
 		;
 createNode transform -n "Char_e_2" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042AD";
 	setAttr ".rp" -type "double3" 0.64999999999999991 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 0.64999999999999991 -0.35859388113221941 0 ;
 createNode transform -n "curve10" -p "Char_e_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042AE";
 	setAttr ".rp" -type "double3" 0.64999999999999991 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 0.64999999999999991 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape10" -p "curve10";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042AF";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -4840,9 +5047,11 @@ createNode nurbsCurve -n "curveShape10" -p "curve10";
 		1.148439002059968 -0.15859388113221939 0
 		;
 createNode transform -n "curve11" -p "Char_e_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B0";
 	setAttr ".rp" -type "double3" 0.64999999999999991 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 0.64999999999999991 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape11" -p "curve11";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B1";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -4861,12 +5070,15 @@ createNode nurbsCurve -n "curveShape11" -p "curve11";
 		0.84999999999999987 0.041406118867780617 0
 		;
 createNode transform -n "Char_s_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B2";
 	setAttr ".rp" -type "double3" 1.35 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 1.35 -0.35859388113221941 0 ;
 createNode transform -n "curve12" -p "Char_s_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B3";
 	setAttr ".rp" -type "double3" 1.35 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 1.35 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape12" -p "curve12";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B4";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 74 1 no 3
@@ -4956,12 +5168,15 @@ createNode nurbsCurve -n "curveShape12" -p "curve12";
 		1.4500000000000002 -0.15859388113221939 0
 		;
 createNode transform -n "Char_C_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B5";
 	setAttr ".rp" -type "double3" 2.0500000000000003 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 2.0500000000000003 -0.35859388113221941 0 ;
 createNode transform -n "curve13" -p "Char_C_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B6";
 	setAttr ".rp" -type "double3" 2.0500000000000003 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 2.0500000000000003 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape13" -p "curve13";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 31 1 no 3
@@ -5004,12 +5219,15 @@ createNode nurbsCurve -n "curveShape13" -p "curve13";
 		2.7500000000000004 -0.038281071183337075 0
 		;
 createNode transform -n "Char_t_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B8";
 	setAttr ".rp" -type "double3" 2.9500000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 2.9500000000000006 -0.35859388113221941 0 ;
 createNode transform -n "curve14" -p "Char_t_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042B9";
 	setAttr ".rp" -type "double3" 2.9500000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 2.9500000000000006 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape14" -p "curve14";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042BA";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 1 no 3
@@ -5057,12 +5275,15 @@ createNode nurbsCurve -n "curveShape14" -p "curve14";
 		3.2500000000000009 -0.24921873807888911 0
 		;
 createNode transform -n "Char_r_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042BB";
 	setAttr ".rp" -type "double3" 3.2500000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 3.2500000000000004 -0.35859388113221941 0 ;
 createNode transform -n "curve15" -p "Char_r_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042BC";
 	setAttr ".rp" -type "double3" 3.2500000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 3.2500000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape15" -p "curve15";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042BD";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -5097,12 +5318,15 @@ createNode nurbsCurve -n "curveShape15" -p "curve15";
 		3.3500000000000005 -0.35859388113221941 0
 		;
 createNode transform -n "Char_l_1" -p "phonemesCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042BE";
 	setAttr ".rp" -type "double3" 3.6500000000000008 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 3.6500000000000008 -0.35859388113221941 0 ;
 createNode transform -n "curve16" -p "Char_l_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042BF";
 	setAttr ".rp" -type "double3" 3.6500000000000008 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 3.6500000000000008 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape16" -p "curve16";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C0";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 2 no 3
@@ -5114,7 +5338,8 @@ createNode nurbsCurve -n "curveShape16" -p "curve16";
 		3.850000000000001 -0.35859388113221941 0
 		3.7500000000000009 -0.35859388113221941 0
 		;
-createNode transform -n "l_phonemesCtrl" -p "phonemesCtrlGrp";
+createNode transform -n "l_phonemes_ctrl" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C1";
 	addAttr -ci true -sn "name" -ln "name" -dt "string";
 	setAttr -l on ".v";
 	setAttr ".ove" yes;
@@ -5136,7 +5361,8 @@ createNode transform -n "l_phonemesCtrl" -p "phonemesCtrlGrp";
 	setAttr ".xtze" yes;
 	setAttr ".smd" 1;
 	setAttr ".name" -type "string" "phonemesCtrl";
-createNode nurbsCurve -n "l_phonemesCtrlShape" -p "l_phonemesCtrl";
+createNode nurbsCurve -n "l_phonemes_ctrlShape" -p "l_phonemes_ctrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C2";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
@@ -5156,9 +5382,12 @@ createNode nurbsCurve -n "l_phonemesCtrlShape" -p "l_phonemesCtrl";
 		0.00060539654116809061 0.11754174373368365 0
 		;
 createNode transform -n "phonemesCtrlInnerSquare" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C3";
 	setAttr ".tmp" yes;
 createNode transform -n "topphonemesCtrlInnerSquare" -p "phonemesCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C4";
 createNode nurbsCurve -n "topphonemesCtrlInnerSquareShape" -p "topphonemesCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C5";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -5170,7 +5399,9 @@ createNode nurbsCurve -n "topphonemesCtrlInnerSquareShape" -p "topphonemesCtrlIn
 		1 -0.99999999999999967 0
 		;
 createNode transform -n "leftphonemesCtrlInnerSquare" -p "phonemesCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C6";
 createNode nurbsCurve -n "leftphonemesCtrlInnerSquareShape" -p "leftphonemesCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -5182,7 +5413,9 @@ createNode nurbsCurve -n "leftphonemesCtrlInnerSquareShape" -p "leftphonemesCtrl
 		-0.99999999999999989 -0.99999999999999989 0
 		;
 createNode transform -n "bottomphonemesCtrlInnerSquare" -p "phonemesCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C8";
 createNode nurbsCurve -n "bottomphonemesCtrlInnerSquareShape" -p "bottomphonemesCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042C9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -5194,7 +5427,9 @@ createNode nurbsCurve -n "bottomphonemesCtrlInnerSquareShape" -p "bottomphonemes
 		-1 1 0
 		;
 createNode transform -n "rightphonemesCtrlInnerSquare" -p "phonemesCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042CA";
 createNode nurbsCurve -n "rightphonemesCtrlInnerSquareShape" -p "rightphonemesCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042CB";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -5206,11 +5441,14 @@ createNode nurbsCurve -n "rightphonemesCtrlInnerSquareShape" -p "rightphonemesCt
 		0.99999999999999989 1.0000000000000002 0
 		;
 createNode transform -n "phonemesCtrlOuterSquare" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042CC";
 	setAttr ".tmp" yes;
 	setAttr ".s" -type "double3" 1 0.95 1 ;
 createNode transform -n "topphonemesCtrlOuterSquare" -p "phonemesCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042CD";
 	setAttr ".s" -type "double3" 1 2 1 ;
 createNode nurbsCurve -n "topphonemesCtrlOuterSquareShape" -p "topphonemesCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042CE";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -5222,8 +5460,10 @@ createNode nurbsCurve -n "topphonemesCtrlOuterSquareShape" -p "topphonemesCtrlOu
 		1.05 -1.05 0
 		;
 createNode transform -n "leftphonemesCtrlOuterSquare" -p "phonemesCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042CF";
 	setAttr ".t" -type "double3" 0 -1.05 0 ;
 createNode nurbsCurve -n "leftphonemesCtrlOuterSquareShape" -p "leftphonemesCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D0";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -5235,8 +5475,10 @@ createNode nurbsCurve -n "leftphonemesCtrlOuterSquareShape" -p "leftphonemesCtrl
 		-1.0499999999999998 -1.0500000000000005 0
 		;
 createNode transform -n "bottomphonemesCtrlOuterSquare" -p "phonemesCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D1";
 	setAttr ".s" -type "double3" 1 2 1 ;
 createNode nurbsCurve -n "bottomphonemesCtrlOuterSquareShape" -p "bottomphonemesCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D2";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -5248,8 +5490,10 @@ createNode nurbsCurve -n "bottomphonemesCtrlOuterSquareShape" -p "bottomphonemes
 		-1.05 1.0499999999999996 0
 		;
 createNode transform -n "rightphonemesCtrlOuterSquare" -p "phonemesCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D3";
 	setAttr ".t" -type "double3" 0 1.05 0 ;
 createNode nurbsCurve -n "rightphonemesCtrlOuterSquareShape" -p "rightphonemesCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D4";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -5260,7 +5504,8 @@ createNode nurbsCurve -n "rightphonemesCtrlOuterSquareShape" -p "rightphonemesCt
 		0.34999999999999987 1.0499999999999998 0
 		1.0499999999999998 1.0499999999999998 0
 		;
-createNode transform -n "r_phonemeCtrl" -p "phonemesCtrlGrp";
+createNode transform -n "r_phoneme_ctrl" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D5";
 	addAttr -ci true -sn "name" -ln "name" -dt "string";
 	setAttr -l on ".v";
 	setAttr ".ove" yes;
@@ -5282,7 +5527,8 @@ createNode transform -n "r_phonemeCtrl" -p "phonemesCtrlGrp";
 	setAttr ".xtze" yes;
 	setAttr ".smd" 1;
 	setAttr ".name" -type "string" "RphonemeCtrl";
-createNode nurbsCurve -n "r_phonemeCtrlShape" -p "r_phonemeCtrl";
+createNode nurbsCurve -n "r_phoneme_ctrlShape" -p "r_phoneme_ctrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D6";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
@@ -5302,10 +5548,12 @@ createNode nurbsCurve -n "r_phonemeCtrlShape" -p "r_phonemeCtrl";
 		-0.11754174373368365 0.11754174373368365 0
 		;
 createNode transform -n "phonemeVowTitle" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D7";
 	setAttr ".tmp" yes;
 	setAttr ".rp" -type "double3" -5.5249982457883551 16.680500350703753 0.050000000000006498 ;
 	setAttr ".sp" -type "double3" -5.5249982457883551 16.680500350703753 0.050000000000006498 ;
 createNode nurbsCurve -n "twitchDecaCrv130" -p "phonemeVowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D8";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 0 no 3
@@ -5340,6 +5588,7 @@ createNode nurbsCurve -n "twitchDecaCrv130" -p "phonemeVowTitle";
 		-0.93256222483239948 0.76187595069679936 2.1684043449710089e-18
 		;
 createNode nurbsCurve -n "twitchDecaCrv131" -p "phonemeVowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042D9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 27 0 no 3
@@ -5378,16 +5627,22 @@ createNode nurbsCurve -n "twitchDecaCrv131" -p "phonemeVowTitle";
 		0.85630155771254546 0.75794608370770244 2.1684043449710089e-18
 		;
 createNode transform -n "mouth_phoneme0" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042DA";
 createNode locator -n "mouth_phoneme0Shape" -p "mouth_phoneme0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042DB";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "mouth_sh_box" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042DC";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" 1.4525174840795965 0.088035086823008868 0 ;
 	setAttr ".s" -type "double3" 0.5 0.8 1 ;
 createNode nurbsCurve -n "mouth_sh_boxShape" -p "mouth_sh_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042DD";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -5401,6 +5656,7 @@ createNode nurbsCurve -n "mouth_sh_boxShape" -p "mouth_sh_box";
 		-0.10000000000000037 0 2.1684043449710089e-18
 		;
 createNode transform -n "mouth_sh" -p "mouth_sh_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042DE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -5420,6 +5676,7 @@ createNode transform -n "mouth_sh" -p "mouth_sh_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "mouth_shShape" -p "mouth_sh";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042DF";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -5441,10 +5698,12 @@ createNode nurbsCurve -n "mouth_shShape" -p "mouth_sh";
 		-0.078361162489122393 0.04701669749347346 -9.2541963937066913e-18
 		;
 createNode transform -n "shTitle" -p "mouth_sh_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E0";
 	setAttr ".tmp" yes;
 	setAttr ".rp" -type "double3" 10.548948789713814 3.4867563257887855 0.1000000000000065 ;
 	setAttr ".sp" -type "double3" 10.548948789713814 3.4867563257887855 0.1000000000000065 ;
 createNode nurbsCurve -n "shTitleShape" -p "shTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -5481,6 +5740,7 @@ createNode nurbsCurve -n "shTitleShape" -p "shTitle";
 		0.14846024413365771 1.0587887514542551 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "shTitleShape1" -p "shTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -5569,10 +5829,12 @@ createNode nurbsCurve -n "shTitleShape1" -p "shTitle";
 		-0.097480881654119098 1.0572744342736304 -6.4948046940571658e-15
 		;
 createNode transform -n "mouth_sh_box1" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E3";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" 1.4525174840795965 -0.91196491317699124 0 ;
 	setAttr ".s" -type "double3" 0.5 0.8 1 ;
 createNode nurbsCurve -n "mouth_sh_box1Shape" -p "mouth_sh_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E4";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -5586,6 +5848,7 @@ createNode nurbsCurve -n "mouth_sh_box1Shape" -p "mouth_sh_box1";
 		-0.10000000000000037 0 2.1684043449710089e-18
 		;
 createNode transform -n "mouth_pout" -p "mouth_sh_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -5605,6 +5868,7 @@ createNode transform -n "mouth_pout" -p "mouth_sh_box1";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "mouth_poutShape" -p "mouth_pout";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -5626,6 +5890,7 @@ createNode nurbsCurve -n "mouth_poutShape" -p "mouth_pout";
 		-0.078361162489122393 0.04701669749347346 -9.2541963937066913e-18
 		;
 createNode transform -n "puTitle" -p "mouth_sh_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E7";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -0.1446980425584572 1.0613744637022289 1.332267629550188e-15 ;
 	setAttr ".s" -type "double3" 2 1.1111111111111112 1 ;
@@ -5633,6 +5898,7 @@ createNode transform -n "puTitle" -p "mouth_sh_box1";
 	setAttr ".sp" -type "double3" 0 1.5 0 ;
 	setAttr ".spt" -type "double3" 0 0.16666666666666682 0 ;
 createNode nurbsCurve -n "puTitleShape" -p "puTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E8";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 29 0 no 3
@@ -5673,6 +5939,7 @@ createNode nurbsCurve -n "puTitleShape" -p "puTitle";
 		0.065734863281249778 0.051554679870607023 0
 		;
 createNode nurbsCurve -n "puTitleShape1" -p "puTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042E9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 25 0 no 3
@@ -5709,6 +5976,7 @@ createNode nurbsCurve -n "puTitleShape1" -p "puTitle";
 		0.046325683593749771 0.051101684570319605 0
 		;
 createNode nurbsCurve -n "puTitleShape2" -p "puTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042EA";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 27 0 no 3
@@ -5747,6 +6015,7 @@ createNode nurbsCurve -n "puTitleShape2" -p "puTitle";
 		0.1062974929809568 -0.0015869140624931166 0
 		;
 createNode transform -n "LphonemesCopy" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042EB";
 	addAttr -ci true -sn "name" -ln "name" -dt "string";
 	setAttr -l on ".v" no;
 	setAttr ".ove" yes;
@@ -5769,6 +6038,7 @@ createNode transform -n "LphonemesCopy" -p "phonemesCtrlGrp";
 	setAttr ".smd" 1;
 	setAttr ".name" -type "string" "phonemesCtrl";
 createNode nurbsCurve -n "LphonemesCopyShape" -p "LphonemesCopy";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042EC";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
@@ -5788,6 +6058,7 @@ createNode nurbsCurve -n "LphonemesCopyShape" -p "LphonemesCopy";
 		0.00060539654116809061 0.11754174373368365 0
 		;
 createNode transform -n "RphonemeCopy" -p "phonemesCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042ED";
 	addAttr -ci true -sn "name" -ln "name" -dt "string";
 	setAttr ".v" no;
 	setAttr ".ove" yes;
@@ -5810,6 +6081,7 @@ createNode transform -n "RphonemeCopy" -p "phonemesCtrlGrp";
 	setAttr ".smd" 1;
 	setAttr ".name" -type "string" "RphonemeCtrl";
 createNode nurbsCurve -n "RphonemeCopyShape" -p "RphonemeCopy";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042EE";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
@@ -5829,7 +6101,9 @@ createNode nurbsCurve -n "RphonemeCopyShape" -p "RphonemeCopy";
 		-0.11754174373368365 0.11754174373368365 0
 		;
 createNode transform -n "BRIDGE_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042EF";
 createNode transform -n "bridgeTitle" -p "BRIDGE_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F0";
 	setAttr -l on ".v";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
@@ -5843,6 +6117,7 @@ createNode transform -n "bridgeTitle" -p "BRIDGE_panel";
 	setAttr ".rp" -type "double3" -0.2853550694224774 0 0.05 ;
 	setAttr ".sp" -type "double3" -0.2853550694224774 0 0.05 ;
 createNode nurbsCurve -n "bridgeTitleShape" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F1";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -5878,6 +6153,7 @@ createNode nurbsCurve -n "bridgeTitleShape" -p "bridgeTitle";
 		-0.27334845135998193 -14.418233993293947 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape1" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F2";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -5913,6 +6189,7 @@ createNode nurbsCurve -n "bridgeTitleShape1" -p "bridgeTitle";
 		-0.1950798571232219 -14.406240223823549 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape2" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F3";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -5954,6 +6231,7 @@ createNode nurbsCurve -n "bridgeTitleShape2" -p "bridgeTitle";
 		-0.13535682363412488 -14.15110003690765 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape3" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F4";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -5989,6 +6267,7 @@ createNode nurbsCurve -n "bridgeTitleShape3" -p "bridgeTitle";
 		-0.26873883297991952 -14.2286701303656 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape4" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F5";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -6026,6 +6305,7 @@ createNode nurbsCurve -n "bridgeTitleShape4" -p "bridgeTitle";
 		-0.13535682363412488 -14.041131189555648 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape5" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F6";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -6061,6 +6341,7 @@ createNode nurbsCurve -n "bridgeTitleShape5" -p "bridgeTitle";
 		-0.23126803858739592 -13.837548635038498 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape6" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F7";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -6096,6 +6377,7 @@ createNode nurbsCurve -n "bridgeTitleShape6" -p "bridgeTitle";
 		-0.23166961569019989 -13.887081345318848 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape7" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F8";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -6165,6 +6447,7 @@ createNode nurbsCurve -n "bridgeTitleShape7" -p "bridgeTitle";
 		-0.14628945603287891 -13.648452061829747 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape8" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042F9";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -6202,6 +6485,7 @@ createNode nurbsCurve -n "bridgeTitleShape8" -p "bridgeTitle";
 		-0.13535682363412488 -13.612003463698947 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "bridgeTitleShape9" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042FA";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -6247,10 +6531,12 @@ createNode nurbsCurve -n "bridgeTitleShape9" -p "bridgeTitle";
 		-0.1942547987120069 -14.356395987063401 -6.4948046940571658e-15
 		;
 createNode transform -n "nose_move_box" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042FB";
 	setAttr ".t" -type "double3" 3.2052252295150736 -13.778204607212032 0 ;
 	setAttr ".s" -type "double3" 0.75 0.75 0.75 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "nose_move_boxShape" -p "nose_move_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042FC";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -6264,12 +6550,17 @@ createNode nurbsCurve -n "nose_move_boxShape" -p "nose_move_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "nose_move0" -p "nose_move_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042FD";
 createNode locator -n "nose_move0Shape" -p "nose_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042FE";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "nose_moveShell" -p "nose_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000042FF";
 	setAttr -l on ".v";
 	setAttr -l on ".tz";
 	setAttr -l on ".rx";
@@ -6278,6 +6569,7 @@ createNode transform -n "nose_moveShell" -p "nose_move0";
 	setAttr ".rp" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790446e-17 ;
 	setAttr ".sp" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790446e-17 ;
 createNode nurbsCurve -n "nose_moveShellShape" -p "nose_moveShell";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004300";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -6300,6 +6592,7 @@ createNode nurbsCurve -n "nose_moveShellShape" -p "nose_moveShell";
 		-0.11754174373365968 0.11754174373365936 -6.9388939039273104e-18
 		;
 createNode transform -n "nose_move" -p "nose_move0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004301";
 	setAttr -av ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -6334,6 +6627,7 @@ createNode transform -n "nose_move" -p "nose_move0";
 	setAttr ".xsze" yes;
 	setAttr ".hdl" -type "double3" 2.7533531010703882e-14 -2.6645352591003757e-14 -1.7347234759790446e-17 ;
 createNode nurbsCurve -n "nose_moveShape" -p "nose_move";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004302";
 	setAttr -k off ".v";
 	setAttr ".ovc" 29;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -6354,6 +6648,7 @@ createNode nurbsCurve -n "nose_moveShape" -p "nose_move";
 		-0.036467170078711843 0.036467170078708311 0.14155748173096599
 		;
 createNode transform -n "noseTitle" -p "nose_move_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004303";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" 0.25969735503103519 0.33105116123657297 0 ;
 	setAttr ".s" -type "double3" 1.3333333333333333 1.3333333333333333 1.3333333333333333 ;
@@ -6361,6 +6656,7 @@ createNode transform -n "noseTitle" -p "nose_move_box";
 	setAttr ".sp" -type "double3" -13.511689979960853 -7.6296074879289772 0.050000000000006414 ;
 	setAttr ".spt" -type "double3" -4.5038966599869497 -2.5432024959763257 0.016666666666668804 ;
 createNode nurbsCurve -n "noseTitleShape" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004304";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6395,6 +6691,7 @@ createNode nurbsCurve -n "noseTitleShape" -p "noseTitle";
 		-1.2104370192091003 -0.5012611628068312 -8.3266726846886741e-17
 		;
 createNode nurbsCurve -n "noseTitleShape1" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004305";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6429,6 +6726,7 @@ createNode nurbsCurve -n "noseTitleShape1" -p "noseTitle";
 		-1.2107974952996987 -0.54572425005513125 -8.3266726846886741e-17
 		;
 createNode nurbsCurve -n "noseTitleShape2" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004306";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6447,6 +6745,7 @@ createNode nurbsCurve -n "noseTitleShape2" -p "noseTitle";
 		-1.3045715270390494 -0.3777991941267313 -8.3266726846886741e-17
 		;
 createNode nurbsCurve -n "noseTitleShape3" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004307";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6470,6 +6769,7 @@ createNode nurbsCurve -n "noseTitleShape3" -p "noseTitle";
 		-1.1243422205513496 -0.22357659904843105 -8.3266726846886741e-17
 		;
 createNode nurbsCurve -n "noseTitleShape4" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004308";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6488,6 +6788,7 @@ createNode nurbsCurve -n "noseTitleShape4" -p "noseTitle";
 		-1.3045715270390494 -0.10514818741533163 -8.3266726846886741e-17
 		;
 createNode nurbsCurve -n "noseTitleShape5" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004309";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6528,6 +6829,7 @@ createNode nurbsCurve -n "noseTitleShape5" -p "noseTitle";
 		-1.1243422205513496 0.093397673882218257 -8.3266726846886741e-17
 		;
 createNode nurbsCurve -n "noseTitleShape6" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000430A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6562,6 +6864,7 @@ createNode nurbsCurve -n "noseTitleShape6" -p "noseTitle";
 		-1.2440727155178002 0.02376680139896899 -8.3266726846886741e-17
 		;
 createNode nurbsCurve -n "noseTitleShape7" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000430B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6580,6 +6883,7 @@ createNode nurbsCurve -n "noseTitleShape7" -p "noseTitle";
 		-1.3045715270390494 -0.69435400397013158 -8.3266726846886741e-17
 		;
 createNode nurbsCurve -n "noseTitleShape8" -p "noseTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000430C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6620,12 +6924,14 @@ createNode nurbsCurve -n "noseTitleShape8" -p "noseTitle";
 		-1.1207068737952013 -0.89771276725313187 -8.3266726846886741e-17
 		;
 createNode transform -n "bridge_puffsuck_box" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000430D";
 	setAttr ".t" -type "double3" 4.6856760277406906 -13.529916236284601 0 ;
 	setAttr ".rp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".sp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "NurbDurv307" -p "bridge_puffsuck_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000430E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -6638,7 +6944,8 @@ createNode nurbsCurve -n "NurbDurv307" -p "bridge_puffsuck_box";
 		-0.10000000000000037 0.999999999999999 2.1684043449710089e-18
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
-createNode transform -n "bridge_puffsuck_l" -p "bridge_puffsuck_box";
+createNode transform -n "l_bridge_puffsuck" -p "bridge_puffsuck_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000430F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -6659,7 +6966,8 @@ createNode transform -n "bridge_puffsuck_l" -p "bridge_puffsuck_box";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
-createNode nurbsCurve -n "bridge_puffsuck_lShape" -p "bridge_puffsuck_l";
+createNode nurbsCurve -n "l_bridge_puffsuckShape" -p "l_bridge_puffsuck";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004310";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6672,7 +6980,8 @@ createNode nurbsCurve -n "bridge_puffsuck_lShape" -p "bridge_puffsuck_l";
 		0 -0.14559807819289661 0
 		0 0.14559807819289661 0
 		;
-createNode transform -n "bridge_puffsuck_r" -p "bridge_puffsuck_box";
+createNode transform -n "r_bridge_puffsuck" -p "bridge_puffsuck_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004311";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -6693,7 +7002,8 @@ createNode transform -n "bridge_puffsuck_r" -p "bridge_puffsuck_box";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
-createNode nurbsCurve -n "bridge_puffsuck_rShape" -p "bridge_puffsuck_r";
+createNode nurbsCurve -n "r_bridge_puffsuckShape" -p "r_bridge_puffsuck";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004312";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6707,16 +7017,21 @@ createNode nurbsCurve -n "bridge_puffsuck_rShape" -p "bridge_puffsuck_r";
 		0 0.14559807819289661 0
 		;
 createNode transform -n "bridge_puffsuck0" -p "bridge_puffsuck_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004313";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "bridge_puffsuck0Shape" -p "bridge_puffsuck0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004314";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "puffSuckTitle" -p "bridge_puffsuck_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004315";
 	setAttr -av ".tmp" yes;
 	setAttr ".rp" -type "double3" -12.308860633735897 -5.5329154305205837 0.050000000000006518 ;
 	setAttr ".sp" -type "double3" -12.308860633735897 -5.5329154305205837 0.050000000000006518 ;
 createNode nurbsCurve -n "puffSuckTitleShape" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004316";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6755,6 +7070,7 @@ createNode nurbsCurve -n "puffSuckTitleShape" -p "puffSuckTitle";
 		-0.35393377100704448 0.45739952585721944 2.0816681711721685e-17
 		;
 createNode nurbsCurve -n "puffSuckTitleShape1" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004317";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6795,6 +7111,7 @@ createNode nurbsCurve -n "puffSuckTitleShape1" -p "puffSuckTitle";
 		-0.22447216332859551 0.60475677315775989 2.0816681711721685e-17
 		;
 createNode nurbsCurve -n "puffSuckTitleShape2" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004318";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6826,6 +7143,7 @@ createNode nurbsCurve -n "puffSuckTitleShape2" -p "puffSuckTitle";
 		-0.3781914194773463 0.84192262123813044 2.0816681711721685e-17
 		;
 createNode nurbsCurve -n "puffSuckTitleShape3" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004319";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6857,6 +7175,7 @@ createNode nurbsCurve -n "puffSuckTitleShape3" -p "puffSuckTitle";
 		-0.37819141947734625 0.98979304715298044 2.0816681711721685e-17
 		;
 createNode nurbsCurve -n "puffSuckTitleShape4" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000431A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6945,6 +7264,7 @@ createNode nurbsCurve -n "puffSuckTitleShape4" -p "puffSuckTitle";
 		-0.22533652004845828 -0.91429601469730437 2.0816681711721685e-17
 		;
 createNode nurbsCurve -n "puffSuckTitleShape5" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000431B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -6985,6 +7305,7 @@ createNode nurbsCurve -n "puffSuckTitleShape5" -p "puffSuckTitle";
 		-0.22473664002445853 -0.73544740941835873 2.0816681711721685e-17
 		;
 createNode nurbsCurve -n "puffSuckTitleShape6" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000431C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7064,6 +7385,7 @@ createNode nurbsCurve -n "puffSuckTitleShape6" -p "puffSuckTitle";
 		-0.22503658003645743 -0.54240789232177922 2.0816681711721685e-17
 		;
 createNode nurbsCurve -n "puffSuckTitleShape7" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000431D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7100,6 +7422,7 @@ createNode nurbsCurve -n "puffSuckTitleShape7" -p "puffSuckTitle";
 		-0.2286358601804076 -0.29012319301163836 2.0816681711721685e-17
 		;
 createNode nurbsCurve -n "puffSuckTitleShape8" -p "puffSuckTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000431E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7142,12 +7465,14 @@ createNode nurbsCurve -n "puffSuckTitleShape8" -p "puffSuckTitle";
 		-0.35504682964529266 0.50508998776483938 2.0816681711721685e-17
 		;
 createNode transform -n "nose_flare_box" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000431F";
 	setAttr ".t" -type "double3" 0.86349665788049501 -13.53 0 ;
 	setAttr ".rp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".sp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "nose_flare_boxShape" -p "nose_flare_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004320";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -7161,6 +7486,7 @@ createNode nurbsCurve -n "nose_flare_boxShape" -p "nose_flare_box";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "l_nose_flare" -p "nose_flare_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004321";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -7182,6 +7508,7 @@ createNode transform -n "l_nose_flare" -p "nose_flare_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "l_nose_flareShape" -p "l_nose_flare";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004322";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7195,6 +7522,7 @@ createNode nurbsCurve -n "l_nose_flareShape" -p "l_nose_flare";
 		0 0.14559807819289661 0
 		;
 createNode transform -n "r_nose_flare" -p "nose_flare_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004323";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -7216,6 +7544,7 @@ createNode transform -n "r_nose_flare" -p "nose_flare_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "r_nose_flareShape" -p "r_nose_flare";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004324";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7229,16 +7558,21 @@ createNode nurbsCurve -n "r_nose_flareShape" -p "r_nose_flare";
 		0 0.14559807819289661 0
 		;
 createNode transform -n "nose_flare0" -p "nose_flare_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004325";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "nose_flare0Shape" -p "nose_flare0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004326";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "flareTitle" -p "nose_flare_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004327";
 	setAttr ".tmp" yes;
 	setAttr ".rp" -type "double3" -12.309264619073124 -1.2764806937537525 0.05 ;
 	setAttr ".sp" -type "double3" -12.309264619073124 -1.2764806937537525 0.05 ;
 createNode nurbsCurve -n "flareTitleShape" -p "flareTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004328";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7262,6 +7596,7 @@ createNode nurbsCurve -n "flareTitleShape" -p "flareTitle";
 		-0.22877536882177368 -0.70975997137627933 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "flareTitleShape1" -p "flareTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004329";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7289,6 +7624,7 @@ createNode nurbsCurve -n "flareTitleShape1" -p "flareTitle";
 		-0.22877536882177368 -0.70750771912402433 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "flareTitleShape2" -p "flareTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000432A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7305,6 +7641,7 @@ createNode nurbsCurve -n "flareTitleShape2" -p "flareTitle";
 		-0.30024684029322291 -0.60117795185675937 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "flareTitleShape3" -p "flareTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000432B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7345,6 +7682,7 @@ createNode nurbsCurve -n "flareTitleShape3" -p "flareTitle";
 		-0.2287753688217736 -0.34189210350840937 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "flareTitleShape4" -p "flareTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000432C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7379,6 +7717,7 @@ createNode nurbsCurve -n "flareTitleShape4" -p "flareTitle";
 		-0.35735081927222356 -0.41666687828318422 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "flareTitleShape5" -p "flareTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000432D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7415,6 +7754,7 @@ createNode nurbsCurve -n "flareTitleShape5" -p "flareTitle";
 		-0.2287753688217736 -0.3280782896945944 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "flareTitleShape6" -p "flareTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000432E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7446,9 +7786,11 @@ createNode nurbsCurve -n "flareTitleShape6" -p "flareTitle";
 		-0.37877536882177226 -0.85735756897387538 -6.4948046940571658e-15
 		;
 createNode transform -n "nose_sneer_box" -p "bridgeTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000432F";
 	setAttr ".t" -type "double3" 1.7113191934480303 -14.53 0 ;
 	setAttr ".s" -type "double3" 1 2 1 ;
 createNode nurbsCurve -n "NurbDurv" -p "nose_sneer_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004330";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -7462,6 +7804,7 @@ createNode nurbsCurve -n "NurbDurv" -p "nose_sneer_box";
 		-0.10000000000000037 0 2.1684043449710089e-18
 		;
 createNode transform -n "l_nose_sneer" -p "nose_sneer_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004331";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -7483,6 +7826,7 @@ createNode transform -n "l_nose_sneer" -p "nose_sneer_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "l_nose_sneerShape" -p "l_nose_sneer";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004332";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7496,6 +7840,7 @@ createNode nurbsCurve -n "l_nose_sneerShape" -p "l_nose_sneer";
 		0 0.072799039096448317 0
 		;
 createNode transform -n "r_nose_sneer" -p "nose_sneer_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004333";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -7517,6 +7862,7 @@ createNode transform -n "r_nose_sneer" -p "nose_sneer_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "r_nose_sneerShape" -p "r_nose_sneer";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004334";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7530,10 +7876,12 @@ createNode nurbsCurve -n "r_nose_sneerShape" -p "r_nose_sneer";
 		0 0.072799039096448317 0
 		;
 createNode transform -n "sneerTitle" -p "nose_sneer_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004335";
 	setAttr ".tmp" yes;
 	setAttr ".rp" -type "double3" -12.62263096399742 -0.13198634011341159 0.05 ;
 	setAttr ".sp" -type "double3" -12.62263096399742 -0.13198634011341159 0.05 ;
 createNode nurbsCurve -n "sneerTitleShape" -p "sneerTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004336";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7622,6 +7970,7 @@ createNode nurbsCurve -n "sneerTitleShape" -p "sneerTitle";
 		-0.23133090293526945 0.044167986916165469 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "sneerTitleShape1" -p "sneerTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004337";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7653,6 +8002,7 @@ createNode nurbsCurve -n "sneerTitleShape1" -p "sneerTitle";
 		-0.23463420623856909 0.17562327032457398 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "sneerTitleShape2" -p "sneerTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004338";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7689,6 +8039,7 @@ createNode nurbsCurve -n "sneerTitleShape2" -p "sneerTitle";
 		-0.23463420623856909 0.194467114168419 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "sneerTitleShape3" -p "sneerTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004339";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7725,6 +8076,7 @@ createNode nurbsCurve -n "sneerTitleShape3" -p "sneerTitle";
 		-0.23463420623856909 0.27284549254679652 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "sneerTitleShape4" -p "sneerTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000433A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7765,6 +8117,7 @@ createNode nurbsCurve -n "sneerTitleShape4" -p "sneerTitle";
 		-0.23463420623856904 0.43680945651075903 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "sneerTitleShape5" -p "sneerTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000433B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 29;
@@ -7799,8 +8152,10 @@ createNode nurbsCurve -n "sneerTitleShape5" -p "sneerTitle";
 		-0.36320965668901894 0.39942206912337402 -6.4948046940571658e-15
 		;
 createNode transform -n "EYES_EMOTION_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000433C";
 	setAttr ".t" -type "double3" -0.45 -0.36365011814674197 0 ;
 createNode transform -n "eyesEmotionTitlew" -p "EYES_EMOTION_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000433D";
 	setAttr -l on ".v";
 	setAttr -l on ".tz";
 	setAttr -l on ".ty";
@@ -7814,6 +8169,7 @@ createNode transform -n "eyesEmotionTitlew" -p "EYES_EMOTION_panel";
 	setAttr ".rp" -type "double3" -0.2853550694224774 -3.147861388024805 0.05 ;
 	setAttr ".sp" -type "double3" -0.2853550694224774 -3.147861388024805 0.05 ;
 createNode nurbsCurve -n "eyesEmotionTitlewShape" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000433E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -7844,6 +8200,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape" -p "eyesEmotionTitlew";
 		-0.32726973187673569 -11.187214926544303 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape1" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000433F";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -7881,6 +8238,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape1" -p "eyesEmotionTitlew";
 		-0.13535682363412291 -11.169796575066854 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape2" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004340";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -7970,6 +8328,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape2" -p "eyesEmotionTitlew";
 		-0.1319353617367669 -10.948176726699806 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape3" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004341";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8007,6 +8366,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape3" -p "eyesEmotionTitlew";
 		-0.13535682363412291 -10.762953651272106 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape4" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004342";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8046,6 +8406,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape4" -p "eyesEmotionTitlew";
 		-0.13535682363412291 -10.404633278021755 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape5" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004343";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8074,6 +8435,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape5" -p "eyesEmotionTitlew";
 		-0.23124766733552241 -10.190169825455657 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape6" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004344";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8119,6 +8481,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape6" -p "eyesEmotionTitlew";
 		-0.23137888817533589 -10.239936543962656 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape7" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004345";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8147,6 +8510,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape7" -p "eyesEmotionTitlew";
 		-0.13535682363412241 -10.124695486419856 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape8" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004346";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8184,6 +8548,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape8" -p "eyesEmotionTitlew";
 		-0.13535682363412241 -9.904477757026406 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape9" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004347";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8212,6 +8577,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape9" -p "eyesEmotionTitlew";
 		-0.23124766733552241 -9.6977903542270045 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape10" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004348";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8257,6 +8623,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape10" -p "eyesEmotionTitlew";
 		-0.23137888817533539 -9.7475570727340042 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape11" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004349";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8289,6 +8656,7 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape11" -p "eyesEmotionTitlew";
 		-0.13535682363412241 -9.5047887990170565 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "eyesEmotionTitlewShape12" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000434A";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -8326,12 +8694,14 @@ createNode nurbsCurve -n "eyesEmotionTitlewShape12" -p "eyesEmotionTitlew";
 		-0.13535682363412291 -11.509143386886455 -6.4948046940571658e-15
 		;
 createNode transform -n "bridge_cheeks_box" -p "eyesEmotionTitlew";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000434B";
 	setAttr ".t" -type "double3" 0.57805426299876994 -10.530196059981977 0 ;
 	setAttr ".rp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "bridge_cheeks_boxShape" -p "bridge_cheeks_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000434C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -8345,18 +8715,23 @@ createNode nurbsCurve -n "bridge_cheeks_boxShape" -p "bridge_cheeks_box";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "bridge_cheeks0" -p "bridge_cheeks_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000434D";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "bridge_cheeks0Shape" -p "bridge_cheeks0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000434E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "bridge_cheeks_Ibox" -p "bridge_cheeks_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000434F";
 	setAttr ".s" -type "double3" 1 0.8 1 ;
 	setAttr ".rp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".sp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "bridge_cheeks_IboxShape" -p "bridge_cheeks_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004350";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -8369,7 +8744,8 @@ createNode nurbsCurve -n "bridge_cheeks_IboxShape" -p "bridge_cheeks_Ibox";
 		-0.10000000000000037 0.999999999999999 2.1684043449710089e-18
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
-createNode transform -n "bridge_cheeks_l" -p "bridge_cheeks_Ibox";
+createNode transform -n "l_bridge_cheeks" -p "bridge_cheeks_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004351";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -8390,7 +8766,8 @@ createNode transform -n "bridge_cheeks_l" -p "bridge_cheeks_Ibox";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
-createNode nurbsCurve -n "bridge_cheeks_lShape" -p "bridge_cheeks_l";
+createNode nurbsCurve -n "l_bridge_cheeksShape" -p "l_bridge_cheeks";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004352";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8403,7 +8780,8 @@ createNode nurbsCurve -n "bridge_cheeks_lShape" -p "bridge_cheeks_l";
 		0 -0.18199759774112079 0
 		0 0.18199759774112079 0
 		;
-createNode transform -n "bridge_cheeks_r" -p "bridge_cheeks_Ibox";
+createNode transform -n "r_bridge_cheeks" -p "bridge_cheeks_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004353";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -8424,7 +8802,8 @@ createNode transform -n "bridge_cheeks_r" -p "bridge_cheeks_Ibox";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
-createNode nurbsCurve -n "bridge_cheeks_rShape" -p "bridge_cheeks_r";
+createNode nurbsCurve -n "r_bridge_cheeksShape" -p "r_bridge_cheeks";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004354";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8438,10 +8817,12 @@ createNode nurbsCurve -n "bridge_cheeks_rShape" -p "bridge_cheeks_r";
 		0 0.18199759774112079 0
 		;
 createNode transform -n "cheekTitle" -p "bridge_cheeks_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004355";
 	setAttr ".tmp" yes;
 	setAttr ".rp" -type "double3" -12.627155358304265 -3.4155538350683567 0.05000000000000001 ;
 	setAttr ".sp" -type "double3" -12.627155358304265 -3.4155538350683567 0.05000000000000001 ;
 createNode nurbsCurve -n "cheekTitleShape" -p "cheekTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004356";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8478,6 +8859,7 @@ createNode nurbsCurve -n "cheekTitleShape" -p "cheekTitle";
 		-0.23057874559961233 -0.6417199307542838 -6.4878658001532585e-15
 		;
 createNode nurbsCurve -n "cheekTitleShape1" -p "cheekTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004357";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8514,6 +8896,7 @@ createNode nurbsCurve -n "cheekTitleShape1" -p "cheekTitle";
 		-0.23057874559961233 -0.60328149231584383 -6.4878658001532585e-15
 		;
 createNode nurbsCurve -n "cheekTitleShape2" -p "cheekTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004358";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8550,6 +8933,7 @@ createNode nurbsCurve -n "cheekTitleShape2" -p "cheekTitle";
 		-0.23057874559961233 -0.44652473555908861 -6.4878658001532585e-15
 		;
 createNode nurbsCurve -n "cheekTitleShape3" -p "cheekTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004359";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8586,6 +8970,7 @@ createNode nurbsCurve -n "cheekTitleShape3" -p "cheekTitle";
 		-0.23057874559961225 -0.12745566649001883 -6.4878658001532585e-15
 		;
 createNode nurbsCurve -n "cheekTitleShape4" -p "cheekTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000435A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8665,6 +9050,7 @@ createNode nurbsCurve -n "cheekTitleShape4" -p "cheekTitle";
 		-0.22697514199601504 -0.88830166874226868 -6.4878658001532585e-15
 		;
 createNode transform -n "SquintFrame" -p "EYES_EMOTION_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000435B";
 	addAttr -ci true -sn "ss2ControlType" -ln "ss2ControlType" -min 0 -max 5 -en "A:B:C:D:E:F" 
 		-at "enum";
 	addAttr -ci true -k true -sn "hCtrl" -ln "hCtrl" -at "double";
@@ -8680,6 +9066,7 @@ createNode transform -n "SquintFrame" -p "EYES_EMOTION_panel";
 	setAttr ".t" -type "double3" 1.6476177248345945 -10.50015816633808 0 ;
 	setAttr -l on ".ss2ControlType";
 createNode nurbsCurve -n "SquintFrameShape" -p "SquintFrame";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000435C";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -8694,6 +9081,7 @@ createNode nurbsCurve -n "SquintFrameShape" -p "SquintFrame";
 		-0.10000000000000007 1.1000000000000001 0
 		;
 createNode transform -n "l_eyeSquint" -p "SquintFrame";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000435D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -8715,6 +9103,7 @@ createNode transform -n "l_eyeSquint" -p "SquintFrame";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "l_eyeSquintShape" -p "l_eyeSquint";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000435E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8728,6 +9117,7 @@ createNode nurbsCurve -n "l_eyeSquintShape" -p "l_eyeSquint";
 		0 0.072799039096448317 0
 		;
 createNode transform -n "r_eyeSquint" -p "SquintFrame";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000435F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -8749,6 +9139,7 @@ createNode transform -n "r_eyeSquint" -p "SquintFrame";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "r_eyeSquintShape" -p "r_eyeSquint";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004360";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -8762,12 +9153,14 @@ createNode nurbsCurve -n "r_eyeSquintShape" -p "r_eyeSquint";
 		0 0.072799039096448317 0
 		;
 createNode transform -n "SQUINT_label" -p "SquintFrame";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004361";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" -0.25100327479315965 0.012478749515248903 0 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
 	setAttr ".s" -type "double3" 0.4 0.4 1 ;
 createNode nurbsCurve -n "SQUINT_labelShape" -p "SQUINT_label";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004362";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 50 1 no 3
@@ -8831,6 +9224,7 @@ createNode nurbsCurve -n "SQUINT_labelShape" -p "SQUINT_label";
 		-0.97387481113382068 0.30714504945660515 0
 		;
 createNode nurbsCurve -n "SQUINT_labelShape1" -p "SQUINT_label";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004363";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 22 1 no 3
@@ -8864,6 +9258,7 @@ createNode nurbsCurve -n "SQUINT_labelShape1" -p "SQUINT_label";
 		-0.28301720985477519 0.20357217595111535 0
 		;
 createNode nurbsCurve -n "SQUINT_labelShape2" -p "SQUINT_label";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004364";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 19 1 no 3
@@ -8893,6 +9288,7 @@ createNode nurbsCurve -n "SQUINT_labelShape2" -p "SQUINT_label";
 		-0.39912916037112744 0.28571617907615898 0
 		;
 createNode nurbsCurve -n "SQUINT_labelShape3" -p "SQUINT_label";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004365";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 26 1 no 3
@@ -8930,6 +9326,7 @@ createNode nurbsCurve -n "SQUINT_labelShape3" -p "SQUINT_label";
 		0.047896179587995191 0.63928556480977694 0
 		;
 createNode nurbsCurve -n "SQUINT_labelShape4" -p "SQUINT_label";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004366";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 2 no 3
@@ -8942,6 +9339,7 @@ createNode nurbsCurve -n "SQUINT_labelShape4" -p "SQUINT_label";
 		0.16690809410283949 0.14999999999999999 0
 		;
 createNode nurbsCurve -n "SQUINT_labelShape5" -p "SQUINT_label";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004367";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 10 2 no 3
@@ -8961,6 +9359,7 @@ createNode nurbsCurve -n "SQUINT_labelShape5" -p "SQUINT_label";
 		0.34397598387585998 0.14999999999999999 0
 		;
 createNode nurbsCurve -n "SQUINT_labelShape6" -p "SQUINT_label";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004368";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 8 2 no 3
@@ -8977,9 +9376,11 @@ createNode nurbsCurve -n "SQUINT_labelShape6" -p "SQUINT_label";
 		0.81712651270116188 0.14999999999999999 0
 		;
 createNode transform -n "eyeDirectionCtrl" -p "EYES_EMOTION_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004369";
 	setAttr ".t" -type "double3" 1.2957627380419121 -7.5603442337633426 0 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "eyeDirectionCtrlShape" -p "eyeDirectionCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000436A";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -8993,14 +9394,20 @@ createNode nurbsCurve -n "eyeDirectionCtrlShape" -p "eyeDirectionCtrl";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "eyeDirections" -p "eyeDirectionCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000436B";
 createNode locator -n "eyeDirectionsShape" -p "eyeDirections";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000436C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "R_offSetGrp" -p "eyeDirections";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000436D";
 	setAttr ".t" -type "double3" -1 0 0 ;
 createNode transform -n "rleyeOffsetCtrl" -p "R_offSetGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000436E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -9021,6 +9428,7 @@ createNode transform -n "rleyeOffsetCtrl" -p "R_offSetGrp";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "rleyeOffsetCtrlShape" -p "rleyeOffsetCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000436F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -9034,8 +9442,10 @@ createNode nurbsCurve -n "rleyeOffsetCtrlShape" -p "rleyeOffsetCtrl";
 		0 0.12460592846975116 0
 		;
 createNode transform -n "L_offSetGrp" -p "eyeDirections";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004370";
 	setAttr ".t" -type "double3" 1 0 0 ;
 createNode transform -n "lLeyeOffsetCtrl" -p "L_offSetGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004371";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -9056,6 +9466,7 @@ createNode transform -n "lLeyeOffsetCtrl" -p "L_offSetGrp";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "lLeyeOffsetCtrlShape" -p "lLeyeOffsetCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004372";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 12;
@@ -9069,12 +9480,15 @@ createNode nurbsCurve -n "lLeyeOffsetCtrlShape" -p "lLeyeOffsetCtrl";
 		0 0.12460592846975116 0
 		;
 createNode transform -n "dilation_Panel" -p "eyeDirectionCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004373";
 	setAttr ".t" -type "double3" -5.0122604012421856 7.042712238726585 0 ;
 createNode transform -n "dilationTitle" -p "dilation_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004374";
 	setAttr ".tmp" yes;
 	setAttr ".rp" -type "double3" -3.2880330674693288 -8.3401528704241326 0.049999999999999982 ;
 	setAttr ".sp" -type "double3" -3.2880330674693288 -8.3401528704241326 0.049999999999999982 ;
 createNode nurbsCurve -n "dilationTitleShape" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004375";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9109,6 +9523,7 @@ createNode nurbsCurve -n "dilationTitleShape" -p "dilationTitle";
 		2.8828302977441225 -7.926576495537943 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape1" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004376";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9145,6 +9560,7 @@ createNode nurbsCurve -n "dilationTitleShape1" -p "dilationTitle";
 		2.9762898087780232 -7.7578945124665983 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape2" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004377";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9168,6 +9584,7 @@ createNode nurbsCurve -n "dilationTitleShape2" -p "dilationTitle";
 		2.9762898087780232 -7.6023624689357652 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape3" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004378";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9195,6 +9612,7 @@ createNode nurbsCurve -n "dilationTitleShape3" -p "dilationTitle";
 		2.9762898087780232 -7.6000952379805042 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape4" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004379";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9211,6 +9629,7 @@ createNode nurbsCurve -n "dilationTitleShape4" -p "dilationTitle";
 		2.9043430131310735 -7.4930583199031187 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape5" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000437A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9238,6 +9657,7 @@ createNode nurbsCurve -n "dilationTitleShape5" -p "dilationTitle";
 		2.9762898087780232 -7.36853538308329 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape6" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000437B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9274,6 +9694,7 @@ createNode nurbsCurve -n "dilationTitleShape6" -p "dilationTitle";
 		2.9762898087780232 -7.1545087809067436 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape7" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000437C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9301,6 +9722,7 @@ createNode nurbsCurve -n "dilationTitleShape7" -p "dilationTitle";
 		2.8830948080222725 -6.9536321182707095 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape8" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000437D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9345,6 +9767,7 @@ createNode nurbsCurve -n "dilationTitleShape8" -p "dilationTitle";
 		2.8829672762810232 -7.0019997119829238 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape9" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000437E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9376,6 +9799,7 @@ createNode nurbsCurve -n "dilationTitleShape9" -p "dilationTitle";
 		2.9762898087780232 -6.7660565439055338 -6.5156213757688874e-15
 		;
 createNode nurbsCurve -n "dilationTitleShape10" -p "dilationTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000437F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9410,6 +9834,7 @@ createNode nurbsCurve -n "dilationTitleShape10" -p "dilationTitle";
 		2.8832199780645724 -7.8785111992864323 -6.5156213757688874e-15
 		;
 createNode transform -n "dilation_Obox" -p "dilation_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004380";
 	setAttr ".t" -type "double3" 3.2053455153714334 -6.4619076570832332 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 1 ;
 	setAttr ".rp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
@@ -9417,6 +9842,7 @@ createNode transform -n "dilation_Obox" -p "dilation_Panel";
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "dilation_OboxShape" -p "dilation_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004381";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -9430,18 +9856,23 @@ createNode nurbsCurve -n "dilation_OboxShape" -p "dilation_Obox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "dilation_Obox0" -p "dilation_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004382";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "dilation_Obox0Shape" -p "dilation_Obox0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004383";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "dilation_Ibox" -p "dilation_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004384";
 	setAttr ".s" -type "double3" 1 0.8 1 ;
 	setAttr ".rp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".sp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "dilation_IboxShape" -p "dilation_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004385";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -9455,6 +9886,7 @@ createNode nurbsCurve -n "dilation_IboxShape" -p "dilation_Ibox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "lpupil_dial" -p "dilation_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004386";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -9476,6 +9908,7 @@ createNode transform -n "lpupil_dial" -p "dilation_Ibox";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "lpupil_dialShape" -p "lpupil_dial";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004387";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9489,6 +9922,7 @@ createNode nurbsCurve -n "lpupil_dialShape" -p "lpupil_dial";
 		0 0.18199759774112079 0
 		;
 createNode transform -n "rpupil_dial" -p "dilation_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004388";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -9510,6 +9944,7 @@ createNode transform -n "rpupil_dial" -p "dilation_Ibox";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "rpupil_dialShape" -p "rpupil_dial";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004389";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9523,6 +9958,7 @@ createNode nurbsCurve -n "rpupil_dialShape" -p "rpupil_dial";
 		0 0.18199759774112079 0
 		;
 createNode transform -n "iris_Obox" -p "dilation_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000438A";
 	setAttr ".t" -type "double3" 3.205 -7.571 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 1 ;
 	setAttr ".rp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
@@ -9530,6 +9966,7 @@ createNode transform -n "iris_Obox" -p "dilation_Panel";
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "iris_OboxShape" -p "iris_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000438B";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -9543,18 +9980,23 @@ createNode nurbsCurve -n "iris_OboxShape" -p "iris_Obox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "iris_Obox0" -p "iris_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000438C";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "iris_Obox0Shape" -p "iris_Obox0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000438D";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "iris_Ibox" -p "iris_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000438E";
 	setAttr ".s" -type "double3" 1 0.8 1 ;
 	setAttr ".rp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".sp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "iris_IboxShape" -p "iris_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000438F";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -9568,6 +10010,7 @@ createNode nurbsCurve -n "iris_IboxShape" -p "iris_Ibox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "liris_dial" -p "iris_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004390";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -9589,6 +10032,7 @@ createNode transform -n "liris_dial" -p "iris_Ibox";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "liris_dialShape" -p "liris_dial";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004391";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9602,6 +10046,7 @@ createNode nurbsCurve -n "liris_dialShape" -p "liris_dial";
 		0 0.18199759774112079 0
 		;
 createNode transform -n "riris_dial" -p "iris_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004392";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -9623,6 +10068,7 @@ createNode transform -n "riris_dial" -p "iris_Ibox";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "riris_dialShape" -p "riris_dial";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004393";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9636,33 +10082,39 @@ createNode nurbsCurve -n "riris_dialShape" -p "riris_dial";
 		0 0.18199759774112079 0
 		;
 createNode transform -n "divergence_box" -p "eyeDirectionCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004394";
 	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" -1.7763568394002503e-15 1.3610903389307147 1.7902617322623782e-15 ;
+	setAttr ".t" -type "double3" -1.7763568394002505e-15 1.3610903389307147 1.7902617322623782e-15 ;
 	setAttr ".s" -type "double3" 0.49999999999999994 0.50000000000000011 1 ;
-	setAttr ".rp" -type "double3" -1.2490009027033011e-16 7.2164496600635195e-16 2.1684043449710089e-18 ;
+	setAttr ".rp" -type "double3" -1.2490009027033011e-16 7.2164496600635205e-16 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" 9.7144514654701197e-17 1.4432899320127035e-15 2.1684043449710089e-18 ;
-	setAttr ".spt" -type "double3" -4.8572257327350617e-17 -7.2164496600635155e-16 0 ;
+	setAttr ".spt" -type "double3" -4.8572257327350617e-17 -7.2164496600635146e-16 0 ;
 createNode nurbsCurve -n "divergence_boxShape" -p "divergence_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004395";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 0 no 3
 		5 0 1 2 3 4
 		5
-		-0.99999999999999978 0.10000000000000153 2.1684043449710089e-18
-		-0.99999999999999978 -0.099999999999998646 2.1684043449710089e-18
+		-0.99999999999999989 0.10000000000000152 2.1684043449710089e-18
+		-0.99999999999999989 -0.099999999999998646 2.1684043449710089e-18
 		1 -0.099999999999998646 2.1684043449710089e-18
-		1 0.10000000000000153 2.1684043449710089e-18
-		-0.99999999999999978 0.10000000000000153 2.1684043449710089e-18
+		1 0.10000000000000152 2.1684043449710089e-18
+		-0.99999999999999989 0.10000000000000152 2.1684043449710089e-18
 		;
 createNode transform -n "divergence0" -p "divergence_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004396";
 	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "divergence0Shape" -p "divergence0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004397";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "divergence" -p "divergence_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004398";
 	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
@@ -9683,6 +10135,7 @@ createNode transform -n "divergence" -p "divergence_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "divergenceShape" -p "divergence";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004399";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -9691,26 +10144,28 @@ createNode nurbsCurve -n "divergenceShape" -p "divergence";
 		13 -2 -1 0 1 2 3 4 5 6 7 8
 		 9 10
 		11
-		0.078361162489122504 0.07836116248912238 -9.2541963937066851e-18
+		0.078361162489122491 0.07836116248912238 -9.2541963937066851e-18
 		-1.5418952275762498e-17 0.1108194187554388 -1.3087410048844189e-17
-		-0.078361162489122407 0.078361162489122435 -9.2541963937066913e-18
-		-0.11081941875543876 1.8621523105198665e-17 -2.1991408306299197e-33
+		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
+		-0.11081941875543876 1.8621523105198662e-17 -2.1991408306299194e-33
 		-0.078361162489122435 -0.078361162489122393 9.2541963937066851e-18
 		-4.9468832505776792e-17 -0.1108194187554388 1.3087410048844189e-17
 		0.078361162489122393 -0.078361162489122449 9.2541963937066928e-18
 		0.11081941875543876 -6.1415745182853949e-17 7.2529981630488394e-33
-		0.078361162489122504 0.07836116248912238 -9.2541963937066851e-18
+		0.078361162489122491 0.07836116248912238 -9.2541963937066851e-18
 		-1.5418952275762498e-17 0.1108194187554388 -1.3087410048844189e-17
-		-0.078361162489122407 0.078361162489122435 -9.2541963937066913e-18
+		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "divergenceTitle" -p "divergence_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000439A";
 	setAttr ".tmp" yes;
-	setAttr ".t" -type "double3" -0.99103125105224121 -0.31735867521618388 1.3183627366880613e-15 ;
+	setAttr ".t" -type "double3" -0.99103125105224132 -0.31735867521618388 1.3183627366880613e-15 ;
 	setAttr ".s" -type "double3" 2 2 1 ;
 	setAttr ".rp" -type "double3" 0 4 0 ;
 	setAttr ".sp" -type "double3" 0 2 0 ;
 	setAttr ".spt" -type "double3" 0 2 0 ;
 createNode nurbsCurve -n "divergenceTitleShape" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000439B";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 33 0 no 3
@@ -9732,17 +10187,17 @@ createNode nurbsCurve -n "divergenceTitleShape" -p "divergenceTitle";
 		0.026758193969726275 0.058349609375006883 0
 		0.021855354309081771 0.058349609375006883 0
 		0.017457008361816146 0.056200027465832081 0
-		0.013058662414550521 0.054050445556644622 0
+		0.013058662414550519 0.054050445556644622 0
 		0.009975433349609146 0.050357818603519622 0
 		0.0065889358520505471 0.046311378479006793 0
 		0.0046677589416501582 0.040849208831794437 0
 		0.002746582031249771 0.035387039184582081 0
 		0.002746582031249771 0.027951240539556998 0
-		0.002746582031249771 0.014497756958019359 0
+		0.002746582031249771 0.014497756958019361 0
 		0.0084080696105954707 0.0064554214477570149 0
 		0.014069557189941146 -0.0015869140624928946 0
 		0.023776054382324024 -0.0015869140624928946 0
-		0.026657104492187274 -0.0015869140624928946 0
+		0.026657104492187271 -0.0015869140624928946 0
 		0.028729915618896276 -0.0011358261108305179 0
 		0.030802726745605271 -0.00065803527831853614 0
 		0.032925605773925518 0.00045490264893177645 0
@@ -9756,6 +10211,7 @@ createNode nurbsCurve -n "divergenceTitleShape" -p "divergenceTitle";
 		0.058410644531249771 7.1054273576010019e-15 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape1" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000439C";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 17 0 no 3
@@ -9772,17 +10228,18 @@ createNode nurbsCurve -n "divergenceTitleShape1" -p "divergenceTitle";
 		0.027284622192382521 0.045043945312507105 0
 		0.02407932281494115 0.040584564208994589 0
 		0.020874023437499771 0.036125183105481851 0
-		0.020874023437499771 0.028119087219244498 0
+		0.020874023437499771 0.028119087219244495 0
 		0.020874023437499771 0.019706726074232073 0
-		0.023423194885253646 0.015956878662119589 0
-		0.025972366333007525 0.012207031250007105 0
-		0.031675338745117028 0.012207031250007105 0
-		0.033997535705566143 0.012207031250007105 0
+		0.02342319488525365 0.015956878662119589 0
+		0.025972366333007525 0.012207031250007104 0
+		0.031675338745117028 0.012207031250007104 0
+		0.033997535705566143 0.012207031250007104 0
 		0.036369800567626773 0.013119220733644577 0
 		0.038742065429687271 0.014031410217294482 0
 		0.040710449218749771 0.015602111816407138 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape2" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000439D";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 7 0 no 3
@@ -9799,6 +10256,7 @@ createNode nurbsCurve -n "divergenceTitleShape2" -p "divergenceTitle";
 		0.089660644531249778 7.1054273576010019e-15 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape3" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000439E";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 7 0 no 3
@@ -9807,14 +10265,15 @@ createNode nurbsCurve -n "divergenceTitleShape3" -p "divergenceTitle";
 		0.090209960937499778 0.064941406250007105 0
 		0.090209960937499778 0.071838378906256883 0
 		0.090209960937499778 0.078735351562507105 0
-		0.080841064453124792 0.078735351562507105 0
+		0.080841064453124806 0.078735351562507105 0
 		0.071472167968749778 0.078735351562507105 0
 		0.071472167968749778 0.071838378906256883 0
 		0.071472167968749778 0.064941406250007105 0
-		0.080841064453124792 0.064941406250007105 0
+		0.080841064453124806 0.064941406250007105 0
 		0.090209960937499778 0.064941406250007105 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape4" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000439F";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 13 0 no 3
@@ -9824,13 +10283,13 @@ createNode nurbsCurve -n "divergenceTitleShape4" -p "divergenceTitle";
 		0.15637207031249978 0.056823730468756883 0
 		0.14726161956787104 0.056823730468756883 0
 		0.1381511688232423 0.056823730468756883 0
-		0.13241434097289978 0.038059711456307044 0
-		0.12667751312255854 0.019295692443856982 0
-		0.12085342407226542 0.038059711456307044 0
+		0.13241434097289978 0.038059711456307037 0
+		0.12667751312255854 0.019295692443856986 0
+		0.12085342407226542 0.038059711456307037 0
 		0.11502933502197241 0.056823730468756883 0
 		0.10573244094848616 0.056823730468756883 0
 		0.096435546874999778 0.056823730468756883 0
-		0.10655164718627905 0.028411865234382105 0
+		0.10655164718627903 0.028411865234382105 0
 		0.1166677474975584 7.1054273576010019e-15 0
 		0.12632799148559604 7.1054273576010019e-15 0
 		0.13598823547363229 7.1054273576010019e-15 0
@@ -9838,6 +10297,7 @@ createNode nurbsCurve -n "divergenceTitleShape4" -p "divergenceTitle";
 		0.15637207031249978 0.056823730468756883 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape5" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A0";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 43 0 no 3
@@ -9846,7 +10306,7 @@ createNode nurbsCurve -n "divergenceTitleShape5" -p "divergenceTitle";
 		 11 12 12 13 13 14 14 15 15 16 16 17
 		 17 18 18 19 19 20 20 21 21 22 22
 		45
-		0.19223117828369102 -0.0015258789062428946 0
+		0.19223117828369105 -0.0015258789062428946 0
 		0.19663143157958979 -0.0015258789062428946 0
 		0.19969177246093728 -0.0011563301086305877 0
 		0.20275211334228477 -0.00067806243895551788 0
@@ -9854,35 +10314,35 @@ createNode nurbsCurve -n "divergenceTitleShape5" -p "divergenceTitle";
 		0.20877170562744105 0.00085449218750710543 0
 		0.21056747436523479 0.0015888214111445809 0
 		0.21236324310302732 0.0023231506347696218 0
-		0.21453857421874978 0.003184318542481801 0
-		0.21453857421874978 0.010503292083744453 0
-		0.21453857421874978 0.017822265625006883 0
+		0.21453857421874975 0.003184318542481801 0
+		0.21453857421874975 0.010503292083744451 0
+		0.21453857421874975 0.017822265625006883 0
 		0.21360158920288105 0.017822265625006883 0
 		0.21266460418701105 0.017822265625006883 0
 		0.21149921417236353 0.016962051391606892 0
 		0.20965003967285104 0.015848159790044614 0
 		0.20780086517333979 0.014734268188481892 0
 		0.20562267303466727 0.013772010803232204 0
-		0.20314025878906231 0.012658119201669482 0
-		0.20015144348144479 0.011974811553957077 0
-		0.19716262817382729 0.011291503906257105 0
-		0.19407272338867232 0.011291503906257105 0
-		0.19047546386718731 0.011291503906257105 0
+		0.20314025878906233 0.012658119201669482 0
+		0.20015144348144481 0.011974811553957077 0
+		0.19716262817382729 0.011291503906257104 0
+		0.19407272338867232 0.011291503906257104 0
+		0.19047546386718733 0.011291503906257104 0
 		0.18743610382080103 0.011972904205331814 0
-		0.18439674377441354 0.012654304504406966 0
-		0.18211746215820226 0.014220237731944474 0
+		0.18439674377441351 0.012654304504406966 0
+		0.18211746215820224 0.014220237731944474 0
 		0.17978668212890603 0.015785217285156916 0
-		0.1783685684204098 0.018435955047619634 0
-		0.17695045471191356 0.021086692810069474 0
+		0.1783685684204098 0.018435955047619631 0
+		0.17695045471191356 0.02108669281006947 0
 		0.17669677734374978 0.025024414062507105 0
-		0.19613647460937478 0.025024414062507105 0
+		0.19613647460937481 0.025024414062507105 0
 		0.21557617187499981 0.025024414062507105 0
 		0.21557617187499981 0.028214454650882015 0
 		0.21557617187499981 0.031404495239269581 0
 		0.21557617187499981 0.044517517089856851 0
 		0.20899724960327107 0.051555633544931867 0
 		0.20241832733154227 0.058593750000007105 0
-		0.18936157226562478 0.058593750000007105 0
+		0.18936157226562481 0.058593750000007105 0
 		0.17498874664306602 0.058593750000007105 0
 		0.16699266433715854 0.050294399261482159 0
 		0.15899658203124978 0.04199504852295699 0
@@ -9890,28 +10350,30 @@ createNode nurbsCurve -n "divergenceTitleShape5" -p "divergenceTitle";
 		0.15899658203124978 0.013857841491707212 0
 		0.16757059097289978 0.0061659812927321589 0
 		0.17614459991455103 -0.0015258789062428946 0
-		0.19223117828369102 -0.0015258789062428946 0
+		0.19223117828369105 -0.0015258789062428946 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape6" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A1";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 9 0 no 3
 		12 0 0 1 1 2 2 3 3 4 4 5
 		 5
 		11
-		0.19812011718749978 0.035705566406257105 0
-		0.19796752929687478 0.041346549987794301 0
+		0.19812011718749975 0.035705566406257105 0
+		0.19796752929687481 0.041346549987794301 0
 		0.19550561904907229 0.04429388046265692 0
-		0.19304370880126978 0.047241210937507105 0
+		0.19304370880126975 0.047241210937507105 0
 		0.18796730041503856 0.047241210937507105 0
-		0.18278884887695226 0.047241210937507105 0
+		0.18278884887695224 0.047241210937507105 0
 		0.17986965179443354 0.04414129257203192 0
 		0.17695045471191356 0.041041374206544301 0
-		0.17664623260497977 0.035705566406257105 0
+		0.17664623260497975 0.035705566406257105 0
 		0.18738317489623979 0.035705566406257105 0
-		0.19812011718749978 0.035705566406257105 0
+		0.19812011718749975 0.035705566406257105 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape7" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A2";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 33 0 no 3
@@ -9928,25 +10390,25 @@ createNode nurbsCurve -n "divergenceTitleShape7" -p "divergenceTitle";
 		0.25983142852783225 0.057006835937507105 0
 		0.25897121429443359 0.057006835937507105 0
 		0.2566938400268548 0.057006835937507105 0
-		0.25413799285888605 0.056172370910657188 0
+		0.25413799285888605 0.056172370910657181 0
 		0.2515821456909173 0.055337905883794392 0
-		0.24965858459472606 0.054174423217781875 0
+		0.24965858459472609 0.054174423217781875 0
 		0.24788761138915977 0.053162574768069515 0
-		0.24573659896850603 0.051467895507819383 0
-		0.24358558654785106 0.049773216247569474 0
-		0.24237060546874978 0.048660278320319383 0
-		0.24237060546874978 0.052742004394532138 0
-		0.24237060546874978 0.056823730468756883 0
-		0.23352050781249978 0.056823730468756883 0
-		0.22467041015624978 0.056823730468756883 0
-		0.22467041015624978 0.028411865234382105 0
-		0.22467041015624978 7.1054273576010019e-15 0
-		0.23352050781249978 7.1054273576010019e-15 0
-		0.24237060546874978 7.1054273576010019e-15 0
-		0.24237060546874978 0.019020080566407138 0
-		0.24237060546874978 0.038040161132819383 0
+		0.24573659896850605 0.051467895507819383 0
+		0.24358558654785104 0.049773216247569474 0
+		0.24237060546874975 0.048660278320319383 0
+		0.24237060546874975 0.052742004394532138 0
+		0.24237060546874975 0.056823730468756883 0
+		0.23352050781249975 0.056823730468756883 0
+		0.22467041015624975 0.056823730468756883 0
+		0.22467041015624975 0.028411865234382105 0
+		0.22467041015624975 7.1054273576010019e-15 0
+		0.23352050781249975 7.1054273576010019e-15 0
+		0.24237060546874975 7.1054273576010019e-15 0
+		0.24237060546874975 0.019020080566407135 0
+		0.24237060546874975 0.038040161132819383 0
 		0.24525547027587852 0.039153099060069474 0
-		0.24831724166870106 0.039962291717532183 0
+		0.24831724166870103 0.039962291717532183 0
 		0.25137901306152355 0.040771484375007105 0
 		0.2541627883911135 0.040771484375007105 0
 		0.25649070739746105 0.040771484375007105 0
@@ -9957,6 +10419,7 @@ createNode nurbsCurve -n "divergenceTitleShape7" -p "divergenceTitle";
 		0.26281738281249978 0.040039062500006883 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape8" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A3";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 21 0 no 3
@@ -9974,7 +10437,7 @@ createNode nurbsCurve -n "divergenceTitleShape8" -p "divergenceTitle";
 		0.29010200500488226 0.045043945312507105 0
 		0.28689670562744102 0.040925025939944515 0
 		0.28369140624999978 0.036806106567394359 0
-		0.28369140624999978 0.029427528381356982 0
+		0.28369140624999978 0.029427528381356986 0
 		0.28369140624999978 0.025737762451182089 0
 		0.28417110443115229 0.023185253143319429 0
 		0.2846508026123048 0.02063274383545699 0
@@ -9984,11 +10447,12 @@ createNode nurbsCurve -n "divergenceTitleShape8" -p "divergenceTitle";
 		0.29131317138671853 0.014770507812506883 0
 		0.2944927215576173 0.014770507812506883 0
 		0.29686546325683605 0.014770507812506883 0
-		0.2991619110107423 0.015579223632819605 0
+		0.2991619110107423 0.015579223632819604 0
 		0.30145835876464855 0.016387939453131883 0
 		0.30352783203124978 0.017904281616219597 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape9" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A4";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 59 0 no 3
@@ -10004,7 +10468,7 @@ createNode nurbsCurve -n "divergenceTitleShape9" -p "divergenceTitle";
 		0.32122802734374983 0.056823730468756883 0
 		0.31265592575073226 0.056823730468756883 0
 		0.30408382415771479 0.056823730468756883 0
-		0.30375528335571228 0.055559635162357068 0
+		0.30375528335571228 0.055559635162357075 0
 		0.30342674255371105 0.054295539855969466 0
 		0.3005962371826173 0.056166648864756974 0
 		0.29715871810913103 0.057258129119882151 0
@@ -10014,10 +10478,10 @@ createNode nurbsCurve -n "divergenceTitleShape9" -p "divergenceTitle";
 		0.28012275695800726 0.056402206420906875 0
 		0.27567386627197232 0.054454803466806867 0
 		0.27254009246826105 0.050864219665531785 0
-		0.269253730773926 0.047122001647957212 0
+		0.269253730773926 0.047122001647957219 0
 		0.26740884780883734 0.041811466217044346 0
 		0.26556396484374978 0.036500930786144359 0
-		0.26556396484374978 0.029824256896981982 0
+		0.26556396484374978 0.029824256896981986 0
 		0.26556396484374978 0.015156745910656966 0
 		0.27155447006225603 0.0079751014709570356 0
 		0.27754497528076105 0.00079345703125710543 0
@@ -10056,12 +10520,13 @@ createNode nurbsCurve -n "divergenceTitleShape9" -p "divergenceTitle";
 		0.3032817840576173 -0.019971370697017932 0
 		0.30879211425781228 -0.018651008605955255 0
 		0.31273555755615229 -0.015560150146480378 0
-		0.316678047180176 -0.012419700622555485 0
+		0.316678047180176 -0.012419700622555483 0
 		0.31895303726196228 -0.0068478584289430877 0
 		0.32122802734374983 -0.0013504028320179273 0
 		0.32122802734374983 0.0065536499023570727 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape10" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A5";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 43 0 no 3
@@ -10074,38 +10539,38 @@ createNode nurbsCurve -n "divergenceTitleShape10" -p "divergenceTitle";
 		0.36826229095458984 -0.0015258789062428946 0
 		0.37132263183593728 -0.0011563301086305877 0
 		0.37438297271728482 -0.00067806243895551788 0
-		0.37726688385009732 9.5367431644621803e-05 0
+		0.37726688385009727 9.5367431644621803e-05 0
 		0.38040256500244102 0.00085449218750710543 0
 		0.38219833374023482 0.0015888214111445809 0
 		0.38399410247802729 0.0023231506347696218 0
 		0.38616943359374978 0.003184318542481801 0
-		0.38616943359374978 0.010503292083744453 0
+		0.38616943359374978 0.010503292083744451 0
 		0.38616943359374978 0.017822265625006883 0
-		0.38523244857788108 0.017822265625006883 0
+		0.38523244857788114 0.017822265625006883 0
 		0.38429546356201111 0.017822265625006883 0
 		0.3831300735473635 0.016962051391606892 0
-		0.38128089904785101 0.015848159790044614 0
-		0.37943172454833979 0.014734268188481892 0
+		0.38128089904785106 0.015848159790044614 0
+		0.37943172454833973 0.014734268188481892 0
 		0.37725353240966736 0.013772010803232204 0
-		0.37477111816406228 0.012658119201669482 0
-		0.37178230285644476 0.011974811553957077 0
-		0.36879348754882729 0.011291503906257105 0
-		0.36570358276367232 0.011291503906257105 0
-		0.36210632324218728 0.011291503906257105 0
+		0.37477111816406222 0.012658119201669482 0
+		0.37178230285644481 0.011974811553957077 0
+		0.36879348754882729 0.011291503906257104 0
+		0.36570358276367232 0.011291503906257104 0
+		0.36210632324218728 0.011291503906257104 0
 		0.359066963195801 0.011972904205331814 0
 		0.35602760314941351 0.012654304504406966 0
 		0.35374832153320235 0.014220237731944474 0
 		0.35141754150390603 0.015785217285156916 0
-		0.34999942779540977 0.018435955047619634 0
-		0.34858131408691351 0.021086692810069474 0
+		0.34999942779540977 0.018435955047619631 0
+		0.34858131408691351 0.02108669281006947 0
 		0.34832763671874978 0.025024414062507105 0
-		0.36776733398437483 0.025024414062507105 0
+		0.36776733398437478 0.025024414062507105 0
 		0.38720703124999983 0.025024414062507105 0
 		0.38720703124999983 0.028214454650882015 0
 		0.38720703124999983 0.031404495239269581 0
 		0.38720703124999983 0.044517517089856851 0
 		0.38062810897827104 0.051555633544931867 0
-		0.37404918670654236 0.058593750000007105 0
+		0.37404918670654241 0.058593750000007105 0
 		0.36099243164062478 0.058593750000007105 0
 		0.34661960601806602 0.058593750000007105 0
 		0.33862352371215854 0.050294399261482159 0
@@ -10117,6 +10582,7 @@ createNode nurbsCurve -n "divergenceTitleShape10" -p "divergenceTitle";
 		0.36386203765869102 -0.0015258789062428946 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape11" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A6";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 9 0 no 3
@@ -10124,7 +10590,7 @@ createNode nurbsCurve -n "divergenceTitleShape11" -p "divergenceTitle";
 		 5
 		11
 		0.36975097656249983 0.035705566406257105 0
-		0.36959838867187483 0.041346549987794301 0
+		0.36959838867187478 0.041346549987794301 0
 		0.36713647842407227 0.04429388046265692 0
 		0.36467456817626975 0.047241210937507105 0
 		0.35959815979003856 0.047241210937507105 0
@@ -10136,6 +10602,7 @@ createNode nurbsCurve -n "divergenceTitleShape11" -p "divergenceTitle";
 		0.36975097656249983 0.035705566406257105 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape12" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 0 no 3
@@ -10147,12 +10614,12 @@ createNode nurbsCurve -n "divergenceTitleShape12" -p "divergenceTitle";
 		0.44946289062499983 7.1054273576010019e-15 0
 		0.44946289062499983 0.018480777740482068 0
 		0.44946289062499983 0.036961555480969688 0
-		0.44946289062499983 0.047377586364757196 0
+		0.44946289062499983 0.047377586364757203 0
 		0.44486618041992226 0.052863597869881929 0
 		0.44026947021484358 0.058349609375006883 0
 		0.43158054351806607 0.058349609375006883 0
 		0.42657947540283225 0.058349609375006883 0
-		0.42246246337890603 0.056276321411144581 0
+		0.42246246337890597 0.056276321411144581 0
 		0.4183454513549798 0.054203033447269622 0
 		0.41400146484374983 0.050512313842781875 0
 		0.41400146484374983 0.05366802215576949 0
@@ -10165,24 +10632,25 @@ createNode nurbsCurve -n "divergenceTitleShape12" -p "divergenceTitle";
 		0.41400146484374983 7.1054273576010019e-15 0
 		0.41400146484374983 0.020125865936282183 0
 		0.41400146484374983 0.040251731872569696 0
-		0.41652107238769476 0.042021751403819696 0
-		0.41873884201049733 0.042830944061281961 0
+		0.4165210723876947 0.042021751403819696 0
+		0.41873884201049738 0.042830944061281961 0
 		0.42095661163330106 0.043640136718757105 0
 		0.423123359680176 0.043640136718757105 0
-		0.42599582672119107 0.043640136718757105 0
-		0.42770957946777355 0.042805671691906966 0
+		0.42599582672119102 0.043640136718757105 0
+		0.42770957946777349 0.042805671691906966 0
 		0.42942333221435486 0.041971206665044392 0
 		0.43033027648925726 0.040049552917481801 0
 		0.4310865402221673 0.038431167602544614 0
 		0.43136358261108354 0.035017967224132196 0
 		0.43164062499999978 0.031604766845707122 0
-		0.43164062499999978 0.028166770935069474 0
+		0.43164062499999978 0.02816677093506947 0
 		0.43164062499999978 0.014083385467532183 0
 		0.43164062499999978 7.1054273576010019e-15 0
 		0.44055175781249983 7.1054273576010019e-15 0
 		0.44946289062499983 7.1054273576010019e-15 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape13" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A8";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 59 0 no 3
@@ -10193,10 +10661,10 @@ createNode nurbsCurve -n "divergenceTitleShape13" -p "divergenceTitle";
 		 23 24 24 25 25 26 26 27 27 28 28 29
 		 29 30 30
 		61
-		0.49043750762939475 -0.0015258789062428946 0
+		0.4904375076293947 -0.0015258789062428946 0
 		0.49412822723388605 -0.0015258789062428946 0
 		0.49637794494628856 -0.0012073516845680921 0
-		0.49862766265869107 -0.0008201599121053782 0
+		0.49862766265869102 -0.0008201599121053782 0
 		0.50120544433593728 -6.3896179193001501e-05 0
 		0.5032787322998048 0.00049877166748180102 0
 		0.50527572631835982 0.0013594627380446589 0
@@ -10208,21 +10676,21 @@ createNode nurbsCurve -n "divergenceTitleShape13" -p "divergenceTitle";
 		0.5065126419067385 0.018066406250006883 0
 		0.50560188293456976 0.017147064208994367 0
 		0.50433683395385742 0.015997409820569297 0
-		0.50307178497314475 0.014847755432132015 0
-		0.50130176544189475 0.013774871826181867 0
+		0.50307178497314475 0.014847755432132017 0
+		0.50130176544189475 0.013774871826181869 0
 		0.49948024749755854 0.012701988220219285 0
 		0.49695062637329102 0.011935710906994634 0
-		0.4944210052490236 0.011169433593757105 0
-		0.49108219146728477 0.011169433593757105 0
-		0.48450565338134727 0.011169433593757105 0
-		0.48053407669067355 0.01537847518921942 0
+		0.4944210052490236 0.011169433593757104 0
+		0.49108219146728482 0.011169433593757104 0
+		0.48450565338134727 0.011169433593757104 0
+		0.4805340766906735 0.01537847518921942 0
 		0.47656249999999983 0.019587516784669301 0
 		0.47656249999999983 0.028158187866219375 0
 		0.47656249999999983 0.036170959472657138 0
 		0.4802808761596673 0.040912628173832122 0
-		0.48399925231933605 0.045654296875007105 0
+		0.4839992523193361 0.045654296875007105 0
 		0.49077892303466736 0.045654296875007105 0
-		0.49376392364501981 0.045654296875007105 0
+		0.49376392364501986 0.045654296875007105 0
 		0.49619197845458984 0.044916629791269314 0
 		0.49862003326415977 0.044178962707531966 0
 		0.50054264068603482 0.043110847473156966 0
@@ -10232,30 +10700,31 @@ createNode nurbsCurve -n "divergenceTitleShape13" -p "divergenceTitle";
 		0.5065126419067385 0.038635253906257105 0
 		0.50765085220336847 0.038635253906257105 0
 		0.50878906249999978 0.038635253906257105 0
-		0.50878906249999978 0.046217918396007196 0
+		0.50878906249999978 0.046217918396007203 0
 		0.50878906249999978 0.053800582885744408 0
 		0.50403690338134732 0.056176185607919704 0
-		0.49933528900146484 0.057262897491456854 0
+		0.49933528900146479 0.057262897491456854 0
 		0.49463367462158225 0.058349609375006883 0
 		0.48993206024169855 0.058349609375006883 0
-		0.48371315002441356 0.058349609375006883 0
-		0.47797489166259732 0.056655406951907183 0
-		0.47223663330078108 0.054961204528819474 0
+		0.48371315002441362 0.058349609375006883 0
+		0.47797489166259727 0.056655406951907183 0
+		0.47223663330078114 0.054961204528819474 0
 		0.46798992156982361 0.051421165466319696 0
-		0.46359157562255859 0.047729492187506883 0
+		0.46359157562255854 0.047729492187506883 0
 		0.46101331710815352 0.042015075683606851 0
 		0.45843505859374978 0.036300659179694383 0
 		0.45843505859374978 0.028159141540532007 0
-		0.45843505859374978 0.020573616027844466 0
+		0.45843505859374978 0.020573616027844462 0
 		0.46081113815307606 0.014985561370856937 0
-		0.46318721771240229 0.0093975067138694079 0
+		0.46318721771240234 0.0093975067138694079 0
 		0.46743392944335976 0.005705833435069696 0
-		0.47173118591308605 0.0020141601562571054 0
-		0.47757053375244107 0.00024414062500710543 0
-		0.48340988159179732 -0.0015258789062428946 0
-		0.49043750762939475 -0.0015258789062428946 0
+		0.4717311859130861 0.0020141601562571054 0
+		0.47757053375244102 0.00024414062500710543 0
+		0.48340988159179726 -0.0015258789062428946 0
+		0.4904375076293947 -0.0015258789062428946 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape14" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043A9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 43 0 no 3
@@ -10273,7 +10742,7 @@ createNode nurbsCurve -n "divergenceTitleShape14" -p "divergenceTitle";
 		0.56463241577148482 0.0015888214111445809 0
 		0.56642818450927734 0.0023231506347696218 0
 		0.56860351562499978 0.003184318542481801 0
-		0.56860351562499978 0.010503292083744453 0
+		0.56860351562499978 0.010503292083744451 0
 		0.56860351562499978 0.017822265625006883 0
 		0.56766653060913108 0.017822265625006883 0
 		0.56672954559326105 0.017822265625006883 0
@@ -10283,15 +10752,15 @@ createNode nurbsCurve -n "divergenceTitleShape14" -p "divergenceTitle";
 		0.5596876144409173 0.013772010803232204 0
 		0.55720520019531228 0.012658119201669482 0
 		0.55421638488769476 0.011974811553957077 0
-		0.55122756958007724 0.011291503906257105 0
-		0.54813766479492232 0.011291503906257105 0
-		0.54454040527343728 0.011291503906257105 0
+		0.55122756958007724 0.011291503906257104 0
+		0.54813766479492232 0.011291503906257104 0
+		0.54454040527343728 0.011291503906257104 0
 		0.541501045227051 0.011972904205331814 0
 		0.53846168518066351 0.012654304504406966 0
 		0.53618240356445224 0.014220237731944474 0
 		0.53385162353515603 0.015785217285156916 0
-		0.53243350982665982 0.018435955047619634 0
-		0.53101539611816362 0.021086692810069474 0
+		0.53243350982665982 0.018435955047619631 0
+		0.53101539611816362 0.02108669281006947 0
 		0.53076171874999978 0.025024414062507105 0
 		0.55020141601562478 0.025024414062507105 0
 		0.56964111328124978 0.025024414062507105 0
@@ -10311,6 +10780,7 @@ createNode nurbsCurve -n "divergenceTitleShape14" -p "divergenceTitle";
 		0.54629611968994107 -0.0015258789062428946 0
 		;
 createNode nurbsCurve -n "divergenceTitleShape15" -p "divergenceTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043AA";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 9 0 no 3
@@ -10330,9 +10800,11 @@ createNode nurbsCurve -n "divergenceTitleShape15" -p "divergenceTitle";
 		0.55218505859374978 0.035705566406257105 0
 		;
 createNode transform -n "eyeblend_dir_box" -p "eyeDirectionCtrl";
-	setAttr ".t" -type "double3" -0.42920872971187929 -1.2720428846336447 1.7763568394002524e-15 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043AB";
+	setAttr ".t" -type "double3" -0.42920872971187929 -1.2720428846336449 1.7763568394002524e-15 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 0.50000000000000011 1 ;
 createNode nurbsCurve -n "twitchDecaCrv" -p "eyeblend_dir_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043AC";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -10340,12 +10812,13 @@ createNode nurbsCurve -n "twitchDecaCrv" -p "eyeblend_dir_box";
 		5 0 1 2 3 4
 		5
 		-2.9526348813840872e-16 0.1000000000000032 1.0384878043221899e-17
-		-2.598480241741697e-16 -0.099999999999996925 1.0269173342626962e-17
-		1.0000381554018671 -0.09999999999999766 8.8895260781383382e-18
-		1.0000381554018671 0.10000000000000248 9.0052307787332759e-18
+		-2.598480241741697e-16 -0.099999999999996925 1.0269173342626965e-17
+		1.0000381554018671 -0.09999999999999766 8.8895260781383366e-18
+		1.0000381554018671 0.10000000000000248 9.0052307787332744e-18
 		-2.9526348813840872e-16 0.1000000000000032 1.0384878043221899e-17
 		;
 createNode transform -n "eyeblend_dir" -p "eyeblend_dir_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043AD";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -10365,6 +10838,7 @@ createNode transform -n "eyeblend_dir" -p "eyeblend_dir_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "eyeblend_dirShape" -p "eyeblend_dir";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043AE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10373,23 +10847,25 @@ createNode nurbsCurve -n "eyeblend_dirShape" -p "eyeblend_dir";
 		13 -2 -1 0 1 2 3 4 5 6 7 8
 		 9 10
 		11
-		0.039180581244561252 0.07836116248912238 -9.2541963937066851e-18
+		0.039180581244561245 0.07836116248912238 -9.2541963937066851e-18
 		-7.7094761378812488e-18 0.1108194187554388 -1.3087410048844189e-17
-		-0.039180581244561204 0.078361162489122435 -9.2541963937066913e-18
-		-0.055409709377719378 1.8621523105198665e-17 -2.1991408306299197e-33
+		-0.039180581244561197 0.078361162489122435 -9.2541963937066913e-18
+		-0.055409709377719378 1.8621523105198662e-17 -2.1991408306299194e-33
 		-0.039180581244561218 -0.078361162489122393 9.2541963937066851e-18
 		-2.4734416252888396e-17 -0.1108194187554388 1.3087410048844189e-17
 		0.039180581244561197 -0.078361162489122449 9.2541963937066928e-18
 		0.055409709377719378 -6.1415745182853949e-17 7.2529981630488394e-33
-		0.039180581244561252 0.07836116248912238 -9.2541963937066851e-18
+		0.039180581244561245 0.07836116248912238 -9.2541963937066851e-18
 		-7.7094761378812488e-18 0.1108194187554388 -1.3087410048844189e-17
-		-0.039180581244561204 0.078361162489122435 -9.2541963937066913e-18
+		-0.039180581244561197 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "eyeTargetTitle" -p "eyeblend_dir_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043AF";
 	setAttr ".tmp" yes;
 	setAttr ".rp" -type "double3" -10.308158134961261 6.5977908122887214 0.050000000000006477 ;
 	setAttr ".sp" -type "double3" -10.308158134961261 6.5977908122887214 0.050000000000006477 ;
 createNode nurbsCurve -n "eyeTargetTitleShape" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B0";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10399,7 +10875,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape" -p "eyeTargetTitle";
 		 5
 		11
 		0.043811230842131454 -0.22841785984722485 6.9388939039072284e-18
-		0.043659439706756675 -0.21719480277375602 6.9388939039072284e-18
+		0.043659439706756675 -0.217194802773756 6.9388939039072284e-18
 		0.041210384606556349 -0.21133092147442589 6.9388939039072284e-18
 		0.038761329506382669 -0.20546704017509221 6.9388939039072284e-18
 		0.033711428170631219 -0.20546704017509221 6.9388939039072284e-18
@@ -10411,6 +10887,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape" -p "eyeTargetTitle";
 		0.043811230842131454 -0.22841785984722485 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape1" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10419,8 +10896,8 @@ createNode nurbsCurve -n "eyeTargetTitleShape1" -p "eyeTargetTitle";
 		18 0 0 1 1 2 2 3 3 4 4 5
 		 5 6 6 7 7 8 8
 		17
-		0.12292477061143181 -0.1864020735691394 6.9388939039072284e-18
-		0.11386426287008167 -0.1864020735691394 6.9388939039072284e-18
+		0.1229247706114318 -0.1864020735691394 6.9388939039072284e-18
+		0.11386426287008168 -0.1864020735691394 6.9388939039072284e-18
 		0.10480375512873108 -0.1864020735691394 6.9388939039072284e-18
 		0.099255314782632276 -0.22185289324127488 6.9388939039072284e-18
 		0.093706874436557008 -0.25730371291340681 6.9388939039072284e-18
@@ -10428,16 +10905,17 @@ createNode nurbsCurve -n "eyeTargetTitleShape1" -p "eyeTargetTitle";
 		0.081846294594431601 -0.1864020735691394 6.9388939039072284e-18
 		0.072604111837881291 -0.1864020735691394 6.9388939039072284e-18
 		0.063361929081356738 -0.1864020735691394 6.9388939039072284e-18
-		0.073718827988481728 -0.24155822869967913 6.9388939039072284e-18
+		0.073718827988481728 -0.24155822869967911 6.9388939039072284e-18
 		0.08407572689558096 -0.29671438383021886 6.9388939039072284e-18
 		0.079788101667882305 -0.31885976179014897 6.9388939039072284e-18
 		0.075500476440206299 -0.34086473294983399 6.9388939039072284e-18
-		0.084962756343056167 -0.34086473294983399 6.9388939039072284e-18
-		0.094425036245907368 -0.34086473294983399 6.9388939039072284e-18
-		0.10867490342865693 -0.26363340325949203 6.9388939039072284e-18
-		0.12292477061143181 -0.1864020735691394 6.9388939039072284e-18
+		0.084962756343056153 -0.34086473294983399 6.9388939039072284e-18
+		0.094425036245907354 -0.34086473294983399 6.9388939039072284e-18
+		0.10867490342865692 -0.26363340325949203 6.9388939039072284e-18
+		0.1229247706114318 -0.1864020735691394 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape2" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10448,17 +10926,17 @@ createNode nurbsCurve -n "eyeTargetTitleShape2" -p "eyeTargetTitle";
 		 11 12 12 13 13 14 14 15 15 16 16 17
 		 17 18 18 19 19 20 20 21 21 22 22
 		45
-		0.15847520321615693 -0.30249193392129392 6.9388939039072284e-18
-		0.16285248008318209 -0.30249193392129392 6.9388939039072284e-18
+		0.15847520321615691 -0.30249193392129392 6.9388939039072284e-18
+		0.16285248008318207 -0.30249193392129392 6.9388939039072284e-18
 		0.16589684104250635 -0.3017566956092157 6.9388939039072284e-18
 		0.16894120200183194 -0.30080515492919169 6.9388939039072284e-18
-		0.17181005446085607 -0.29926637229409359 6.9388939039072284e-18
+		0.17181005446085609 -0.29926637229409359 6.9388939039072284e-18
 		0.17492936229325595 -0.29775605049689169 6.9388939039072284e-18
 		0.17671575421798158 -0.29629506081868406 6.9388939039072284e-18
 		0.17850214614268145 -0.29483407114048354 6.9388939039072284e-18
-		0.18066611851670666 -0.29312072869968553 6.9388939039072284e-18
-		0.18066611851670666 -0.27855921534205841 6.9388939039072284e-18
-		0.18066611851670666 -0.26399770198444195 6.9388939039072284e-18
+		0.18066611851670664 -0.29312072869968553 6.9388939039072284e-18
+		0.18066611851670664 -0.27855921534205841 6.9388939039072284e-18
+		0.18066611851670664 -0.26399770198444195 6.9388939039072284e-18
 		0.17973402607590705 -0.26399770198444195 6.9388939039072284e-18
 		0.17880193363510699 -0.26399770198444195 6.9388939039072284e-18
 		0.17764262883850668 -0.2657091470360502 6.9388939039072284e-18
@@ -10480,21 +10958,22 @@ createNode nurbsCurve -n "eyeTargetTitleShape2" -p "eyeTargetTitle";
 		0.16236010758773167 -0.24966861880289848 6.9388939039072284e-18
 		0.18169829823740669 -0.24966861880289848 6.9388939039072284e-18
 		0.18169829823740669 -0.24332185195408407 6.9388939039072284e-18
-		0.18169829823740669 -0.23697508510526966 6.9388939039072284e-18
+		0.18169829823740669 -0.23697508510526968 6.9388939039072284e-18
 		0.18169829823740669 -0.21088598370879019 6.9388939039072284e-18
-		0.17515372856528222 -0.19688325146835162 6.9388939039072284e-18
+		0.17515372856528222 -0.19688325146835159 6.9388939039072284e-18
 		0.16860915889315686 -0.18288051922791659 6.9388939039072284e-18
 		0.1556205811760818 -0.18288051922791659 6.9388939039072284e-18
-		0.14132280491620675 -0.18288051922791659 6.9388939039072284e-18
+		0.14132280491620677 -0.18288051922791659 6.9388939039072284e-18
 		0.13336847507408223 -0.19939254867539624 6.9388939039072284e-18
 		0.12541414523193151 -0.21590457812287589 6.9388939039072284e-18
 		0.12541414523193151 -0.24359317860860408 6.9388939039072284e-18
 		0.12541414523193151 -0.27188514885754422 6.9388939039072284e-18
-		0.13394338399940731 -0.28718854138942085 6.9388939039072284e-18
+		0.13394338399940733 -0.28718854138942085 6.9388939039072284e-18
 		0.1424726227668569 -0.30249193392129392 6.9388939039072284e-18
-		0.15847520321615693 -0.30249193392129392 6.9388939039072284e-18
+		0.15847520321615691 -0.30249193392129392 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape3" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10504,7 +10983,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape3" -p "eyeTargetTitle";
 		 5
 		11
 		0.16433339234790711 -0.22841785984722485 6.9388939039072284e-18
-		0.16418160121250702 -0.21719480277375602 6.9388939039072284e-18
+		0.16418160121250702 -0.217194802773756 6.9388939039072284e-18
 		0.16173254611233201 -0.21133092147442589 6.9388939039072284e-18
 		0.15928349101215744 -0.20546704017509221 6.9388939039072284e-18
 		0.15423358967638157 -0.20546704017509221 6.9388939039072284e-18
@@ -10516,6 +10995,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape3" -p "eyeTargetTitle";
 		0.16433339234790711 -0.22841785984722485 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape4" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10545,7 +11025,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape4" -p "eyeTargetTitle";
 		0.24112452774560733 -0.27297614764321487 6.9388939039072284e-18
 		0.24041869896600687 -0.26944510635602548 6.9388939039072284e-18
 		0.23966164067820683 -0.26591406506883963 6.9388939039072284e-18
-		0.23961135986460658 -0.26147512305305121 6.9388939039072284e-18
+		0.23961135986460655 -0.26147512305305121 6.9388939039072284e-18
 		0.23956107905100676 -0.25703618103726633 6.9388939039072284e-18
 		0.23956107905100676 -0.25108407114048426 6.9388939039072284e-18
 		0.23956107905100676 -0.2310077960949446 6.9388939039072284e-18
@@ -10563,19 +11043,20 @@ createNode nurbsCurve -n "eyeTargetTitleShape4" -p "eyeTargetTitle";
 		0.22195330734488161 -0.17025149676282503 6.9388939039072284e-18
 		0.22195330734488161 -0.1864020735691394 6.9388939039072284e-18
 		0.21858354413905712 -0.1864020735691394 6.9388939039072284e-18
-		0.21521378093320598 -0.1864020735691394 6.9388939039072284e-18
-		0.21521378093320598 -0.1986667973092775 6.9388939039072284e-18
-		0.21521378093320598 -0.21093152104940849 6.9388939039072284e-18
+		0.21521378093320601 -0.1864020735691394 6.9388939039072284e-18
+		0.21521378093320601 -0.1986667973092775 6.9388939039072284e-18
+		0.21521378093320601 -0.21093152104940849 6.9388939039072284e-18
 		0.21858354413905712 -0.21093152104940849 6.9388939039072284e-18
 		0.22195330734488161 -0.21093152104940849 6.9388939039072284e-18
 		0.22195330734488161 -0.23735930641674408 6.9388939039072284e-18
 		0.22195330734488161 -0.26378709178407966 6.9388939039072284e-18
 		0.22195330734488161 -0.28392218589458018 6.9388939039072284e-18
-		0.22686517361688185 -0.29278204472882585 6.9388939039072284e-18
+		0.22686517361688183 -0.29278204472882585 6.9388939039072284e-18
 		0.23177703988890652 -0.30164190356307152 6.9388939039072284e-18
 		0.24255705658593207 -0.30164190356307152 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape5" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10586,10 +11067,10 @@ createNode nurbsCurve -n "eyeTargetTitleShape5" -p "eyeTargetTitle";
 		19
 		0.29487376878993077 -0.26994981188122402 6.9388939039072284e-18
 		0.29487376878993077 -0.2582305875339248 6.9388939039072284e-18
-		0.29487376878993077 -0.24651136318662914 6.9388939039072284e-18
-		0.29038359726595653 -0.24741262305304978 6.9388939039072284e-18
+		0.29487376878993077 -0.24651136318662911 6.9388939039072284e-18
+		0.29038359726595653 -0.24741262305304976 6.9388939039072284e-18
 		0.2876086655719563 -0.2480634275460698 6.9388939039072284e-18
-		0.28483373387795696 -0.24871423203908982 6.9388939039072284e-18
+		0.28483373387795696 -0.24871423203908985 6.9388939039072284e-18
 		0.28216031250578189 -0.25061731339913429 6.9388939039072284e-18
 		0.27983885682878196 -0.2522206072667732 6.9388939039072284e-18
 		0.2785524269562818 -0.25547557842646107 6.9388939039072284e-18
@@ -10605,6 +11086,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape5" -p "eyeTargetTitle";
 		0.29487376878993077 -0.26994981188122402 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape6" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10625,9 +11107,9 @@ createNode nurbsCurve -n "eyeTargetTitleShape6" -p "eyeTargetTitle";
 		0.31236010758773158 -0.22258528546956491 6.9388939039072284e-18
 		0.31236010758773158 -0.20266459633780975 6.9388939039072284e-18
 		0.30569363065998223 -0.19295470714534169 6.9388939039072284e-18
-		0.2990271537322573 -0.18324481795287006 6.9388939039072284e-18
-		0.28443717953673131 -0.18324481795287006 6.9388939039072284e-18
-		0.27850024875350643 -0.18324481795287006 6.9388939039072284e-18
+		0.2990271537322573 -0.18324481795287009 6.9388939039072284e-18
+		0.28443717953673131 -0.18324481795287009 6.9388939039072284e-18
+		0.27850024875350643 -0.18324481795287009 6.9388939039072284e-18
 		0.27266435394475685 -0.18530822869968055 6.9388939039072284e-18
 		0.26682845913600683 -0.1873716394464946 6.9388939039072284e-18
 		0.26421195943958198 -0.18888006385451028 6.9388939039072284e-18
@@ -10645,12 +11127,12 @@ createNode nurbsCurve -n "eyeTargetTitleShape6" -p "eyeTargetTitle";
 		0.29497433041713217 -0.2246572344677471 6.9388939039072284e-18
 		0.29497433041713217 -0.22495891934934953 6.9388939039072284e-18
 		0.29497433041713217 -0.2252606042309484 6.9388939039072284e-18
-		0.28732121110930686 -0.22626622050295886 6.9388939039072284e-18
+		0.28732121110930686 -0.22626622050295889 6.9388939039072284e-18
 		0.28067465676805714 -0.22807632979258052 6.9388939039072284e-18
 		0.27402810242683184 -0.22988643908219508 6.9388939039072284e-18
 		0.26924478427263177 -0.23451227393344176 6.9388939039072284e-18
-		0.26451174693200663 -0.23903754715748526 6.9388939039072284e-18
-		0.26199391147360673 -0.24678079245195939 6.9388939039072284e-18
+		0.26451174693200663 -0.23903754715748529 6.9388939039072284e-18
+		0.26199391147360673 -0.24678079245195941 6.9388939039072284e-18
 		0.25947607601518197 -0.25452403774643706 6.9388939039072284e-18
 		0.25947607601518197 -0.26709424114655356 6.9388939039072284e-18
 		0.25947607601518197 -0.2823796084811061 6.9388939039072284e-18
@@ -10667,6 +11149,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape6" -p "eyeTargetTitle";
 		0.29487376878993077 -0.28748168801965868 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape7" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B7";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10679,20 +11162,20 @@ createNode nurbsCurve -n "eyeTargetTitleShape7" -p "eyeTargetTitle";
 		35
 		0.36336192908135656 -0.21979612335663568 6.9388939039072284e-18
 		0.36336192908135656 -0.20311807235481361 6.9388939039072284e-18
-		0.36336192908135656 -0.18644002135299154 6.9388939039072284e-18
-		0.36250620655555688 -0.18623889809858873 6.9388939039072284e-18
-		0.36144888642805739 -0.18613833647138911 6.9388939039072284e-18
+		0.36336192908135656 -0.18644002135299151 6.9388939039072284e-18
+		0.36250620655555688 -0.18623889809858871 6.9388939039072284e-18
+		0.36144888642805734 -0.18613833647138911 6.9388939039072284e-18
 		0.36039156630055702 -0.18603777484418593 6.9388939039072284e-18
 		0.35953584377475689 -0.18603777484418593 6.9388939039072284e-18
 		0.3572703610789314 -0.18603777484418593 6.9388939039072284e-18
 		0.35472785956103214 -0.18769799038759949 6.9388939039072284e-18
 		0.35218535804310669 -0.18935820593100949 6.9388939039072284e-18
 		0.35027184104250741 -0.19167302074582615 6.9388939039072284e-18
-		0.34851011517730646 -0.19368615067904038 6.9388939039072284e-18
+		0.34851011517730646 -0.19368615067904041 6.9388939039072284e-18
 		0.34637033451548138 -0.19705781127405864 6.9388939039072284e-18
 		0.34423055385368162 -0.20042947186908044 6.9388939039072284e-18
 		0.34302191693808171 -0.20264372505669392 6.9388939039072284e-18
-		0.34302191693808171 -0.19452289931292022 6.9388939039072284e-18
+		0.34302191693808171 -0.19452289931292024 6.9388939039072284e-18
 		0.34302191693808171 -0.1864020735691394 6.9388939039072284e-18
 		0.33421803108500692 -0.1864020735691394 6.9388939039072284e-18
 		0.32541414523193168 -0.1864020735691394 6.9388939039072284e-18
@@ -10702,18 +11185,19 @@ createNode nurbsCurve -n "eyeTargetTitleShape7" -p "eyeTargetTitle";
 		0.34302191693808171 -0.29945611121334359 6.9388939039072284e-18
 		0.34302191693808171 -0.26161458115869785 6.9388939039072284e-18
 		0.34302191693808171 -0.22377305110405565 6.9388939039072284e-18
-		0.34589171809168162 -0.22155879791643862 6.9388939039072284e-18
+		0.34589171809168162 -0.22155879791643865 6.9388939039072284e-18
 		0.34893750209290708 -0.21994886318662843 6.9388939039072284e-18
 		0.35198328609410723 -0.21833892845681468 6.9388939039072284e-18
 		0.35475252562053106 -0.21833892845681468 6.9388939039072284e-18
 		0.35706828912993194 -0.21833892845681468 6.9388939039072284e-18
 		0.35898180613055697 -0.21870322718177171 6.9388939039072284e-18
-		0.36089532313115669 -0.21906752590672518 6.9388939039072284e-18
+		0.36089532313115674 -0.21906752590672521 6.9388939039072284e-18
 		0.36190188809775714 -0.21979612335663568 6.9388939039072284e-18
-		0.36263190858955685 -0.21979612335663568 6.9388939039072284e-18
+		0.36263190858955691 -0.21979612335663568 6.9388939039072284e-18
 		0.36336192908135656 -0.21979612335663568 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape8" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B8";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10726,21 +11210,21 @@ createNode nurbsCurve -n "eyeTargetTitleShape8" -p "eyeTargetTitle";
 		0.40385980400548149 -0.26383452651389128 6.9388939039072284e-18
 		0.40385980400548149 -0.23824443847503041 6.9388939039072284e-18
 		0.40385980400548149 -0.21265435043617664 6.9388939039072284e-18
-		0.40255440024105749 -0.21144761090975983 6.9388939039072284e-18
+		0.40255440024105754 -0.21144761090975983 6.9388939039072284e-18
 		0.40064657540803239 -0.21064311789215573 6.9388939039072284e-18
 		0.39873875057498154 -0.20983862487454452 6.9388939039072284e-18
 		0.39682997704735623 -0.20983862487454452 6.9388939039072284e-18
 		0.39050408147965632 -0.20983862487454452 6.9388939039072284e-18
-		0.38731551894170657 -0.21803344879682918 6.9388939039072284e-18
-		0.38412695640378125 -0.22622827271911028 6.9388939039072284e-18
-		0.38412695640378125 -0.24090837290125755 6.9388939039072284e-18
-		0.38412695640378125 -0.24824937168692962 6.9388939039072284e-18
+		0.38731551894170657 -0.2180334487968292 6.9388939039072284e-18
+		0.38412695640378131 -0.22622827271911028 6.9388939039072284e-18
+		0.38412695640378131 -0.24090837290125755 6.9388939039072284e-18
+		0.38412695640378131 -0.24824937168692959 6.9388939039072284e-18
 		0.38460414978568158 -0.25332773386057816 6.9388939039072284e-18
-		0.38508134316758236 -0.25840609603423026 6.9388939039072284e-18
-		0.38638674693200636 -0.26232610210587559 6.9388939039072284e-18
+		0.38508134316758241 -0.25840609603423026 6.9388939039072284e-18
+		0.38638674693200642 -0.26232610210587559 6.9388939039072284e-18
 		0.38764186988283145 -0.26614744393951462 6.9388939039072284e-18
-		0.38967539674985652 -0.26810839566993216 6.9388939039072284e-18
-		0.39170892361688203 -0.27006934740034971 6.9388939039072284e-18
+		0.38967539674985646 -0.26810839566993216 6.9388939039072284e-18
+		0.39170892361688198 -0.27006934740034971 6.9388939039072284e-18
 		0.39487187140073265 -0.27006934740034971 6.9388939039072284e-18
 		0.39723222355618137 -0.27006934740034971 6.9388939039072284e-18
 		0.39951668014390718 -0.2684603613651344 6.9388939039072284e-18
@@ -10748,6 +11232,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape8" -p "eyeTargetTitle";
 		0.40385980400548149 -0.26383452651389128 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape9" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043B9";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10764,26 +11249,26 @@ createNode nurbsCurve -n "eyeTargetTitleShape9" -p "eyeTargetTitle";
 		0.42146757571160665 -0.23640966312590983 6.9388939039072284e-18
 		0.42146757571160665 -0.1864020735691394 6.9388939039072284e-18
 		0.41294023433333216 -0.1864020735691394 6.9388939039072284e-18
-		0.40441289295508165 -0.1864020735691394 6.9388939039072284e-18
-		0.40408606766668242 -0.18891706294376398 6.9388939039072284e-18
+		0.4044128929550817 -0.1864020735691394 6.9388939039072284e-18
+		0.40408606766668242 -0.18891706294376401 6.9388939039072284e-18
 		0.40375924237828142 -0.191432052318385 6.9388939039072284e-18
 		0.40094351681663154 -0.18770937472275584 6.9388939039072284e-18
-		0.39752394714450645 -0.18553781279197246 6.9388939039072284e-18
+		0.39752394714450651 -0.18553781279197248 6.9388939039072284e-18
 		0.39410437747238136 -0.18336625086118907 6.9388939039072284e-18
-		0.38977927880813157 -0.18336625086118907 6.9388939039072284e-18
+		0.38977927880813162 -0.18336625086118907 6.9388939039072284e-18
 		0.38500260151610632 -0.18336625086118907 6.9388939039072284e-18
 		0.38057694122465646 -0.18724071959221611 6.9388939039072284e-18
 		0.37615128093320616 -0.19111518832323959 6.9388939039072284e-18
 		0.37303387048998138 -0.1982588586328955 6.9388939039072284e-18
 		0.3697646689113574 -0.20570421382415027 6.9388939039072284e-18
 		0.36792941921493139 -0.21626982554242424 6.9388939039072284e-18
-		0.36609416951853069 -0.22683543726070532 6.9388939039072284e-18
-		0.36609416951853069 -0.24011905899719288 6.9388939039072284e-18
-		0.36609416951853069 -0.26930090477740087 6.9388939039072284e-18
+		0.36609416951853074 -0.22683543726070532 6.9388939039072284e-18
+		0.36609416951853074 -0.24011905899719288 6.9388939039072284e-18
+		0.36609416951853074 -0.26930090477740087 6.9388939039072284e-18
 		0.37205339462478104 -0.28358919409130401 6.9388939039072284e-18
 		0.37801261973103095 -0.29787748340520359 6.9388939039072284e-18
 		0.38897478579053191 -0.29787748340520359 6.9388939039072284e-18
-		0.39309876120038156 -0.29787748340520359 6.9388939039072284e-18
+		0.39309876120038162 -0.29787748340520359 6.9388939039072284e-18
 		0.3969959986017062 -0.2947088434537779 6.9388939039072284e-18
 		0.40089323600303217 -0.29154020350235577 6.9388939039072284e-18
 		0.40385980400548149 -0.28630720410952115 6.9388939039072284e-18
@@ -10793,17 +11278,17 @@ createNode nurbsCurve -n "eyeTargetTitleShape9" -p "eyeTargetTitle";
 		0.40325643424225666 -0.30031657721213101 6.9388939039072284e-18
 		0.40265306447905624 -0.30516915007187428 6.9388939039072284e-18
 		0.40114464007105655 -0.30872296002937283 6.9388939039072284e-18
-		0.39963621566303109 -0.31213256840824677 6.9388939039072284e-18
-		0.39664498160110684 -0.31400434284661394 6.9388939039072284e-18
+		0.39963621566303115 -0.31213256840824677 6.9388939039072284e-18
+		0.39664498160110689 -0.31400434284661394 6.9388939039072284e-18
 		0.39365374753915594 -0.31572812092797697 6.9388939039072284e-18
 		0.3891787551287309 -0.31572812092797697 6.9388939039072284e-18
 		0.38701668014390656 -0.31572812092797697 6.9388939039072284e-18
 		0.38495516678628094 -0.31502608692675871 6.9388939039072284e-18
-		0.38289365342865755 -0.31446066494740599 6.9388939039072284e-18
-		0.38073157844383188 -0.31337915310769482 6.9388939039072284e-18
+		0.3828936534286575 -0.31446066494740599 6.9388939039072284e-18
+		0.38073157844383182 -0.31337915310769482 6.9388939039072284e-18
 		0.37892241784883263 -0.31243804806822872 6.9388939039072284e-18
 		0.37713744896600643 -0.31113549038760091 6.9388939039072284e-18
-		0.37535248008318156 -0.3099885186207505 6.9388939039072284e-18
+		0.37535248008318162 -0.3099885186207505 6.9388939039072284e-18
 		0.37404517892958111 -0.3088064451538397 6.9388939039072284e-18
 		0.37301442225075698 -0.3088064451538397 6.9388939039072284e-18
 		0.37198366557195595 -0.3088064451538397 6.9388939039072284e-18
@@ -10813,16 +11298,17 @@ createNode nurbsCurve -n "eyeTargetTitleShape9" -p "eyeTargetTitle";
 		0.38075909058713098 -0.34061807235483421 6.9388939039072284e-18
 		0.3858127867012815 -0.34195762912468375 6.9388939039072284e-18
 		0.39144518651913218 -0.34195762912468375 6.9388939039072284e-18
-		0.39813348342258204 -0.34195762912468375 6.9388939039072284e-18
+		0.39813348342258209 -0.34195762912468375 6.9388939039072284e-18
 		0.40361504079963151 -0.33919028698748654 6.9388939039072284e-18
-		0.40909659817668187 -0.33656335165048468 6.9388939039072284e-18
-		0.41301945033213139 -0.3304139132777042 6.9388939039072284e-18
-		0.41694135379295627 -0.32416581066689609 6.9388939039072284e-18
-		0.41920446475228124 -0.31308031430988414 6.9388939039072284e-18
+		0.40909659817668181 -0.33656335165048468 6.9388939039072284e-18
+		0.41301945033213133 -0.3304139132777042 6.9388939039072284e-18
+		0.41694135379295622 -0.32416581066689609 6.9388939039072284e-18
+		0.41920446475228129 -0.31308031430988414 6.9388939039072284e-18
 		0.42146757571160665 -0.30214281430988343 6.9388939039072284e-18
 		0.42146757571160665 -0.28641725268268026 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape10" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043BA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10835,28 +11321,28 @@ createNode nurbsCurve -n "eyeTargetTitleShape10" -p "eyeTargetTitle";
 		45
 		0.46387896763630687 -0.30249193392129392 6.9388939039072284e-18
 		0.46825624450335601 -0.30249193392129392 6.9388939039072284e-18
-		0.47130060546265629 -0.3017566956092157 6.9388939039072284e-18
-		0.47434496642198187 -0.30080515492919169 6.9388939039072284e-18
+		0.47130060546265634 -0.3017566956092157 6.9388939039072284e-18
+		0.47434496642198182 -0.30080515492919169 6.9388939039072284e-18
 		0.47721381888100689 -0.29926637229409359 6.9388939039072284e-18
-		0.48033312671343165 -0.29775605049689169 6.9388939039072284e-18
+		0.4803331267134317 -0.29775605049689169 6.9388939039072284e-18
 		0.48211951863813152 -0.29629506081868406 6.9388939039072284e-18
 		0.48390591056285714 -0.29483407114048354 6.9388939039072284e-18
 		0.4860698829368566 -0.29312072869968553 6.9388939039072284e-18
 		0.4860698829368566 -0.27855921534206551 6.9388939039072284e-18
 		0.4860698829368566 -0.2639977019844455 6.9388939039072284e-18
 		0.48513779049605699 -0.2639977019844455 6.9388939039072284e-18
-		0.48420569805525604 -0.2639977019844455 6.9388939039072284e-18
+		0.48420569805525598 -0.2639977019844455 6.9388939039072284e-18
 		0.48304639325865661 -0.2657091470360502 6.9388939039072284e-18
 		0.48120687443655674 -0.26792529761286055 6.9388939039072284e-18
 		0.47936735561445687 -0.27014144818966379 6.9388939039072284e-18
-		0.47720053715665589 -0.27205591388486461 6.9388939039072284e-18
+		0.47720053715665595 -0.27205591388486461 6.9388939039072284e-18
 		0.47473108512265672 -0.27427206446167496 6.9388939039072284e-18
 		0.47175787625805699 -0.27563154381808097 6.9388939039072284e-18
-		0.46878466739345637 -0.27699102317448343 6.9388939039072284e-18
-		0.46571089690165701 -0.27699102317448343 6.9388939039072284e-18
-		0.46213242088465645 -0.27699102317448343 6.9388939039072284e-18
-		0.45910893120643204 -0.27563533859646405 6.9388939039072284e-18
-		0.45608544152823205 -0.27427965401844467 6.9388939039072284e-18
+		0.46878466739345642 -0.27699102317448343 6.9388939039072284e-18
+		0.46571089690165707 -0.27699102317448343 6.9388939039072284e-18
+		0.4621324208846565 -0.27699102317448343 6.9388939039072284e-18
+		0.45910893120643198 -0.27563533859646405 6.9388939039072284e-18
+		0.45608544152823211 -0.27427965401844467 6.9388939039072284e-18
 		0.45381806144323145 -0.271164140964407 6.9388939039072284e-18
 		0.45149945185003215 -0.26805052529955908 6.9388939039072284e-18
 		0.450088742985431 -0.26277673203908414 6.9388939039072284e-18
@@ -10865,21 +11351,22 @@ createNode nurbsCurve -n "eyeTargetTitleShape10" -p "eyeTargetTitle";
 		0.46776387200790648 -0.24966861880289848 6.9388939039072284e-18
 		0.48710206265755662 -0.24966861880289848 6.9388939039072284e-18
 		0.48710206265755662 -0.24332185195408407 6.9388939039072284e-18
-		0.48710206265755662 -0.23697508510526966 6.9388939039072284e-18
+		0.48710206265755662 -0.23697508510526968 6.9388939039072284e-18
 		0.48710206265755662 -0.21088598370879019 6.9388939039072284e-18
 		0.48055749298543127 -0.19688325146835517 6.9388939039072284e-18
 		0.4740129233133068 -0.18288051922791659 6.9388939039072284e-18
 		0.46102434559623173 -0.18288051922791659 6.9388939039072284e-18
 		0.446726569336382 -0.18288051922791659 6.9388939039072284e-18
 		0.43877223949423128 -0.19939254867539624 6.9388939039072284e-18
-		0.43081790965210676 -0.21590457812287589 6.9388939039072284e-18
-		0.43081790965210676 -0.24359317860861118 6.9388939039072284e-18
-		0.43081790965210676 -0.27188514885754422 6.9388939039072284e-18
-		0.43934714841955635 -0.28718854138942085 6.9388939039072284e-18
-		0.44787638718700684 -0.30249193392129392 6.9388939039072284e-18
+		0.4308179096521067 -0.21590457812287589 6.9388939039072284e-18
+		0.4308179096521067 -0.24359317860861121 6.9388939039072284e-18
+		0.4308179096521067 -0.27188514885754422 6.9388939039072284e-18
+		0.4393471484195563 -0.28718854138942085 6.9388939039072284e-18
+		0.4478763871870069 -0.30249193392129392 6.9388939039072284e-18
 		0.46387896763630687 -0.30249193392129392 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape11" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043BB";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10888,19 +11375,20 @@ createNode nurbsCurve -n "eyeTargetTitleShape11" -p "eyeTargetTitle";
 		12 0 0 1 1 2 2 3 3 4 4 5
 		 5
 		11
-		0.46973715676808148 -0.22841785984722485 6.9388939039072284e-18
-		0.46958536563268138 -0.21719480277375602 6.9388939039072284e-18
+		0.46973715676808142 -0.22841785984722485 6.9388939039072284e-18
+		0.46958536563268138 -0.217194802773756 6.9388939039072284e-18
 		0.46713631053248195 -0.21133092147442589 6.9388939039072284e-18
 		0.46468725543230649 -0.20546704017509221 6.9388939039072284e-18
 		0.45963735409655682 -0.20546704017509221 6.9388939039072284e-18
-		0.45448594243898244 -0.20546704017509221 6.9388939039072284e-18
-		0.45158198827990637 -0.21163450374522164 6.9388939039072284e-18
+		0.45448594243898238 -0.20546704017509221 6.9388939039072284e-18
+		0.45158198827990642 -0.21163450374522164 6.9388939039072284e-18
 		0.44867803412083163 -0.21780196731534396 6.9388939039072284e-18
 		0.44837540054463121 -0.22841785984722485 6.9388939039072284e-18
 		0.45905627865635656 -0.22841785984722485 6.9388939039072284e-18
-		0.46973715676808148 -0.22841785984722485 6.9388939039072284e-18
+		0.46973715676808142 -0.22841785984722485 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape12" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043BC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10937,7 +11425,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape12" -p "eyeTargetTitle";
 		0.51478876575410704 -0.21093152104940849 6.9388939039072284e-18
 		0.52328906933638164 -0.21093152104940849 6.9388939039072284e-18
 		0.53178937291865713 -0.21093152104940849 6.9388939039072284e-18
-		0.53178937291865713 -0.19866679730927395 6.9388939039072284e-18
+		0.53178937291865713 -0.19866679730927397 6.9388939039072284e-18
 		0.53178937291865713 -0.1864020735691394 6.9388939039072284e-18
 		0.52328906933638164 -0.1864020735691394 6.9388939039072284e-18
 		0.51478876575410704 -0.1864020735691394 6.9388939039072284e-18
@@ -10949,7 +11437,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape12" -p "eyeTargetTitle";
 		0.49718099404798144 -0.1864020735691394 6.9388939039072284e-18
 		0.49381123084213119 -0.1864020735691394 6.9388939039072284e-18
 		0.49044146763630625 -0.1864020735691394 6.9388939039072284e-18
-		0.49044146763630625 -0.19866679730927395 6.9388939039072284e-18
+		0.49044146763630625 -0.19866679730927397 6.9388939039072284e-18
 		0.49044146763630625 -0.21093152104940849 6.9388939039072284e-18
 		0.49381123084213119 -0.21093152104940849 6.9388939039072284e-18
 		0.49718099404798144 -0.21093152104940849 6.9388939039072284e-18
@@ -10961,6 +11449,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape12" -p "eyeTargetTitle";
 		0.51778474328900659 -0.30164190356307152 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape13" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043BD";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10969,15 +11458,15 @@ createNode nurbsCurve -n "eyeTargetTitleShape13" -p "eyeTargetTitle";
 		18 0 0 1 1 2 2 3 3 4 4 5
 		 5 6 6 7 7 8 8
 		17
-		0.62334978579053146 -0.24298032189943974 6.9388939039072284e-18
+		0.62334978579053146 -0.24298032189943977 6.9388939039072284e-18
 		0.62334978579053146 -0.21499383131049221 6.9388939039072284e-18
-		0.61570425603948165 -0.19893717526920618 6.9388939039072284e-18
+		0.61570425603948165 -0.19893717526920615 6.9388939039072284e-18
 		0.60805872628840696 -0.18288051922791659 6.9388939039072284e-18
 		0.59417552956710651 -0.18288051922791659 6.9388939039072284e-18
 		0.58034261365938233 -0.18288051922791659 6.9388939039072284e-18
 		0.57267194350153217 -0.19883661364199945 6.9388939039072284e-18
 		0.56500127334365668 -0.21479270805608941 6.9388939039072284e-18
-		0.56500127334365668 -0.24298032189943974 6.9388939039072284e-18
+		0.56500127334365668 -0.24298032189943977 6.9388939039072284e-18
 		0.56500127334365668 -0.27086435347199433 6.9388939039072284e-18
 		0.57267194350153217 -0.28692100951328392 6.9388939039072284e-18
 		0.58034261365938233 -0.30297766555456995 6.9388939039072284e-18
@@ -10985,9 +11474,10 @@ createNode nurbsCurve -n "eyeTargetTitleShape13" -p "eyeTargetTitle";
 		0.60810900710200633 -0.30297766555456995 6.9388939039072284e-18
 		0.61572939644628111 -0.28692100951328392 6.9388939039072284e-18
 		0.62334978579053146 -0.27086435347199433 6.9388939039072284e-18
-		0.62334978579053146 -0.24298032189943974 6.9388939039072284e-18
+		0.62334978579053146 -0.24298032189943977 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape14" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043BE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -10997,23 +11487,23 @@ createNode nurbsCurve -n "eyeTargetTitleShape14" -p "eyeTargetTitle";
 		 5 6 6 7 7 8 8 9 9 10 10 11
 		 11 12 12 13 13 14 14 15 15 16 16
 		33
-		0.60531699890528179 -0.24318144515384255 6.9388939039072284e-18
-		0.60531699890528179 -0.23311200070939542 6.9388939039072284e-18
+		0.60531699890528179 -0.24318144515384257 6.9388939039072284e-18
+		0.60531699890528179 -0.23311200070939544 6.9388939039072284e-18
 		0.60448499374438169 -0.22641516555457208 6.9388939039072284e-18
 		0.6036529885834816 -0.2197183303997452 6.9388939039072284e-18
-		0.60219105021068131 -0.21569017314412342 6.9388939039072284e-18
+		0.60219105021068131 -0.21569017314412345 6.9388939039072284e-18
 		0.60062855021068184 -0.2114608926341095 6.9388939039072284e-18
-		0.59866238065998223 -0.20979972839610106 6.9388939039072284e-18
+		0.59866238065998223 -0.20979972839610103 6.9388939039072284e-18
 		0.59669621110930615 -0.20813856415808907 6.9388939039072284e-18
 		0.59417552956710651 -0.20813856415808907 6.9388939039072284e-18
 		0.59180569046570719 -0.20813856415808907 6.9388939039072284e-18
 		0.58989027607590661 -0.20959860514170181 6.9388939039072284e-18
-		0.58797486168610602 -0.21105864612530389 6.9388939039072284e-18
+		0.58797486168610602 -0.21105864612530387 6.9388939039072284e-18
 		0.58636113217790697 -0.21518736500811819 6.9388939039072284e-18
 		0.58484891299150643 -0.21911496063653679 6.9388939039072284e-18
 		0.58394148661020617 -0.22596168953756823 6.9388939039072284e-18
 		0.58303406022890725 -0.23280841843859967 6.9388939039072284e-18
-		0.58303406022890725 -0.24318144515384255 6.9388939039072284e-18
+		0.58303406022890725 -0.24318144515384257 6.9388939039072284e-18
 		0.58303406022890725 -0.25355257447988855 6.9388939039072284e-18
 		0.5838912057966068 -0.25994677605851457 6.9388939039072284e-18
 		0.58474835136430681 -0.26634097763714415 6.9388939039072284e-18
@@ -11029,9 +11519,10 @@ createNode nurbsCurve -n "eyeTargetTitleShape14" -p "eyeTargetTitle";
 		0.60370421809168118 -0.2661398543827449 6.9388939039072284e-18
 		0.60451060849848126 -0.2600473376857213 6.9388939039072284e-18
 		0.60531699890528179 -0.25395482098869415 6.9388939039072284e-18
-		0.60531699890528179 -0.24318144515384255 6.9388939039072284e-18
+		0.60531699890528179 -0.24318144515384257 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape15" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043BF";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -11051,8 +11542,8 @@ createNode nurbsCurve -n "eyeTargetTitleShape15" -p "eyeTargetTitle";
 		0.66779517892958218 -0.18336625086118907 6.9388939039072284e-18
 		0.66282022446690725 -0.18336625086118907 6.9388939039072284e-18
 		0.65872470989495691 -0.18749117496562029 6.9388939039072284e-18
-		0.65462919532300701 -0.19161609907005506 6.9388939039072284e-18
-		0.65030789143715673 -0.19895899524491334 6.9388939039072284e-18
+		0.65462919532300701 -0.19161609907005503 6.9388939039072284e-18
+		0.65030789143715673 -0.19895899524491337 6.9388939039072284e-18
 		0.65030789143715673 -0.19268053440702992 6.9388939039072284e-18
 		0.65030789143715673 -0.1864020735691394 6.9388939039072284e-18
 		0.64150400558410681 -0.1864020735691394 6.9388939039072284e-18
@@ -11065,14 +11556,14 @@ createNode nurbsCurve -n "eyeTargetTitleShape15" -p "eyeTargetTitle";
 		0.65030789143715673 -0.21937300556671424 6.9388939039072284e-18
 		0.65281434256040693 -0.21585145122548433 6.9388939039072284e-18
 		0.65502053184395637 -0.21424151649567413 6.9388939039072284e-18
-		0.65722672112750669 -0.21263158176586394 6.9388939039072284e-18
-		0.65938215525015664 -0.21263158176586394 6.9388939039072284e-18
-		0.66223962337403153 -0.21263158176586394 6.9388939039072284e-18
-		0.66394442756345651 -0.21429179730927395 6.9388939039072284e-18
-		0.66564923175288193 -0.21595201285269106 6.9388939039072284e-18
-		0.66655144031390723 -0.21977525207551274 6.9388939039072284e-18
+		0.65722672112750669 -0.21263158176586391 6.9388939039072284e-18
+		0.65938215525015664 -0.21263158176586391 6.9388939039072284e-18
+		0.66223962337403153 -0.21263158176586391 6.9388939039072284e-18
+		0.66394442756345651 -0.21429179730927397 6.9388939039072284e-18
+		0.66564923175288193 -0.21595201285269103 6.9388939039072284e-18
+		0.66655144031390723 -0.21977525207551271 6.9388939039072284e-18
 		0.66730375512873152 -0.22299512153514023 6.9388939039072284e-18
-		0.66757935090893206 -0.22978587745499546 6.9388939039072284e-18
+		0.66757935090893206 -0.22978587745499543 6.9388939039072284e-18
 		0.6678549466891317 -0.23657663337485069 6.9388939039072284e-18
 		0.6678549466891317 -0.24341672141371085 6.9388939039072284e-18
 		0.6678549466891317 -0.27143641631352544 6.9388939039072284e-18
@@ -11081,6 +11572,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape15" -p "eyeTargetTitle";
 		0.68558415130358208 -0.29945611121334359 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape16" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C0";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -11091,14 +11583,15 @@ createNode nurbsCurve -n "eyeTargetTitleShape16" -p "eyeTargetTitle";
 		0.74211117012568195 -0.14292909239124363 6.9388939039072284e-18
 		0.73485602820098173 -0.14292909239124363 6.9388939039072284e-18
 		0.72760088627625663 -0.14292909239124363 6.9388939039072284e-18
-		0.71272488065998196 -0.23746461151692522 6.9388939039072284e-18
+		0.71272488065998196 -0.23746461151692519 6.9388939039072284e-18
 		0.69784887504373172 -0.33200013064261036 6.9388939039072284e-18
 		0.70507318439405697 -0.33200013064261036 6.9388939039072284e-18
 		0.71229749374438178 -0.33200013064261036 6.9388939039072284e-18
-		0.72720433193503098 -0.23746461151692522 6.9388939039072284e-18
+		0.72720433193503109 -0.23746461151692519 6.9388939039072284e-18
 		0.74211117012568195 -0.14292909239124363 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape17" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -11107,25 +11600,26 @@ createNode nurbsCurve -n "eyeTargetTitleShape17" -p "eyeTargetTitle";
 		18 0 0 1 1 2 2 3 3 4 4 5
 		 5 6 6 7 7 8 8
 		17
-		0.81229939113358185 -0.24298032189943974 6.9388939039072284e-18
-		0.81229939113358185 -0.21499383131049221 6.9388939039072284e-18
-		0.80465386138253203 -0.19893717526920618 6.9388939039072284e-18
+		0.81229939113358196 -0.24298032189943977 6.9388939039072284e-18
+		0.81229939113358196 -0.21499383131049221 6.9388939039072284e-18
+		0.80465386138253203 -0.19893717526920615 6.9388939039072284e-18
 		0.79700833163145646 -0.18288051922791659 6.9388939039072284e-18
 		0.78312513491015645 -0.18288051922791659 6.9388939039072284e-18
 		0.76929221900243139 -0.18288051922791659 6.9388939039072284e-18
-		0.76162154884458166 -0.19883661364199945 6.9388939039072284e-18
-		0.75395087868670663 -0.21479270805608941 6.9388939039072284e-18
-		0.75395087868670663 -0.24298032189943974 6.9388939039072284e-18
-		0.75395087868670663 -0.27086435347199433 6.9388939039072284e-18
-		0.76162154884458166 -0.28692100951328392 6.9388939039072284e-18
+		0.76162154884458155 -0.19883661364199945 6.9388939039072284e-18
+		0.75395087868670652 -0.21479270805608941 6.9388939039072284e-18
+		0.75395087868670652 -0.24298032189943977 6.9388939039072284e-18
+		0.75395087868670652 -0.27086435347199433 6.9388939039072284e-18
+		0.76162154884458155 -0.28692100951328392 6.9388939039072284e-18
 		0.76929221900243139 -0.30297766555456995 6.9388939039072284e-18
 		0.78312513491015645 -0.30297766555456995 6.9388939039072284e-18
 		0.7970586124450576 -0.30297766555456995 6.9388939039072284e-18
-		0.80467900178933238 -0.28692100951328392 6.9388939039072284e-18
-		0.81229939113358185 -0.27086435347199433 6.9388939039072284e-18
-		0.81229939113358185 -0.24298032189943974 6.9388939039072284e-18
+		0.80467900178933227 -0.28692100951328392 6.9388939039072284e-18
+		0.81229939113358196 -0.27086435347199433 6.9388939039072284e-18
+		0.81229939113358196 -0.24298032189943977 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape18" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -11135,41 +11629,42 @@ createNode nurbsCurve -n "eyeTargetTitleShape18" -p "eyeTargetTitle";
 		 5 6 6 7 7 8 8 9 9 10 10 11
 		 11 12 12 13 13 14 14 15 15 16 16
 		33
-		0.79426660424833218 -0.24318144515384255 6.9388939039072284e-18
-		0.79426660424833218 -0.23311200070939542 6.9388939039072284e-18
-		0.79343459908743208 -0.22641516555457208 6.9388939039072284e-18
+		0.79426660424833218 -0.24318144515384257 6.9388939039072284e-18
+		0.79426660424833218 -0.23311200070939544 6.9388939039072284e-18
+		0.79343459908743197 -0.22641516555457208 6.9388939039072284e-18
 		0.79260259392653198 -0.2197183303997452 6.9388939039072284e-18
-		0.7911406555537317 -0.21569017314412342 6.9388939039072284e-18
+		0.7911406555537317 -0.21569017314412345 6.9388939039072284e-18
 		0.78957815555373179 -0.2114608926341095 6.9388939039072284e-18
-		0.78761198600303217 -0.20979972839610106 6.9388939039072284e-18
+		0.78761198600303217 -0.20979972839610103 6.9388939039072284e-18
 		0.78564581645233167 -0.20813856415808907 6.9388939039072284e-18
 		0.78312513491015645 -0.20813856415808907 6.9388939039072284e-18
 		0.78075529580875669 -0.20813856415808907 6.9388939039072284e-18
-		0.77883988141895655 -0.20959860514170181 6.9388939039072284e-18
-		0.77692446702915596 -0.21105864612530389 6.9388939039072284e-18
+		0.77883988141895644 -0.20959860514170181 6.9388939039072284e-18
+		0.77692446702915596 -0.21105864612530387 6.9388939039072284e-18
 		0.77531073752095692 -0.21518736500811819 6.9388939039072284e-18
 		0.77379851833455637 -0.21911496063653324 6.9388939039072284e-18
 		0.772891091953257 -0.22596168953756823 6.9388939039072284e-18
 		0.7719836655719563 -0.23280841843859967 6.9388939039072284e-18
-		0.7719836655719563 -0.24318144515384255 6.9388939039072284e-18
+		0.7719836655719563 -0.24318144515384257 6.9388939039072284e-18
 		0.7719836655719563 -0.25355257447988855 6.9388939039072284e-18
 		0.77284081113965675 -0.25994677605851457 6.9388939039072284e-18
 		0.77369795670735675 -0.26634097763714415 6.9388939039072284e-18
 		0.77505933345295652 -0.27016801163835957 6.9388939039072284e-18
 		0.77647004231755634 -0.2740937098775813 6.9388939039072284e-18
-		0.77858752865635639 -0.27590666525099117 6.9388939039072284e-18
-		0.78070501499515688 -0.27771962062439393 6.9388939039072284e-18
+		0.77858752865635628 -0.27590666525099117 6.9388939039072284e-18
+		0.78070501499515677 -0.27771962062439393 6.9388939039072284e-18
 		0.78327597735095633 -0.27771962062439393 6.9388939039072284e-18
-		0.78539346368975638 -0.27771962062439393 6.9388939039072284e-18
+		0.78539346368975627 -0.27771962062439393 6.9388939039072284e-18
 		0.78758684559623138 -0.27590666525099117 6.9388939039072284e-18
 		0.78978022750273169 -0.2740937098775813 6.9388939039072284e-18
 		0.79109037474013189 -0.270469696519962 6.9388939039072284e-18
 		0.79265382343473156 -0.2661398543827449 6.9388939039072284e-18
 		0.79346021384153165 -0.2600473376857213 6.9388939039072284e-18
 		0.79426660424833218 -0.25395482098869415 6.9388939039072284e-18
-		0.79426660424833218 -0.24318144515384255 6.9388939039072284e-18
+		0.79426660424833218 -0.24318144515384257 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape19" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -11180,22 +11675,22 @@ createNode nurbsCurve -n "eyeTargetTitleShape19" -p "eyeTargetTitle";
 		 11 12 12 13 13 14 14 15 15 16 16 17
 		 17 18 18 19 19 20 20 21 21
 		43
-		0.85777601529873193 -0.16952289931291809 6.9388939039072284e-18
-		0.85777601529873193 -0.15674588049081883 6.9388939039072284e-18
-		0.85777601529873193 -0.14396886166871603 6.9388939039072284e-18
-		0.85535969016213143 -0.14306380702390875 6.9388939039072284e-18
-		0.85203641299150634 -0.14251071807430371 6.9388939039072284e-18
+		0.85777601529873204 -0.16952289931291809 6.9388939039072284e-18
+		0.85777601529873204 -0.15674588049081883 6.9388939039072284e-18
+		0.85777601529873204 -0.14396886166871603 6.9388939039072284e-18
+		0.85535969016213131 -0.14306380702390875 6.9388939039072284e-18
+		0.85203641299150645 -0.14251071807430371 6.9388939039072284e-18
 		0.8487131358208817 -0.14195762912469867 6.9388939039072284e-18
 		0.84488705051428203 -0.14195762912469867 6.9388939039072284e-18
 		0.83386037322223228 -0.14195762912469867 6.9388939039072284e-18
 		0.828422930143907 -0.15229081066689609 6.9388939039072284e-18
 		0.82298548706558172 -0.16262399220909352 6.9388939039072284e-18
 		0.82298548706558172 -0.18329225268268168 6.9388939039072284e-18
-		0.82298548706558172 -0.18484716312591054 6.9388939039072284e-18
+		0.82298548706558172 -0.18484716312591057 6.9388939039072284e-18
 		0.82298548706558172 -0.1864020735691394 6.9388939039072284e-18
 		0.81946393272435669 -0.1864020735691394 6.9388939039072284e-18
 		0.81594237838313166 -0.1864020735691394 6.9388939039072284e-18
-		0.81594237838313166 -0.19866679730927395 6.9388939039072284e-18
+		0.81594237838313166 -0.19866679730927397 6.9388939039072284e-18
 		0.81594237838313166 -0.21093152104940849 6.9388939039072284e-18
 		0.81946393272435669 -0.21093152104940849 6.9388939039072284e-18
 		0.82298548706558172 -0.21093152104940849 6.9388939039072284e-18
@@ -11205,26 +11700,27 @@ createNode nurbsCurve -n "eyeTargetTitleShape19" -p "eyeTargetTitle";
 		0.84059325877170643 -0.29945611121334359 6.9388939039072284e-18
 		0.84059325877170643 -0.25519381613137604 6.9388939039072284e-18
 		0.84059325877170643 -0.21093152104940849 6.9388939039072284e-18
-		0.84730242695628233 -0.21093152104940849 6.9388939039072284e-18
-		0.85401159514085689 -0.21093152104940849 6.9388939039072284e-18
-		0.85401159514085689 -0.19866679730927395 6.9388939039072284e-18
-		0.85401159514085689 -0.1864020735691394 6.9388939039072284e-18
+		0.84730242695628244 -0.21093152104940849 6.9388939039072284e-18
+		0.854011595140857 -0.21093152104940849 6.9388939039072284e-18
+		0.854011595140857 -0.19866679730927397 6.9388939039072284e-18
+		0.854011595140857 -0.1864020735691394 6.9388939039072284e-18
 		0.84699884468550701 -0.1864020735691394 6.9388939039072284e-18
-		0.83998609423013226 -0.1864020735691394 6.9388939039072284e-18
-		0.83998609423013226 -0.18595144363593086 6.9388939039072284e-18
-		0.83998609423013226 -0.18550081370271876 6.9388939039072284e-18
-		0.83998609423013226 -0.1747843595436418 6.9388939039072284e-18
-		0.84192617467943176 -0.17087858389094102 6.9388939039072284e-18
+		0.83998609423013237 -0.1864020735691394 6.9388939039072284e-18
+		0.83998609423013237 -0.18595144363593089 6.9388939039072284e-18
+		0.83998609423013237 -0.18550081370271876 6.9388939039072284e-18
+		0.83998609423013237 -0.1747843595436418 6.9388939039072284e-18
+		0.84192617467943165 -0.17087858389094102 6.9388939039072284e-18
 		0.8438662551287317 -0.16697280823823313 6.9388939039072284e-18
 		0.84920835440013187 -0.16697280823823313 6.9388939039072284e-18
 		0.85112376878993157 -0.16697280823823313 6.9388939039072284e-18
 		0.8532654468409322 -0.16794142542099344 6.9388939039072284e-18
-		0.85540712489193194 -0.1689100426037502 6.9388939039072284e-18
+		0.85540712489193205 -0.1689100426037502 6.9388939039072284e-18
 		0.85641558724773148 -0.16952289931291809 6.9388939039072284e-18
 		0.85709580127323148 -0.16952289931291809 6.9388939039072284e-18
-		0.85777601529873193 -0.16952289931291809 6.9388939039072284e-18
+		0.85777601529873204 -0.16952289931291809 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape20" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -11235,10 +11731,10 @@ createNode nurbsCurve -n "eyeTargetTitleShape20" -p "eyeTargetTitle";
 		 11 12 12 13 13 14 14 15 15 16 16 17
 		 17 18 18 19 19 20 20 21 21
 		43
-		0.89718099404798135 -0.16952289931291809 6.9388939039072284e-18
-		0.89718099404798135 -0.15674588049081883 6.9388939039072284e-18
-		0.89718099404798135 -0.14396886166871603 6.9388939039072284e-18
-		0.89476466891135686 -0.14306380702390875 6.9388939039072284e-18
+		0.89718099404798124 -0.16952289931291809 6.9388939039072284e-18
+		0.89718099404798124 -0.15674588049081883 6.9388939039072284e-18
+		0.89718099404798124 -0.14396886166871603 6.9388939039072284e-18
+		0.89476466891135675 -0.14306380702390875 6.9388939039072284e-18
 		0.89144139174075665 -0.14251071807430371 6.9388939039072284e-18
 		0.88811811457013201 -0.14195762912469867 6.9388939039072284e-18
 		0.88429202926350703 -0.14195762912469867 6.9388939039072284e-18
@@ -11246,40 +11742,41 @@ createNode nurbsCurve -n "eyeTargetTitleShape20" -p "eyeTargetTitle";
 		0.86782790889315731 -0.15229081066689609 6.9388939039072284e-18
 		0.86239046581483203 -0.16262399220909352 6.9388939039072284e-18
 		0.86239046581483203 -0.18329225268268168 6.9388939039072284e-18
-		0.86239046581483203 -0.18484716312591054 6.9388939039072284e-18
+		0.86239046581483203 -0.18484716312591057 6.9388939039072284e-18
 		0.86239046581483203 -0.1864020735691394 6.9388939039072284e-18
 		0.858868911473607 -0.1864020735691394 6.9388939039072284e-18
 		0.8553473571323571 -0.1864020735691394 6.9388939039072284e-18
-		0.8553473571323571 -0.19866679730927395 6.9388939039072284e-18
+		0.8553473571323571 -0.19866679730927397 6.9388939039072284e-18
 		0.8553473571323571 -0.21093152104940849 6.9388939039072284e-18
 		0.858868911473607 -0.21093152104940849 6.9388939039072284e-18
 		0.86239046581483203 -0.21093152104940849 6.9388939039072284e-18
 		0.86239046581483203 -0.25519381613137604 6.9388939039072284e-18
 		0.86239046581483203 -0.29945611121334359 6.9388939039072284e-18
 		0.87119435166788239 -0.29945611121334359 6.9388939039072284e-18
-		0.87999823752095674 -0.29945611121334359 6.9388939039072284e-18
-		0.87999823752095674 -0.25519381613137604 6.9388939039072284e-18
-		0.87999823752095674 -0.21093152104940849 6.9388939039072284e-18
-		0.88670740570553175 -0.21093152104940849 6.9388939039072284e-18
+		0.87999823752095685 -0.29945611121334359 6.9388939039072284e-18
+		0.87999823752095685 -0.25519381613137604 6.9388939039072284e-18
+		0.87999823752095685 -0.21093152104940849 6.9388939039072284e-18
+		0.88670740570553164 -0.21093152104940849 6.9388939039072284e-18
 		0.8934165738901072 -0.21093152104940849 6.9388939039072284e-18
-		0.8934165738901072 -0.19866679730927395 6.9388939039072284e-18
+		0.8934165738901072 -0.19866679730927397 6.9388939039072284e-18
 		0.8934165738901072 -0.1864020735691394 6.9388939039072284e-18
 		0.88640382343473201 -0.1864020735691394 6.9388939039072284e-18
 		0.87939107297935681 -0.1864020735691394 6.9388939039072284e-18
-		0.87939107297935681 -0.18595144363593086 6.9388939039072284e-18
+		0.87939107297935681 -0.18595144363593089 6.9388939039072284e-18
 		0.87939107297935681 -0.18550081370271876 6.9388939039072284e-18
 		0.87939107297935681 -0.1747843595436418 6.9388939039072284e-18
 		0.88133115342865676 -0.17087858389094102 6.9388939039072284e-18
-		0.88327123387795625 -0.16697280823823313 6.9388939039072284e-18
+		0.88327123387795636 -0.16697280823823313 6.9388939039072284e-18
 		0.88861333314935731 -0.16697280823823313 6.9388939039072284e-18
 		0.89052874753915701 -0.16697280823823313 6.9388939039072284e-18
 		0.89267042559018206 -0.16794142542099344 6.9388939039072284e-18
 		0.8948121036411818 -0.1689100426037502 6.9388939039072284e-18
 		0.89582056599698179 -0.16952289931291809 6.9388939039072284e-18
 		0.89650078002248179 -0.16952289931291809 6.9388939039072284e-18
-		0.89718099404798135 -0.16952289931291809 6.9388939039072284e-18
+		0.89718099404798124 -0.16952289931291809 6.9388939039072284e-18
 		;
 createNode nurbsCurve -n "eyeTargetTitleShape21" -p "eyeTargetTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 7;
@@ -11293,14 +11790,14 @@ createNode nurbsCurve -n "eyeTargetTitleShape21" -p "eyeTargetTitle";
 		0.037953041710382163 -0.30249193392129392 6.9388939039072284e-18
 		0.042330318577432191 -0.30249193392129392 6.9388939039072284e-18
 		0.045374679536731577 -0.3017566956092157 6.9388939039072284e-18
-		0.048419040496057164 -0.30080515492919169 6.9388939039072284e-18
+		0.048419040496057171 -0.30080515492919169 6.9388939039072284e-18
 		0.051287892955081738 -0.29926637229409359 6.9388939039072284e-18
 		0.054407200787506937 -0.29775605049689169 6.9388939039072284e-18
 		0.056193592712206808 -0.29629506081868406 6.9388939039072284e-18
-		0.057979984636931547 -0.29483407114048354 6.9388939039072284e-18
-		0.060143957010931004 -0.29312072869967842 6.9388939039072284e-18
-		0.060143957010931004 -0.27855921534205841 6.9388939039072284e-18
-		0.060143957010931004 -0.26399770198444195 6.9388939039072284e-18
+		0.057979984636931541 -0.29483407114048354 6.9388939039072284e-18
+		0.060143957010931011 -0.29312072869967842 6.9388939039072284e-18
+		0.060143957010931011 -0.27855921534205841 6.9388939039072284e-18
+		0.060143957010931011 -0.26399770198444195 6.9388939039072284e-18
 		0.059211864570131834 -0.26399770198444195 6.9388939039072284e-18
 		0.058279772129332219 -0.26399770198444195 6.9388939039072284e-18
 		0.057120467332731018 -0.2657091470360502 6.9388939039072284e-18
@@ -11308,7 +11805,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape21" -p "eyeTargetTitle";
 		0.053441429688531272 -0.27014144818966379 6.9388939039072284e-18
 		0.051274611230731182 -0.27205591388486461 6.9388939039072284e-18
 		0.048805159196731562 -0.27427206446167496 6.9388939039072284e-18
-		0.045831950332132276 -0.27563154381808097 6.9388939039072284e-18
+		0.045831950332132269 -0.27563154381808097 6.9388939039072284e-18
 		0.042858741467531214 -0.27699102317448343 6.9388939039072284e-18
 		0.039784970975732303 -0.27699102317448343 6.9388939039072284e-18
 		0.03620649495870687 -0.27699102317448343 6.9388939039072284e-18
@@ -11322,13 +11819,13 @@ createNode nurbsCurve -n "eyeTargetTitleShape21" -p "eyeTargetTitle";
 		0.041837946081981325 -0.24966861880289848 6.9388939039072284e-18
 		0.06117613673163147 -0.24966861880289848 6.9388939039072284e-18
 		0.06117613673163147 -0.24332185195408407 6.9388939039072284e-18
-		0.06117613673163147 -0.23697508510526966 6.9388939039072284e-18
+		0.06117613673163147 -0.23697508510526968 6.9388939039072284e-18
 		0.06117613673163147 -0.21088598370879019 6.9388939039072284e-18
-		0.054631567059507447 -0.19688325146835162 6.9388939039072284e-18
+		0.054631567059507447 -0.19688325146835159 6.9388939039072284e-18
 		0.048086997387382091 -0.18288051922791659 6.9388939039072284e-18
 		0.035098419670307024 -0.18288051922791659 6.9388939039072284e-18
 		0.020800643410456399 -0.18288051922791659 6.9388939039072284e-18
-		0.012846313568307455 -0.19939254867539624 6.9388939039072284e-18
+		0.012846313568307456 -0.19939254867539624 6.9388939039072284e-18
 		0.0048919837261811594 -0.21590457812287589 6.9388939039072284e-18
 		0.0048919837261811594 -0.24359317860860408 6.9388939039072284e-18
 		0.0048919837261811594 -0.27188514885754422 6.9388939039072284e-18
@@ -11337,6 +11834,7 @@ createNode nurbsCurve -n "eyeTargetTitleShape21" -p "eyeTargetTitle";
 		0.037953041710382163 -0.30249193392129392 6.9388939039072284e-18
 		;
 createNode transform -n "l_eyeCtl" -p "eyeDirectionCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -11360,6 +11858,7 @@ createNode transform -n "l_eyeCtl" -p "eyeDirectionCtrl";
 	setAttr ".msxe" yes;
 	setAttr ".xsxe" yes;
 createNode nurbsCurve -n "l_eyeCtlShape" -p "l_eyeCtl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 2 0 no 3
@@ -11370,6 +11869,7 @@ createNode nurbsCurve -n "l_eyeCtlShape" -p "l_eyeCtl";
 		0 -0.26706321369708996 0
 		;
 createNode transform -n "r_eyeCtl" -p "eyeDirectionCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C8";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -11393,6 +11893,7 @@ createNode transform -n "r_eyeCtl" -p "eyeDirectionCtrl";
 	setAttr ".msxe" yes;
 	setAttr ".xsxe" yes;
 createNode nurbsCurve -n "r_eyeCtlShape" -p "r_eyeCtl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043C9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 2 0 no 3
@@ -11403,6 +11904,7 @@ createNode nurbsCurve -n "r_eyeCtlShape" -p "r_eyeCtl";
 		0 -0.26706321369708996 0
 		;
 createNode transform -n "LIDS_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043CA";
 	setAttr ".t" -type "double3" -3.5303624433252851 -1.2916843985709892 0 ;
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
@@ -11414,6 +11916,7 @@ createNode transform -n "LIDS_panel" -p "Twitch_Panel";
 	setAttr -l on ".sy";
 	setAttr -l on ".sz";
 createNode transform -n "lidsTitle" -p "LIDS_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043CB";
 	setAttr -l on ".v";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
@@ -11427,12 +11930,14 @@ createNode transform -n "lidsTitle" -p "LIDS_panel";
 	setAttr ".rp" -type "double3" -1.828503560449888 1.0164103167942802 0.05 ;
 	setAttr ".sp" -type "double3" -1.828503560449888 1.0164103167942802 0.05 ;
 createNode transform -n "eye_squach_box" -p "lidsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043CC";
 	setAttr ".t" -type "double3" 7.2 -10.308284308268687 -6.4948046940571658e-15 ;
 	setAttr ".rp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "eye_squach_boxShape" -p "eye_squach_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043CD";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -11446,18 +11951,23 @@ createNode nurbsCurve -n "eye_squach_boxShape" -p "eye_squach_box";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "eye_squach0" -p "eye_squach_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043CE";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "eye_squach0Shape" -p "eye_squach0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043CF";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "eye_squach_Ibox" -p "eye_squach_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D0";
 	setAttr ".s" -type "double3" 1 0.8 1 ;
 	setAttr ".rp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".sp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "eye_squach_IboxShape" -p "eye_squach_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D1";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -11470,11 +11980,11 @@ createNode nurbsCurve -n "eye_squach_IboxShape" -p "eye_squach_Ibox";
 		-0.10000000000000037 0.999999999999999 2.1684043449710089e-18
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
-createNode transform -n "l_eye_squach" -p "eye_squach_Ibox";
+createNode transform -n "l_eyeSquach" -p "eye_squach_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
-	setAttr -l on ".tx";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr ".rp" -type "double3" 0 -8.8817841970012523e-16 0 ;
@@ -11497,7 +12007,8 @@ createNode transform -n "l_eye_squach" -p "eye_squach_Ibox";
 	setAttr ".xsxe" yes;
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
-createNode nurbsCurve -n "l_eye_squachShape" -p "l_eye_squach";
+createNode nurbsCurve -n "l_eyeSquachShape" -p "l_eyeSquach";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -11510,11 +12021,11 @@ createNode nurbsCurve -n "l_eye_squachShape" -p "l_eye_squach";
 		0 -0.18199759774112079 0
 		0 0.18199759774112079 0
 		;
-createNode transform -n "r_eye_squach" -p "eye_squach_Ibox";
+createNode transform -n "r_eyeSquach" -p "eye_squach_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
-	setAttr -l on ".tx";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr ".rp" -type "double3" 0 -8.8817841970012523e-16 0 ;
@@ -11537,7 +12048,8 @@ createNode transform -n "r_eye_squach" -p "eye_squach_Ibox";
 	setAttr ".xsxe" yes;
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
-createNode nurbsCurve -n "r_eye_squachShape" -p "r_eye_squach";
+createNode nurbsCurve -n "r_eyeSquachShape" -p "r_eyeSquach";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -11551,10 +12063,12 @@ createNode nurbsCurve -n "r_eye_squachShape" -p "r_eye_squach";
 		0 0.18199759774112079 0
 		;
 createNode transform -n "eyesSquachTitle" -p "eye_squach_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D6";
 	setAttr ".tmp" yes;
 	setAttr ".rp" -type "double3" -14.735061671757403 3.877628529492819 6.4889431541010838e-15 ;
 	setAttr ".sp" -type "double3" -14.735061671757403 3.877628529492819 6.4878658001532593e-15 ;
 createNode nurbsCurve -n "eyesSquachTitleShape" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D7";
 	setAttr -k off ".v";
 	setAttr ".iog[0].og[4].gcl" -type "componentList" 1 "cv[0:24]";
 	setAttr ".ove" yes;
@@ -11592,6 +12106,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape" -p "eyesSquachTitle";
 		-0.2183898342965902 -0.97366570194611413 -1.4351213419986622e-13
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape1" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D8";
 	setAttr -k off ".v";
 	setAttr ".iog[0].og[4].gcl" -type "componentList" 1 "cv[0:18]";
 	setAttr ".ove" yes;
@@ -11622,6 +12137,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape1" -p "eyesSquachTitle";
 		-0.41150407529815514 -0.64972203997426448 -1.4351213419986622e-13
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape2" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043D9";
 	setAttr -k off ".v";
 	setAttr ".iog[0].og[4].gcl" -type "componentList" 1 "cv[0:24]";
 	setAttr ".ove" yes;
@@ -11659,6 +12175,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape2" -p "eyesSquachTitle";
 		-0.2183898342965902 -0.63219465343281378 -1.4351213419986622e-13
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape3" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043DA";
 	setAttr -k off ".v";
 	setAttr ".iog[0].og[4].gcl" -type "componentList" 1 "cv[0:72]";
 	setAttr ".ove" yes;
@@ -11748,6 +12265,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape3" -p "eyesSquachTitle";
 		-0.21494695479737305 -0.40918751337021497 -1.4351213419986622e-13
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape4" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043DB";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -11801,6 +12319,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape4" -p "eyesSquachTitle";
 		-0.18997806693696265 0.10302293818815313 -9.3512134199859745e-14
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape5" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043DC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -11845,6 +12364,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape5" -p "eyesSquachTitle";
 		-0.27709002315946485 0.047857912031767043 -9.3512134199859745e-14
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape6" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043DD";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -11885,6 +12405,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape6" -p "eyesSquachTitle";
 		-0.23153789967376073 0.19726552147559759 -9.3512134199859745e-14
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape7" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043DE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -11912,6 +12433,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape7" -p "eyesSquachTitle";
 		-0.23511719482796245 0.28295135228507284 -9.3512134199859745e-14
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape8" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043DF";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -11928,6 +12450,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape8" -p "eyesSquachTitle";
 		-0.30064582918916294 0.38043982282471767 -9.3512134199859745e-14
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape9" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E0";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -12007,6 +12530,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape9" -p "eyesSquachTitle";
 		-0.23181323007021248 0.53443340418485263 -9.3512134199859745e-14
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape10" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -12043,6 +12567,7 @@ createNode nurbsCurve -n "eyesSquachTitleShape10" -p "eyesSquachTitle";
 		-0.23511719482796245 0.76051192497229803 -9.3512134199859745e-14
 		;
 createNode nurbsCurve -n "eyesSquachTitleShape11" -p "eyesSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -12131,9 +12656,11 @@ createNode nurbsCurve -n "eyesSquachTitleShape11" -p "eyesSquachTitle";
 		-0.232088560466714 -0.14683724559488187 -9.3512134199859745e-14
 		;
 createNode transform -n "LUpCtrl_box" -p "lidsTitle";
-	setAttr ".t" -type "double3" 12.474018832380697 -7.0621284470385 -6.4948046940571658e-15 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E3";
+	setAttr ".t" -type "double3" 12.474018832380697 -6.8 -6.4948046940571658e-15 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "LUpCtrl_boxShape" -p "LUpCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E4";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -12147,31 +12674,37 @@ createNode nurbsCurve -n "LUpCtrl_boxShape" -p "LUpCtrl_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "l_upCtrl0" -p "LUpCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E5";
 createNode locator -n "l_upCtrl0Shape" -p "l_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E6";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
-createNode transform -n "l_upCntCtlP" -p "l_upCtrl0";
-createNode transform -n "l_upCenter" -p "l_upCntCtlP";
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
+createNode transform -n "l_upCenterP" -p "l_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E7";
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
+createNode transform -n "l_upCenter" -p "l_upCenterP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E8";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "l_upCenterShape" -p "l_upCenter";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043E9";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12190,28 +12723,28 @@ createNode nurbsCurve -n "l_upCenterShape" -p "l_upCenter";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "l_upInCornerP" -p "l_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043EA";
 	setAttr ".t" -type "double3" -1 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
 createNode transform -n "l_upInCorner" -p "l_upInCornerP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043EB";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.8 0.8 0.8 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -1 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 1 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "l_upInCornerShape" -p "l_upInCorner";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043EC";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12230,28 +12763,28 @@ createNode nurbsCurve -n "l_upInCornerShape" -p "l_upInCorner";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "l_upOutCornerP" -p "l_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043ED";
 	setAttr ".t" -type "double3" 1 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
 createNode transform -n "l_upOutCorner" -p "l_upOutCornerP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043EE";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.8 0.8 0.8 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -1 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 1 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "l_upOutCornerShape" -p "l_upOutCorner";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043EF";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12270,176 +12803,311 @@ createNode nurbsCurve -n "l_upOutCornerShape" -p "l_upOutCorner";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "l_upDetail01P" -p "l_upCtrl0";
-	setAttr ".t" -type "double3" -1 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F0";
+	setAttr ".t" -type "double3" -0.81818181276321411 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_upDetail01" -p "l_upDetail01P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F1";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_upDetail01Shape" -p "l_upDetail01";
+createNode nurbsCurve -n "l_upDetail01Shape" -p "l_upDetail01";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F2";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_upDetail02P" -p "l_upCtrl0";
-	setAttr ".t" -type "double3" -0.6666666567325592 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F3";
+	setAttr ".t" -type "double3" -0.63636362552642822 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_upDetail02" -p "l_upDetail02P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F4";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_upDetail02Shape" -p "l_upDetail02";
+createNode nurbsCurve -n "l_upDetail02Shape" -p "l_upDetail02";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F5";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_upDetail03P" -p "l_upCtrl0";
-	setAttr ".t" -type "double3" -0.33333331346511841 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F6";
+	setAttr ".t" -type "double3" -0.45454543828964233 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_upDetail03" -p "l_upDetail03P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F7";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_upDetail03Shape" -p "l_upDetail03";
+createNode nurbsCurve -n "l_upDetail03Shape" -p "l_upDetail03";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F8";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_upDetail04P" -p "l_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043F9";
+	setAttr ".t" -type "double3" -0.27272725105285645 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_upDetail04" -p "l_upDetail04P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043FA";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_upDetail04Shape" -p "l_upDetail04";
+createNode nurbsCurve -n "l_upDetail04Shape" -p "l_upDetail04";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043FB";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_upDetail05P" -p "l_upCtrl0";
-	setAttr ".t" -type "double3" 0.33333337306976318 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043FC";
+	setAttr ".t" -type "double3" -0.090909063816070557 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_upDetail05" -p "l_upDetail05P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043FD";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_upDetail05Shape" -p "l_upDetail05";
+createNode nurbsCurve -n "l_upDetail05Shape" -p "l_upDetail05";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043FE";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_upDetail06P" -p "l_upCtrl0";
-	setAttr ".t" -type "double3" 0.66666662693023682 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000043FF";
+	setAttr ".t" -type "double3" 0.090909123420715332 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_upDetail06" -p "l_upDetail06P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004400";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_upDetail06Shape" -p "l_upDetail06";
+createNode nurbsCurve -n "l_upDetail06Shape" -p "l_upDetail06";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004401";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_upDetail07P" -p "l_upCtrl0";
-	setAttr ".t" -type "double3" 1 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004402";
+	setAttr ".t" -type "double3" 0.27272725105285645 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_upDetail07" -p "l_upDetail07P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004403";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_upDetail07Shape" -p "l_upDetail07";
+createNode nurbsCurve -n "l_upDetail07Shape" -p "l_upDetail07";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004404";
 	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "l_upDetail08P" -p "l_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004405";
+	setAttr ".t" -type "double3" 0.45454549789428711 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+createNode transform -n "l_upDetail08" -p "l_upDetail08P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004406";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "l_upDetail08Shape" -p "l_upDetail08";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004407";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "l_upDetail09P" -p "l_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004408";
+	setAttr ".t" -type "double3" 0.63636362552642822 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+createNode transform -n "l_upDetail09" -p "l_upDetail09P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004409";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "l_upDetail09Shape" -p "l_upDetail09";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000440A";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "l_upDetail10P" -p "l_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000440B";
+	setAttr ".t" -type "double3" 0.81818187236785889 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+createNode transform -n "l_upDetail10" -p "l_upDetail10P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000440C";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "l_upDetail10Shape" -p "l_upDetail10";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000440D";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "LLoCtrl_box" -p "lidsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000440E";
 	setAttr ".t" -type "double3" 12.474018832380697 -9.1871866430418052 -6.4948046940571658e-15 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "LLoCtrl_boxShape" -p "LLoCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000440F";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -12453,31 +13121,37 @@ createNode nurbsCurve -n "LLoCtrl_boxShape" -p "LLoCtrl_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "l_loCtrl0" -p "LLoCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004410";
 createNode locator -n "l_loCtrl0Shape" -p "l_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004411";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
-createNode transform -n "l_loCntCtlP" -p "l_loCtrl0";
-createNode transform -n "l_loCenter" -p "l_loCntCtlP";
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
+createNode transform -n "l_loCenterP" -p "l_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004412";
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
+createNode transform -n "l_loCenter" -p "l_loCenterP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004413";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "l_loCenterShape" -p "l_loCenter";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004414";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12496,28 +13170,28 @@ createNode nurbsCurve -n "l_loCenterShape" -p "l_loCenter";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "l_loInCornerP" -p "l_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004415";
 	setAttr ".t" -type "double3" -1 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
 createNode transform -n "l_loInCorner" -p "l_loInCornerP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004416";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.8 0.8 0.8 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -1 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 1 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "l_loInCornerShape" -p "l_loInCorner";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004417";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12536,28 +13210,28 @@ createNode nurbsCurve -n "l_loInCornerShape" -p "l_loInCorner";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "l_loOutCornerP" -p "l_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004418";
 	setAttr ".t" -type "double3" 1 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
 createNode transform -n "l_loOutCorner" -p "l_loOutCornerP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004419";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.8 0.8 0.8 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -1 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 1 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "l_loOutCornerShape" -p "l_loOutCorner";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000441A";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12576,179 +13250,283 @@ createNode nurbsCurve -n "l_loOutCornerShape" -p "l_loOutCorner";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "l_loDetail01P" -p "l_loCtrl0";
-	setAttr ".t" -type "double3" -1 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000441B";
+	setAttr ".t" -type "double3" -0.79999999701976776 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_loDetail01" -p "l_loDetail01P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000441C";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_loDetail01Shape" -p "l_loDetail01";
+createNode nurbsCurve -n "l_loDetail01Shape" -p "l_loDetail01";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000441D";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_loDetail02P" -p "l_loCtrl0";
-	setAttr ".t" -type "double3" -0.6666666567325592 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000441E";
+	setAttr ".t" -type "double3" -0.59999999403953552 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_loDetail02" -p "l_loDetail02P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000441F";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_loDetail02Shape" -p "l_loDetail02";
+createNode nurbsCurve -n "l_loDetail02Shape" -p "l_loDetail02";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004420";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_loDetail03P" -p "l_loCtrl0";
-	setAttr ".t" -type "double3" -0.33333331346511841 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004421";
+	setAttr ".t" -type "double3" -0.39999997615814209 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_loDetail03" -p "l_loDetail03P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004422";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_loDetail03Shape" -p "l_loDetail03";
+createNode nurbsCurve -n "l_loDetail03Shape" -p "l_loDetail03";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004423";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_loDetail04P" -p "l_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004424";
+	setAttr ".t" -type "double3" -0.19999998807907104 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_loDetail04" -p "l_loDetail04P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004425";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_loDetail04Shape" -p "l_loDetail04";
+createNode nurbsCurve -n "l_loDetail04Shape" -p "l_loDetail04";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004426";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_loDetail05P" -p "l_loCtrl0";
-	setAttr ".t" -type "double3" 0.33333337306976318 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004427";
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_loDetail05" -p "l_loDetail05P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004428";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_loDetail05Shape" -p "l_loDetail05";
+createNode nurbsCurve -n "l_loDetail05Shape" -p "l_loDetail05";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004429";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_loDetail06P" -p "l_loCtrl0";
-	setAttr ".t" -type "double3" 0.66666662693023682 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000442A";
+	setAttr ".t" -type "double3" 0.20000004768371582 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_loDetail06" -p "l_loDetail06P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000442B";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_loDetail06Shape" -p "l_loDetail06";
+createNode nurbsCurve -n "l_loDetail06Shape" -p "l_loDetail06";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000442C";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "l_loDetail07P" -p "l_loCtrl0";
-	setAttr ".t" -type "double3" 1 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000442D";
+	setAttr ".t" -type "double3" 0.39999997615814209 0 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
 createNode transform -n "l_loDetail07" -p "l_loDetail07P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000442E";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "l_loDetail07Shape" -p "l_loDetail07";
+createNode nurbsCurve -n "l_loDetail07Shape" -p "l_loDetail07";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000442F";
 	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "l_loDetail08P" -p "l_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004430";
+	setAttr ".t" -type "double3" 0.60000002384185791 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+createNode transform -n "l_loDetail08" -p "l_loDetail08P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004431";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "l_loDetail08Shape" -p "l_loDetail08";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004432";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "l_loDetail09P" -p "l_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004433";
+	setAttr ".t" -type "double3" 0.79999995231628418 0 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
+createNode transform -n "l_loDetail09" -p "l_loDetail09P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004434";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "l_loDetail09Shape" -p "l_loDetail09";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004435";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "LSquintPuff_box" -p "LLoCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004436";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" 0 -1.308861766701078 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 1 ;
 	setAttr ".rp" -type "double3" -7.6327832942979524e-17 1.4432899320127035e-15 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" 9.7144514654701197e-17 1.4432899320127035e-15 2.1684043449710089e-18 ;
 createNode nurbsCurve -n "LSquintPuff_boxShape" -p "LSquintPuff_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004437";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -12762,6 +13540,7 @@ createNode nurbsCurve -n "LSquintPuff_boxShape" -p "LSquintPuff_box";
 		-0.99999999999999989 0.10000000000000152 2.1684043449710089e-18
 		;
 createNode transform -n "LSquintPuff_Ctrl" -p "LSquintPuff_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004438";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -12780,6 +13559,7 @@ createNode transform -n "LSquintPuff_Ctrl" -p "LSquintPuff_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "LSquintPuff_CtrlShape" -p "LSquintPuff_Ctrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004439";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 30;
@@ -12801,14 +13581,18 @@ createNode nurbsCurve -n "LSquintPuff_CtrlShape" -p "LSquintPuff_Ctrl";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "LSquintPuff_Ctrl0" -p "LSquintPuff_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000443A";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "LSquintPuff_Ctrl0Shape" -p "LSquintPuff_Ctrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000443B";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 createNode transform -n "RLoCtrl_box" -p "lidsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000443C";
 	setAttr ".t" -type "double3" 10.094283604125453 -9.1871866430418052 -6.4948046940571658e-15 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "RLoCtrl_boxShape" -p "RLoCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000443D";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -12822,34 +13606,40 @@ createNode nurbsCurve -n "RLoCtrl_boxShape" -p "RLoCtrl_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "r_loCtrl0" -p "RLoCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000443E";
 	setAttr ".s" -type "double3" -1 1 1 ;
 createNode locator -n "r_loCtrl0Shape" -p "r_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000443F";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
-createNode transform -n "r_loCntCtlP" -p "r_loCtrl0";
-	setAttr ".r" -type "double3" 0 0 -3.1805546814635176e-15 ;
-createNode transform -n "r_loCenter" -p "r_loCntCtlP";
-	setAttr -l on -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
+createNode transform -n "r_loCenterP" -p "r_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004440";
+	setAttr ".t" -type "double3" 0 -4.4408920985006262e-16 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
+createNode transform -n "r_loCenter" -p "r_loCenterP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004441";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "r_loCenterShape" -p "r_loCenter";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004442";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12868,30 +13658,29 @@ createNode nurbsCurve -n "r_loCenterShape" -p "r_loCenter";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "r_loInCornerP" -p "r_loCtrl0";
-	setAttr ".t" -type "double3" -1 0 0 ;
-	setAttr ".r" -type "double3" 0 0 -3.1805546814635176e-15 ;
-createNode transform -n "r_loInCorner" -p "r_loInCornerP";
-	setAttr -l on -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004443";
+	setAttr ".t" -type "double3" -1 -4.4408920985006262e-16 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
+createNode transform -n "r_loInCorner" -p "r_loInCornerP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004444";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.8 0.8 0.8 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -1 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 1 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "r_loInCornerShape" -p "r_loInCorner";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004445";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12910,30 +13699,29 @@ createNode nurbsCurve -n "r_loInCornerShape" -p "r_loInCorner";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "r_loOutCornerP" -p "r_loCtrl0";
-	setAttr ".t" -type "double3" 1 0 0 ;
-	setAttr ".r" -type "double3" 0 0 -3.1805546814635176e-15 ;
-createNode transform -n "r_loOutCorner" -p "r_loOutCornerP";
-	setAttr -l on -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004446";
+	setAttr ".t" -type "double3" 1 -4.4408920985006262e-16 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
+createNode transform -n "r_loOutCorner" -p "r_loOutCornerP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004447";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.8 0.8 0.8 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -1 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 1 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "r_loOutCornerShape" -p "r_loOutCorner";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004448";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -12952,183 +13740,289 @@ createNode nurbsCurve -n "r_loOutCornerShape" -p "r_loOutCorner";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "r_loDetail01P" -p "r_loCtrl0";
-	setAttr ".t" -type "double3" -1 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004449";
+	setAttr ".t" -type "double3" -0.79999999701976776 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_loDetail01" -p "r_loDetail01P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000444A";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_loDetail01Shape" -p "r_loDetail01";
+createNode nurbsCurve -n "r_loDetail01Shape" -p "r_loDetail01";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000444B";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_loDetail02P" -p "r_loCtrl0";
-	setAttr ".t" -type "double3" -0.66666662693023682 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000444C";
+	setAttr ".t" -type "double3" -0.59999999403953552 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_loDetail02" -p "r_loDetail02P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000444D";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_loDetail02Shape" -p "r_loDetail02";
+createNode nurbsCurve -n "r_loDetail02Shape" -p "r_loDetail02";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000444E";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_loDetail03P" -p "r_loCtrl0";
-	setAttr ".t" -type "double3" -0.33333337306976318 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000444F";
+	setAttr ".t" -type "double3" -0.39999997615814209 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_loDetail03" -p "r_loDetail03P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004450";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_loDetail03Shape" -p "r_loDetail03";
+createNode nurbsCurve -n "r_loDetail03Shape" -p "r_loDetail03";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004451";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_loDetail04P" -p "r_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004452";
+	setAttr ".t" -type "double3" -0.19999998807907104 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_loDetail04" -p "r_loDetail04P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004453";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_loDetail04Shape" -p "r_loDetail04";
+createNode nurbsCurve -n "r_loDetail04Shape" -p "r_loDetail04";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004454";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_loDetail05P" -p "r_loCtrl0";
-	setAttr ".t" -type "double3" 0.33333331346511841 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004455";
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_loDetail05" -p "r_loDetail05P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004456";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_loDetail05Shape" -p "r_loDetail05";
+createNode nurbsCurve -n "r_loDetail05Shape" -p "r_loDetail05";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004457";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_loDetail06P" -p "r_loCtrl0";
-	setAttr ".t" -type "double3" 0.6666666567325592 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004458";
+	setAttr ".t" -type "double3" 0.20000004768371582 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_loDetail06" -p "r_loDetail06P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004459";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_loDetail06Shape" -p "r_loDetail06";
+createNode nurbsCurve -n "r_loDetail06Shape" -p "r_loDetail06";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000445A";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_loDetail07P" -p "r_loCtrl0";
-	setAttr ".t" -type "double3" 1 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000445B";
+	setAttr ".t" -type "double3" 0.39999997615814209 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_loDetail07" -p "r_loDetail07P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000445C";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_loDetail07Shape" -p "r_loDetail07";
+createNode nurbsCurve -n "r_loDetail07Shape" -p "r_loDetail07";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000445D";
 	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "r_loDetail08P" -p "r_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000445E";
+	setAttr ".t" -type "double3" 0.60000002384185791 0 0 ;
+	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+createNode transform -n "r_loDetail08" -p "r_loDetail08P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000445F";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "r_loDetail08Shape" -p "r_loDetail08";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004460";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "r_loDetail09P" -p "r_loCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004461";
+	setAttr ".t" -type "double3" 0.79999995231628418 0 0 ;
+	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+createNode transform -n "r_loDetail09" -p "r_loDetail09P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004462";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "r_loDetail09Shape" -p "r_loDetail09";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004463";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "RUpCtrl_box" -p "lidsTitle";
-	setAttr ".t" -type "double3" 10.094283604125453 -7.0621284470385 -6.4948046940571658e-15 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004464";
+	setAttr ".t" -type "double3" 10.094283604125453 -6.8 -6.4948046940571658e-15 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "RUpCtrl_boxShape" -p "RUpCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004465";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -13142,34 +14036,39 @@ createNode nurbsCurve -n "RUpCtrl_boxShape" -p "RUpCtrl_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "r_upCtrl0" -p "RUpCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004466";
 	setAttr ".s" -type "double3" -1 1 1 ;
 createNode locator -n "r_upCtrl0Shape" -p "r_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004467";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
-createNode transform -n "r_upCntCtlP" -p "r_upCtrl0";
-	setAttr ".r" -type "double3" 0 0 -3.1805546814635176e-15 ;
-createNode transform -n "r_upCenter" -p "r_upCntCtlP";
-	setAttr -l on -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
+createNode transform -n "r_upCenterP" -p "r_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004468";
 	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
+createNode transform -n "r_upCenter" -p "r_upCenterP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004469";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "r_upCenterShape" -p "r_upCenter";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000446A";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -13188,30 +14087,29 @@ createNode nurbsCurve -n "r_upCenterShape" -p "r_upCenter";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "r_upInCornerP" -p "r_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000446B";
 	setAttr ".t" -type "double3" -1 0 0 ;
-	setAttr ".r" -type "double3" 0 0 -3.1805546814635176e-15 ;
-createNode transform -n "r_upInCorner" -p "r_upInCornerP";
-	setAttr -l on -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
 	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
+createNode transform -n "r_upInCorner" -p "r_upInCornerP";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000446C";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.8 0.8 0.8 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -1 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 1 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "r_upInCornerShape" -p "r_upInCorner";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000446D";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -13230,30 +14128,29 @@ createNode nurbsCurve -n "r_upInCornerShape" -p "r_upInCorner";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "r_upOutCornerP" -p "r_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000446E";
 	setAttr ".t" -type "double3" 1 0 0 ;
-	setAttr ".r" -type "double3" 0 0 -3.1805546814635176e-15 ;
-createNode transform -n "r_upOutCorner" -p "r_upOutCornerP";
-	setAttr -l on -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
 	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+	setAttr ".rp" -type "double3" 0 -1.387778780781446e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -1.3877787807814457e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -3.081487911019578e-33 0 ;
+createNode transform -n "r_upOutCorner" -p "r_upOutCornerP";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000446F";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.8 0.8 0.8 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -1 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 1 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
 createNode nurbsCurve -n "r_upOutCornerShape" -p "r_upOutCorner";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004470";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
 		13 -2 -1 0 1 2 3 4 5 6 7 8
@@ -13272,183 +14169,321 @@ createNode nurbsCurve -n "r_upOutCornerShape" -p "r_upOutCorner";
 		-0.078361162489122435 0.078361162489122435 0
 		;
 createNode transform -n "r_upDetail01P" -p "r_upCtrl0";
-	setAttr ".t" -type "double3" -1 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004471";
+	setAttr ".t" -type "double3" -0.81818181276321411 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_upDetail01" -p "r_upDetail01P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004472";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_upDetail01Shape" -p "r_upDetail01";
+createNode nurbsCurve -n "r_upDetail01Shape" -p "r_upDetail01";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004473";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_upDetail02P" -p "r_upCtrl0";
-	setAttr ".t" -type "double3" -0.66666662693023682 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004474";
+	setAttr ".t" -type "double3" -0.63636362552642822 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_upDetail02" -p "r_upDetail02P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004475";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_upDetail02Shape" -p "r_upDetail02";
+createNode nurbsCurve -n "r_upDetail02Shape" -p "r_upDetail02";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004476";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_upDetail03P" -p "r_upCtrl0";
-	setAttr ".t" -type "double3" -0.33333337306976318 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004477";
+	setAttr ".t" -type "double3" -0.45454543828964233 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_upDetail03" -p "r_upDetail03P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004478";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_upDetail03Shape" -p "r_upDetail03";
+createNode nurbsCurve -n "r_upDetail03Shape" -p "r_upDetail03";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004479";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_upDetail04P" -p "r_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000447A";
+	setAttr ".t" -type "double3" -0.27272725105285645 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_upDetail04" -p "r_upDetail04P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000447B";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_upDetail04Shape" -p "r_upDetail04";
+createNode nurbsCurve -n "r_upDetail04Shape" -p "r_upDetail04";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000447C";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_upDetail05P" -p "r_upCtrl0";
-	setAttr ".t" -type "double3" 0.33333331346511841 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000447D";
+	setAttr ".t" -type "double3" -0.090909063816070557 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_upDetail05" -p "r_upDetail05P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000447E";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_upDetail05Shape" -p "r_upDetail05";
+createNode nurbsCurve -n "r_upDetail05Shape" -p "r_upDetail05";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000447F";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_upDetail06P" -p "r_upCtrl0";
-	setAttr ".t" -type "double3" 0.6666666567325592 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004480";
+	setAttr ".t" -type "double3" 0.090909123420715332 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_upDetail06" -p "r_upDetail06P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004481";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_upDetail06Shape" -p "r_upDetail06";
+createNode nurbsCurve -n "r_upDetail06Shape" -p "r_upDetail06";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004482";
 	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "r_upDetail07P" -p "r_upCtrl0";
-	setAttr ".t" -type "double3" 1 0 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004483";
+	setAttr ".t" -type "double3" 0.27272725105285645 0 0 ;
 	setAttr ".r" -type "double3" 0 180 0 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
 createNode transform -n "r_upDetail07" -p "r_upDetail07P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004484";
 	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".rx";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rz";
-	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".mntl" -type "double3" -0.25 -0.5 -1 ;
-	setAttr ".mxtl" -type "double3" 0.25 0.5 1 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-createNode locator -n "r_upDetail07Shape" -p "r_upDetail07";
+createNode nurbsCurve -n "r_upDetail07Shape" -p "r_upDetail07";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004485";
 	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "r_upDetail08P" -p "r_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004486";
+	setAttr ".t" -type "double3" 0.45454549789428711 0 0 ;
+	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+createNode transform -n "r_upDetail08" -p "r_upDetail08P";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004487";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "r_upDetail08Shape" -p "r_upDetail08";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004488";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "r_upDetail09P" -p "r_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004489";
+	setAttr ".t" -type "double3" 0.63636362552642822 0 0 ;
+	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+createNode transform -n "r_upDetail09" -p "r_upDetail09P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000448A";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "r_upDetail09Shape" -p "r_upDetail09";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000448B";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "r_upDetail10P" -p "r_upCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000448C";
+	setAttr ".t" -type "double3" 0.81818187236785889 0 0 ;
+	setAttr ".r" -type "double3" 0 180 0 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1.0000000000000002 -1 ;
+createNode transform -n "r_upDetail10" -p "r_upDetail10P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000448D";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "r_upDetail10Shape" -p "r_upDetail10";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000448E";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "eye_dir0" -p "lidsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000448F";
 	setAttr ".t" -type "double3" 7.0869895173834419 -7.0483172231249558 0 ;
 	setAttr ".s" -type "double3" 1.4 1 1 ;
 createNode nurbsCurve -n "eye_dir_boxShape0" -p "eye_dir0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004490";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -13462,6 +14497,7 @@ createNode nurbsCurve -n "eye_dir_boxShape0" -p "eye_dir0";
 	setAttr ".dep" yes;
 	setAttr ".dh" yes;
 createNode nurbsCurve -n "eye_dir_boxShape1" -p "eye_dir0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004491";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -13475,8 +14511,10 @@ createNode nurbsCurve -n "eye_dir_boxShape1" -p "eye_dir0";
 	setAttr ".dep" yes;
 	setAttr ".dh" yes;
 createNode transform -n "eye_dir1" -p "eye_dir0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004492";
 	setAttr ".t" -type "double3" 7.1054273576010003e-15 -1 0 ;
 createNode nurbsCurve -n "eye_dir_boxShape1" -p "eye_dir1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004493";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -13487,12 +14525,14 @@ createNode nurbsCurve -n "eye_dir_boxShape1" -p "eye_dir1";
 		0.67058766533584124 0 0
 		;
 createNode transform -n "SWFrame" -p "eye_dir0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004494";
 	addAttr -ci true -sn "ss2ControlType" -ln "ss2ControlType" -min 0 -max 5 -en "A:B:C:D:E:F" 
 		-at "enum";
 	setAttr ".rp" -type "double3" 0 -0.39414578225900238 1.7763568394002505e-15 ;
 	setAttr ".sp" -type "double3" 0 -0.39414578225900238 1.7763568394002505e-15 ;
 	setAttr -l on ".ss2ControlType" 2;
 createNode nurbsCurve -n "SWFrameShape" -p "SWFrame";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004495";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -13510,6 +14550,7 @@ createNode nurbsCurve -n "SWFrameShape" -p "SWFrame";
 	setAttr ".dep" yes;
 	setAttr ".dh" yes;
 createNode nurbsCurve -n "SWFrameShape1" -p "SWFrame";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004496";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -13527,6 +14568,7 @@ createNode nurbsCurve -n "SWFrameShape1" -p "SWFrame";
 	setAttr ".dep" yes;
 	setAttr ".dh" yes;
 createNode transform -n "l_eyeBlink" -p "SWFrame";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004497";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -13550,6 +14592,7 @@ createNode transform -n "l_eyeBlink" -p "SWFrame";
 	setAttr ".msxe" yes;
 	setAttr ".xsxe" yes;
 createNode nurbsCurve -n "l_eyeBlinkShape" -p "l_eyeBlink";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004498";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -13563,6 +14606,7 @@ createNode nurbsCurve -n "l_eyeBlinkShape" -p "l_eyeBlink";
 		-3.0559047857183248e-16 0.19569317778913389 0
 		;
 createNode transform -n "r_eyeBlink" -p "SWFrame";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004499";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -13586,6 +14630,7 @@ createNode transform -n "r_eyeBlink" -p "SWFrame";
 	setAttr ".msxe" yes;
 	setAttr ".xsxe" yes;
 createNode nurbsCurve -n "r_eyeBlinkShape" -p "r_eyeBlink";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000449A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -13599,6 +14644,7 @@ createNode nurbsCurve -n "r_eyeBlinkShape" -p "r_eyeBlink";
 		-3.0559047857183248e-16 0.19569317778913389 0
 		;
 createNode transform -n "R_eyeSmooth_box" -p "lidsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000449B";
 	setAttr ".t" -type "double3" 6.3 -10.2 2.1693674893577832e-30 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".rp" -type "double3" 0 4.4408920985006262e-16 0 ;
@@ -13607,6 +14653,7 @@ createNode transform -n "R_eyeSmooth_box" -p "lidsTitle";
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "R_eyeSmooth_boxShape" -p "R_eyeSmooth_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000449C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -13620,6 +14667,7 @@ createNode nurbsCurve -n "R_eyeSmooth_boxShape" -p "R_eyeSmooth_box";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "r_eyeSmooth" -p "R_eyeSmooth_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000449D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tx";
@@ -13630,8 +14678,8 @@ createNode transform -n "r_eyeSmooth" -p "R_eyeSmooth_box";
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".rp" -type "double3" 0 -1 3.9443045261050713e-31 ;
-	setAttr ".sp" -type "double3" 0 -1 3.9443045261050713e-31 ;
+	setAttr ".rp" -type "double3" 0 -1 3.9443045261050739e-31 ;
+	setAttr ".sp" -type "double3" 0 -1 3.9443045261050739e-31 ;
 	setAttr ".mntl" -type "double3" 0 0 0 ;
 	setAttr ".mxtl" -type "double3" 0 2 0 ;
 	setAttr ".mtxe" yes;
@@ -13651,6 +14699,7 @@ createNode transform -n "r_eyeSmooth" -p "R_eyeSmooth_box";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "r_eyeSmoothShape" -p "r_eyeSmooth";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000449E";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
@@ -13670,6 +14719,7 @@ createNode nurbsCurve -n "r_eyeSmoothShape" -p "r_eyeSmooth";
 		-0.078361162489122435 -0.92163883751087761 -1.2601436025378453e-17
 		;
 createNode transform -n "L_eyeSmooth_box" -p "lidsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000449F";
 	setAttr ".t" -type "double3" 8 -10.2 1.9721522630525306e-30 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".rp" -type "double3" 0 4.4408920985006262e-16 0 ;
@@ -13678,6 +14728,7 @@ createNode transform -n "L_eyeSmooth_box" -p "lidsTitle";
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "L_eyeSmooth_boxShape" -p "L_eyeSmooth_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A0";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -13691,6 +14742,7 @@ createNode nurbsCurve -n "L_eyeSmooth_boxShape" -p "L_eyeSmooth_box";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "l_eyeSmooth" -p "L_eyeSmooth_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tx";
@@ -13701,8 +14753,8 @@ createNode transform -n "l_eyeSmooth" -p "L_eyeSmooth_box";
 	setAttr -l on -k off ".sx";
 	setAttr -l on -k off ".sy";
 	setAttr -l on -k off ".sz";
-	setAttr ".rp" -type "double3" 0 -1 3.9443045261050713e-31 ;
-	setAttr ".sp" -type "double3" 0 -1 3.9443045261050713e-31 ;
+	setAttr ".rp" -type "double3" 0 -1 3.9443045261050739e-31 ;
+	setAttr ".sp" -type "double3" 0 -1 3.9443045261050739e-31 ;
 	setAttr ".mntl" -type "double3" 0 0 0 ;
 	setAttr ".mxtl" -type "double3" 0 2 0 ;
 	setAttr ".mtxe" yes;
@@ -13722,6 +14774,7 @@ createNode transform -n "l_eyeSmooth" -p "L_eyeSmooth_box";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "l_eyeSmoothShape" -p "l_eyeSmooth";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A2";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 8 2 no 3
@@ -13740,7 +14793,335 @@ createNode nurbsCurve -n "l_eyeSmoothShape" -p "l_eyeSmooth";
 		-1.2643170607829328e-17 -0.88918058124456123 -1.7821121732465648e-17
 		-0.078361162489122435 -0.92163883751087761 -1.2601436025378453e-17
 		;
+createNode transform -n "l_conrer_ctlBox" -p "lidsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A3";
+	setAttr ".t" -type "double3" 0.1 0 0 ;
+	setAttr ".rp" -type "double3" 12.460028616551398 -7.9854736349837863 1.7859940414609326e-15 ;
+	setAttr ".sp" -type "double3" 12.460028616551398 -7.9854736349837863 1.7859940414609326e-15 ;
+createNode nurbsCurve -n "twitchDecaCrv" -p "l_conrer_ctlBox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A4";
+	setAttr -k off ".v";
+	setAttr ".tmp" yes;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1 2 3 4
+		5
+		11.710000000000001 -7.885473634983784 1.7867417174434742e-15
+		11.710000000000001 -8.0854736349837832 1.7866260127428796e-15
+		13.210057233102802 -8.085473634983785 1.7852463654783907e-15
+		13.210057233102802 -7.8854736349837848 1.7853620701789857e-15
+		11.710000000000001 -7.885473634983784 1.7867417174434742e-15
+		;
+createNode transform -n "l_innerLidTwistP" -p "l_conrer_ctlBox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A5";
+	setAttr ".t" -type "double3" 11.71 -7.9854736349837889 1.7763568394002524e-15 ;
+	setAttr ".rp" -type "double3" 0 -1.1102230246251569e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -5.5511151231257827e-17 0 ;
+	setAttr ".spt" -type "double3" 0 4.4408920985006258e-17 0 ;
+createNode transform -n "l_innerLidTwist" -p "l_innerLidTwistP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A6";
+	setAttr -l on ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr -l on ".rx";
+	setAttr -l on ".ry";
+	setAttr ".s" -type "double3" 0.2 0.2 0.2 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "l_innerLidTwistShape" -p "l_innerLidTwist";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A7";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.39180581244561252 0.39180581244561191 0
+		-6.321585303914663e-17 0.55409709377719396 0
+		-0.39180581244561213 0.39180581244561213 0
+		-0.55409709377719396 1.605634753618615e-16 0
+		-0.39180581244561224 -0.39180581244561202 0
+		-1.6696026817952597e-16 -0.55409709377719407 0
+		0.39180581244561191 -0.39180581244561219 0
+		0.55409709377719396 -2.9760662996402926e-16 0
+		0.39180581244561252 0.39180581244561191 0
+		-6.321585303914663e-17 0.55409709377719396 0
+		-0.39180581244561213 0.39180581244561213 0
+		;
+createNode transform -n "l_innerDetailP" -p "l_innerLidTwist";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A8";
+	setAttr ".t" -type "double3" 5.6843418860808015e-14 -1.0658141036401503e-14 -4.1355807667287075e-14 ;
+	setAttr ".s" -type "double3" 4.9999999999999982 4.9999999999999991 4.9999999999999982 ;
+createNode transform -n "l_innerDetail" -p "l_innerDetailP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044A9";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "l_innerDetailShape" -p "l_innerDetail";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044AA";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "l_outerLidTwistP" -p "l_conrer_ctlBox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044AB";
+	setAttr ".t" -type "double3" 13.21 -7.9854736349837889 1.7763568394002524e-15 ;
+	setAttr ".rp" -type "double3" 0 -5.5511151231257839e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -5.5511151231257827e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -1.2325951644078312e-32 0 ;
+createNode transform -n "l_outerLidTwist" -p "l_outerLidTwistP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044AC";
+	setAttr -l on ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr -l on ".rx";
+	setAttr -l on ".ry";
+	setAttr ".s" -type "double3" 0.2 0.2 0.2 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "l_outerLidTwistShape" -p "l_outerLidTwist";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044AD";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.39180581244561252 0.39180581244561191 0
+		-6.321585303914663e-17 0.55409709377719396 0
+		-0.39180581244561213 0.39180581244561213 0
+		-0.55409709377719396 1.605634753618615e-16 0
+		-0.39180581244561224 -0.39180581244561202 0
+		-1.6696026817952597e-16 -0.55409709377719407 0
+		0.39180581244561191 -0.39180581244561219 0
+		0.55409709377719396 -2.9760662996402926e-16 0
+		0.39180581244561252 0.39180581244561191 0
+		-6.321585303914663e-17 0.55409709377719396 0
+		-0.39180581244561213 0.39180581244561213 0
+		;
+createNode transform -n "l_outerDetailP" -p "l_outerLidTwist";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044AE";
+	setAttr ".t" -type "double3" 5.6843418860808015e-14 -1.0658141036401503e-14 -4.1355807667287062e-14 ;
+	setAttr ".s" -type "double3" 4.9999999999999982 4.9999999999999991 4.9999999999999973 ;
+createNode transform -n "l_outerDetail" -p "l_outerDetailP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044AF";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "l_outerDetailShape" -p "l_outerDetail";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B0";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "r_conrer_ctlBox" -p "lidsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B1";
+	setAttr ".t" -type "double3" -2.4 0 0 ;
+	setAttr ".s" -type "double3" -1 1 1 ;
+	setAttr ".rp" -type "double3" 12.460028616551398 -7.9854736349837863 1.7859940414609326e-15 ;
+	setAttr ".sp" -type "double3" 12.460028616551398 -7.9854736349837863 1.7859940414609326e-15 ;
+createNode nurbsCurve -n "twitchDecaCrv" -p "r_conrer_ctlBox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B2";
+	setAttr -k off ".v";
+	setAttr ".tmp" yes;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1 2 3 4
+		5
+		11.710000000000001 -7.885473634983784 1.7867417174434742e-15
+		11.710000000000001 -8.0854736349837832 1.7866260127428796e-15
+		13.210057233102802 -8.085473634983785 1.7852463654783907e-15
+		13.210057233102802 -7.8854736349837848 1.7853620701789857e-15
+		11.710000000000001 -7.885473634983784 1.7867417174434742e-15
+		;
+createNode transform -n "r_innerLidTwistP" -p "r_conrer_ctlBox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B3";
+	setAttr ".t" -type "double3" 11.71 -7.9854736349837907 1.7763568394002524e-15 ;
+	setAttr ".rp" -type "double3" 0 -1.1102230246251569e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -5.5511151231257827e-17 0 ;
+	setAttr ".spt" -type "double3" 0 4.4408920985006258e-17 0 ;
+createNode transform -n "r_innerLidTwist" -p "r_innerLidTwistP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B4";
+	setAttr -l on ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr -l on ".rx";
+	setAttr -l on ".ry";
+	setAttr ".s" -type "double3" 0.2 0.2 0.2 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "r_innerLidTwistShape" -p "r_innerLidTwist";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B5";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.39180581244561252 0.39180581244561191 0
+		-6.321585303914663e-17 0.55409709377719396 0
+		-0.39180581244561213 0.39180581244561213 0
+		-0.55409709377719396 1.605634753618615e-16 0
+		-0.39180581244561224 -0.39180581244561202 0
+		-1.6696026817952597e-16 -0.55409709377719407 0
+		0.39180581244561191 -0.39180581244561219 0
+		0.55409709377719396 -2.9760662996402926e-16 0
+		0.39180581244561252 0.39180581244561191 0
+		-6.321585303914663e-17 0.55409709377719396 0
+		-0.39180581244561213 0.39180581244561213 0
+		;
+createNode transform -n "r_innerDetailP" -p "r_innerLidTwist";
+	rename -uid "C9B53860-0000-51A7-5771-AFDD0000483B";
+	setAttr ".t" -type "double3" 0 0 -4.1355807667287062e-14 ;
+	setAttr ".s" -type "double3" 4.9999999999999982 4.9999999999999991 4.9999999999999973 ;
+createNode transform -n "r_innerDetail" -p "r_innerDetailP";
+	rename -uid "C9B53860-0000-51A7-5771-AFDD0000483C";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "r_innerDetailShape" -p "r_innerDetail";
+	rename -uid "C9B53860-0000-51A7-5771-AFDD0000483D";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
+createNode transform -n "r_outerLidTwistP" -p "r_conrer_ctlBox";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B6";
+	setAttr ".t" -type "double3" 13.21 -7.9854736349837907 1.7763568394002524e-15 ;
+	setAttr ".rp" -type "double3" 0 -5.5511151231257839e-17 0 ;
+	setAttr ".sp" -type "double3" 0 -5.5511151231257827e-17 0 ;
+	setAttr ".spt" -type "double3" 0 -1.2325951644078312e-32 0 ;
+createNode transform -n "r_outerLidTwist" -p "r_outerLidTwistP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B7";
+	setAttr -l on ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr -l on ".rx";
+	setAttr -l on ".ry";
+	setAttr ".s" -type "double3" 0.2 0.2 0.2 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "r_outerLidTwistShape" -p "r_outerLidTwist";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B8";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.39180581244561252 0.39180581244561191 0
+		-6.321585303914663e-17 0.55409709377719396 0
+		-0.39180581244561213 0.39180581244561213 0
+		-0.55409709377719396 1.605634753618615e-16 0
+		-0.39180581244561224 -0.39180581244561202 0
+		-1.6696026817952597e-16 -0.55409709377719407 0
+		0.39180581244561191 -0.39180581244561219 0
+		0.55409709377719396 -2.9760662996402926e-16 0
+		0.39180581244561252 0.39180581244561191 0
+		-6.321585303914663e-17 0.55409709377719396 0
+		-0.39180581244561213 0.39180581244561213 0
+		;
+createNode transform -n "r_outerDetailP" -p "r_outerLidTwist";
+	rename -uid "C9B53860-0000-51A7-5771-AFDD0000483E";
+	setAttr ".t" -type "double3" 0 0 -4.1355807667287056e-14 ;
+	setAttr ".s" -type "double3" 4.9999999999999982 4.9999999999999991 4.9999999999999973 ;
+createNode transform -n "r_outerDetail" -p "r_outerDetailP";
+	rename -uid "C9B53860-0000-51A7-5771-AFDD0000483F";
+	setAttr -l on -k off ".v";
+	setAttr ".ovs" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 18;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+createNode nurbsCurve -n "r_outerDetailShape" -p "r_outerDetail";
+	rename -uid "C9B53860-0000-51A7-5771-AFDD00004840";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1.4142135623730949 2.8284271247461898 4.2426406871192848 5.6568542494923797
+		5
+		3.6739403974420592e-18 0.059999999999999998 0
+		-0.059999999999999998 7.3478807948841184e-18 0
+		-1.1021821192326178e-17 -0.059999999999999998 0
+		0.059999999999999998 -1.4695761589768237e-17 0
+		1.8369701987210297e-17 0.059999999999999998 0
+		;
 createNode transform -n "eyeShapeCtrlGrp" -p "LIDS_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044B9";
 	addAttr -ci true -sn "type" -ln "type" -dt "string";
 	setAttr ".t" -type "double3" 7.1246619343361415 -5.6243748297908684 1.7763568394002505e-15 ;
 	setAttr -l on ".tx";
@@ -13755,16 +15136,20 @@ createNode transform -n "eyeShapeCtrlGrp" -p "LIDS_panel";
 	setAttr -l on ".sz";
 	setAttr ".type" -type "string" "D";
 createNode transform -n "eyeShapeCtrlTextShape" -p "eyeShapeCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044BA";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" 0 1.3 0 ;
 	setAttr ".s" -type "double3" 0.4 0.4 0.4 ;
 createNode transform -n "Char_e_3" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044BB";
 	setAttr ".rp" -type "double3" -3.7000000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.7000000000000006 -0.35859388113221941 0 ;
 createNode transform -n "curve17" -p "Char_e_3";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044BC";
 	setAttr ".rp" -type "double3" -3.7000000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.7000000000000006 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape17" -p "curve17";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044BD";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -13799,9 +15184,11 @@ createNode nurbsCurve -n "curveShape17" -p "curve17";
 		-3.201560997940033 -0.15859388113221939 0
 		;
 createNode transform -n "curve18" -p "Char_e_3";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044BE";
 	setAttr ".rp" -type "double3" -3.7000000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.7000000000000006 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape18" -p "curve18";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044BF";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -13820,12 +15207,15 @@ createNode nurbsCurve -n "curveShape18" -p "curve18";
 		-3.5000000000000004 0.041406118867780617 0
 		;
 createNode transform -n "Char_y_1" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C0";
 	setAttr ".rp" -type "double3" -3.0000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.0000000000000004 -0.35859388113221941 0 ;
 createNode transform -n "curve19" -p "Char_y_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C1";
 	setAttr ".rp" -type "double3" -3.0000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -3.0000000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape19" -p "curve19";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C2";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 33 1 no 3
@@ -13871,12 +15261,15 @@ createNode nurbsCurve -n "curveShape19" -p "curve19";
 		-2.9000000000000004 -0.54609369039444577 0
 		;
 createNode transform -n "Char_e_4" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C3";
 	setAttr ".rp" -type "double3" -2.5000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -2.5000000000000004 -0.35859388113221941 0 ;
 createNode transform -n "curve20" -p "Char_e_4";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C4";
 	setAttr ".rp" -type "double3" -2.5000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -2.5000000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape20" -p "curve20";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C5";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -13911,9 +15304,11 @@ createNode nurbsCurve -n "curveShape20" -p "curve20";
 		-2.0015609979400324 -0.15859388113221939 0
 		;
 createNode transform -n "curve21" -p "Char_e_4";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C6";
 	setAttr ".rp" -type "double3" -2.5000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -2.5000000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape21" -p "curve21";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -13932,12 +15327,15 @@ createNode nurbsCurve -n "curveShape21" -p "curve21";
 		-2.3000000000000003 0.041406118867780617 0
 		;
 createNode transform -n "Char_S_1" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C8";
 	setAttr ".rp" -type "double3" -1.8000000000000005 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.8000000000000005 -0.35859388113221941 0 ;
 createNode transform -n "curve22" -p "Char_S_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044C9";
 	setAttr ".rp" -type "double3" -1.8000000000000005 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.8000000000000005 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape22" -p "curve22";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044CA";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 50 1 no 3
@@ -14001,12 +15399,15 @@ createNode nurbsCurve -n "curveShape22" -p "curve22";
 		-1.7000000000000002 -0.058593881132219361 0
 		;
 createNode transform -n "Char_h_2" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044CB";
 	setAttr ".rp" -type "double3" -1.0000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.0000000000000004 -0.35859388113221941 0 ;
 createNode transform -n "curve23" -p "Char_h_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044CC";
 	setAttr ".rp" -type "double3" -1.0000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -1.0000000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape23" -p "curve23";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044CD";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 33 1 no 3
@@ -14052,12 +15453,15 @@ createNode nurbsCurve -n "curveShape23" -p "curve23";
 		-0.90000000000000047 -0.35859388113221941 0
 		;
 createNode transform -n "Char_a_1" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044CE";
 	setAttr ".rp" -type "double3" -0.30000000000000027 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -0.30000000000000027 -0.35859388113221941 0 ;
 createNode transform -n "curve24" -p "Char_a_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044CF";
 	setAttr ".rp" -type "double3" -0.30000000000000027 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -0.30000000000000027 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape24" -p "curve24";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D0";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 43 1 no 3
@@ -14113,9 +15517,11 @@ createNode nurbsCurve -n "curveShape24" -p "curve24";
 		0.19999999999999973 -0.25859388113221937 0
 		;
 createNode transform -n "curve25" -p "Char_a_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D1";
 	setAttr ".rp" -type "double3" -0.30000000000000027 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" -0.30000000000000027 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape25" -p "curve25";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D2";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 15 1 no 3
@@ -14141,12 +15547,15 @@ createNode nurbsCurve -n "curveShape25" -p "curve25";
 		0.19999999999999973 -0.058593881132219361 0
 		;
 createNode transform -n "Char_p_2" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D3";
 	setAttr ".rp" -type "double3" 0.39999999999999991 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 0.39999999999999991 -0.35859388113221941 0 ;
 createNode transform -n "curve26" -p "Char_p_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D4";
 	setAttr ".rp" -type "double3" 0.39999999999999991 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 0.39999999999999991 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape26" -p "curve26";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D5";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -14181,9 +15590,11 @@ createNode nurbsCurve -n "curveShape26" -p "curve26";
 		0.49999999999999994 -0.55859388113221942 0
 		;
 createNode transform -n "curve27" -p "Char_p_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D6";
 	setAttr ".rp" -type "double3" 0.39999999999999991 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 0.39999999999999991 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape27" -p "curve27";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 11 1 no 3
@@ -14205,12 +15616,15 @@ createNode nurbsCurve -n "curveShape27" -p "curve27";
 		0.59999999999999987 -0.014843213550011392 0
 		;
 createNode transform -n "Char_e_5" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D8";
 	setAttr ".rp" -type "double3" 1.1 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 1.1 -0.35859388113221941 0 ;
 createNode transform -n "curve28" -p "Char_e_5";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044D9";
 	setAttr ".rp" -type "double3" 1.1 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 1.1 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape28" -p "curve28";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044DA";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -14245,9 +15659,11 @@ createNode nurbsCurve -n "curveShape28" -p "curve28";
 		1.5984390020599679 -0.15859388113221939 0
 		;
 createNode transform -n "curve29" -p "Char_e_5";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044DB";
 	setAttr ".rp" -type "double3" 1.1 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 1.1 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape29" -p "curve29";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044DC";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -14266,12 +15682,15 @@ createNode nurbsCurve -n "curveShape29" -p "curve29";
 		1.3 0.041406118867780617 0
 		;
 createNode transform -n "Char_C_2" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044DD";
 	setAttr ".rp" -type "double3" 1.8000000000000005 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 1.8000000000000005 -0.35859388113221941 0 ;
 createNode transform -n "curve30" -p "Char_C_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044DE";
 	setAttr ".rp" -type "double3" 1.8000000000000005 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 1.8000000000000005 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape30" -p "curve30";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044DF";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 31 1 no 3
@@ -14314,12 +15733,15 @@ createNode nurbsCurve -n "curveShape30" -p "curve30";
 		2.5000000000000004 -0.038281071183337075 0
 		;
 createNode transform -n "Char_t_2" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E0";
 	setAttr ".rp" -type "double3" 2.7000000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 2.7000000000000006 -0.35859388113221941 0 ;
 createNode transform -n "curve31" -p "Char_t_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E1";
 	setAttr ".rp" -type "double3" 2.7000000000000006 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 2.7000000000000006 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape31" -p "curve31";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E2";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 1 no 3
@@ -14367,12 +15789,15 @@ createNode nurbsCurve -n "curveShape31" -p "curve31";
 		3.0000000000000009 -0.24921873807888911 0
 		;
 createNode transform -n "Char_r_2" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E3";
 	setAttr ".rp" -type "double3" 3.0000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 3.0000000000000004 -0.35859388113221941 0 ;
 createNode transform -n "curve32" -p "Char_r_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E4";
 	setAttr ".rp" -type "double3" 3.0000000000000004 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 3.0000000000000004 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape32" -p "curve32";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E5";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -14407,12 +15832,15 @@ createNode nurbsCurve -n "curveShape32" -p "curve32";
 		3.1000000000000005 -0.35859388113221941 0
 		;
 createNode transform -n "Char_l_2" -p "eyeShapeCtrlTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E6";
 	setAttr ".rp" -type "double3" 3.4000000000000008 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 3.4000000000000008 -0.35859388113221941 0 ;
 createNode transform -n "curve33" -p "Char_l_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E7";
 	setAttr ".rp" -type "double3" 3.4000000000000008 -0.35859388113221941 0 ;
 	setAttr ".sp" -type "double3" 3.4000000000000008 -0.35859388113221941 0 ;
 createNode nurbsCurve -n "curveShape33" -p "curve33";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E8";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 2 no 3
@@ -14425,9 +15853,12 @@ createNode nurbsCurve -n "curveShape33" -p "curve33";
 		3.5000000000000009 -0.35859388113221941 0
 		;
 createNode transform -n "eyeShapeCtrlInnerSquare" -p "eyeShapeCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044E9";
 	setAttr ".tmp" yes;
 createNode transform -n "topeyeShapeCtrlInnerSquare" -p "eyeShapeCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044EA";
 createNode nurbsCurve -n "topeyeShapeCtrlInnerSquareShape" -p "topeyeShapeCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044EB";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -14439,7 +15870,9 @@ createNode nurbsCurve -n "topeyeShapeCtrlInnerSquareShape" -p "topeyeShapeCtrlIn
 		1 1.1102230246251563e-16 0
 		;
 createNode transform -n "lefteyeShapeCtrlInnerSquare" -p "eyeShapeCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044EC";
 createNode nurbsCurve -n "lefteyeShapeCtrlInnerSquareShape" -p "lefteyeShapeCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044ED";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -14451,7 +15884,9 @@ createNode nurbsCurve -n "lefteyeShapeCtrlInnerSquareShape" -p "lefteyeShapeCtrl
 		-0.99999999999999989 0 0
 		;
 createNode transform -n "bottomeyeShapeCtrlInnerSquare" -p "eyeShapeCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044EE";
 createNode nurbsCurve -n "bottomeyeShapeCtrlInnerSquareShape" -p "bottomeyeShapeCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044EF";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -14463,7 +15898,9 @@ createNode nurbsCurve -n "bottomeyeShapeCtrlInnerSquareShape" -p "bottomeyeShape
 		-1 1 0
 		;
 createNode transform -n "righteyeShapeCtrlInnerSquare" -p "eyeShapeCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F0";
 createNode nurbsCurve -n "righteyeShapeCtrlInnerSquareShape" -p "righteyeShapeCtrlInnerSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F1";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -14475,9 +15912,12 @@ createNode nurbsCurve -n "righteyeShapeCtrlInnerSquareShape" -p "righteyeShapeCt
 		0.99999999999999989 1 0
 		;
 createNode transform -n "eyeShapeCtrlOuterSquare" -p "eyeShapeCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F2";
 	setAttr ".tmp" yes;
 createNode transform -n "topeyeShapeCtrlOuterSquare" -p "eyeShapeCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F3";
 createNode nurbsCurve -n "topeyeShapeCtrlOuterSquareShape" -p "topeyeShapeCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F4";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -14489,7 +15929,9 @@ createNode nurbsCurve -n "topeyeShapeCtrlOuterSquareShape" -p "topeyeShapeCtrlOu
 		1.05 -0.050000000000000266 0
 		;
 createNode transform -n "lefteyeShapeCtrlOuterSquare" -p "eyeShapeCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F5";
 createNode nurbsCurve -n "lefteyeShapeCtrlOuterSquareShape" -p "lefteyeShapeCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F6";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -14501,7 +15943,9 @@ createNode nurbsCurve -n "lefteyeShapeCtrlOuterSquareShape" -p "lefteyeShapeCtrl
 		-1.0499999999999998 -0.050000000000000266 0
 		;
 createNode transform -n "bottomeyeShapeCtrlOuterSquare" -p "eyeShapeCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F7";
 createNode nurbsCurve -n "bottomeyeShapeCtrlOuterSquareShape" -p "bottomeyeShapeCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F8";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -14513,7 +15957,9 @@ createNode nurbsCurve -n "bottomeyeShapeCtrlOuterSquareShape" -p "bottomeyeShape
 		-1.05 1.0499999999999998 0
 		;
 createNode transform -n "righteyeShapeCtrlOuterSquare" -p "eyeShapeCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044F9";
 createNode nurbsCurve -n "righteyeShapeCtrlOuterSquareShape" -p "righteyeShapeCtrlOuterSquare";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044FA";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		3 1 0 no 3
@@ -14524,7 +15970,8 @@ createNode nurbsCurve -n "righteyeShapeCtrlOuterSquareShape" -p "righteyeShapeCt
 		0.34999999999999987 1.0499999999999998 0
 		1.0499999999999998 1.0499999999999998 0
 		;
-createNode transform -n "l_eyeShapeCtrl" -p "eyeShapeCtrlGrp";
+createNode transform -n "lEyeShapeCtrl" -p "eyeShapeCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044FB";
 	addAttr -ci true -sn "name" -ln "name" -dt "string";
 	setAttr -av ".v";
 	setAttr ".ove" yes;
@@ -14545,7 +15992,8 @@ createNode transform -n "l_eyeShapeCtrl" -p "eyeShapeCtrlGrp";
 	setAttr ".xtze" yes;
 	setAttr ".smd" 1;
 	setAttr ".name" -type "string" "eyeShapeCtrl";
-createNode nurbsCurve -n "l_eyeShapeCtrlShape" -p "l_eyeShapeCtrl";
+createNode nurbsCurve -n "lEyeShapeCtrlShape" -p "lEyeShapeCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044FC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -14566,7 +16014,8 @@ createNode nurbsCurve -n "l_eyeShapeCtrlShape" -p "l_eyeShapeCtrl";
 		-2.253596115216893e-17 0.22494845553306775 0
 		0.020327170180477926 0.15906257832487281 0
 		;
-createNode transform -n "r_eyeShapeCtrl" -p "eyeShapeCtrlGrp";
+createNode transform -n "rEyeShapeCtrl" -p "eyeShapeCtrlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044FD";
 	addAttr -ci true -sn "name" -ln "name" -dt "string";
 	setAttr -av ".v";
 	setAttr ".ove" yes;
@@ -14587,7 +16036,8 @@ createNode transform -n "r_eyeShapeCtrl" -p "eyeShapeCtrlGrp";
 	setAttr ".xtze" yes;
 	setAttr ".smd" 1;
 	setAttr ".name" -type "string" "eyeShapeCtrl";
-createNode nurbsCurve -n "r_eyeShapeCtrlShape" -p "r_eyeShapeCtrl";
+createNode nurbsCurve -n "rEyeShapeCtrlShape" -p "rEyeShapeCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044FE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -14609,7 +16059,8 @@ createNode nurbsCurve -n "r_eyeShapeCtrlShape" -p "r_eyeShapeCtrl";
 		-0.13967573233569222 0.15906257832487281 0
 		;
 createNode transform -n "eyeOffSet__box" -p "LIDS_panel";
-	setAttr ".t" -type "double3" 12.499807815986195 -11.200000000000001 1.7763568394002505e-15 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000044FF";
+	setAttr ".t" -type "double3" 12.499807815986197 -11.2 1.7763568394002505e-15 ;
 	setAttr -l on ".tz";
 	setAttr -l on ".rx";
 	setAttr -l on ".ry";
@@ -14620,6 +16071,7 @@ createNode transform -n "eyeOffSet__box" -p "LIDS_panel";
 	setAttr -l on ".sz";
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "eyeOffSet__boxShape" -p "eyeOffSet__box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004500";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -14633,12 +16085,17 @@ createNode nurbsCurve -n "eyeOffSet__boxShape" -p "eyeOffSet__box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "eyeOffSet_0" -p "eyeOffSet__box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004501";
 createNode locator -n "eyeOffSet_0Shape" -p "eyeOffSet_0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004502";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "r_lidHeight" -p "eyeOffSet__box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004503";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -14670,6 +16127,7 @@ createNode transform -n "r_lidHeight" -p "eyeOffSet__box";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "r_lidHeightShape" -p "r_lidHeight";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004504";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -14683,6 +16141,7 @@ createNode nurbsCurve -n "r_lidHeightShape" -p "r_lidHeight";
 		1.7290394408176989e-16 0.20228597200319073 0
 		;
 createNode transform -n "l_lidHeight" -p "eyeOffSet__box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004505";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -14715,6 +16174,7 @@ createNode transform -n "l_lidHeight" -p "eyeOffSet__box";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "l_lidHeightShape" -p "l_lidHeight";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004506";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 21;
@@ -14728,17 +16188,21 @@ createNode nurbsCurve -n "l_lidHeightShape" -p "l_lidHeight";
 		1.7290394408176989e-16 0.20228597200319073 0
 		;
 createNode transform -n "eyeOffSetTextShape" -p "eyeOffSet__box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004507";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -1.5137603352562194 -0.026448392225405671 0 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
 	setAttr ".s" -type "double3" 0.4 0.4 0.4 ;
 createNode transform -n "Char_e_6" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004508";
 	setAttr ".rp" -type "double3" -2.65 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -2.65 -0.35859388113221946 0 ;
 createNode transform -n "curve34" -p "Char_e_6";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004509";
 	setAttr ".rp" -type "double3" -2.65 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -2.65 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape34" -p "curve34";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000450A";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -14773,9 +16237,11 @@ createNode nurbsCurve -n "curveShape34" -p "curve34";
 		-2.1515609979400319 -0.15859388113221945 0
 		;
 createNode transform -n "curve35" -p "Char_e_6";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000450B";
 	setAttr ".rp" -type "double3" -2.65 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -2.65 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape35" -p "curve35";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000450C";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -14794,12 +16260,15 @@ createNode nurbsCurve -n "curveShape35" -p "curve35";
 		-2.4499999999999997 0.041406118867780561 0
 		;
 createNode transform -n "Char_y_2" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000450D";
 	setAttr ".rp" -type "double3" -1.9499999999999995 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -1.9499999999999995 -0.35859388113221946 0 ;
 createNode transform -n "curve36" -p "Char_y_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000450E";
 	setAttr ".rp" -type "double3" -1.9499999999999995 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -1.9499999999999995 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape36" -p "curve36";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000450F";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 33 1 no 3
@@ -14845,12 +16314,15 @@ createNode nurbsCurve -n "curveShape36" -p "curve36";
 		-1.8499999999999996 -0.54609369039444577 0
 		;
 createNode transform -n "Char_e_7" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004510";
 	setAttr ".rp" -type "double3" -1.4499999999999995 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -1.4499999999999995 -0.35859388113221946 0 ;
 createNode transform -n "curve37" -p "Char_e_7";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004511";
 	setAttr ".rp" -type "double3" -1.4499999999999995 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -1.4499999999999995 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape37" -p "curve37";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004512";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -14885,9 +16357,11 @@ createNode nurbsCurve -n "curveShape37" -p "curve37";
 		-0.95156099794003168 -0.15859388113221945 0
 		;
 createNode transform -n "curve38" -p "Char_e_7";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004513";
 	setAttr ".rp" -type "double3" -1.4499999999999995 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -1.4499999999999995 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape38" -p "curve38";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004514";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -14906,12 +16380,15 @@ createNode nurbsCurve -n "curveShape38" -p "curve38";
 		-1.2499999999999998 0.041406118867780561 0
 		;
 createNode transform -n "Char_O_1" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004515";
 	setAttr ".rp" -type "double3" -0.74999999999999956 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -0.74999999999999956 -0.35859388113221946 0 ;
 createNode transform -n "curve39" -p "Char_O_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004516";
 	setAttr ".rp" -type "double3" -0.74999999999999956 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -0.74999999999999956 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape39" -p "curve39";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004517";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 14 1 no 3
@@ -14936,9 +16413,11 @@ createNode nurbsCurve -n "curveShape39" -p "curve39";
 		-0.64999999999999958 0.080469214923323429 0
 		;
 createNode transform -n "curve40" -p "Char_O_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004518";
 	setAttr ".rp" -type "double3" -0.74999999999999956 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" -0.74999999999999956 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape40" -p "curve40";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004519";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 12 1 no 3
@@ -14961,12 +16440,15 @@ createNode nurbsCurve -n "curveShape40" -p "curve40";
 		-0.5499999999999996 0.07890669108110171 0
 		;
 createNode transform -n "Char_f_1" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000451A";
 	setAttr ".rp" -type "double3" 0.15000000000000036 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 0.15000000000000036 -0.35859388113221946 0 ;
 createNode transform -n "curve41" -p "Char_f_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000451B";
 	setAttr ".rp" -type "double3" 0.15000000000000036 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 0.15000000000000036 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape41" -p "curve41";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000451C";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 39 1 no 3
@@ -15018,12 +16500,15 @@ createNode nurbsCurve -n "curveShape41" -p "curve41";
 		0.25000000000000039 -0.35859388113221946 0
 		;
 createNode transform -n "Char_f_2" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000451D";
 	setAttr ".rp" -type "double3" 0.45000000000000062 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 0.45000000000000062 -0.35859388113221946 0 ;
 createNode transform -n "curve42" -p "Char_f_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000451E";
 	setAttr ".rp" -type "double3" 0.45000000000000062 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 0.45000000000000062 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape42" -p "curve42";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000451F";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 39 1 no 3
@@ -15075,12 +16560,15 @@ createNode nurbsCurve -n "curveShape42" -p "curve42";
 		0.5500000000000006 -0.35859388113221946 0
 		;
 createNode transform -n "Char_S_2" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004520";
 	setAttr ".rp" -type "double3" 0.75000000000000044 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 0.75000000000000044 -0.35859388113221946 0 ;
 createNode transform -n "curve43" -p "Char_S_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004521";
 	setAttr ".rp" -type "double3" 0.75000000000000044 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 0.75000000000000044 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape43" -p "curve43";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004522";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 50 1 no 3
@@ -15144,12 +16632,15 @@ createNode nurbsCurve -n "curveShape43" -p "curve43";
 		0.85000000000000053 -0.058593881132219416 0
 		;
 createNode transform -n "Char_e_8" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004523";
 	setAttr ".rp" -type "double3" 1.5500000000000005 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 1.5500000000000005 -0.35859388113221946 0 ;
 createNode transform -n "curve44" -p "Char_e_8";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004524";
 	setAttr ".rp" -type "double3" 1.5500000000000005 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 1.5500000000000005 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape44" -p "curve44";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004525";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -15184,9 +16675,11 @@ createNode nurbsCurve -n "curveShape44" -p "curve44";
 		2.0484390020599683 -0.15859388113221945 0
 		;
 createNode transform -n "curve45" -p "Char_e_8";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004526";
 	setAttr ".rp" -type "double3" 1.5500000000000005 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 1.5500000000000005 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape45" -p "curve45";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004527";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -15205,12 +16698,15 @@ createNode nurbsCurve -n "curveShape45" -p "curve45";
 		1.7500000000000002 0.041406118867780561 0
 		;
 createNode transform -n "Char_t_3" -p "eyeOffSetTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004528";
 	setAttr ".rp" -type "double3" 2.2500000000000004 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 2.2500000000000004 -0.35859388113221946 0 ;
 createNode transform -n "curve46" -p "Char_t_3";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004529";
 	setAttr ".rp" -type "double3" 2.2500000000000004 -0.35859388113221946 0 ;
 	setAttr ".sp" -type "double3" 2.2500000000000004 -0.35859388113221946 0 ;
 createNode nurbsCurve -n "curveShape46" -p "curve46";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000452A";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 1 no 3
@@ -15258,10 +16754,12 @@ createNode nurbsCurve -n "curveShape46" -p "curve46";
 		2.5500000000000007 -0.24921873807888917 0
 		;
 createNode transform -n "lidPuff_box" -p "LIDS_panel";
-	setAttr ".t" -type "double3" 9.9969390097115483 -11.986464147479625 1.7763568394002509e-15 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF400000452B";
+	setAttr ".t" -type "double3" 10.095 -11.986464147479625 1.7763568394002509e-15 ;
 	setAttr ".s" -type "double3" 2 1.5 1 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "lidPuff_boxShape" -p "lidPuff_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000452C";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -15275,17 +16773,23 @@ createNode nurbsCurve -n "lidPuff_boxShape" -p "lidPuff_box";
 		0.49999999999999967 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "lidPuff0" -p "lidPuff_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000452D";
 	setAttr ".t" -type "double3" 0 0 -6.4162745754513239e-20 ;
 	setAttr ".s" -type "double3" 0.99999999999999978 0.8 1 ;
 createNode locator -n "lidPuff0Shape" -p "lidPuff0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000452E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 0.5 1.25 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 0.5 1.25 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "loCheek_ctlGrp" -p "lidPuff0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000452F";
 	setAttr ".t" -type "double3" 0 -1 0 ;
 	setAttr ".s" -type "double3" 0.5 0.83333333333333337 1 ;
 createNode transform -n "l_loCheek_ctl" -p "loCheek_ctlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004530";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" 0 -1.5265566588595902e-16 0 ;
@@ -15315,6 +16819,7 @@ createNode transform -n "l_loCheek_ctl" -p "loCheek_ctlGrp";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "l_loCheek_ctlShape" -p "l_loCheek_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004531";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -15328,6 +16833,7 @@ createNode nurbsCurve -n "l_loCheek_ctlShape" -p "l_loCheek_ctl";
 		0 0.11829843853172832 0
 		;
 createNode transform -n "r_loCheek_ctl" -p "loCheek_ctlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004532";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" 0 -1.5265566588595902e-16 0 ;
@@ -15357,6 +16863,7 @@ createNode transform -n "r_loCheek_ctl" -p "loCheek_ctlGrp";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "r_loCheek_ctlShape" -p "r_loCheek_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004533";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -15370,9 +16877,11 @@ createNode nurbsCurve -n "r_loCheek_ctlShape" -p "r_loCheek_ctl";
 		0 0.11829843853172832 0
 		;
 createNode transform -n "lidPuff_ctlGrp" -p "lidPuff0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004534";
 	setAttr ".t" -type "double3" 0 1 0 ;
 	setAttr ".s" -type "double3" 0.5 0.83333333333333337 1 ;
 createNode transform -n "l_lidPuff_ctl" -p "lidPuff_ctlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004535";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" 0 -1.5265566588595902e-16 0 ;
@@ -15402,6 +16911,7 @@ createNode transform -n "l_lidPuff_ctl" -p "lidPuff_ctlGrp";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "l_lidPuff_ctlShape" -p "l_lidPuff_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004536";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -15415,6 +16925,7 @@ createNode nurbsCurve -n "l_lidPuff_ctlShape" -p "l_lidPuff_ctl";
 		0 0.11829843853172832 0
 		;
 createNode transform -n "r_lidPuff_ctl" -p "lidPuff_ctlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004537";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" 0 -1.5265566588595902e-16 0 ;
@@ -15444,6 +16955,7 @@ createNode transform -n "r_lidPuff_ctl" -p "lidPuff_ctlGrp";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "r_lidPuff_ctlShape" -p "r_lidPuff_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004538";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -15457,8 +16969,10 @@ createNode nurbsCurve -n "r_lidPuff_ctlShape" -p "r_lidPuff_ctl";
 		0 0.11829843853172832 0
 		;
 createNode transform -n "cheek_ctlGrp" -p "lidPuff0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004539";
 	setAttr ".s" -type "double3" 0.5 0.83333333333333337 1 ;
 createNode transform -n "l_cheek_ctl" -p "cheek_ctlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000453A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" 0 -1.5265566588595902e-16 0 ;
@@ -15488,6 +17002,7 @@ createNode transform -n "l_cheek_ctl" -p "cheek_ctlGrp";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "l_cheek_ctlShape" -p "l_cheek_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000453B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -15501,6 +17016,7 @@ createNode nurbsCurve -n "l_cheek_ctlShape" -p "l_cheek_ctl";
 		0 0.11829843853172832 0
 		;
 createNode transform -n "r_cheek_ctl" -p "cheek_ctlGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000453C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" 0 -1.5265566588595902e-16 0 ;
@@ -15530,6 +17046,7 @@ createNode transform -n "r_cheek_ctl" -p "cheek_ctlGrp";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "r_cheek_ctlShape" -p "r_cheek_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000453D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 13;
@@ -15543,12 +17060,16 @@ createNode nurbsCurve -n "r_cheek_ctlShape" -p "r_cheek_ctl";
 		0 0.11829843853172832 0
 		;
 createNode transform -n "Text_CHEEKxSQUINT_1" -p "lidPuff_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000453E";
 	setAttr ".t" -type "double3" -0.52690907444836466 -0.69506125682933528 0 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
 	setAttr ".s" -type "double3" 0.053333333333333344 0.039999999999999994 0.08 ;
 createNode transform -n "Char_C_3" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000453F";
 createNode transform -n "curve66" -p "Char_C_3";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004540";
 createNode nurbsCurve -n "curveShape66" -p "curve66";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004541";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 40 1 no 3
@@ -15601,9 +17122,12 @@ createNode nurbsCurve -n "curveShape66" -p "curve66";
 		2.2000000000000002 2.6000000000000001 0
 		;
 createNode transform -n "Char_H_1" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004542";
 	setAttr ".t" -type "double3" 2.6 0 0 ;
 createNode transform -n "curve67" -p "Char_H_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004543";
 createNode nurbsCurve -n "curveShape67" -p "curve67";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004544";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 97 1 no 3
@@ -15718,9 +17242,12 @@ createNode nurbsCurve -n "curveShape67" -p "curve67";
 		0.70000000000000007 1.4000000000000001 0
 		;
 createNode transform -n "Char_E_1" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004545";
 	setAttr ".t" -type "double3" 5.3000000000000007 0 0 ;
 createNode transform -n "curve68" -p "Char_E_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004546";
 createNode nurbsCurve -n "curveShape68" -p "curve68";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004547";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 71 1 no 3
@@ -15807,9 +17334,12 @@ createNode nurbsCurve -n "curveShape68" -p "curve68";
 		0.70000000000000007 2.5 0
 		;
 createNode transform -n "Char_E_2" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004548";
 	setAttr ".t" -type "double3" 7.7000000000000011 0 0 ;
 createNode transform -n "curve69" -p "Char_E_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004549";
 createNode nurbsCurve -n "curveShape69" -p "curve69";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000454A";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 71 1 no 3
@@ -15896,9 +17426,12 @@ createNode nurbsCurve -n "curveShape69" -p "curve69";
 		0.70000000000000007 2.5 0
 		;
 createNode transform -n "Char_K_1" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000454B";
 	setAttr ".t" -type "double3" 10.100000000000001 0 0 ;
 createNode transform -n "curve70" -p "Char_K_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000454C";
 createNode nurbsCurve -n "curveShape70" -p "curve70";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000454D";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 90 1 no 3
@@ -16005,9 +17538,12 @@ createNode nurbsCurve -n "curveShape70" -p "curve70";
 		0.99062638284885951 1.4046875715266651 0
 		;
 createNode transform -n "Char_S_3" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000454E";
 	setAttr ".t" -type "double3" 13.8 0 0 ;
 createNode transform -n "curve71" -p "Char_S_3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000454F";
 createNode nurbsCurve -n "curveShape71" -p "curve71";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004550";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 62 1 no 3
@@ -16084,9 +17620,12 @@ createNode nurbsCurve -n "curveShape71" -p "curve71";
 		1.8 2.6000000000000001 0
 		;
 createNode transform -n "Char_Q_1" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004551";
 	setAttr ".t" -type "double3" 16 0 0 ;
 createNode transform -n "curve72" -p "Char_Q_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004552";
 createNode nurbsCurve -n "curveShape72" -p "curve72";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004553";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 22 1 no 3
@@ -16120,7 +17659,9 @@ createNode nurbsCurve -n "curveShape72" -p "curve72";
 		1.6000000000000001 0 0
 		;
 createNode transform -n "curve73" -p "Char_Q_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004554";
 createNode nurbsCurve -n "curveShape73" -p "curve73";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004555";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 16 1 no 3
@@ -16147,9 +17688,12 @@ createNode nurbsCurve -n "curveShape73" -p "curve73";
 		1.3953139543755246 2.5 0
 		;
 createNode transform -n "Char_U_1" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004556";
 	setAttr ".t" -type "double3" 18.8 0 0 ;
 createNode transform -n "curve74" -p "Char_U_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004557";
 createNode nurbsCurve -n "curveShape74" -p "curve74";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004558";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 60 1 no 3
@@ -16224,9 +17768,12 @@ createNode nurbsCurve -n "curveShape74" -p "curve74";
 		1.8000000000000003 2.5 0
 		;
 createNode transform -n "Char_I_1" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004559";
 	setAttr ".t" -type "double3" 21.6 0 0 ;
 createNode transform -n "curve75" -p "Char_I_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000455A";
 createNode nurbsCurve -n "curveShape75" -p "curve75";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000455B";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 43 1 no 3
@@ -16282,9 +17829,12 @@ createNode nurbsCurve -n "curveShape75" -p "curve75";
 		1.1000000000000001 0.10000000000000001 0
 		;
 createNode transform -n "Char_N_1" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000455C";
 	setAttr ".t" -type "double3" 22.700000000000003 0 0 ;
 createNode transform -n "curve76" -p "Char_N_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000455D";
 createNode nurbsCurve -n "curveShape76" -p "curve76";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000455E";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 58 1 no 3
@@ -16357,9 +17907,12 @@ createNode nurbsCurve -n "curveShape76" -p "curve76";
 		-0.10937361715114063 2.6000000000000001 0
 		;
 createNode transform -n "Char_T_1" -p "Text_CHEEKxSQUINT_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000455F";
 	setAttr ".t" -type "double3" 25.500000000000004 0 0 ;
 createNode transform -n "curve77" -p "Char_T_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004560";
 createNode nurbsCurve -n "curveShape77" -p "curve77";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004561";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 45 1 no 3
@@ -16418,8 +17971,10 @@ createNode nurbsCurve -n "curveShape77" -p "curve77";
 		2.2000000000000002 2.6000000000000001 0
 		;
 createNode transform -n "BROWS_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004562";
 	setAttr ".t" -type "double3" 0 -0.91417267305463246 0 ;
 createNode transform -n "browsTitle" -p "BROWS_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004563";
 	setAttr -l on ".v";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
@@ -16433,6 +17988,7 @@ createNode transform -n "browsTitle" -p "BROWS_panel";
 	setAttr ".rp" -type "double3" -0.2853550694224774 0 0.05 ;
 	setAttr ".sp" -type "double3" -0.2853550694224774 0 0.05 ;
 createNode nurbsCurve -n "browsTitleShape" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004564";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16468,6 +18024,7 @@ createNode nurbsCurve -n "browsTitleShape" -p "browsTitle";
 		-0.27313384540706231 -4.9713105655827752 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "browsTitleShape1" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004565";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16503,6 +18060,7 @@ createNode nurbsCurve -n "browsTitleShape1" -p "browsTitle";
 		-0.19498697526709341 -4.9593354489420305 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "browsTitleShape2" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004566";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16544,6 +18102,7 @@ createNode nurbsCurve -n "browsTitleShape2" -p "browsTitle";
 		-0.13535682363412291 -4.7045920585843302 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "browsTitleShape3" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004567";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16579,6 +18138,7 @@ createNode nurbsCurve -n "browsTitleShape3" -p "browsTitle";
 		-0.26853139595138575 -4.7820415142608459 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "browsTitleShape4" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004568";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16607,6 +18167,7 @@ createNode nurbsCurve -n "browsTitleShape4" -p "browsTitle";
 		-0.23124766733552241 -4.5156340492530695 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "browsTitleShape5" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004569";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16652,6 +18213,7 @@ createNode nurbsCurve -n "browsTitleShape5" -p "browsTitle";
 		-0.23137888817533589 -4.5654007677600701 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "browsTitleShape6" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000456A";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16691,6 +18253,7 @@ createNode nurbsCurve -n "browsTitleShape6" -p "browsTitle";
 		-0.32726973187673558 -4.2395842825345653 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "browsTitleShape7" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000456B";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16780,6 +18343,7 @@ createNode nurbsCurve -n "browsTitleShape7" -p "browsTitle";
 		-0.13193536173676637 -4.1565336410104594 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "browsTitleShape8" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000456C";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -16825,9 +18389,11 @@ createNode nurbsCurve -n "browsTitleShape8" -p "browsTitle";
 		-0.19416319999493192 -4.9095687304350299 -6.4948046940571658e-15
 		;
 createNode transform -n "Brow_madsad_box" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000456D";
 	setAttr ".t" -type "double3" 0.60954871437749469 -4.0828191192375103 0 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "Brow_madsad_boxShape" -p "Brow_madsad_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000456E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -16841,7 +18407,9 @@ createNode nurbsCurve -n "Brow_madsad_boxShape" -p "Brow_madsad_box";
 		6.6613381477509392e-16 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "Brow_madsad0" -p "Brow_madsad_box";
-createNode transform -n "Brow_madsad_l" -p "Brow_madsad0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000456F";
+createNode transform -n "l_brow_madsad" -p "Brow_madsad0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004570";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -16861,7 +18429,8 @@ createNode transform -n "Brow_madsad_l" -p "Brow_madsad0";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
-createNode nurbsCurve -n "Brow_madsad_lShape" -p "Brow_madsad_l";
+createNode nurbsCurve -n "l_brow_madsadShape" -p "l_brow_madsad";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004571";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -16874,7 +18443,8 @@ createNode nurbsCurve -n "Brow_madsad_lShape" -p "Brow_madsad_l";
 		0 -0.14559807819289663 0
 		0 0.14559807819289663 0
 		;
-createNode transform -n "Brow_madsad_r" -p "Brow_madsad0";
+createNode transform -n "r_brow_madsad" -p "Brow_madsad0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004572";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -16894,7 +18464,8 @@ createNode transform -n "Brow_madsad_r" -p "Brow_madsad0";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
-createNode nurbsCurve -n "Brow_madsad_rShape" -p "Brow_madsad_r";
+createNode nurbsCurve -n "r_brow_madsadShape" -p "r_brow_madsad";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004573";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -16908,6 +18479,7 @@ createNode nurbsCurve -n "Brow_madsad_rShape" -p "Brow_madsad_r";
 		0 0.14559807819289663 0
 		;
 createNode nurbsCurve -n "Brow_madsad_boxShape1" -p "Brow_madsad_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004574";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -16918,10 +18490,12 @@ createNode nurbsCurve -n "Brow_madsad_boxShape1" -p "Brow_madsad_box";
 		1 0 0
 		;
 createNode transform -n "browSadMadTitle" -p "Brow_madsad_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004575";
 	setAttr -av ".tmp" yes;
 	setAttr ".t" -type "double3" -3.1184132622590481 -1.2250853932897914 0.050000000000006366 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
 createNode nurbsCurve -n "browSadMadTitleShape" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004576";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17010,6 +18584,7 @@ createNode nurbsCurve -n "browSadMadTitleShape" -p "browSadMadTitle";
 		0.31143415466441998 -2.9391959909647838 -0.050000000000006505
 		;
 createNode nurbsCurve -n "browSadMadTitleShape1" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004577";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17037,6 +18612,7 @@ createNode nurbsCurve -n "browSadMadTitleShape1" -p "browSadMadTitle";
 		0.38987156727627703 -2.9361199283249633 -0.050000000000006505
 		;
 createNode nurbsCurve -n "browSadMadTitleShape2" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004578";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17053,6 +18629,7 @@ createNode nurbsCurve -n "browSadMadTitleShape2" -p "browSadMadTitle";
 		0.4888867029026755 -2.8695651184815634 -0.050000000000006505
 		;
 createNode nurbsCurve -n "browSadMadTitleShape3" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004579";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17087,6 +18664,7 @@ createNode nurbsCurve -n "browSadMadTitleShape3" -p "browSadMadTitle";
 		0.72488275295860494 -2.8500251296672436 -0.050000000000006505
 		;
 createNode nurbsCurve -n "browSadMadTitleShape4" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000457A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17121,6 +18699,7 @@ createNode nurbsCurve -n "browSadMadTitleShape4" -p "browSadMadTitle";
 		0.68041966571028001 -2.8496646535766383 -0.050000000000006505
 		;
 createNode nurbsCurve -n "browSadMadTitleShape5" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000457B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17139,6 +18718,7 @@ createNode nurbsCurve -n "browSadMadTitleShape5" -p "browSadMadTitle";
 		0.84834472163869501 -2.7558906218372687 -0.050000000000006505
 		;
 createNode nurbsCurve -n "browSadMadTitleShape6" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000457C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17177,6 +18757,7 @@ createNode nurbsCurve -n "browSadMadTitleShape6" -p "browSadMadTitle";
 		1.0721481152429415 -2.9356750563872014 -0.050000000000006518
 		;
 createNode nurbsCurve -n "browSadMadTitleShape7" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000457D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17204,6 +18785,7 @@ createNode nurbsCurve -n "browSadMadTitleShape7" -p "browSadMadTitle";
 		1.0893461018201214 -2.9356750563872014 -0.050000000000006518
 		;
 createNode nurbsCurve -n "browSadMadTitleShape8" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000457E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17220,6 +18802,7 @@ createNode nurbsCurve -n "browSadMadTitleShape8" -p "browSadMadTitle";
 		1.1883612374465218 -2.8691202465438019 -0.050000000000006518
 		;
 createNode nurbsCurve -n "browSadMadTitleShape9" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000457F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17254,6 +18837,7 @@ createNode nurbsCurve -n "browSadMadTitleShape9" -p "browSadMadTitle";
 		1.4243572875024508 -2.8495802577294822 -0.050000000000006518
 		;
 createNode nurbsCurve -n "browSadMadTitleShape10" -p "browSadMadTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004580";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17288,12 +18872,14 @@ createNode nurbsCurve -n "browSadMadTitleShape10" -p "browSadMadTitle";
 		1.3798942002541266 -2.8492197816388769 -0.050000000000006518
 		;
 createNode transform -n "brow_furrow_Obox" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004581";
 	setAttr ".t" -type "double3" 2.1871168407364263 -4.0823526747810748 0 ;
 	setAttr ".rp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "brow_furrow_OboxShape" -p "brow_furrow_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004582";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -17307,17 +18893,22 @@ createNode nurbsCurve -n "brow_furrow_OboxShape" -p "brow_furrow_Obox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "brow_furrow0" -p "brow_furrow_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004583";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "brow_furrow0Shape" -p "brow_furrow0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004584";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "brow_furrow_Ibox" -p "brow_furrow_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004585";
 	setAttr ".rp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".sp" -type "double3" 0 8.8817841970012523e-16 0 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode transform -n "brow_Furrow" -p "brow_furrow_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004586";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" -1.7763568394002505e-15 0 0 ;
@@ -17338,6 +18929,7 @@ createNode transform -n "brow_Furrow" -p "brow_furrow_Ibox";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "brow_FurrowShape" -p "brow_Furrow";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004587";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17359,11 +18951,13 @@ createNode nurbsCurve -n "brow_FurrowShape" -p "brow_Furrow";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "furrowTitle" -p "brow_furrow_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004588";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -2.7580684197581671 4.0823526747810748 0.050000000000006498 ;
 	setAttr ".rp" -type "double3" -0.35837684701782857 -7.448948680214424 3.4694469519536142e-17 ;
 	setAttr ".sp" -type "double3" -0.35837684701782857 -7.448948680214424 3.4694469519536142e-17 ;
 createNode nurbsCurve -n "furrowTitleShape" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004589";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17404,6 +18998,7 @@ createNode nurbsCurve -n "furrowTitleShape" -p "furrowTitle";
 		2.5628890632278525 -4.8441495120422315 -0.050000000000006463
 		;
 createNode nurbsCurve -n "furrowTitleShape1" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000458A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17444,6 +19039,7 @@ createNode nurbsCurve -n "furrowTitleShape1" -p "furrowTitle";
 		2.5589898430718874 -4.5598930820782266 -0.050000000000006463
 		;
 createNode nurbsCurve -n "furrowTitleShape2" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000458B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17478,6 +19074,7 @@ createNode nurbsCurve -n "furrowTitleShape2" -p "furrowTitle";
 		2.4305686523100376 -4.6345781450656265 -0.050000000000006463
 		;
 createNode nurbsCurve -n "furrowTitleShape3" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000458C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17518,6 +19115,7 @@ createNode nurbsCurve -n "furrowTitleShape3" -p "furrowTitle";
 		2.5589898430718874 -4.3751300346877064 -0.050000000000006463
 		;
 createNode nurbsCurve -n "furrowTitleShape4" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000458D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17552,6 +19150,7 @@ createNode nurbsCurve -n "furrowTitleShape4" -p "furrowTitle";
 		2.4305686523100376 -4.4498150976751063 -0.050000000000006463
 		;
 createNode nurbsCurve -n "furrowTitleShape5" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000458E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17579,6 +19178,7 @@ createNode nurbsCurve -n "furrowTitleShape5" -p "furrowTitle";
 		2.4665216179669081 -4.1929164773991614 -0.050000000000006463
 		;
 createNode nurbsCurve -n "furrowTitleShape6" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000458F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17623,6 +19223,7 @@ createNode nurbsCurve -n "furrowTitleShape6" -p "furrowTitle";
 		2.4663950807743427 -4.2409068793187767 -0.050000000000006463
 		;
 createNode nurbsCurve -n "furrowTitleShape7" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004590";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17661,6 +19262,7 @@ createNode nurbsCurve -n "furrowTitleShape7" -p "furrowTitle";
 		2.3739268556693673 -3.9267197167512911 -0.050000000000006463
 		;
 createNode nurbsCurve -n "furrowTitleShape8" -p "furrowTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004591";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17692,9 +19294,11 @@ createNode nurbsCurve -n "furrowTitleShape8" -p "furrowTitle";
 		2.4091698070790826 -4.9429164773991614 -0.050000000000006463
 		;
 createNode transform -n "brow_arc_box" -p "browsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004592";
 	setAttr ".t" -type "double3" 3.7337344168209032 -4.0828191192375094 0 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "brow_arc_boxShape" -p "brow_arc_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004593";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -17708,13 +19312,18 @@ createNode nurbsCurve -n "brow_arc_boxShape" -p "brow_arc_box";
 		-0.99999999999999933 -1.0000000000000011 -4.1137425632826668e-18
 		;
 createNode transform -n "brow_arc0" -p "brow_arc_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004594";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 createNode locator -n "brow_arcShape0" -p "brow_arc0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004595";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993914e-15 -1.6599728183816151e-18 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "brow_arcA" -p "brow_arc0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004596";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" -1 0 0 ;
@@ -17735,6 +19344,7 @@ createNode transform -n "brow_arcA" -p "brow_arc0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "brow_arcAShape" -p "brow_arcA";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004597";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17756,6 +19366,7 @@ createNode nurbsCurve -n "brow_arcAShape" -p "brow_arcA";
 		-0.039180581244561197 0.039180581244561218 -4.6270981968533456e-18
 		;
 createNode transform -n "brow_arcE" -p "brow_arc0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004598";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".t" -type "double3" 1 0 0 ;
@@ -17776,6 +19387,7 @@ createNode transform -n "brow_arcE" -p "brow_arc0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "brow_arcEShape" -p "brow_arcE";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004599";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -17797,10 +19409,13 @@ createNode nurbsCurve -n "brow_arcEShape" -p "brow_arcE";
 		-0.039180581244561197 0.039180581244561218 -4.6270981968533456e-18
 		;
 createNode transform -n "browDetailCtrl0" -p "brow_arc0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000459A";
 	setAttr ".t" -type "double3" 0 2.1825574049980077 6.4162745754513239e-20 ;
 createNode transform -n "browDetail01P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000459B";
 	setAttr ".t" -type "double3" -2 0 0 ;
 createNode nurbsSurface -n "browDetail01PShape" -p "browDetail01P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000459C";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -17837,6 +19452,7 @@ createNode nurbsSurface -n "browDetail01PShape" -p "browDetail01P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail01" -p "browDetail01P";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000459D";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -17854,6 +19470,7 @@ createNode transform -n "browDetail01" -p "browDetail01P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail01Shape" -p "browDetail01";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000459E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -17875,8 +19492,10 @@ createNode nurbsCurve -n "browDetail01Shape" -p "browDetail01";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "browDetail02P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000459F";
 	setAttr ".t" -type "double3" -1.5 0 0 ;
 createNode nurbsSurface -n "browDetail02PShape" -p "browDetail02P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A0";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -17913,6 +19532,7 @@ createNode nurbsSurface -n "browDetail02PShape" -p "browDetail02P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail02" -p "browDetail02P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A1";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -17930,6 +19550,7 @@ createNode transform -n "browDetail02" -p "browDetail02P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail02Shape" -p "browDetail02";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -17951,8 +19572,10 @@ createNode nurbsCurve -n "browDetail02Shape" -p "browDetail02";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "browDetail03P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A3";
 	setAttr ".t" -type "double3" -1 0 0 ;
 createNode nurbsSurface -n "browDetail03PShape" -p "browDetail03P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A4";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -17989,6 +19612,7 @@ createNode nurbsSurface -n "browDetail03PShape" -p "browDetail03P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail03" -p "browDetail03P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A5";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18006,6 +19630,7 @@ createNode transform -n "browDetail03" -p "browDetail03P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail03Shape" -p "browDetail03";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -18027,8 +19652,10 @@ createNode nurbsCurve -n "browDetail03Shape" -p "browDetail03";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "browDetail04P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A7";
 	setAttr ".t" -type "double3" -0.5 0 0 ;
 createNode nurbsSurface -n "browDetail04PShape" -p "browDetail04P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A8";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -18065,6 +19692,7 @@ createNode nurbsSurface -n "browDetail04PShape" -p "browDetail04P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail04" -p "browDetail04P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045A9";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18082,6 +19710,7 @@ createNode transform -n "browDetail04" -p "browDetail04P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail04Shape" -p "browDetail04";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045AA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -18103,7 +19732,9 @@ createNode nurbsCurve -n "browDetail04Shape" -p "browDetail04";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "browDetail05P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045AB";
 createNode nurbsSurface -n "browDetail05PShape" -p "browDetail05P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045AC";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -18140,6 +19771,7 @@ createNode nurbsSurface -n "browDetail05PShape" -p "browDetail05P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail05" -p "browDetail05P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045AD";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18157,6 +19789,7 @@ createNode transform -n "browDetail05" -p "browDetail05P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail05Shape" -p "browDetail05";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045AE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -18178,8 +19811,10 @@ createNode nurbsCurve -n "browDetail05Shape" -p "browDetail05";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "browDetail06P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045AF";
 	setAttr ".t" -type "double3" 0.5 0 0 ;
 createNode nurbsSurface -n "browDetail06PShape" -p "browDetail06P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B0";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -18216,6 +19851,7 @@ createNode nurbsSurface -n "browDetail06PShape" -p "browDetail06P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail06" -p "browDetail06P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B1";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18233,6 +19869,7 @@ createNode transform -n "browDetail06" -p "browDetail06P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail06Shape" -p "browDetail06";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -18254,8 +19891,10 @@ createNode nurbsCurve -n "browDetail06Shape" -p "browDetail06";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "browDetail07P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B3";
 	setAttr ".t" -type "double3" 1 0 0 ;
 createNode nurbsSurface -n "browDetail07PShape" -p "browDetail07P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B4";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -18292,6 +19931,7 @@ createNode nurbsSurface -n "browDetail07PShape" -p "browDetail07P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail07" -p "browDetail07P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B5";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18309,6 +19949,7 @@ createNode transform -n "browDetail07" -p "browDetail07P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail07Shape" -p "browDetail07";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -18330,8 +19971,10 @@ createNode nurbsCurve -n "browDetail07Shape" -p "browDetail07";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "browDetail08P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B7";
 	setAttr ".t" -type "double3" 1.5 0 0 ;
 createNode nurbsSurface -n "browDetail08PShape" -p "browDetail08P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B8";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -18368,6 +20011,7 @@ createNode nurbsSurface -n "browDetail08PShape" -p "browDetail08P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail08" -p "browDetail08P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045B9";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18385,6 +20029,7 @@ createNode transform -n "browDetail08" -p "browDetail08P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail08Shape" -p "browDetail08";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045BA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -18406,8 +20051,10 @@ createNode nurbsCurve -n "browDetail08Shape" -p "browDetail08";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "browDetail09P" -p "browDetailCtrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045BB";
 	setAttr ".t" -type "double3" 2 0 0 ;
 createNode nurbsSurface -n "browDetail09PShape" -p "browDetail09P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045BC";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -18444,6 +20091,7 @@ createNode nurbsSurface -n "browDetail09PShape" -p "browDetail09P";
 	setAttr ".nufa" 4.5;
 	setAttr ".nvfa" 4.5;
 createNode transform -n "browDetail09" -p "browDetail09P";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045BD";
 	setAttr -l on -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18461,6 +20109,7 @@ createNode transform -n "browDetail09" -p "browDetail09P";
 	setAttr ".xtxe" yes;
 	setAttr ".xtye" yes;
 createNode nurbsCurve -n "browDetail09Shape" -p "browDetail09";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045BE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 20;
@@ -18482,8 +20131,10 @@ createNode nurbsCurve -n "browDetail09Shape" -p "browDetail09";
 		-0.15672232497824487 0.15672232497824487 0
 		;
 createNode transform -n "brow_arcBP" -p "brow_arc0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045BF";
 	setAttr ".t" -type "double3" -0.5 0 6.4162745754513239e-20 ;
 createNode transform -n "brow_arcB" -p "brow_arcBP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C0";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18502,6 +20153,7 @@ createNode transform -n "brow_arcB" -p "brow_arcBP";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "brow_arcBShape" -p "brow_arcB";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18523,8 +20175,10 @@ createNode nurbsCurve -n "brow_arcBShape" -p "brow_arcB";
 		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "brow_arcDP" -p "brow_arc0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C2";
 	setAttr ".t" -type "double3" 0.5 0 1.283254915090265e-19 ;
 createNode transform -n "brow_arcD" -p "brow_arcDP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18545,6 +20199,7 @@ createNode transform -n "brow_arcD" -p "brow_arcDP";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "brow_arcDShape" -p "brow_arcD";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18556,6 +20211,7 @@ createNode nurbsCurve -n "brow_arcDShape" -p "brow_arcD";
 		0.10000000000000001 -0.099999999999999117 1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "brow_arcDShape1" -p "brow_arcD";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18567,6 +20223,7 @@ createNode nurbsCurve -n "brow_arcDShape1" -p "brow_arcD";
 		-0.10000000000000001 -0.099999999999999117 1.2989609388114332e-14
 		;
 createNode transform -n "brow_arcC" -p "brow_arc0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -18586,6 +20243,7 @@ createNode transform -n "brow_arcC" -p "brow_arc0";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "brow_arcCShape" -p "brow_arcC";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C7";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18607,12 +20265,14 @@ createNode nurbsCurve -n "brow_arcCShape" -p "brow_arcC";
 		-0.039180581244561197 0.039180581244561218 -4.6270981968533456e-18
 		;
 createNode transform -n "browsArcTitle" -p "brow_arc_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C8";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -6.9987617211733166 -1.2131632138059345 0.050000000000006352 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
 	setAttr ".rp" -type "double3" 2.9849934809740706 0 0 ;
 	setAttr ".sp" -type "double3" 2.9849934809740706 0 0 ;
 createNode nurbsCurve -n "browsArcTitleShape" -p "browsArcTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045C9";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18640,6 +20300,7 @@ createNode nurbsCurve -n "browsArcTitleShape" -p "browsArcTitle";
 		3.2146777011240006 -2.9221951524788699 -0.050000000000006498
 		;
 createNode nurbsCurve -n "browsArcTitleShape1" -p "browsArcTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045CA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18656,6 +20317,7 @@ createNode nurbsCurve -n "browsArcTitleShape1" -p "browsArcTitle";
 		3.3136928367504006 -2.85564034263547 -0.050000000000006498
 		;
 createNode nurbsCurve -n "browsArcTitleShape2" -p "browsArcTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045CB";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18696,6 +20358,7 @@ createNode nurbsCurve -n "browsArcTitleShape2" -p "browsArcTitle";
 		3.5611983217381535 -2.9234187399450517 -0.050000000000006498
 		;
 createNode nurbsCurve -n "browsArcTitleShape3" -p "browsArcTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045CC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18730,6 +20393,7 @@ createNode nurbsCurve -n "browsArcTitleShape3" -p "browsArcTitle";
 		3.4915674492549336 -2.8036882449786065 -0.050000000000006498
 		;
 createNode nurbsCurve -n "browsArcTitleShape4" -p "browsArcTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045CD";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -18809,7 +20473,9 @@ createNode nurbsCurve -n "browsArcTitleShape4" -p "browsArcTitle";
 		3.6541703209231087 -2.9342435908589608 -0.050000000000006477
 		;
 createNode transform -n "JAW_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045CE";
 createNode transform -n "jawTitle" -p "JAW_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045CF";
 	setAttr -l on ".v";
 	setAttr ".t" -type "double3" 3.235 -0.83844430287468075 0 ;
 	setAttr -l on ".tx";
@@ -18824,6 +20490,7 @@ createNode transform -n "jawTitle" -p "JAW_panel";
 	setAttr ".rp" -type "double3" -0.28535506942247713 0.018247706590858281 0.05 ;
 	setAttr ".sp" -type "double3" -0.28535506942247713 0.018247706590858281 0.05 ;
 createNode nurbsCurve -n "jawTitleShape" -p "jawTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D0";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -18852,6 +20519,7 @@ createNode nurbsCurve -n "jawTitleShape" -p "jawTitle";
 		-0.13535682363412083 -20.612904151831842 -6.4967117887379088e-15
 		;
 createNode nurbsCurve -n "jawTitleShape1" -p "jawTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D1";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -18869,6 +20537,7 @@ createNode nurbsCurve -n "jawTitleShape1" -p "jawTitle";
 		-0.21133447726540536 -20.499870432757643 -6.4967117887379088e-15
 		;
 createNode nurbsCurve -n "jawTitleShape2" -p "jawTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D2";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -18908,6 +20577,7 @@ createNode nurbsCurve -n "jawTitleShape2" -p "jawTitle";
 		-0.33232410216564495 -20.152249722462347 -6.4967117887379088e-15
 		;
 createNode nurbsCurve -n "jawTitleShape3" -p "jawTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D3";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".ove" yes;
@@ -18960,11 +20630,13 @@ createNode nurbsCurve -n "jawTitleShape3" -p "jawTitle";
 		-0.19317057064130336 -20.62998316220699 -6.4967117887379088e-15
 		;
 createNode transform -n "jaw_UDLRIO_box" -p "jawTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D4";
 	setAttr ".t" -type "double3" 0.031484090072904106 -0.39531737076781598 0 ;
 	setAttr ".rp" -type "double3" 1.5427204135723007 -19.370551167622985 8.6736173798840355e-19 ;
 	setAttr ".sp" -type "double3" 1.5427204135723007 -19.370551167622985 8.6736173798840355e-19 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "jaw_UDLRIO_boxShape" -p "jaw_UDLRIO_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D5";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -18978,15 +20650,20 @@ createNode nurbsCurve -n "jaw_UDLRIO_boxShape" -p "jaw_UDLRIO_box";
 		0.54272041357230183 -20.370551167622985 -3.2463808252942648e-18
 		;
 createNode transform -n "jaw_UDLRIO0" -p "jaw_UDLRIO_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D6";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 	setAttr ".rp" -type "double3" 1.5427204135723007 -19.370551167622985 8.6736173798840355e-19 ;
 	setAttr ".sp" -type "double3" 1.5427204135723007 -19.370551167622985 8.6736173798840355e-19 ;
 createNode locator -n "jaw_UDLRIOShape0" -p "jaw_UDLRIO0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D7";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 1.5427204135723012 -19.370551167622985 -7.9261108039321308e-19 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 1.5427204135723012 -19.370551167622985 -7.9261108039321308e-19 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "jaw_UDLR" -p "jaw_UDLRIO0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D8";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -19017,6 +20694,7 @@ createNode transform -n "jaw_UDLR" -p "jaw_UDLRIO0";
 	setAttr ".msxe" yes;
 	setAttr ".xsxe" yes;
 createNode nurbsCurve -n "jaw_UDLRShape" -p "jaw_UDLR";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045D9";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19038,6 +20716,7 @@ createNode nurbsCurve -n "jaw_UDLRShape" -p "jaw_UDLR";
 		1.4643592510831789 -19.292190005133861 -8.3868346557183016e-18
 		;
 createNode nurbsCurve -n "jaw_UDLRShape1" -p "jaw_UDLR";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045DA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19050,11 +20729,13 @@ createNode nurbsCurve -n "jaw_UDLRShape1" -p "jaw_UDLR";
 		1.5029611841391843 -19.279193443410527 8.6736173798840778e-19
 		;
 createNode transform -n "jawUDLRIOTitle" -p "jaw_UDLRIO_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045DB";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" 0.29491049687797855 -0.65507328431438694 -4.163336342344337e-17 ;
 	setAttr ".rp" -type "double3" -18.20564148091885 -20.635218616596795 0.050000000000006567 ;
 	setAttr ".sp" -type "double3" -18.20564148091885 -20.635218616596795 0.050000000000006567 ;
 createNode nurbsCurve -n "mouthMoveTitle1Shape5" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045DC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19095,6 +20776,7 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape5" -p "jawUDLRIOTitle";
 		0.094662215112864656 -19.615779446156292 8.6736173798836657e-19
 		;
 createNode nurbsCurve -n "mouthMoveTitle1Shape6" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045DD";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19113,6 +20795,7 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape6" -p "jawUDLRIOTitle";
 		-0.089202438130986383 -19.412420682873297 8.6736173798836657e-19
 		;
 createNode nurbsCurve -n "mouthMoveTitle1Shape7" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045DE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19147,6 +20830,7 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape7" -p "jawUDLRIOTitle";
 		0.0049320696990151625 -19.219327841709958 8.6736173798836657e-19
 		;
 createNode nurbsCurve -n "mouthMoveTitle1Shape8" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045DF";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19181,6 +20865,7 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape8" -p "jawUDLRIOTitle";
 		0.0045715936084129716 -19.263790928958311 8.6736173798836657e-19
 		;
 createNode nurbsCurve -n "mouthMoveTitle1Shape9" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E0";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19199,6 +20884,7 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape9" -p "jawUDLRIOTitle";
 		-0.089202438130986383 -19.095865873029915 8.6736173798836657e-19
 		;
 createNode nurbsCurve -n "mouthMoveTitle1Shape10" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19222,6 +20908,7 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape10" -p "jawUDLRIOTitle";
 		0.091026868356713919 -18.941643277951616 8.6736173798836657e-19
 		;
 createNode nurbsCurve -n "mouthMoveTitle1Shape11" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19240,6 +20927,7 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape11" -p "jawUDLRIOTitle";
 		-0.089202438130986383 -18.823214866318462 8.6736173798836657e-19
 		;
 createNode nurbsCurve -n "mouthMoveTitle1Shape12" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19280,6 +20968,7 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape12" -p "jawUDLRIOTitle";
 		0.091026868356713919 -18.624669005020969 8.6736173798836657e-19
 		;
 createNode nurbsCurve -n "mouthMoveTitle1Shape13" -p "jawUDLRIOTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19314,11 +21003,13 @@ createNode nurbsCurve -n "mouthMoveTitle1Shape13" -p "jawUDLRIOTitle";
 		-0.028703626609738464 -18.694299877504164 8.6736173798836657e-19
 		;
 createNode transform -n "Swivel_box" -p "jawTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E5";
 	setAttr ".t" -type "double3" 0.031456268293045785 -0.30608226896303559 0 ;
 	setAttr ".rp" -type "double3" 1.541357146359243 -14.998031179188745 8.6736173798840355e-19 ;
 	setAttr ".sp" -type "double3" 1.541357146359243 -14.998031179188745 8.6736173798840355e-19 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "Swivel_boxShape" -p "Swivel_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E6";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -19332,15 +21023,20 @@ createNode nurbsCurve -n "Swivel_boxShape" -p "Swivel_box";
 		0.54135714635924415 -15.998031179188748 -3.2463808252942648e-18
 		;
 createNode transform -n "Swivel_ctrl0" -p "Swivel_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E7";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 	setAttr ".rp" -type "double3" 1.541357146359243 -14.998031179188745 8.6736173798840355e-19 ;
 	setAttr ".sp" -type "double3" 1.541357146359243 -14.998031179188745 8.6736173798840355e-19 ;
 createNode locator -n "Swivel_ctrl0Shape" -p "Swivel_ctrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E8";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 1.5413571463592437 -14.998031179188748 -7.9261108039321308e-19 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 1.5413571463592437 -14.998031179188748 -7.9261108039321308e-19 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "upJaw_dir" -p "Swivel_ctrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045E9";
 	setAttr -k off ".v" no;
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -19368,6 +21064,7 @@ createNode transform -n "upJaw_dir" -p "Swivel_ctrl0";
 	setAttr ".xrye" yes;
 	setAttr ".xrze" yes;
 createNode nurbsCurve -n "upJaw_dirShape" -p "upJaw_dir";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045EA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19389,6 +21086,7 @@ createNode nurbsCurve -n "upJaw_dirShape" -p "upJaw_dir";
 		1.462995983870121 -14.919670016699625 -8.3868346557183016e-18
 		;
 createNode nurbsCurve -n "jaw_dir2_indShape" -p "upJaw_dir";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045EB";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19400,7 +21098,8 @@ createNode nurbsCurve -n "jaw_dir2_indShape" -p "upJaw_dir";
 		1.541008610811039 -14.771041394296272 7.8062556418956242e-18
 		1.5015979169261269 -14.906673454976287 8.6736173798840778e-19
 		;
-createNode transform -n "Swivel_ctrl" -p "Swivel_ctrl0";
+createNode transform -n "swivel_ctrl" -p "Swivel_ctrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045EC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -19409,8 +21108,8 @@ createNode transform -n "Swivel_ctrl" -p "Swivel_ctrl0";
 	setAttr -l on ".sx";
 	setAttr -l on ".sy";
 	setAttr -l on ".sz";
-	setAttr ".rp" -type "double3" 1.541357146359243 -14.998031179188743 8.6736173798840355e-19 ;
-	setAttr ".sp" -type "double3" 1.541357146359243 -14.998031179188743 8.6736173798840355e-19 ;
+	setAttr ".rp" -type "double3" 1.541357146359243 -14.998031179188745 8.6736173798840355e-19 ;
+	setAttr ".sp" -type "double3" 1.541357146359243 -14.998031179188745 8.6736173798840355e-19 ;
 	setAttr ".mntl" -type "double3" -1 -1 0 ;
 	setAttr ".mxtl" -type "double3" 1 1 0 ;
 	setAttr ".mtxe" yes;
@@ -19427,7 +21126,8 @@ createNode transform -n "Swivel_ctrl" -p "Swivel_ctrl0";
 	setAttr ".xrxe" yes;
 	setAttr ".xrye" yes;
 	setAttr ".xrze" yes;
-createNode nurbsCurve -n "Swivel_ctrlShape" -p "Swivel_ctrl";
+createNode nurbsCurve -n "swivel_ctrlShape" -p "swivel_ctrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045ED";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19436,19 +21136,20 @@ createNode nurbsCurve -n "Swivel_ctrlShape" -p "Swivel_ctrl";
 		13 -2 -1 0 1 2 3 4 5 6 7 8
 		 9 10
 		11
-		1.619718308848366 -14.919670016699623 -8.3868346557182985e-18
-		1.5413571463592435 -14.887211760433306 -1.2220048310855774e-17
-		1.462995983870121 -14.919670016699623 -8.3868346557182985e-18
+		1.619718308848366 -14.919670016699625 -8.3868346557183016e-18
+		1.5413571463592437 -14.887211760433306 -1.2220048310855771e-17
+		1.462995983870121 -14.919670016699625 -8.3868346557183016e-18
 		1.4305377276038047 -14.998031179188745 8.6736173798840778e-19
-		1.462995983870121 -15.076392341677867 1.0121558131695084e-17
-		1.5413571463592435 -15.108850597944183 1.3954771786832589e-17
-		1.619718308848366 -15.076392341677867 1.0121558131695084e-17
+		1.462995983870121 -15.076392341677868 1.0121558131695081e-17
+		1.5413571463592437 -15.108850597944183 1.3954771786832586e-17
+		1.619718308848366 -15.076392341677868 1.0121558131695081e-17
 		1.6521765651146822 -14.998031179188745 8.6736173798840778e-19
-		1.619718308848366 -14.919670016699623 -8.3868346557182985e-18
-		1.5413571463592435 -14.887211760433306 -1.2220048310855774e-17
-		1.462995983870121 -14.919670016699623 -8.3868346557182985e-18
+		1.619718308848366 -14.919670016699625 -8.3868346557183016e-18
+		1.5413571463592437 -14.887211760433306 -1.2220048310855771e-17
+		1.462995983870121 -14.919670016699625 -8.3868346557183016e-18
 		;
-createNode nurbsCurve -n "jaw_dir2_indShape" -p "Swivel_ctrl";
+createNode nurbsCurve -n "jaw_dir2_indShape" -p "swivel_ctrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045EE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19456,11 +21157,12 @@ createNode nurbsCurve -n "jaw_dir2_indShape" -p "Swivel_ctrl";
 		1 2 0 no 3
 		3 0 1 2
 		3
-		1.580727918576939 -14.906773259144305 8.6736173798840778e-19
+		1.580727918576939 -14.906773259144304 8.6736173798840778e-19
 		1.541008610811039 -14.771041394296272 7.8062556418956242e-18
-		1.5015979169261267 -14.906673454976289 8.6736173798840778e-19
+		1.5015979169261269 -14.906673454976287 8.6736173798840778e-19
 		;
 createNode transform -n "jawSwingTitle" -p "Swivel_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045EF";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -19.739624525804174 -3.3914613961575633 0.050000000000006442 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
@@ -19468,6 +21170,7 @@ createNode transform -n "jawSwingTitle" -p "Swivel_box";
 	setAttr ".rpt" -type "double3" 16.539388325547986 -13.456674032829492 0 ;
 	setAttr ".sp" -type "double3" -14.99803117918874 -1.5413571463592477 0 ;
 createNode nurbsCurve -n "jawSwingTitleShape" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F0";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19556,6 +21259,7 @@ createNode nurbsCurve -n "jawSwingTitleShape" -p "jawSwingTitle";
 		-12.520680750193041 -20.137969709981348 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape1" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19594,6 +21298,7 @@ createNode nurbsCurve -n "jawSwingTitleShape1" -p "jawSwingTitle";
 		-12.206117923238205 -19.965062220994575 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape2" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19630,6 +21335,7 @@ createNode nurbsCurve -n "jawSwingTitleShape2" -p "jawSwingTitle";
 		-12.100528716189745 -20.134941075620091 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape3" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19661,6 +21367,7 @@ createNode nurbsCurve -n "jawSwingTitleShape3" -p "jawSwingTitle";
 		-11.926657570815284 -20.134941075620091 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape4" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19729,6 +21436,7 @@ createNode nurbsCurve -n "jawSwingTitleShape4" -p "jawSwingTitle";
 		-11.750308451872552 -20.125278699518908 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape5" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19747,6 +21455,7 @@ createNode nurbsCurve -n "jawSwingTitleShape5" -p "jawSwingTitle";
 		-11.621866821916596 -19.957490635091609 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape6" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19835,6 +21544,7 @@ createNode nurbsCurve -n "jawSwingTitleShape6" -p "jawSwingTitle";
 		-11.53086797486265 -20.137969709981348 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape7" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F7";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19888,6 +21598,7 @@ createNode nurbsCurve -n "jawSwingTitleShape7" -p "jawSwingTitle";
 		-11.281007791079611 -20.180080203511061 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape8" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F8";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19932,6 +21643,7 @@ createNode nurbsCurve -n "jawSwingTitleShape8" -p "jawSwingTitle";
 		-11.33617281723598 -20.092968247288553 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape9" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045F9";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19972,6 +21684,7 @@ createNode nurbsCurve -n "jawSwingTitleShape9" -p "jawSwingTitle";
 		-11.186765207792162 -20.138520370774401 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape10" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045FA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -19999,6 +21712,7 @@ createNode nurbsCurve -n "jawSwingTitleShape10" -p "jawSwingTitle";
 		-11.101079376982684 -20.134941075620091 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape11" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045FB";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20015,6 +21729,7 @@ createNode nurbsCurve -n "jawSwingTitleShape11" -p "jawSwingTitle";
 		-11.003590906443032 -20.069412441258891 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape12" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045FC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20094,6 +21809,7 @@ createNode nurbsCurve -n "jawSwingTitleShape12" -p "jawSwingTitle";
 		-10.849597325082907 -20.138245040377875 -0.050000000000006935
 		;
 createNode nurbsCurve -n "jawSwingTitleShape13" -p "jawSwingTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045FD";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20130,11 +21846,13 @@ createNode nurbsCurve -n "jawSwingTitleShape13" -p "jawSwingTitle";
 		-10.623518804295465 -20.134941075620091 -0.050000000000006935
 		;
 createNode transform -n "jaw_dir_box" -p "jawTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045FE";
 	setAttr ".t" -type "double3" 0.031460241100391445 -0.35071269645382985 0 ;
 	setAttr ".rp" -type "double3" 1.5415518139191806 -17.184922126237662 8.6736173798840355e-19 ;
 	setAttr ".sp" -type "double3" 1.5415518139191806 -17.184922126237662 8.6736173798840355e-19 ;
 	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "jaw_dir_boxShape" -p "jaw_dir_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000045FF";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -20148,15 +21866,20 @@ createNode nurbsCurve -n "jaw_dir_boxShape" -p "jaw_dir_box";
 		0.54155181391918161 -18.184922126237662 -3.2463808252942648e-18
 		;
 createNode transform -n "jaw_dir0" -p "jaw_dir_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004600";
 	setAttr ".t" -type "double3" 1.5026364484291288e-18 2.7999521104438152e-17 -6.4162745754513239e-20 ;
 	setAttr ".rp" -type "double3" 1.5415518139191806 -17.184922126237662 8.6736173798840355e-19 ;
 	setAttr ".sp" -type "double3" 1.5415518139191806 -17.184922126237662 8.6736173798840355e-19 ;
 createNode locator -n "jaw_dirShape0" -p "jaw_dir0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004601";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 1.5415518139191806 -17.184922126237662 -7.9261108039321308e-19 ;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".lp" -type "double3" 1.5415518139191806 -17.184922126237662 -7.9261108039321308e-19 ;
+	setAttr -cb off ".lp";
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "lowJaw_dir" -p "jaw_dir0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004602";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -20187,6 +21910,7 @@ createNode transform -n "lowJaw_dir" -p "jaw_dir0";
 	setAttr ".msxe" yes;
 	setAttr ".xsxe" yes;
 createNode nurbsCurve -n "lowJaw_dirShape" -p "lowJaw_dir";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004603";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20208,6 +21932,7 @@ createNode nurbsCurve -n "lowJaw_dirShape" -p "lowJaw_dir";
 		1.4631906514300583 -17.106560963748539 -8.3868346557183016e-18
 		;
 createNode nurbsCurve -n "lowJaw_dir_indShape" -p "lowJaw_dir";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004604";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20220,6 +21945,7 @@ createNode nurbsCurve -n "lowJaw_dir_indShape" -p "lowJaw_dir";
 		1.5017925844860638 -17.093564402025205 8.6736173798840778e-19
 		;
 createNode transform -n "jawOpenTitle" -p "jaw_dir_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004605";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -19.748361894491151 -1.2646674489738117 0.050000000000006567 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
@@ -20227,6 +21953,7 @@ createNode transform -n "jawOpenTitle" -p "jaw_dir_box";
 	setAttr ".rpt" -type "double3" 18.72647394015684 -15.643370312318476 0 ;
 	setAttr ".sp" -type "double3" -17.184922126237659 -1.5415518139191842 0 ;
 createNode nurbsCurve -n "jawOpenTitleShape" -p "jawOpenTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004606";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20254,6 +21981,7 @@ createNode nurbsCurve -n "jawOpenTitleShape" -p "jawOpenTitle";
 		-16.71995518303234 -20.069555016191295 -0.050000000000006185
 		;
 createNode nurbsCurve -n "jawOpenTitleShape1" -p "jawOpenTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004607";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20298,6 +22026,7 @@ createNode nurbsCurve -n "jawOpenTitleShape1" -p "jawOpenTitle";
 		-16.768322776744547 -20.069427484450038 -0.050000000000006185
 		;
 createNode nurbsCurve -n "jawOpenTitleShape2" -p "jawOpenTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004608";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20340,6 +22069,7 @@ createNode nurbsCurve -n "jawOpenTitleShape2" -p "jawOpenTitle";
 		-16.548703671545038 -20.035078935477824 -0.050000000000006185
 		;
 createNode nurbsCurve -n "jawOpenTitleShape3" -p "jawOpenTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004609";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20378,6 +22108,7 @@ createNode nurbsCurve -n "jawOpenTitleShape3" -p "jawOpenTitle";
 		-16.596768967796546 -20.036200742460952 -0.050000000000006185
 		;
 createNode nurbsCurve -n "jawOpenTitleShape4" -p "jawOpenTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000460A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20414,6 +22145,7 @@ createNode nurbsCurve -n "jawOpenTitleShape4" -p "jawOpenTitle";
 		-16.523612982306819 -20.162750016946958 -0.050000000000006185
 		;
 createNode nurbsCurve -n "jawOpenTitleShape5" -p "jawOpenTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000460B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 23;
@@ -20445,8 +22177,10 @@ createNode nurbsCurve -n "jawOpenTitleShape5" -p "jawOpenTitle";
 		-16.206049499840077 -20.162750016946958 -0.050000000000006185
 		;
 createNode transform -n "MISC_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000460C";
 	setAttr ".t" -type "double3" 0 -0.91417267305463246 0 ;
 createNode transform -n "miscTitle" -p "MISC_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000460D";
 	setAttr -l on ".v";
 	setAttr ".t" -type "double3" 5.8473288725153232 5.5342218037905582 0 ;
 	setAttr -l on ".tx";
@@ -20461,6 +22195,7 @@ createNode transform -n "miscTitle" -p "MISC_panel";
 	setAttr ".rp" -type "double3" -0.2853550694224774 -3.147861388024805 0.05 ;
 	setAttr ".sp" -type "double3" -0.2853550694224774 -3.147861388024805 0.05 ;
 createNode nurbsCurve -n "miscTitleShape" -p "miscTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000460E";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -20550,6 +22285,7 @@ createNode nurbsCurve -n "miscTitleShape" -p "miscTitle";
 		-0.1319353617367669 -10.18183558200878 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "miscTitleShape1" -p "miscTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000460F";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -20589,6 +22325,7 @@ createNode nurbsCurve -n "miscTitleShape1" -p "miscTitle";
 		-0.13535682363412291 -10.404633278021755 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "miscTitleShape2" -p "miscTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004610";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -20626,6 +22363,7 @@ createNode nurbsCurve -n "miscTitleShape2" -p "miscTitle";
 		-0.13535682363412241 -10.274768646267871 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "puffSuckTitle2Shape6" -p "miscTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004611";
 	setAttr -k off ".v";
 	setAttr ".ovdt" 1;
 	setAttr ".ove" yes;
@@ -20706,12 +22444,14 @@ createNode nurbsCurve -n "puffSuckTitle2Shape6" -p "miscTitle";
 		-0.13312235485452856 -9.9893702803095312 2.0816681711721685e-17
 		;
 createNode transform -n "headSquach_ctrl_Obox" -p "miscTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004612";
 	setAttr ".t" -type "double3" 1.4264015004850314 -9.6165744785716356 0 ;
 	setAttr ".rp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "headSquach_ctrl_OboxShape" -p "headSquach_ctrl_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004613";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -20725,6 +22465,7 @@ createNode nurbsCurve -n "headSquach_ctrl_OboxShape" -p "headSquach_ctrl_Obox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "headSquach_ctrl0" -p "headSquach_ctrl_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004614";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
 	setAttr -l on ".tz";
@@ -20736,10 +22477,13 @@ createNode transform -n "headSquach_ctrl0" -p "headSquach_ctrl_Obox";
 	setAttr -l on ".sy";
 	setAttr -l on ".sz";
 createNode locator -n "headSquach_ctrl0Shape" -p "headSquach_ctrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004615";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "headSquach_ctrl_Ibox" -p "headSquach_ctrl_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004616";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
 	setAttr -l on ".tz";
@@ -20755,6 +22499,7 @@ createNode transform -n "headSquach_ctrl_Ibox" -p "headSquach_ctrl_Obox";
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "headSquach_ctrl_IboxShape" -p "headSquach_ctrl_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004617";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -20768,6 +22513,7 @@ createNode nurbsCurve -n "headSquach_ctrl_IboxShape" -p "headSquach_ctrl_Ibox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "headSquach_ctrl" -p "headSquach_ctrl_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004618";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -20794,6 +22540,7 @@ createNode transform -n "headSquach_ctrl" -p "headSquach_ctrl_Ibox";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "headSquach_ctrlShape" -p "headSquach_ctrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004619";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 9;
@@ -20815,6 +22562,7 @@ createNode nurbsCurve -n "headSquach_ctrlShape" -p "headSquach_ctrl";
 		-0.078361162489122393 0.097951453111403103 -9.2541963937066913e-18
 		;
 createNode transform -n "headSquach_top" -p "headSquach_ctrl_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000461A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".rx";
@@ -20842,6 +22590,7 @@ createNode transform -n "headSquach_top" -p "headSquach_ctrl_Ibox";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "headSquach_topShape" -p "headSquach_top";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000461B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 9;
@@ -20863,6 +22612,7 @@ createNode nurbsCurve -n "headSquach_topShape" -p "headSquach_top";
 		-0.078361162489122393 1.3479514531114032 -9.2541963937066913e-18
 		;
 createNode transform -n "headSquach_bottom" -p "headSquach_ctrl_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000461C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".rx";
@@ -20890,6 +22640,7 @@ createNode transform -n "headSquach_bottom" -p "headSquach_ctrl_Ibox";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "headSquach_bottomShape" -p "headSquach_bottom";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000461D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 9;
@@ -20911,12 +22662,14 @@ createNode nurbsCurve -n "headSquach_bottomShape" -p "headSquach_bottom";
 		-0.078361162489122393 -1.1520485468885968 -9.2541963937066913e-18
 		;
 createNode transform -n "headSquachTitle" -p "headSquach_ctrl_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000461E";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -0.1498278815483722 0 0 ;
 	setAttr ".s" -type "double3" 1.2 1.2 1.2 ;
 	setAttr ".rp" -type "double3" -0.29527928568929385 -0.093939767579517941 0.00036135359057224564 ;
 	setAttr ".sp" -type "double3" -0.29527928568929385 -0.093939767579517941 0.00036135359057224564 ;
 createNode nurbsCurve -n "headSquachTitleShape" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000461F";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -20953,6 +22706,7 @@ createNode nurbsCurve -n "headSquachTitleShape" -p "headSquachTitle";
 		-0.21627281054036551 -0.7999149927241902 -0.0013022928188427957
 		;
 createNode nurbsCurve -n "headSquachTitleShape1" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004620";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -20980,6 +22734,7 @@ createNode nurbsCurve -n "headSquachTitleShape1" -p "headSquachTitle";
 		-0.21682440176961928 -0.65964844765760589 0.002024999999987287
 		;
 createNode nurbsCurve -n "headSquachTitleShape2" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004621";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21014,6 +22769,7 @@ createNode nurbsCurve -n "headSquachTitleShape2" -p "headSquachTitle";
 		-0.31012635696114277 -0.29490052477504314 0.00050999999998707635
 		;
 createNode nurbsCurve -n "headSquachTitleShape3" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004622";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21067,6 +22823,7 @@ createNode nurbsCurve -n "headSquachTitleShape3" -p "headSquachTitle";
 		-0.18745437615743388 0.13450390622256947 -1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "headSquachTitleShape4" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004623";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21111,6 +22868,7 @@ createNode nurbsCurve -n "headSquachTitleShape4" -p "headSquachTitle";
 		-0.27456633237993522 0.079338880066185169 -1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "headSquachTitleShape5" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004624";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21151,6 +22909,7 @@ createNode nurbsCurve -n "headSquachTitleShape5" -p "headSquachTitle";
 		-0.22901420889423377 0.22874648951001753 -1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "headSquachTitleShape6" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004625";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21178,6 +22937,7 @@ createNode nurbsCurve -n "headSquachTitleShape6" -p "headSquachTitle";
 		-0.23259350404843371 0.31443232031949186 -1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "headSquachTitleShape7" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004626";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21194,6 +22954,7 @@ createNode nurbsCurve -n "headSquachTitleShape7" -p "headSquachTitle";
 		-0.29812213840963508 0.41192079085913674 -1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "headSquachTitleShape8" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004627";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21273,6 +23034,7 @@ createNode nurbsCurve -n "headSquachTitleShape8" -p "headSquachTitle";
 		-0.22928953929068463 0.56591437221927166 -1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "headSquachTitleShape9" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004628";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21309,6 +23071,7 @@ createNode nurbsCurve -n "headSquachTitleShape9" -p "headSquachTitle";
 		-0.23259350404843371 0.79199289300671616 -1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "headSquachTitleShape10" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004629";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21397,6 +23160,7 @@ createNode nurbsCurve -n "headSquachTitleShape10" -p "headSquachTitle";
 		-0.22956486968718437 -0.11535627756046196 -1.2989609388114332e-14
 		;
 createNode nurbsCurve -n "headSquachTitleShape11" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000462A";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21413,6 +23177,7 @@ createNode nurbsCurve -n "headSquachTitleShape11" -p "headSquachTitle";
 		-0.2897249604089227 -0.55119259420591149 0.002024999999987287
 		;
 createNode nurbsCurve -n "headSquachTitleShape12" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000462B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21447,6 +23212,7 @@ createNode nurbsCurve -n "headSquachTitleShape12" -p "headSquachTitle";
 		-0.31052383797749972 -0.34392800141053215 0.00050999999998707635
 		;
 createNode nurbsCurve -n "headSquachTitleShape13" -p "headSquachTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000462C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 24;
@@ -21483,13 +23249,15 @@ createNode nurbsCurve -n "headSquachTitleShape13" -p "headSquachTitle";
 		-0.21627281054036551 -0.81969418319315324 -0.0013022928188427957
 		;
 createNode transform -n "toonyHead_ctrl_Obox" -p "miscTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000462D";
 	setAttr ".t" -type "double3" 3.4999999999999938 -8.9796386135320265 0 ;
-	setAttr ".s" -type "double3" 1.5 2.1 1.5 ;
+	setAttr ".s" -type "double3" 1.5 1.5 1.5 ;
 	setAttr ".rp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" -2.7755575615628914e-16 8.8817841970012523e-16 2.1684043449710089e-18 ;
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "toonyHead_ctrl_OboxShape" -p "toonyHead_ctrl_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000462E";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -21503,6 +23271,7 @@ createNode nurbsCurve -n "toonyHead_ctrl_OboxShape" -p "toonyHead_ctrl_Obox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "toonyHead_ctrl0" -p "toonyHead_ctrl_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000462F";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
 	setAttr -l on ".tz";
@@ -21514,10 +23283,13 @@ createNode transform -n "toonyHead_ctrl0" -p "toonyHead_ctrl_Obox";
 	setAttr -l on ".sy";
 	setAttr -l on ".sz";
 createNode locator -n "toonyHead_ctrl0Shape" -p "toonyHead_ctrl0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004630";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "toonyHead_ctrl_Ibox" -p "toonyHead_ctrl_Obox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004631";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
 	setAttr -l on ".tz";
@@ -21533,6 +23305,7 @@ createNode transform -n "toonyHead_ctrl_Ibox" -p "toonyHead_ctrl_Obox";
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "toonyHead_ctrl_IboxShape" -p "toonyHead_ctrl_Ibox";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004632";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -21546,9 +23319,119 @@ createNode nurbsCurve -n "toonyHead_ctrl_IboxShape" -p "toonyHead_ctrl_Ibox";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "toonCtrlsGrp" -p "toonyHead_ctrl_Ibox";
-	setAttr ".t" -type "double3" 4.163336342344337e-15 -0.3791284910949973 0 ;
-	setAttr ".s" -type "double3" 0.99999999999999989 0.71428571428571441 0.99999999999999967 ;
-createNode transform -n "toonyCtrl_bottom" -p "toonCtrlsGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004633";
+	setAttr ".t" -type "double3" 7.1054273576010019e-15 -1 -1.9721522630525295e-31 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 0.99999999999999978 ;
+createNode transform -n "toonTopGrp" -p "toonCtrlsGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004634";
+	setAttr ".t" -type "double3" 0 1 0 ;
+	setAttr ".s" -type "double3" 1 1.0000000000000002 1 ;
+createNode transform -n "toonyCtrl_top" -p "toonTopGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004635";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on ".rz";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
+	setAttr ".rp" -type "double3" 0 1.25 0 ;
+	setAttr ".sp" -type "double3" 0 1.25 0 ;
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mnsl" -type "double3" 1 0.8 0.8 ;
+	setAttr ".mxsl" -type "double3" 2 1.2 1.2 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "toonyCtrl_topShape" -p "toonyCtrl_top";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004636";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 9;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.078361162489122491 1.347951453111403 -9.2541963937066851e-18
+		-1.5418952275762498e-17 1.3885242734442986 -1.3087410048844189e-17
+		-0.078361162489122393 1.3479514531114032 -9.2541963937066913e-18
+		-0.11081941875543876 1.25 -2.1991408306299194e-33
+		-0.078361162489122435 1.152048546888597 9.2541963937066851e-18
+		-4.9468832505776792e-17 1.1114757265557016 1.3087410048844189e-17
+		0.078361162489122393 1.152048546888597 9.2541963937066928e-18
+		0.11081941875543876 1.25 7.2529981630488394e-33
+		0.078361162489122491 1.347951453111403 -9.2541963937066851e-18
+		-1.5418952275762498e-17 1.3885242734442986 -1.3087410048844189e-17
+		-0.078361162489122393 1.3479514531114032 -9.2541963937066913e-18
+		;
+createNode transform -n "toonMidGrp" -p "toonCtrlsGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004637";
+	setAttr ".t" -type "double3" 0 1 0 ;
+createNode transform -n "toonyl_midCtrl" -p "toonMidGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004638";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr ".mntl" -type "double3" -1 0 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mnsl" -type "double3" 0.8 0.8 0.8 ;
+	setAttr ".mxsl" -type "double3" 1.2 1.2 1.2 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "toonyl_midCtrlShape" -p "toonyl_midCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004639";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 9;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.078361162489122491 0.097951453111403033 -9.2541963937066851e-18
+		-1.5418952275762498e-17 0.13852427344429857 -1.3087410048844189e-17
+		-0.078361162489122393 0.097951453111403103 -9.2541963937066913e-18
+		-0.11081941875543876 7.8788055112756166e-17 -2.1991408306299194e-33
+		-0.078361162489122435 -0.097951453111402964 9.2541963937066851e-18
+		-4.9468832505776792e-17 -0.13852427344429843 1.3087410048844189e-17
+		0.078361162489122393 -0.097951453111403006 9.2541963937066928e-18
+		0.11081941875543876 -2.1258530247309606e-17 7.2529981630488394e-33
+		0.078361162489122491 0.097951453111403033 -9.2541963937066851e-18
+		-1.5418952275762498e-17 0.13852427344429857 -1.3087410048844189e-17
+		-0.078361162489122393 0.097951453111403103 -9.2541963937066913e-18
+		;
+createNode transform -n "toonBttmGrp" -p "toonCtrlsGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000463A";
+	setAttr ".t" -type "double3" 0 1 0 ;
+createNode transform -n "toonyCtrl_bottom" -p "toonBttmGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000463B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -21577,6 +23460,7 @@ createNode transform -n "toonyCtrl_bottom" -p "toonCtrlsGrp";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "toonyCtrl_bottomShape" -p "toonyCtrl_bottom";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000463C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 9;
@@ -21597,118 +23481,22 @@ createNode nurbsCurve -n "toonyCtrl_bottomShape" -p "toonyCtrl_bottom";
 		-1.5418952275762498e-17 -1.1114757265557014 -1.3087410048844189e-17
 		-0.078361162489122393 -1.1520485468885968 -9.2541963937066913e-18
 		;
-createNode transform -n "toonTopGrp" -p "toonCtrlsGrp";
-	setAttr ".t" -type "double3" 0 1 0 ;
-	setAttr ".s" -type "double3" 1 1.0000000000000002 1 ;
-createNode transform -n "toonyCtrl_top" -p "toonTopGrp";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".rx";
-	setAttr -l on -k off ".ry";
-	setAttr -l on ".rz";
-	setAttr -l on ".sy";
-	setAttr -l on ".sz";
-	setAttr ".rp" -type "double3" 0 1.25 0 ;
-	setAttr ".sp" -type "double3" 0 1.25 0 ;
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mnsl" -type "double3" 1 0.8 0.8 ;
-	setAttr ".mxsl" -type "double3" 2 1.2 1.2 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "toonyCtrl_topShape" -p "toonyCtrl_top";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.078361162489122491 1.347951453111403 -9.2541963937066851e-18
-		-1.5418952275762498e-17 1.3885242734442986 -1.3087410048844189e-17
-		-0.078361162489122393 1.3479514531114032 -9.2541963937066913e-18
-		-0.11081941875543876 1.25 -2.1991408306299194e-33
-		-0.078361162489122435 1.152048546888597 9.2541963937066851e-18
-		-4.9468832505776792e-17 1.1114757265557016 1.3087410048844189e-17
-		0.078361162489122393 1.152048546888597 9.2541963937066928e-18
-		0.11081941875543876 1.25 7.2529981630488394e-33
-		0.078361162489122491 1.347951453111403 -9.2541963937066851e-18
-		-1.5418952275762498e-17 1.3885242734442986 -1.3087410048844189e-17
-		-0.078361162489122393 1.3479514531114032 -9.2541963937066913e-18
-		;
-createNode transform -n "toonMidGrp" -p "toonCtrlsGrp";
-	setAttr ".t" -type "double3" 0 0.54855222339813259 0 ;
-	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
-createNode transform -n "toonyl_midCtrl" -p "toonMidGrp";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".rx";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rz";
-	setAttr -l on -k off ".sy";
-	setAttr -l on -k off ".sz";
-	setAttr -l on -k off ".sx";
-	setAttr ".mntl" -type "double3" -1 0 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mnsl" -type "double3" 0.8 0.8 0.8 ;
-	setAttr ".mxsl" -type "double3" 1.2 1.2 1.2 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "toonyl_midCtrlShape" -p "toonyl_midCtrl";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.078361162489122491 0.097951453111403033 -9.2541963937066851e-18
-		-1.5418952275762498e-17 0.13852427344429857 -1.3087410048844189e-17
-		-0.078361162489122393 0.097951453111403103 -9.2541963937066913e-18
-		-0.11081941875543876 7.8788055112756166e-17 -2.1991408306299194e-33
-		-0.078361162489122435 -0.097951453111402964 9.2541963937066851e-18
-		-4.9468832505776792e-17 -0.13852427344429843 1.3087410048844189e-17
-		0.078361162489122393 -0.097951453111403006 9.2541963937066928e-18
-		0.11081941875543876 -2.1258530247309606e-17 7.2529981630488394e-33
-		0.078361162489122491 0.097951453111403033 -9.2541963937066851e-18
-		-1.5418952275762498e-17 0.13852427344429857 -1.3087410048844189e-17
-		-0.078361162489122393 0.097951453111403103 -9.2541963937066913e-18
-		;
 createNode transform -n "latticeDeformTextShape" -p "miscTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000463D";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" 2.986603271509495 -9.018975251644644 1.7763568394002505e-15 ;
 	setAttr ".r" -type "double3" 0 0 89.999999999999986 ;
 	setAttr ".s" -type "double3" 0.30000000000000004 0.29999999999999993 0.3 ;
 createNode transform -n "Char_l_3" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000463E";
 	setAttr ".rp" -type "double3" -3.65 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -3.65 -0.45859388113221944 0 ;
 createNode transform -n "curve47" -p "Char_l_3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000463F";
 	setAttr ".rp" -type "double3" -3.65 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -3.65 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape47" -p "curve47";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004640";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 2 no 3
@@ -21721,12 +23509,15 @@ createNode nurbsCurve -n "curveShape47" -p "curve47";
 		-3.5500000000000003 -0.45859388113221944 0
 		;
 createNode transform -n "Char_a_2" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004641";
 	setAttr ".rp" -type "double3" -3.3500000000000005 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -3.3500000000000005 -0.45859388113221944 0 ;
 createNode transform -n "curve48" -p "Char_a_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004642";
 	setAttr ".rp" -type "double3" -3.3500000000000005 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -3.3500000000000005 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape48" -p "curve48";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004643";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 43 1 no 3
@@ -21782,9 +23573,11 @@ createNode nurbsCurve -n "curveShape48" -p "curve48";
 		-2.8500000000000005 -0.35859388113221946 0
 		;
 createNode transform -n "curve49" -p "Char_a_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004644";
 	setAttr ".rp" -type "double3" -3.3500000000000005 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -3.3500000000000005 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape49" -p "curve49";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004645";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 15 1 no 3
@@ -21810,12 +23603,15 @@ createNode nurbsCurve -n "curveShape49" -p "curve49";
 		-2.8500000000000005 -0.15859388113221939 0
 		;
 createNode transform -n "Char_t_4" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004646";
 	setAttr ".rp" -type "double3" -2.6500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -2.6500000000000004 -0.45859388113221944 0 ;
 createNode transform -n "curve50" -p "Char_t_4";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004647";
 	setAttr ".rp" -type "double3" -2.6500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -2.6500000000000004 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape50" -p "curve50";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004648";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 1 no 3
@@ -21863,12 +23659,15 @@ createNode nurbsCurve -n "curveShape50" -p "curve50";
 		-2.3500000000000005 -0.34921873807888915 0
 		;
 createNode transform -n "Char_t_5" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004649";
 	setAttr ".rp" -type "double3" -2.3500000000000005 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -2.3500000000000005 -0.45859388113221944 0 ;
 createNode transform -n "curve51" -p "Char_t_5";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000464A";
 	setAttr ".rp" -type "double3" -2.3500000000000005 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -2.3500000000000005 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape51" -p "curve51";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000464B";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 1 no 3
@@ -21916,12 +23715,15 @@ createNode nurbsCurve -n "curveShape51" -p "curve51";
 		-2.0500000000000007 -0.34921873807888915 0
 		;
 createNode transform -n "Char_i_1" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000464C";
 	setAttr ".rp" -type "double3" -2.0500000000000003 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -2.0500000000000003 -0.45859388113221944 0 ;
 createNode transform -n "curve52" -p "Char_i_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000464D";
 	setAttr ".rp" -type "double3" -2.0500000000000003 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -2.0500000000000003 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape52" -p "curve52";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000464E";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 2 no 3
@@ -21934,9 +23736,11 @@ createNode nurbsCurve -n "curveShape52" -p "curve52";
 		-1.95 0.34140611886778061 0
 		;
 createNode transform -n "curve53" -p "Char_i_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000464F";
 	setAttr ".rp" -type "double3" -2.0500000000000003 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -2.0500000000000003 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape53" -p "curve53";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004650";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 2 no 3
@@ -21949,12 +23753,15 @@ createNode nurbsCurve -n "curveShape53" -p "curve53";
 		-1.95 -0.45859388113221944 0
 		;
 createNode transform -n "Char_c_1" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004651";
 	setAttr ".rp" -type "double3" -1.7500000000000002 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -1.7500000000000002 -0.45859388113221944 0 ;
 createNode transform -n "curve54" -p "Char_c_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004652";
 	setAttr ".rp" -type "double3" -1.7500000000000002 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -1.7500000000000002 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape54" -p "curve54";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004653";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 28 1 no 3
@@ -21994,12 +23801,15 @@ createNode nurbsCurve -n "curveShape54" -p "curve54";
 		-1.3500000000000001 -0.25859388113221943 0
 		;
 createNode transform -n "Char_e_9" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004654";
 	setAttr ".rp" -type "double3" -1.1500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -1.1500000000000004 -0.45859388113221944 0 ;
 createNode transform -n "curve55" -p "Char_e_9";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004655";
 	setAttr ".rp" -type "double3" -1.1500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -1.1500000000000004 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape55" -p "curve55";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004656";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -22034,9 +23844,11 @@ createNode nurbsCurve -n "curveShape55" -p "curve55";
 		-0.6515609979400323 -0.25859388113221943 0
 		;
 createNode transform -n "curve56" -p "Char_e_9";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004657";
 	setAttr ".rp" -type "double3" -1.1500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -1.1500000000000004 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape56" -p "curve56";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004658";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -22055,12 +23867,15 @@ createNode nurbsCurve -n "curveShape56" -p "curve56";
 		-0.9500000000000004 -0.058593881132219416 0
 		;
 createNode transform -n "Char_D_1" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004659";
 	setAttr ".rp" -type "double3" -0.45000000000000018 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -0.45000000000000018 -0.45859388113221944 0 ;
 createNode transform -n "curve57" -p "Char_D_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000465A";
 	setAttr ".rp" -type "double3" -0.45000000000000018 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -0.45000000000000018 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape57" -p "curve57";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000465B";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 9 2 no 3
@@ -22078,9 +23893,11 @@ createNode nurbsCurve -n "curveShape57" -p "curve57";
 		-0.3500000000000002 -0.45859388113221944 0
 		;
 createNode transform -n "curve58" -p "Char_D_1";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000465C";
 	setAttr ".rp" -type "double3" -0.45000000000000018 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" -0.45000000000000018 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape58" -p "curve58";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000465D";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 9 2 no 3
@@ -22098,12 +23915,15 @@ createNode nurbsCurve -n "curveShape58" -p "curve58";
 		-0.25000000000000017 -0.35859388113221946 0
 		;
 createNode transform -n "Char_e_10" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000465E";
 	setAttr ".rp" -type "double3" 0.45000000000000018 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 0.45000000000000018 -0.45859388113221944 0 ;
 createNode transform -n "curve59" -p "Char_e_10";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000465F";
 	setAttr ".rp" -type "double3" 0.45000000000000018 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 0.45000000000000018 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape59" -p "curve59";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004660";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -22138,9 +23958,11 @@ createNode nurbsCurve -n "curveShape59" -p "curve59";
 		0.94843900205996812 -0.25859388113221943 0
 		;
 createNode transform -n "curve60" -p "Char_e_10";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004661";
 	setAttr ".rp" -type "double3" 0.45000000000000018 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 0.45000000000000018 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape60" -p "curve60";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004662";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 8 1 no 3
@@ -22159,12 +23981,15 @@ createNode nurbsCurve -n "curveShape60" -p "curve60";
 		0.65000000000000013 -0.058593881132219416 0
 		;
 createNode transform -n "Char_f_3" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004663";
 	setAttr ".rp" -type "double3" 1.1500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 1.1500000000000004 -0.45859388113221944 0 ;
 createNode transform -n "curve61" -p "Char_f_3";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004664";
 	setAttr ".rp" -type "double3" 1.1500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 1.1500000000000004 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape61" -p "curve61";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004665";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 39 1 no 3
@@ -22216,12 +24041,15 @@ createNode nurbsCurve -n "curveShape61" -p "curve61";
 		1.2500000000000004 -0.45859388113221944 0
 		;
 createNode transform -n "Char_o_2" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004666";
 	setAttr ".rp" -type "double3" 1.4500000000000002 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 1.4500000000000002 -0.45859388113221944 0 ;
 createNode transform -n "curve62" -p "Char_o_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004667";
 	setAttr ".rp" -type "double3" 1.4500000000000002 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 1.4500000000000002 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape62" -p "curve62";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004668";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 13 1 no 3
@@ -22245,9 +24073,11 @@ createNode nurbsCurve -n "curveShape62" -p "curve62";
 		1.5500000000000005 -0.1085931181811246 0
 		;
 createNode transform -n "curve63" -p "Char_o_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004669";
 	setAttr ".rp" -type "double3" 1.4500000000000002 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 1.4500000000000002 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape63" -p "curve63";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000466A";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 11 1 no 3
@@ -22269,12 +24099,15 @@ createNode nurbsCurve -n "curveShape63" -p "curve63";
 		1.6499999999999999 -0.1085931181811246 0
 		;
 createNode transform -n "Char_r_3" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000466B";
 	setAttr ".rp" -type "double3" 2.1500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 2.1500000000000004 -0.45859388113221944 0 ;
 createNode transform -n "curve64" -p "Char_r_3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000466C";
 	setAttr ".rp" -type "double3" 2.1500000000000004 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 2.1500000000000004 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape64" -p "curve64";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000466D";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 1 no 3
@@ -22309,12 +24142,15 @@ createNode nurbsCurve -n "curveShape64" -p "curve64";
 		2.2500000000000004 -0.45859388113221944 0
 		;
 createNode transform -n "Char_m_2" -p "latticeDeformTextShape";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000466E";
 	setAttr ".rp" -type "double3" 2.5500000000000007 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 2.5500000000000007 -0.45859388113221944 0 ;
 createNode transform -n "curve65" -p "Char_m_2";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000466F";
 	setAttr ".rp" -type "double3" 2.5500000000000007 -0.45859388113221944 0 ;
 	setAttr ".sp" -type "double3" 2.5500000000000007 -0.45859388113221944 0 ;
 createNode nurbsCurve -n "curveShape65" -p "curve65";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004670";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 51 1 no 3
@@ -22379,12 +24215,14 @@ createNode nurbsCurve -n "curveShape65" -p "curve65";
 		2.6500000000000008 -0.45859388113221944 0
 		;
 createNode transform -n "LIPS_panel" -p "Twitch_Panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004671";
 	setAttr ".t" -type "double3" -2 -9.0099560950252524 1.7763568394002513e-15 ;
 	setAttr ".s" -type "double3" 0.99999999999999989 1.0000000000000002 1 ;
-	setAttr ".rp" -type "double3" 10.464265985619901 -9.1181420690424577 4.163336342344337e-17 ;
+	setAttr ".rp" -type "double3" 10.4642659856199 -9.1181420690424577 4.163336342344337e-17 ;
 	setAttr ".sp" -type "double3" 10.464265985619903 -9.1181420690424559 4.163336342344337e-17 ;
-	setAttr ".spt" -type "double3" -1.7763568394002503e-15 -1.7763568394002509e-15 0 ;
+	setAttr ".spt" -type "double3" -1.7763568394002505e-15 -1.7763568394002509e-15 0 ;
 createNode transform -n "lipsTitle" -p "LIPS_panel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004672";
 	setAttr -l on ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -22400,6 +24238,7 @@ createNode transform -n "lipsTitle" -p "LIPS_panel";
 	setAttr ".rp" -type "double3" -0.80253570506685934 -4.115470827593974 0.05 ;
 	setAttr ".sp" -type "double3" -0.80253570506685934 -4.115470827593974 0.05 ;
 createNode nurbsCurve -n "lipsTitleShape" -p "lipsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004673";
 	setAttr -k off ".v";
 	setAttr ".ovc" 30;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -22412,14 +24251,14 @@ createNode nurbsCurve -n "lipsTitleShape" -p "lipsTitle";
 		8.5348643209878166 -11.21349691165687 -6.4948046940571658e-15
 		8.5180411597984662 -11.21349691165687 -6.4948046940571658e-15
 		8.5180411597984662 -11.22734667691507 -6.4948046940571658e-15
-		8.5180411597984662 -11.241196442173271 -6.4948046940571658e-15
-		8.4551303616763658 -11.241196442173271 -6.4948046940571658e-15
-		8.3922195635543151 -11.241196442173271 -6.4948046940571658e-15
+		8.5180411597984662 -11.241196442173273 -6.4948046940571658e-15
+		8.4551303616763658 -11.241196442173273 -6.4948046940571658e-15
+		8.3922195635543151 -11.241196442173273 -6.4948046940571658e-15
 		8.3922195635543151 -11.22734667691507 -6.4948046940571658e-15
 		8.3922195635543151 -11.21349691165687 -6.4948046940571658e-15
 		8.3753964023649647 -11.21349691165687 -6.4948046940571658e-15
 		8.3585732411756162 -11.21349691165687 -6.4948046940571658e-15
-		8.3585732411756162 -11.265453093190521 -6.4948046940571658e-15
+		8.3585732411756162 -11.265453093190519 -6.4948046940571658e-15
 		8.3585732411756162 -11.317409274724172 -6.4948046940571658e-15
 		8.3753964023649647 -11.317409274724172 -6.4948046940571658e-15
 		8.3922195635543151 -11.317409274724172 -6.4948046940571658e-15
@@ -22431,10 +24270,11 @@ createNode nurbsCurve -n "lipsTitleShape" -p "lipsTitle";
 		8.5180411597984662 -11.317409274724172 -6.4948046940571658e-15
 		8.5348643209878166 -11.317409274724172 -6.4948046940571658e-15
 		8.5516874821771651 -11.317409274724172 -6.4948046940571658e-15
-		8.5516874821771651 -11.265453093190521 -6.4948046940571658e-15
+		8.5516874821771651 -11.265453093190519 -6.4948046940571658e-15
 		8.5516874821771651 -11.21349691165687 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "lipsTitleShape1" -p "lipsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004674";
 	setAttr -k off ".v";
 	setAttr ".ovc" 30;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -22453,9 +24293,9 @@ createNode nurbsCurve -n "lipsTitleShape1" -p "lipsTitle";
 		8.5201342740394654 -10.836814595537922 -6.4948046940571658e-15
 		8.4913588436795155 -10.836814595537922 -6.4948046940571658e-15
 		8.4712688593289656 -10.836814595537922 -6.4948046940571658e-15
-		8.4590194950879667 -10.846596725819621 -6.4948046940571658e-15
+		8.4590194950879667 -10.846596725819619 -6.4948046940571658e-15
 		8.4467701308469643 -10.856378856101321 -6.4948046940571658e-15
-		8.4395126973571148 -10.876459059544169 -6.4948046940571658e-15
+		8.4395126973571148 -10.876459059544167 -6.4948046940571658e-15
 		8.4358839806122141 -10.886694779418969 -6.4948046940571658e-15
 		8.4338092055730662 -10.895699327541069 -6.4948046940571658e-15
 		8.4317344305339663 -10.904703875663118 -6.4948046940571658e-15
@@ -22470,7 +24310,7 @@ createNode nurbsCurve -n "lipsTitleShape1" -p "lipsTitle";
 		8.3947308115981158 -10.92880403215767 -6.4948046940571658e-15
 		8.3921486519737165 -10.92323625046752 -6.4948046940571658e-15
 		8.3912451406278663 -10.918184411656872 -6.4948046940571658e-15
-		8.3903416292820161 -10.913132572846221 -6.4948046940571658e-15
+		8.3903416292820161 -10.913132572846219 -6.4948046940571658e-15
 		8.3903416292820161 -10.906784763769521 -6.4948046940571658e-15
 		8.3903416292820161 -10.890465319325068 -6.4948046940571658e-15
 		8.3966943288125151 -10.874987032940121 -6.4948046940571658e-15
@@ -22480,7 +24320,7 @@ createNode nurbsCurve -n "lipsTitleShape1" -p "lipsTitle";
 		8.4122508624588637 -10.84448282714982 -6.4948046940571658e-15
 		8.3901814669189658 -10.84448282714982 -6.4948046940571658e-15
 		8.3681120713790147 -10.84448282714982 -6.4948046940571658e-15
-		8.3621408272475666 -10.857965808370471 -6.4948046940571658e-15
+		8.3621408272475666 -10.857965808370473 -6.4948046940571658e-15
 		8.3586355944619672 -10.87501393043622 -6.4948046940571658e-15
 		8.3551303616763661 -10.892062052501922 -6.4948046940571658e-15
 		8.3551303616763661 -10.909303347494122 -6.4948046940571658e-15
@@ -22491,28 +24331,28 @@ createNode nurbsCurve -n "lipsTitleShape1" -p "lipsTitle";
 		8.4358815353853149 -10.989553249685022 -6.4948046940571658e-15
 		8.4492324743524154 -10.979835917916622 -6.4948046940571658e-15
 		8.4625834133195657 -10.970118586148269 -6.4948046940571658e-15
-		8.4704888319424168 -10.947705636226521 -6.4948046940571658e-15
+		8.4704888319424168 -10.947705636226519 -6.4948046940571658e-15
 		8.4738583546341157 -10.937988304458122 -6.4948046940571658e-15
-		8.4761923237264654 -10.926781829497221 -6.4948046940571658e-15
-		8.4785262928187652 -10.915575354536371 -6.4948046940571658e-15
-		8.4811182333508643 -10.905728425741371 -6.4948046940571658e-15
+		8.4761923237264654 -10.926781829497219 -6.4948046940571658e-15
+		8.4785262928187652 -10.915575354536372 -6.4948046940571658e-15
+		8.4811182333508643 -10.905728425741373 -6.4948046940571658e-15
 		8.4831917857765156 -10.897825452345421 -6.4948046940571658e-15
-		8.4877289043211146 -10.892124405788321 -6.4948046940571658e-15
-		8.4922660228657154 -10.886423359231221 -6.4948046940571658e-15
-		8.4995234563555648 -10.886423359231221 -6.4948046940571658e-15
-		8.5060179790472645 -10.886423359231221 -6.4948046940571658e-15
-		8.509980469266365 -10.889918811109121 -6.4948046940571658e-15
+		8.4877289043211146 -10.892124405788319 -6.4948046940571658e-15
+		8.4922660228657154 -10.88642335923122 -6.4948046940571658e-15
+		8.4995234563555648 -10.88642335923122 -6.4948046940571658e-15
+		8.5060179790472645 -10.88642335923122 -6.4948046940571658e-15
+		8.509980469266365 -10.889918811109119 -6.4948046940571658e-15
 		8.5139429594854654 -10.89341426298707 -6.4948046940571658e-15
-		8.5161509993915665 -10.898463656570771 -6.4948046940571658e-15
+		8.5161509993915665 -10.898463656570772 -6.4948046940571658e-15
 		8.5180998452444641 -10.902608316195222 -6.4948046940571658e-15
-		8.5190094696576146 -10.909404824411171 -6.4948046940571658e-15
+		8.5190094696576146 -10.909404824411173 -6.4948046940571658e-15
 		8.519919094070767 -10.91620133262712 -6.4948046940571658e-15
-		8.519919094070767 -10.920345992251521 -6.4948046940571658e-15
+		8.519919094070767 -10.920345992251519 -6.4948046940571658e-15
 		8.519919094070767 -10.936787698041821 -6.4948046940571658e-15
 		8.5132754125371157 -10.95426618004497 -6.4948046940571658e-15
-		8.5066317310034663 -10.971744662048119 -6.4948046940571658e-15
-		8.4942539923493161 -10.986247302893171 -6.4948046940571658e-15
-		8.4942539923493161 -10.988448007118519 -6.4948046940571658e-15
+		8.5066317310034663 -10.97174466204812 -6.4948046940571658e-15
+		8.4942539923493161 -10.986247302893172 -6.4948046940571658e-15
+		8.4942539923493161 -10.988448007118521 -6.4948046940571658e-15
 		8.4942539923493161 -10.990648711343871 -6.4948046940571658e-15
 		8.5172281218485146 -10.990648711343871 -6.4948046940571658e-15
 		8.5402022513477167 -10.990648711343871 -6.4948046940571658e-15
@@ -22522,6 +24362,7 @@ createNode nurbsCurve -n "lipsTitleShape1" -p "lipsTitle";
 		8.5551303616763672 -10.920536719951071 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "lipsTitleShape2" -p "lipsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004675";
 	setAttr -k off ".v";
 	setAttr ".ovc" 30;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -22529,21 +24370,22 @@ createNode nurbsCurve -n "lipsTitleShape2" -p "lipsTitle";
 		14 0 0 1 1 2 2 3 3 4 4 5
 		 5 6 6
 		13
-		8.5516874821771651 -11.332745737947919 -6.4948046940571658e-15
-		8.5332993757608655 -11.332745737947919 -6.4948046940571658e-15
-		8.5149112693446156 -11.332745737947919 -6.4948046940571658e-15
-		8.5149112693446156 -11.372886583018369 -6.4948046940571658e-15
-		8.5149112693446156 -11.413027428088769 -6.4948046940571658e-15
-		8.4367422552601159 -11.413027428088769 -6.4948046940571658e-15
-		8.3585732411756162 -11.413027428088769 -6.4948046940571658e-15
+		8.5516874821771651 -11.332745737947921 -6.4948046940571658e-15
+		8.5332993757608655 -11.332745737947921 -6.4948046940571658e-15
+		8.5149112693446156 -11.332745737947921 -6.4948046940571658e-15
+		8.5149112693446156 -11.372886583018367 -6.4948046940571658e-15
+		8.5149112693446156 -11.413027428088768 -6.4948046940571658e-15
+		8.4367422552601159 -11.413027428088768 -6.4948046940571658e-15
+		8.3585732411756162 -11.413027428088768 -6.4948046940571658e-15
 		8.3585732411756162 -11.43728407910602 -6.4948046940571658e-15
 		8.3585732411756162 -11.46154073012322 -6.4948046940571658e-15
 		8.4551303616763658 -11.46154073012322 -6.4948046940571658e-15
 		8.5516874821771651 -11.46154073012322 -6.4948046940571658e-15
-		8.5516874821771651 -11.397143234035573 -6.4948046940571658e-15
-		8.5516874821771651 -11.332745737947919 -6.4948046940571658e-15
+		8.5516874821771651 -11.397143234035571 -6.4948046940571658e-15
+		8.5516874821771651 -11.332745737947921 -6.4948046940571658e-15
 		;
 createNode nurbsCurve -n "jawOpenTitle1Shape2" -p "lipsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004676";
 	setAttr -k off ".v";
 	setAttr ".ovc" 23;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -22552,39 +24394,40 @@ createNode nurbsCurve -n "jawOpenTitle1Shape2" -p "lipsTitle";
 		 5 6 6 7 7 8 8 9 9 10 10 11
 		 11 12 12 13 13 14 14 15 15
 		31
-		8.4196685107929188 -11.026277159649213 -6.4254157550180935e-15
-		8.4027092689927549 -11.026277159649213 -6.4254157550180935e-15
+		8.4196685107929188 -11.026277159649212 -6.4254157550180935e-15
+		8.4027092689927549 -11.026277159649212 -6.4254157550180935e-15
 		8.3904169804120343 -11.032322872693348 -6.4254157550180935e-15
 		8.3781246918313617 -11.038368585737482 -6.4254157550180935e-15
-		8.370762213558967 -11.049408583470255 -6.4254157550180935e-15
+		8.370762213558967 -11.049408583470257 -6.4254157550180935e-15
 		8.3640593577926463 -11.059397152847522 -6.4254157550180935e-15
-		8.3609695471064462 -11.071684481860517 -6.4254157550180935e-15
+		8.3609695471064462 -11.071684481860515 -6.4254157550180935e-15
 		8.3578797364201893 -11.083971810873519 -6.4254157550180935e-15
-		8.3578797364201893 -11.100926093105981 -6.4254157550180935e-15
+		8.3578797364201893 -11.100926093105979 -6.4254157550180935e-15
 		8.3578797364201893 -11.138907702556557 -6.4254157550180935e-15
 		8.3578797364201893 -11.176889312007132 -6.4254157550180935e-15
 		8.4558014413779166 -11.176889312007132 -6.4254157550180935e-15
 		8.5537231463355781 -11.176889312007132 -6.4254157550180935e-15
-		8.5537231463355781 -11.152289856142561 -6.4254157550180935e-15
-		8.5537231463355781 -11.127690400277993 -6.4254157550180935e-15
-		8.5216645006281855 -11.127690400277993 -6.4254157550180935e-15
-		8.4896058549207947 -11.127690400277993 -6.4254157550180935e-15
+		8.5537231463355781 -11.152289856142559 -6.4254157550180935e-15
+		8.5537231463355781 -11.127690400277992 -6.4254157550180935e-15
+		8.5216645006281855 -11.127690400277992 -6.4254157550180935e-15
+		8.4896058549207947 -11.127690400277992 -6.4254157550180935e-15
 		8.4896058549207947 -11.114816602382737 -6.4254157550180935e-15
 		8.4896058549207947 -11.101942804487484 -6.4254157550180935e-15
 		8.4896058549207947 -11.091433480500177 -6.4254157550180935e-15
-		8.4878972838431377 -11.082960059059735 -6.4254157550180935e-15
+		8.4878972838431377 -11.082960059059737 -6.4254157550180935e-15
 		8.486188712765431 -11.074486637619286 -6.4254157550180935e-15
 		8.4831633764595136 -11.067263027242925 -6.4254157550180935e-15
 		8.4801405199374429 -11.060036937082709 -6.4254157550180935e-15
-		8.4758021380790911 -11.054060657986573 -6.4254157550180935e-15
-		8.4714637562206843 -11.048084378890445 -6.4254157550180935e-15
-		8.4663380429876121 -11.043092573985669 -6.4254157550180935e-15
-		8.4580555649042033 -11.034946484014389 -6.4254157550180935e-15
+		8.4758021380790911 -11.054060657986572 -6.4254157550180935e-15
+		8.4714637562206843 -11.048084378890444 -6.4254157550180935e-15
+		8.4663380429876121 -11.043092573985668 -6.4254157550180935e-15
+		8.4580555649042033 -11.034946484014387 -6.4254157550180935e-15
 		8.4456975620512704 -11.030611821831799 -6.4254157550180935e-15
-		8.4333395591983411 -11.026277159649213 -6.4254157550180935e-15
-		8.4196685107929188 -11.026277159649213 -6.4254157550180935e-15
+		8.4333395591983411 -11.026277159649212 -6.4254157550180935e-15
+		8.4196685107929188 -11.026277159649212 -6.4254157550180935e-15
 		;
 createNode nurbsCurve -n "jawOpenTitle1Shape3" -p "lipsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004677";
 	setAttr -k off ".v";
 	setAttr ".ovc" 23;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -22597,24 +24440,24 @@ createNode nurbsCurve -n "jawOpenTitle1Shape3" -p "lipsTitle";
 		8.4125515311224373 -11.0767457207133 -6.4254157550180935e-15
 		8.4065603733232024 -11.080684857370644 -6.4254157550180935e-15
 		8.4005692155239178 -11.084623994027991 -6.4254157550180935e-15
-		8.3983324504845953 -11.090139033326663 -6.4254157550180935e-15
+		8.3983324504845953 -11.090139033326665 -6.4254157550180935e-15
 		8.3953046343948365 -11.097097306830287 -6.4254157550180935e-15
 		8.3948433945973573 -11.103465391775872 -6.4254157550180935e-15
 		8.3943821547998763 -11.109833476721461 -6.4254157550180935e-15
 		8.3943821547998763 -11.120732126774362 -6.4254157550180935e-15
 		8.3943821547998763 -11.124211263526179 -6.4254157550180935e-15
-		8.3943821547998763 -11.127690400277993 -6.4254157550180935e-15
-		8.4237427956705222 -11.127690400277993 -6.4254157550180935e-15
-		8.4531034365411113 -11.127690400277993 -6.4254157550180935e-15
+		8.3943821547998763 -11.127690400277992 -6.4254157550180935e-15
+		8.4237427956705222 -11.127690400277992 -6.4254157550180935e-15
+		8.4531034365411113 -11.127690400277992 -6.4254157550180935e-15
 		8.4531034365411113 -11.12598306909223 -6.4254157550180935e-15
-		8.4531034365411113 -11.124275737906471 -6.4254157550180935e-15
+		8.4531034365411113 -11.124275737906473 -6.4254157550180935e-15
 		8.4531034365411113 -11.11731746440284 -6.4254157550180935e-15
-		8.4529720079966975 -11.111146522273911 -6.4254157550180935e-15
-		8.4528405794522801 -11.104975580144979 -6.4254157550180935e-15
+		8.4529720079966975 -11.111146522273913 -6.4254157550180935e-15
+		8.4528405794522801 -11.104975580144981 -6.4254157550180935e-15
 		8.4520495284017905 -11.100380540657374 -6.4254157550180935e-15
 		8.4513923856796129 -11.096440164108101 -6.4254157550180935e-15
-		8.4494829521094559 -11.092042267437149 -6.4254157550180935e-15
-		8.4475735185393042 -11.087644370766201 -6.4254157550180935e-15
+		8.4494829521094559 -11.092042267437147 -6.4254157550180935e-15
+		8.4475735185393042 -11.087644370766199 -6.4254157550180935e-15
 		8.4452028451717247 -11.085281136750178 -6.4254157550180935e-15
 		8.4403325496759418 -11.080291811629264 -6.4254157550180935e-15
 		8.4350654887630174 -11.07851876617128 -6.4254157550180935e-15
@@ -22622,468 +24465,35 @@ createNode nurbsCurve -n "jawOpenTitle1Shape3" -p "lipsTitle";
 		8.4208464081251755 -11.0767457207133 -6.4254157550180935e-15
 		;
 createNode transform -n "LipCtrl_box" -p "lipsTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004678";
 	setAttr ".t" -type "double3" 12.362356279566246 -9.3016967863165494 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".rp" -type "double3" -1.5002531304416902 0 0 ;
 	setAttr ".sp" -type "double3" -3.0005062608833803 0 0 ;
 	setAttr ".spt" -type "double3" 1.5002531304416902 0 0 ;
-	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653501 -0.0010000000000001299 ;
+	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "LipCtrl_boxShape" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004679";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 0 no 3
 		5 0 1 2 3 4
 		5
-		-6.985840667026431 -4.3894489872027282 -8.2274851265653366e-18
-		0.98482814525966855 -4.3894489872027265 1.0776800187917851e-18
-		0.98482814525966855 4.3894489872027211 1.3309428700208209e-18
+		-6.985840667026431 -4.3894489872027282 -8.2274851265653335e-18
+		0.98482814525966844 -4.3894489872027265 1.0776800187917851e-18
+		0.98482814525966844 4.3894489872027211 1.3309428700208208e-18
 		-6.985840667026431 4.3894489872027203 -7.9742222753363008e-18
-		-6.985840667026431 -4.3894489872027282 -8.2274851265653366e-18
-		;
-createNode transform -n "LipUpCtrl" -p "LipCtrl_box";
-	setAttr ".t" -type "double3" -3 1.6 0 ;
-	setAttr ".r" -type "double3" 7.2553584774199484e-31 0 0 ;
-	setAttr ".s" -type "double3" 2 2 2 ;
-createNode locator -n "LipUpCtrlShape" -p "LipUpCtrl";
-	setAttr -k off ".v" no;
-	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993917e-15 -1.6599728183816151e-18 ;
-createNode transform -n "lipUpCtrlMidP" -p "LipUpCtrl";
-	setAttr ".t" -type "double3" 0 0 -6.9388939039072284e-18 ;
-	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
-createNode transform -n "lipUpCtrlMidFloat" -p "lipUpCtrlMidP";
-	setAttr ".t" -type "double3" 0 0 1.3877787807814457e-17 ;
-createNode transform -n "lipUpCtrlMid" -p "lipUpCtrlMidFloat";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rx";
-	setAttr -l on ".rz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sz";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipUpCtrlMidShape" -p "lipUpCtrlMid";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
-		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
-		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
-		-0.22163883751087751 3.724304621039733e-17 -8.7965633225196802e-33
-		-0.15672232497824487 -0.15672232497824479 3.701678557482674e-17
-		-9.8937665011553583e-17 -0.2216388375108776 5.2349640195376755e-17
-		0.15672232497824479 -0.1567223249782449 3.7016785574826771e-17
-		0.22163883751087751 -1.228314903657079e-16 2.9011992652195358e-32
-		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
-		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
-		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
-		;
-createNode nurbsCurve -n "lipUpCtrlMidShape1" -p "lipUpCtrlMid";
-	setAttr -k off ".v" no;
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipUpCtrlLP" -p "LipUpCtrl";
-	setAttr ".t" -type "double3" 1 9.1072982488782372e-18 -4.4045713257223618e-20 ;
-	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
-createNode transform -n "lipUpCtrlLFloat" -p "lipUpCtrlLP";
-	setAttr ".t" -type "double3" 0 0 8.8091426514447235e-20 ;
-createNode transform -n "lipUpCtrlL" -p "lipUpCtrlLFloat";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -av -k off ".ry";
-	setAttr -l on -av -k off ".rx";
-	setAttr -l on ".rz";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipUpCtrlLShape" -p "lipUpCtrlL";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipUpCtrlLShape1" -p "lipUpCtrlL";
-	setAttr -k off ".v" no;
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipUpCtrlRP" -p "LipUpCtrl";
-	setAttr ".t" -type "double3" -1 9.1072982488782372e-18 -4.4045713257223618e-20 ;
-	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
-createNode transform -n "lipUpCtrlRFloat" -p "lipUpCtrlRP";
-	setAttr ".t" -type "double3" 0 0 8.8091426514447235e-20 ;
-createNode transform -n "lipUpCtrlR" -p "lipUpCtrlRFloat";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rx";
-	setAttr -l on ".rz";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipUpCtrlRShape" -p "lipUpCtrlR";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipUpCtrlRShape1" -p "lipUpCtrlR";
-	setAttr -k off ".v" no;
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipCtrlGuide18" -p "LipUpCtrl";
-	setAttr ".tmp" yes;
-	setAttr ".r" -type "double3" 0 0 90 ;
-	setAttr ".s" -type "double3" 1 1.4907501765086961 1 ;
-createNode nurbsCurve -n "lipCtrlGuide2Shape18" -p "lipCtrlGuide18";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		1 1 0 no 3
-		2 0 1
-		2
-		0 1 0
-		0 -1 0
-		;
-createNode transform -n "LipLoCtrl" -p "LipCtrl_box";
-	setAttr ".t" -type "double3" -3 -1.6 1.3877787807814457e-17 ;
-	setAttr ".r" -type "double3" 7.2553584774199484e-31 0 0 ;
-	setAttr ".s" -type "double3" 2 2 2 ;
-createNode locator -n "LipLoCtrlShape" -p "LipLoCtrl";
-	setAttr -k off ".v" no;
-	setAttr ".tmp" yes;
-	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993917e-15 -1.6599728183816151e-18 ;
-createNode transform -n "lipLoCtrlMidP" -p "LipLoCtrl";
-	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
-createNode transform -n "lipLoCtrlMidFloat" -p "lipLoCtrlMidP";
-	setAttr ".t" -type "double3" 0 0 -1.3877787807814457e-17 ;
-createNode transform -n "lipLoCtrlMid" -p "lipLoCtrlMidFloat";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rx";
-	setAttr -l on ".rz";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipLoCtrlMidShape" -p "lipLoCtrlMid";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
-		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
-		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
-		-0.22163883751087751 3.724304621039733e-17 -8.7965633225196802e-33
-		-0.15672232497824487 -0.15672232497824479 3.701678557482674e-17
-		-9.8937665011553583e-17 -0.2216388375108776 5.2349640195376755e-17
-		0.15672232497824479 -0.1567223249782449 3.7016785574826771e-17
-		0.22163883751087751 -1.228314903657079e-16 2.9011992652195358e-32
-		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
-		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
-		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
-		;
-createNode nurbsCurve -n "lipLoCtrlMidShape1" -p "lipLoCtrlMid";
-	setAttr -k off ".v" no;
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipLoCtrlLP" -p "LipLoCtrl";
-	setAttr ".t" -type "double3" 1 9.1072982488782372e-18 -4.4045713257223618e-20 ;
-	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
-createNode transform -n "lipLoCtrlLFloat" -p "lipLoCtrlLP";
-	setAttr ".t" -type "double3" 0 0 -1.378969638130001e-17 ;
-createNode transform -n "lipLoCtrlL" -p "lipLoCtrlLFloat";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -av -k off ".ry";
-	setAttr -l on -av -k off ".rx";
-	setAttr -l on ".rz";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipLoCtrlLShape" -p "lipLoCtrlL";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipLoCtrlLShape1" -p "lipLoCtrlL";
-	setAttr -k off ".v" no;
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipLoCtrlRP" -p "LipLoCtrl";
-	setAttr ".t" -type "double3" -1 9.1072982488782372e-18 -4.4045713257223618e-20 ;
-	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
-createNode transform -n "lipLoCtrlRFloat" -p "lipLoCtrlRP";
-	setAttr ".t" -type "double3" 0 0 -1.378969638130001e-17 ;
-createNode transform -n "lipLoCtrlR" -p "lipLoCtrlRFloat";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -av -k off ".ry";
-	setAttr -l on -av -k off ".rx";
-	setAttr -l on ".rz";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipLoCtrlRShape" -p "lipLoCtrlR";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipLoCtrlRShape1" -p "lipLoCtrlR";
-	setAttr -k off ".v" no;
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipCtrlGuide19" -p "LipLoCtrl";
-	setAttr ".tmp" yes;
-	setAttr ".r" -type "double3" 0 0 90 ;
-	setAttr ".s" -type "double3" 1 1.4907501765086961 1 ;
-createNode nurbsCurve -n "lipCtrlGuide2Shape19" -p "lipCtrlGuide19";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		1 1 0 no 3
-		2 0 1
-		2
-		0 1 0
-		0 -1 0
+		-6.985840667026431 -4.3894489872027282 -8.2274851265653335e-18
 		;
 createNode transform -n "lipCtrlGuide17" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A0";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -3 -0.00011639200660340521 0 ;
 	setAttr ".r" -type "double3" 0 0 90 ;
 	setAttr ".s" -type "double3" 2 3.9460442402541842 2 ;
 createNode nurbsCurve -n "lipCtrlGuide2Shape17" -p "lipCtrlGuide17";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A1";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 1 0 no 3
@@ -23093,10 +24503,12 @@ createNode nurbsCurve -n "lipCtrlGuide2Shape17" -p "lipCtrlGuide17";
 		0 -1 0
 		;
 createNode transform -n "lipCtrlGuide8" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A2";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -1 -0.00011639200660340521 0 ;
 	setAttr ".s" -type "double3" 1 4.3801659432802325 1 ;
 createNode nurbsCurve -n "lipCtrlGuide2Shape8" -p "lipCtrlGuide8";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A3";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 1 0 no 3
@@ -23106,10 +24518,12 @@ createNode nurbsCurve -n "lipCtrlGuide2Shape8" -p "lipCtrlGuide8";
 		0 -1 0
 		;
 createNode transform -n "lipCtrlGuide11" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A4";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -5 -0.00011639200660340521 0 ;
 	setAttr ".s" -type "double3" 1 4.3801659432802325 1 ;
 createNode nurbsCurve -n "lipCtrlGuide2Shape11" -p "lipCtrlGuide11";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A5";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 1 0 no 3
@@ -23119,10 +24533,12 @@ createNode nurbsCurve -n "lipCtrlGuide2Shape11" -p "lipCtrlGuide11";
 		0 -1 0
 		;
 createNode transform -n "lipCtrlGuide12" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A6";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -6 -0.00011639200660340521 0 ;
 	setAttr ".s" -type "double3" 1 4.3801659432802325 1 ;
 createNode nurbsCurve -n "lipCtrlGuide2Shape12" -p "lipCtrlGuide12";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 1 0 no 3
@@ -23132,10 +24548,12 @@ createNode nurbsCurve -n "lipCtrlGuide2Shape12" -p "lipCtrlGuide12";
 		0 -1 0
 		;
 createNode transform -n "lipCtrlGuide13" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A8";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -4 -0.00011639200660340521 0 ;
 	setAttr ".s" -type "double3" 1 4.3801659432802325 1 ;
 createNode nurbsCurve -n "lipCtrlGuide2Shape13" -p "lipCtrlGuide13";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046A9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 1 0 no 3
@@ -23145,10 +24563,12 @@ createNode nurbsCurve -n "lipCtrlGuide2Shape13" -p "lipCtrlGuide13";
 		0 -1 0
 		;
 createNode transform -n "lipCtrlGuide14" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046AA";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -3 -0.00011639200660340521 0 ;
 	setAttr ".s" -type "double3" 1 4.3801659432802325 1 ;
 createNode nurbsCurve -n "lipCtrlGuide2Shape14" -p "lipCtrlGuide14";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046AB";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 1 0 no 3
@@ -23158,10 +24578,12 @@ createNode nurbsCurve -n "lipCtrlGuide2Shape14" -p "lipCtrlGuide14";
 		0 -1 0
 		;
 createNode transform -n "lipCtrlGuide15" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046AC";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" -2 -0.00011639200660340521 0 ;
 	setAttr ".s" -type "double3" 1 4.3801659432802325 1 ;
 createNode nurbsCurve -n "lipCtrlGuide2Shape15" -p "lipCtrlGuide15";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046AD";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 1 0 no 3
@@ -23171,10 +24593,12 @@ createNode nurbsCurve -n "lipCtrlGuide2Shape15" -p "lipCtrlGuide15";
 		0 -1 0
 		;
 createNode transform -n "lipCtrlGuide16" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046AE";
 	setAttr ".tmp" yes;
 	setAttr ".t" -type "double3" 0 -0.00011639200660340521 0 ;
 	setAttr ".s" -type "double3" 1 4.3801659432802325 1 ;
 createNode nurbsCurve -n "lipCtrlGuide2Shape16" -p "lipCtrlGuide16";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046AF";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		1 1 0 no 3
@@ -23184,9 +24608,12 @@ createNode nurbsCurve -n "lipCtrlGuide2Shape16" -p "lipCtrlGuide16";
 		0 -1 0
 		;
 createNode transform -n "lipCtrlRTipP" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B0";
 	setAttr ".t" -type "double3" -6 0 0 ;
 createNode transform -n "lipCtrlRTipFloat" -p "lipCtrlRTipP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B1";
 createNode transform -n "lipCtrlRTip" -p "lipCtrlRTipFloat";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -23223,6 +24650,7 @@ createNode transform -n "lipCtrlRTip" -p "lipCtrlRTipFloat";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "lipCtrlRTipShape" -p "lipCtrlRTip";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -23232,12 +24660,15 @@ createNode nurbsCurve -n "lipCtrlRTipShape" -p "lipCtrlRTip";
 		4
 		0.20657755587828175 0.36399519548224696 2.6671373443143409e-17
 		-0.26298995621662191 5.3845816694320092e-15 -1.1519648082658485e-18
-		0.20657755587828175 -0.36399519548223619 2.6671373443143409e-17
+		0.20657755587828175 -0.36399519548223613 2.6671373443143409e-17
 		0.20657755587828175 0.36399519548224696 2.6671373443143409e-17
 		;
 createNode transform -n "lipCtrlLTipP" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B4";
 createNode transform -n "lipCtrlLTipFloat" -p "lipCtrlLTipP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B5";
 createNode transform -n "lipCtrlLTip" -p "lipCtrlLTipFloat";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -23274,6 +24705,7 @@ createNode transform -n "lipCtrlLTip" -p "lipCtrlLTipFloat";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "lipCtrlLTipShape" -p "lipCtrlLTip";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B7";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -23281,35 +24713,41 @@ createNode nurbsCurve -n "lipCtrlLTipShape" -p "lipCtrlLTip";
 		1 3 0 no 3
 		4 0 1 2 3
 		4
-		-0.20367350758312242 0.36399519548224157 0
+		-0.20367350758312239 0.36399519548224157 0
 		0.2620219401182371 0 0
-		-0.20367350758312242 -0.36399519548224157 0
-		-0.20367350758312242 0.36399519548224157 0
+		-0.20367350758312239 -0.36399519548224157 0
+		-0.20367350758312239 0.36399519548224157 0
 		;
 createNode transform -n "lipUpTension_box" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B8";
 	setAttr ".t" -type "double3" -0.0087618760626337888 4.8060181270584295 9.7144514654701197e-17 ;
 	setAttr ".rp" -type "double3" -2.4980018054066022e-16 1.4432899320127035e-15 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" 9.7144514654701197e-17 1.4432899320127035e-15 2.1684043449710089e-18 ;
 createNode nurbsCurve -n "lipUpTension_boxShape" -p "lipUpTension_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046B9";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 0 no 3
 		5 0 1 2 3 4
 		5
-		-0.99999999999999978 0.10000000000000153 2.1684043449710089e-18
-		-0.99999999999999978 -0.099999999999998646 2.1684043449710089e-18
+		-0.99999999999999989 0.10000000000000152 2.1684043449710089e-18
+		-0.99999999999999989 -0.099999999999998646 2.1684043449710089e-18
 		1 -0.099999999999998646 2.1684043449710089e-18
-		1 0.10000000000000153 2.1684043449710089e-18
-		-0.99999999999999978 0.10000000000000153 2.1684043449710089e-18
+		1 0.10000000000000152 2.1684043449710089e-18
+		-0.99999999999999989 0.10000000000000152 2.1684043449710089e-18
 		;
 createNode transform -n "lipUpTension0" -p "lipUpTension_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046BA";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "lipUpTension0Shape" -p "lipUpTension0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046BB";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "lipUpTension" -p "lipUpTension_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046BC";
 	addAttr -ci true -sn "tension" -ln "tension" -min -1 -max 1 -at "double";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
@@ -23340,6 +24778,7 @@ createNode transform -n "lipUpTension" -p "lipUpTension_box";
 	setAttr ".xsze" yes;
 	setAttr ".tension" -0.1;
 createNode nurbsCurve -n "lipUpTensionShape" -p "lipUpTension";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046BD";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -23348,19 +24787,20 @@ createNode nurbsCurve -n "lipUpTensionShape" -p "lipUpTension";
 		13 -2 -1 0 1 2 3 4 5 6 7 8
 		 9 10
 		11
-		0.078361162489122504 0.07836116248912238 -9.2541963937066851e-18
+		0.078361162489122491 0.07836116248912238 -9.2541963937066851e-18
 		-1.5418952275762498e-17 0.1108194187554388 -1.3087410048844189e-17
-		-0.078361162489122407 0.078361162489122435 -9.2541963937066913e-18
-		-0.11081941875543876 1.8621523105198665e-17 -2.1991408306299197e-33
+		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
+		-0.11081941875543876 1.8621523105198662e-17 -2.1991408306299194e-33
 		-0.078361162489122435 -0.078361162489122393 9.2541963937066851e-18
 		-4.9468832505776792e-17 -0.1108194187554388 1.3087410048844189e-17
 		0.078361162489122393 -0.078361162489122449 9.2541963937066928e-18
 		0.11081941875543876 -6.1415745182853949e-17 7.2529981630488394e-33
-		0.078361162489122504 0.07836116248912238 -9.2541963937066851e-18
+		0.078361162489122491 0.07836116248912238 -9.2541963937066851e-18
 		-1.5418952275762498e-17 0.1108194187554388 -1.3087410048844189e-17
-		-0.078361162489122407 0.078361162489122435 -9.2541963937066913e-18
+		-0.078361162489122393 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode nurbsCurve -n "lipUpTensionShape1" -p "lipUpTension";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046BE";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -23368,15 +24808,17 @@ createNode nurbsCurve -n "lipUpTensionShape1" -p "lipUpTension";
 		1 2 0 no 3
 		3 0 1 2
 		3
-		0.039370772217696352 0.091405284720346772 -2.4999999999999994e-14
-		-0.00034853554820452048 0.22698978489247224 -2.4999999999999994e-14
-		-0.039759229433115904 0.091505088888362271 -2.4999999999999994e-14
+		0.039370772217696352 0.091405284720346772 -2.4999999999999991e-14
+		-0.00034853554820452048 0.22698978489247224 -2.4999999999999991e-14
+		-0.039759229433115904 0.091505088888362271 -2.4999999999999991e-14
 		;
 createNode transform -n "lipTensionTitle" -p "lipUpTension_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046BF";
 	setAttr ".tmp" yes;
-	setAttr ".t" -type "double3" -0.99406137170818454 0.1601790261156566 2.5673907444456745e-15 ;
+	setAttr ".t" -type "double3" -0.99406137170818443 0.1601790261156566 2.5673907444456745e-15 ;
 	setAttr ".s" -type "double3" 2 2 2 ;
 createNode nurbsCurve -n "lipTensionTitleShape" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C0";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 45 0 no 3
@@ -23395,16 +24837,16 @@ createNode nurbsCurve -n "lipTensionTitleShape" -p "lipTensionTitle";
 		0.042602539062499778 0.012939453125007107 0
 		0.04184198379516578 0.012939453125007107 0
 		0.041081428527831775 0.012939453125007107 0
-		0.040168762207031028 0.012436866760261006 0
-		0.037861347198486155 0.011833667755134055 0
+		0.040168762207031021 0.012436866760261006 0
+		0.037861347198486155 0.011833667755134057 0
 		0.035553932189941156 0.011230468750007107 0
 		0.034133911132812278 0.011230468750007107 0
 		0.030685424804687281 0.011230468750007107 0
-		0.028884887695312278 0.01226997375488992 0
-		0.027084350585937278 0.013309478759772732 0
+		0.028884887695312281 0.01226997375488992 0
+		0.027084350585937281 0.013309478759772732 0
 		0.026374816894531031 0.015084266662604732 0
 		0.025613784790038781 0.016859054565436855 0
-		0.025563240051269278 0.019090175628669232 0
+		0.025563240051269281 0.019090175628669232 0
 		0.025512695312499781 0.021321296691901605 0
 		0.025512695312499781 0.024312973022468109 0
 		0.025512695312499781 0.034403800964362609 0
@@ -23430,11 +24872,12 @@ createNode nurbsCurve -n "lipTensionTitleShape" -p "lipTensionTitle";
 		0.007812499999999778 0.031211376190192604 0
 		0.007812499999999778 0.01792812347412823 0
 		0.007812499999999778 0.0078077316284250811 0
-		0.012750148773193153 0.0033545494079660933 0
+		0.012750148773193151 0.0033545494079660933 0
 		0.017687797546386531 -0.0010986328124928946 0
 		0.028524398803710781 -0.0010986328124928946 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape1" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C1";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 43 0 no 3
@@ -23448,29 +24891,29 @@ createNode nurbsCurve -n "lipTensionTitleShape1" -p "lipTensionTitle";
 		0.086349487304687278 -0.0011563301086354723 0
 		0.089409828186034906 -0.00067806243895773843 0
 		0.092293739318847406 9.5367431647730427e-05 0
-		0.09542942047119117 0.00085449218750710554 0
+		0.095429420471191156 0.00085449218750710554 0
 		0.097225189208984167 0.0015888214111399181 0
 		0.099020957946777163 0.0023231506347727304 0
 		0.10119628906249978 0.0031843185424875802 0
 		0.10119628906249978 0.010503292083747343 0
 		0.10119628906249978 0.017822265625007105 0
-		0.10025930404663067 0.017822265625007105 0
+		0.10025930404663068 0.017822265625007105 0
 		0.099322319030761538 0.017822265625007105 0
 		0.098156929016113045 0.016962051391608605 0
-		0.096307754516601271 0.015848159790046105 0
+		0.096307754516601257 0.015848159790046105 0
 		0.094458580017089663 0.014734268188483607 0
 		0.092280387878417774 0.01377201080322973 0
 		0.089797973632812278 0.01265811920166723 0
 		0.086809158325195021 0.01197481155396218 0
-		0.083820343017577903 0.011291503906257105 0
-		0.080730438232421653 0.011291503906257105 0
-		0.077133178710937278 0.011291503906257105 0
-		0.074093818664550531 0.011972904205329369 0
+		0.083820343017577903 0.011291503906257104 0
+		0.080730438232421653 0.011291503906257104 0
+		0.077133178710937278 0.011291503906257104 0
+		0.074093818664550531 0.011972904205329368 0
 		0.071054458618163771 0.012654304504401607 0
 		0.068775177001952903 0.01422023773194073 0
 		0.066444396972656028 0.015785217285163355 0
 		0.065026283264159906 0.018435955047614479 0
-		0.063608169555663771 0.021086692810065734 0
+		0.063608169555663771 0.021086692810065737 0
 		0.063354492187499778 0.025024414062507105 0
 		0.082794189453124778 0.025024414062507105 0
 		0.10223388671874978 0.025024414062507105 0
@@ -23480,7 +24923,7 @@ createNode nurbsCurve -n "lipTensionTitleShape1" -p "lipTensionTitle";
 		0.095654964447021276 0.05155563354492898 0
 		0.089076042175292774 0.058593750000007105 0
 		0.076019287109374778 0.058593750000007105 0
-		0.061646461486816156 0.058593750000007105 0
+		0.061646461486816163 0.058593750000007105 0
 		0.05365037918090803 0.050294399261481729 0
 		0.045654296874999778 0.041995048522956359 0
 		0.045654296874999778 0.028078079223639855 0
@@ -23490,6 +24933,7 @@ createNode nurbsCurve -n "lipTensionTitleShape1" -p "lipTensionTitle";
 		0.078888893127441156 -0.0015258789062428946 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape2" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C2";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 9 0 no 3
@@ -23509,6 +24953,7 @@ createNode nurbsCurve -n "lipTensionTitleShape2" -p "lipTensionTitle";
 		0.084777832031249778 0.035705566406257105 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape3" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C3";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 0 no 3
@@ -23526,7 +24971,7 @@ createNode nurbsCurve -n "lipTensionTitleShape3" -p "lipTensionTitle";
 		0.14660739898681602 0.058349609375007112 0
 		0.14160633087158231 0.058349609375007112 0
 		0.13748931884765603 0.056276321411139855 0
-		0.13337230682372977 0.05420303344727273 0
+		0.13337230682372975 0.05420303344727273 0
 		0.12902832031249978 0.050512313842780605 0
 		0.12902832031249978 0.053668022155768859 0
 		0.12902832031249978 0.056823730468757112 0
@@ -23538,24 +24983,25 @@ createNode nurbsCurve -n "lipTensionTitleShape3" -p "lipTensionTitle";
 		0.12902832031249978 7.1054273576010019e-15 0
 		0.12902832031249978 0.020125865936286354 0
 		0.12902832031249978 0.040251731872565734 0
-		0.13154792785644479 0.042021751403815734 0
+		0.13154792785644481 0.042021751403815734 0
 		0.13376569747924727 0.042830944061286354 0
 		0.13598346710205103 0.043640136718757105 0
 		0.13815021514892603 0.043640136718757105 0
 		0.14102268218994102 0.043640136718757105 0
 		0.14273643493652352 0.042805671691901602 0
-		0.14445018768310477 0.041971206665046105 0
+		0.14445018768310475 0.041971206665046105 0
 		0.14535713195800729 0.040049552917487609 0
 		0.14611339569091727 0.038431167602546112 0
 		0.14639043807983354 0.035017967224128234 0
 		0.14666748046874978 0.03160476684571023 0
-		0.14666748046874978 0.028166770935065734 0
-		0.14666748046874978 0.014083385467536357 0
+		0.14666748046874978 0.028166770935065737 0
+		0.14666748046874978 0.014083385467536355 0
 		0.14666748046874978 7.1054273576010019e-15 0
 		0.15557861328124978 7.1054273576010019e-15 0
 		0.16448974609374978 7.1054273576010019e-15 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape4" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C4";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 79 0 no 3
@@ -23567,34 +25013,34 @@ createNode nurbsCurve -n "lipTensionTitleShape4" -p "lipTensionTitle";
 		 29 30 30 31 31 32 32 33 33 34 34 35
 		 35 36 36 37 37 38 38 39 39 40 40
 		81
-		0.19491481781005854 -0.0015258789062428946 0
-		0.20179176330566354 -0.0015258789062428946 0
+		0.19491481781005857 -0.0015258789062428946 0
+		0.20179176330566351 -0.0015258789062428946 0
 		0.20672178268432603 4.7683716530855236e-07 0
 		0.21165180206298853 0.0014047622680735056 0
 		0.21529293060302732 0.0040826797485422556 0
 		0.21873092651367229 0.0065584182739328806 0
-		0.22060203552246102 0.010170936584479755 0
-		0.22247314453124978 0.013783454895026605 0
-		0.22247314453124978 0.01777553558350323 0
-		0.22247314453124978 0.024091720581061855 0
+		0.22060203552246105 0.010170936584479756 0
+		0.22247314453124975 0.013783454895026604 0
+		0.22247314453124975 0.01777553558350323 0
+		0.22247314453124975 0.024091720581061855 0
 		0.21931219100952104 0.027906417846686855 0
 		0.21615123748779227 0.031721115112311855 0
-		0.21003150939941354 0.033692359924323477 0
+		0.21003150939941351 0.033692359924323477 0
 		0.20730113983154227 0.034601211547858605 0
 		0.20434236526489227 0.035131931304938732 0
 		0.2013835906982423 0.035662651062018859 0
-		0.19910717010497977 0.036218643188483612 0
-		0.19470787048339855 0.037279129028327355 0
+		0.19910717010497975 0.036218643188483619 0
+		0.19470787048339855 0.037279129028327349 0
 		0.19339275360107355 0.038391113281257105 0
 		0.19207763671874981 0.039503097534186862 0
 		0.19207763671874981 0.041422843933112609 0
 		0.19207763671874981 0.043586730957038362 0
 		0.19473028182983357 0.04489517211914773 0
 		0.19738292694091727 0.046203613281257105 0
-		0.20122337341308602 0.046203613281257105 0
+		0.20122337341308599 0.046203613281257105 0
 		0.20410442352294852 0.046203613281257105 0
-		0.20685815811157227 0.045544624328620352 0
-		0.20961189270019479 0.044885635375983612 0
+		0.20685815811157229 0.045544624328620352 0
+		0.20961189270019481 0.044885635375983619 0
 		0.21183490753173856 0.043871879577643859 0
 		0.21370506286621105 0.043009757995612616 0
 		0.21567583084106479 0.041818141937262979 0
@@ -23618,54 +25064,56 @@ createNode nurbsCurve -n "lipTensionTitleShape4" -p "lipTensionTitle";
 		0.17407226562499978 0.039604187011725855 0
 		0.17407226562499978 0.032984733581550109 0
 		0.17743539810180603 0.028917312622077355 0
-		0.18079853057861353 0.024849891662604734 0
+		0.18079853057861353 0.024849891662604737 0
 		0.18747425079345728 0.022778511047370355 0
 		0.18985176086425729 0.022020339965827355 0
 		0.19293689727783231 0.021439075469977857 0
-		0.19602203369140603 0.020857810974128234 0
-		0.19804477691650355 0.020352363586432855 0
+		0.19602203369140603 0.02085781097412823 0
+		0.19804477691650357 0.020352363586432855 0
 		0.20183753967285104 0.01944351196289773 0
 		0.20315265655517603 0.018432617187507105 0
-		0.20446777343749978 0.01742172241211648 0
-		0.20446777343749978 0.015451431274421105 0
-		0.20446777343749978 0.012934684753425105 0
-		0.2016110420227048 0.011777400970466095 0
+		0.20446777343749975 0.01742172241211648 0
+		0.20446777343749975 0.015451431274421104 0
+		0.20446777343749975 0.012934684753425104 0
+		0.2016110420227048 0.011777400970466097 0
 		0.19875431060790977 0.010620117187507107 0
 		0.19501304626464855 0.010620117187507107 0
-		0.19137287139892606 0.010620117187507107 0
-		0.18826341629028356 0.011454582214362581 0
+		0.19137287139892609 0.010620117187507107 0
+		0.18826341629028356 0.011454582214362579 0
 		0.18515396118163976 0.012289047241218045 0
-		0.18267631530761727 0.013452529907233605 0
+		0.18267631530761727 0.013452529907233604 0
 		0.17979431152343728 0.014717102050788355 0
 		0.17817640304565352 0.01588058471680398 0
 		0.17655849456787104 0.017044067382819605 0
 		0.17529392242431602 0.018005371093757105 0
 		0.17456102371215854 0.018005371093757105 0
 		0.17382812499999978 0.018005371093757105 0
-		0.17382812499999978 0.010516643524177031 0
+		0.17382812499999978 0.010516643524177033 0
 		0.17382812499999978 0.0030279159545969557 0
 		0.17746925354003854 0.0012063980102610117 0
 		0.18305683135986353 -0.0001454353332448471 0
-		0.18864440917968731 -0.0015258789062428946 0
-		0.19491481781005854 -0.0015258789062428946 0
+		0.18864440917968733 -0.0015258789062428946 0
+		0.19491481781005857 -0.0015258789062428946 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape5" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C5";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 7 0 no 3
 		10 0 0 1 1 2 2 3 3 4 4
 		9
-		0.24859619140624978 7.1054273576010019e-15 0
-		0.24859619140624978 0.028411865234382109 0
-		0.24859619140624978 0.056823730468757112 0
-		0.23974609374999978 0.056823730468757112 0
-		0.23089599609374978 0.056823730468757112 0
-		0.23089599609374978 0.028411865234382109 0
-		0.23089599609374978 7.1054273576010019e-15 0
-		0.23974609374999978 7.1054273576010019e-15 0
-		0.24859619140624978 7.1054273576010019e-15 0
+		0.24859619140624975 7.1054273576010019e-15 0
+		0.24859619140624975 0.028411865234382109 0
+		0.24859619140624975 0.056823730468757112 0
+		0.23974609374999975 0.056823730468757112 0
+		0.23089599609374975 0.056823730468757112 0
+		0.23089599609374975 0.028411865234382109 0
+		0.23089599609374975 7.1054273576010019e-15 0
+		0.23974609374999975 7.1054273576010019e-15 0
+		0.24859619140624975 7.1054273576010019e-15 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape6" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C6";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 7 0 no 3
@@ -23674,14 +25122,15 @@ createNode nurbsCurve -n "lipTensionTitleShape6" -p "lipTensionTitle";
 		0.24914550781249981 0.064941406250007105 0
 		0.24914550781249981 0.071838378906257105 0
 		0.24914550781249981 0.078735351562507105 0
-		0.23977661132812478 0.078735351562507105 0
-		0.23040771484374978 0.078735351562507105 0
-		0.23040771484374978 0.071838378906257105 0
-		0.23040771484374978 0.064941406250007105 0
-		0.23977661132812478 0.064941406250007105 0
+		0.23977661132812481 0.078735351562507105 0
+		0.23040771484374975 0.078735351562507105 0
+		0.23040771484374975 0.071838378906257105 0
+		0.23040771484374975 0.064941406250007105 0
+		0.23977661132812481 0.064941406250007105 0
 		0.24914550781249981 0.064941406250007105 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape7" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 15 0 no 3
@@ -23697,16 +25146,17 @@ createNode nurbsCurve -n "lipTensionTitleShape7" -p "lipTensionTitle";
 		0.26570653915405229 0.050573825836188739 0
 		0.25799560546874978 0.042553901672370359 0
 		0.25799560546874978 0.028386116027839105 0
-		0.25799560546874978 0.014370918273932857 0
+		0.25799560546874978 0.014370918273932855 0
 		0.26570653915405229 0.0063004493713449926 0
 		0.2734174728393548 -0.0017700195312428948 0
 		0.28732299804687478 -0.0017700195312428948 0
 		0.30132961273193354 -0.0017700195312428948 0
 		0.30899000167846602 0.0063004493713449926 0
-		0.31665039062499983 0.014370918273932857 0
+		0.31665039062499983 0.014370918273932855 0
 		0.31665039062499983 0.028386116027839105 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape8" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C8";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 31 0 no 3
@@ -23726,7 +25176,7 @@ createNode nurbsCurve -n "lipTensionTitleShape8" -p "lipTensionTitle";
 		0.2849407196044923 0.045898437500007105 0
 		0.2830152511596673 0.045164585113532482 0
 		0.28108978271484353 0.044430732727057859 0
-		0.27946758270263605 0.042355537414557852 0
+		0.27946758270263605 0.042355537414557859 0
 		0.27794742584228477 0.040381431579596984 0
 		0.2770352363586423 0.036940097808844982 0
 		0.27612304687499978 0.033498764038093105 0
@@ -23736,19 +25186,20 @@ createNode nurbsCurve -n "lipTensionTitleShape8" -p "lipTensionTitle";
 		0.27784633636474604 0.016644477844245355 0
 		0.27921485900878851 0.014720916748053982 0
 		0.28063297271728482 0.012747764587409482 0
-		0.28276157379150352 0.011836528778083283 0
+		0.28276157379150352 0.011836528778083284 0
 		0.28489017486572227 0.010925292968757107 0
 		0.28747463226318354 0.010925292968757107 0
 		0.28960323333740234 0.010925292968757107 0
-		0.29180812835693354 0.011836528778083283 0
+		0.29180812835693354 0.011836528778083284 0
 		0.29401302337646479 0.012747764587409482 0
-		0.29533004760742226 0.014569282531745357 0
+		0.29533004760742226 0.014569282531745355 0
 		0.29690170288085982 0.01674556732178448 0
 		0.2977123260498048 0.019807815551764855 0
 		0.29852294921874978 0.022870063781745355 0
 		0.29852294921874978 0.028285026550300105 0
 		;
 createNode nurbsCurve -n "lipTensionTitleShape9" -p "lipTensionTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046C9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 0 no 3
@@ -23789,13 +25240,14 @@ createNode nurbsCurve -n "lipTensionTitleShape9" -p "lipTensionTitle";
 		0.3608350753784173 0.038431167602546112 0
 		0.36111211776733354 0.035017967224128234 0
 		0.36138916015624978 0.03160476684571023 0
-		0.36138916015624978 0.028166770935065734 0
-		0.36138916015624978 0.014083385467536357 0
+		0.36138916015624978 0.028166770935065737 0
+		0.36138916015624978 0.014083385467536355 0
 		0.36138916015624978 7.1054273576010019e-15 0
 		0.37030029296874978 7.1054273576010019e-15 0
 		0.37921142578124983 7.1054273576010019e-15 0
 		;
 createNode transform -n "lipLoTension" -p "lipUpTension_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046CA";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -23822,6 +25274,7 @@ createNode transform -n "lipLoTension" -p "lipUpTension_box";
 	setAttr ".xsxe" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "lipLoTensionShape" -p "lipLoTension";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046CB";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -23830,19 +25283,20 @@ createNode nurbsCurve -n "lipLoTensionShape" -p "lipLoTension";
 		13 -2 -1 0 1 2 3 4 5 6 7 8
 		 9 10
 		11
-		0.078361162489122504 -0.07836116248912238 -9.2541963937066851e-18
+		0.078361162489122491 -0.07836116248912238 -9.2541963937066851e-18
 		-1.5418952275762498e-17 -0.1108194187554388 -1.3087410048844189e-17
-		-0.078361162489122407 -0.078361162489122435 -9.2541963937066913e-18
-		-0.11081941875543876 -1.8621523105198665e-17 -2.1991408306299197e-33
+		-0.078361162489122393 -0.078361162489122435 -9.2541963937066913e-18
+		-0.11081941875543876 -1.8621523105198662e-17 -2.1991408306299194e-33
 		-0.078361162489122435 0.078361162489122393 9.2541963937066851e-18
 		-4.9468832505776792e-17 0.1108194187554388 1.3087410048844189e-17
 		0.078361162489122393 0.078361162489122449 9.2541963937066928e-18
 		0.11081941875543876 6.1415745182853949e-17 7.2529981630488394e-33
-		0.078361162489122504 -0.07836116248912238 -9.2541963937066851e-18
+		0.078361162489122491 -0.07836116248912238 -9.2541963937066851e-18
 		-1.5418952275762498e-17 -0.1108194187554388 -1.3087410048844189e-17
-		-0.078361162489122407 -0.078361162489122435 -9.2541963937066913e-18
+		-0.078361162489122393 -0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode nurbsCurve -n "lipLoTensionShape1" -p "lipLoTension";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046CC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -23850,34 +25304,40 @@ createNode nurbsCurve -n "lipLoTensionShape1" -p "lipLoTension";
 		1 2 0 no 3
 		3 0 1 2
 		3
-		0.039370772217696352 -0.091405284720346772 -2.4999999999999994e-14
-		-0.00034853554820452048 -0.22698978489247224 -2.4999999999999994e-14
-		-0.039759229433115904 -0.091505088888362271 -2.4999999999999994e-14
+		0.039370772217696352 -0.091405284720346772 -2.4999999999999991e-14
+		-0.00034853554820452048 -0.22698978489247224 -2.4999999999999991e-14
+		-0.039759229433115904 -0.091505088888362271 -2.4999999999999991e-14
 		;
 createNode transform -n "lipLoThickness_box" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046CD";
 	setAttr ".t" -type "double3" -5.9960505862145332 4.8060181270584295 6.9388939039072284e-17 ;
 	setAttr ".rp" -type "double3" -2.4980018054066022e-16 1.4432899320127035e-15 2.1684043449710089e-18 ;
 	setAttr ".sp" -type "double3" 9.7144514654701197e-17 1.4432899320127035e-15 2.1684043449710089e-18 ;
 createNode nurbsCurve -n "lipLoThickness_boxShape" -p "lipLoThickness_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046CE";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 0 no 3
 		5 0 1 2 3 4
 		5
-		-0.99999999999999978 0.10000000000000153 2.1684043449710089e-18
-		-0.99999999999999978 -0.099999999999998646 2.1684043449710089e-18
+		-0.99999999999999989 0.10000000000000152 2.1684043449710089e-18
+		-0.99999999999999989 -0.099999999999998646 2.1684043449710089e-18
 		1 -0.099999999999998646 2.1684043449710089e-18
-		1 0.10000000000000153 2.1684043449710089e-18
-		-0.99999999999999978 0.10000000000000153 2.1684043449710089e-18
+		1 0.10000000000000152 2.1684043449710089e-18
+		-0.99999999999999989 0.10000000000000152 2.1684043449710089e-18
 		;
 createNode transform -n "lipLoThickness0" -p "lipLoThickness_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046CF";
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "lipLoThickness0Shape" -p "lipLoThickness0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D0";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "lipUpThickness" -p "lipLoThickness_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -23905,6 +25365,7 @@ createNode transform -n "lipUpThickness" -p "lipLoThickness_box";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "lipUpThicknessShape" -p "lipUpThickness";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -23912,12 +25373,13 @@ createNode nurbsCurve -n "lipUpThicknessShape" -p "lipUpThickness";
 		1 3 0 no 3
 		4 0 1 2 3
 		4
-		-0.14559807819289752 -8.6531272422349242e-16 0
+		-0.14559807819289752 -8.6531272422349251e-16 0
 		-8.6531272422349251e-16 0.14559807819289572 0
-		0.14559807819289575 -9.1104411517675785e-16 0
-		-0.14559807819289752 -8.6531272422349242e-16 0
+		0.14559807819289575 -9.1104411517675805e-16 0
+		-0.14559807819289752 -8.6531272422349251e-16 0
 		;
 createNode transform -n "lipLoThickness" -p "lipLoThickness_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -23945,6 +25407,7 @@ createNode transform -n "lipLoThickness" -p "lipLoThickness_box";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "lipLoThicknessShape" -p "lipLoThickness";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -23952,19 +25415,21 @@ createNode nurbsCurve -n "lipLoThicknessShape" -p "lipLoThickness";
 		1 3 0 no 3
 		4 0 1 2 3
 		4
-		-0.14559807819289752 -8.6531272422349242e-16 0
-		-9.1104411517675785e-16 -0.1455980781928975 0
-		0.14559807819289575 -9.1104411517675785e-16 0
-		-0.14559807819289752 -8.6531272422349242e-16 0
+		-0.14559807819289752 -8.6531272422349251e-16 0
+		-9.1104411517675805e-16 -0.1455980781928975 0
+		0.14559807819289575 -9.1104411517675805e-16 0
+		-0.14559807819289752 -8.6531272422349251e-16 0
 		;
 createNode transform -n "lipThicknessTitle" -p "lipLoThickness_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D5";
 	setAttr ".tmp" yes;
-	setAttr ".t" -type "double3" -0.9778647053259597 0.15841510275286907 2.5951463200613034e-15 ;
+	setAttr ".t" -type "double3" -0.97786470532595948 0.15841510275286907 2.5951463200613034e-15 ;
 	setAttr ".s" -type "double3" 2 2 2 ;
 	setAttr ".rp" -type "double3" 0 3.5 0 ;
 	setAttr ".sp" -type "double3" 0 1.75 0 ;
 	setAttr ".spt" -type "double3" 0 1.75 0 ;
 createNode nurbsCurve -n "lipThicknessTitleShape" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D6";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 45 0 no 3
@@ -23980,14 +25445,14 @@ createNode nurbsCurve -n "lipThicknessTitleShape" -p "lipThicknessTitle";
 		0.039715766906738018 -0.00024509429930530402 0
 		0.042602539062499771 0.00051116943360685063 0
 		0.042602539062499771 0.0067253112793070891 0
-		0.042602539062499771 0.012939453125007105 0
-		0.041841983795165773 0.012939453125007105 0
-		0.041081428527831768 0.012939453125007105 0
-		0.040168762207031021 0.012436866760257015 0
-		0.037861347198486148 0.01183366775513206 0
-		0.03555393218994115 0.011230468750007105 0
-		0.034133911132812271 0.011230468750007105 0
-		0.030685424804687274 0.011230468750007105 0
+		0.042602539062499771 0.012939453125007104 0
+		0.041841983795165773 0.012939453125007104 0
+		0.041081428527831768 0.012939453125007104 0
+		0.040168762207031021 0.012436866760257017 0
+		0.037861347198486141 0.01183366775513206 0
+		0.03555393218994115 0.011230468750007104 0
+		0.034133911132812271 0.011230468750007104 0
+		0.030685424804687271 0.011230468750007104 0
 		0.028884887695312271 0.012269973754894581 0
 		0.027084350585937271 0.013309478759769622 0
 		0.026374816894531024 0.015084266662607204 0
@@ -24023,6 +25488,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape" -p "lipThicknessTitle";
 		0.028524398803710774 -0.0010986328124928946 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape1" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D7";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 0 no 3
@@ -24031,10 +25497,10 @@ createNode nurbsCurve -n "lipThicknessTitleShape1" -p "lipThicknessTitle";
 		 11 12 12 13 13 14 14 15 15 16 16 17
 		 17 18 18
 		37
-		0.10296630859374979 6.8833827526759706e-15 0
-		0.10296630859374979 0.018480777740481846 0
-		0.10296630859374979 0.036961555480969688 0
-		0.10296630859374979 0.047377586364757196 0
+		0.10296630859374981 6.8833827526759706e-15 0
+		0.10296630859374981 0.018480777740481846 0
+		0.10296630859374981 0.036961555480969688 0
+		0.10296630859374981 0.047377586364757203 0
 		0.098369598388671667 0.052863597869882151 0
 		0.093772888183593542 0.058349609375006883 0
 		0.085083961486816156 0.058349609375006883 0
@@ -24053,7 +25519,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape1" -p "lipThicknessTitle";
 		0.067504882812499778 0.020125865936282183 0
 		0.067504882812499778 0.040251731872569474 0
 		0.070024490356445021 0.042021751403819696 0
-		0.072242259979247783 0.042830944061281961 0
+		0.072242259979247769 0.042830944061281961 0
 		0.074460029602050531 0.043640136718756883 0
 		0.076626777648925531 0.043640136718756883 0
 		0.079499244689941156 0.043640136718756883 0
@@ -24064,12 +25530,13 @@ createNode nurbsCurve -n "lipThicknessTitleShape1" -p "lipThicknessTitle";
 		0.08486700057983379 0.035017967224132196 0
 		0.085144042968749778 0.031604766845707122 0
 		0.085144042968749778 0.028166770935069696 0
-		0.085144042968749778 0.014083385467531961 0
+		0.085144042968749778 0.01408338546753196 0
 		0.085144042968749778 6.8833827526759706e-15 0
 		0.094055175781249792 6.8833827526759706e-15 0
-		0.10296630859374979 6.8833827526759706e-15 0
+		0.10296630859374981 6.8833827526759706e-15 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape2" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D8";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 7 0 no 3
@@ -24078,14 +25545,15 @@ createNode nurbsCurve -n "lipThicknessTitleShape2" -p "lipThicknessTitle";
 		0.13378906249999978 6.8833827526759706e-15 0
 		0.13378906249999978 0.028411865234382105 0
 		0.13378906249999978 0.056823730468756883 0
-		0.12493896484374979 0.056823730468756883 0
-		0.11608886718749979 0.056823730468756883 0
-		0.11608886718749979 0.028411865234382105 0
-		0.11608886718749979 6.8833827526759706e-15 0
-		0.12493896484374979 6.8833827526759706e-15 0
+		0.12493896484374981 0.056823730468756883 0
+		0.11608886718749981 0.056823730468756883 0
+		0.11608886718749981 0.028411865234382105 0
+		0.11608886718749981 6.8833827526759706e-15 0
+		0.12493896484374981 6.8833827526759706e-15 0
 		0.13378906249999978 6.8833827526759706e-15 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape3" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046D9";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 7 0 no 3
@@ -24102,6 +25570,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape3" -p "lipThicknessTitle";
 		0.13433837890624978 0.064941406250007105 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape4" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046DA";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 59 0 no 3
@@ -24114,30 +25583,30 @@ createNode nurbsCurve -n "lipThicknessTitleShape4" -p "lipThicknessTitle";
 		61
 		0.17519092559814478 -0.0015258789062431166 0
 		0.17888164520263602 -0.0015258789062431166 0
-		0.18113136291503854 -0.00120735168456787 0
-		0.18338108062744102 -0.0008201599121053782 0
+		0.18113136291503856 -0.00120735168456787 0
+		0.18338108062744105 -0.0008201599121053782 0
 		0.18595886230468728 -6.3896179193223546e-05 0
 		0.1880321502685548 0.00049877166748202306 0
-		0.19002914428710982 0.0013594627380444368 0
-		0.19202613830566354 0.0022201538086070727 0
-		0.19354248046874978 0.0028781890869193916 0
-		0.19354248046874978 0.010472297668469466 0
-		0.19354248046874978 0.018066406250006883 0
+		0.19002914428710985 0.0013594627380444368 0
+		0.19202613830566351 0.0022201538086070727 0
+		0.19354248046874975 0.0028781890869193916 0
+		0.19354248046874975 0.010472297668469466 0
+		0.19354248046874975 0.018066406250006883 0
 		0.19240427017211853 0.018066406250006883 0
 		0.19126605987548856 0.018066406250006883 0
-		0.19035530090331979 0.017147064208994367 0
+		0.19035530090331981 0.017147064208994367 0
 		0.18909025192260731 0.015997409820569519 0
-		0.18782520294189481 0.014847755432132015 0
-		0.18605518341064478 0.013774871826182089 0
-		0.18423366546630854 0.012701988220219507 0
-		0.18170404434204102 0.011935710906994412 0
-		0.17917442321777352 0.011169433593757105 0
-		0.17583560943603477 0.011169433593757105 0
-		0.16925907135009727 0.011169433593757105 0
+		0.18782520294189481 0.014847755432132017 0
+		0.18605518341064481 0.013774871826182087 0
+		0.18423366546630857 0.012701988220219508 0
+		0.18170404434204104 0.011935710906994412 0
+		0.17917442321777352 0.011169433593757104 0
+		0.17583560943603477 0.011169433593757104 0
+		0.16925907135009727 0.011169433593757104 0
 		0.16528749465942352 0.01537847518921942 0
 		0.16131591796874978 0.019587516784669301 0
 		0.16131591796874978 0.028158187866219597 0
-		0.16131591796874978 0.036170959472656916 0
+		0.16131591796874978 0.036170959472656909 0
 		0.16503429412841727 0.040912628173832122 0
 		0.16875267028808602 0.045654296875007105 0
 		0.17553234100341727 0.045654296875007105 0
@@ -24150,9 +25619,9 @@ createNode nurbsCurve -n "lipThicknessTitleShape4" -p "lipThicknessTitle";
 		0.19020366668701105 0.039652824401856801 0
 		0.19126605987548856 0.038635253906257105 0
 		0.19240427017211853 0.038635253906257105 0
-		0.19354248046874978 0.038635253906257105 0
-		0.19354248046874978 0.046217918396007196 0
-		0.19354248046874978 0.05380058288574463 0
+		0.19354248046874975 0.038635253906257105 0
+		0.19354248046874975 0.046217918396007203 0
+		0.19354248046874975 0.05380058288574463 0
 		0.18879032135009727 0.056176185607919482 0
 		0.18408870697021479 0.057262897491456854 0
 		0.17938709259033228 0.058349609375006883 0
@@ -24166,7 +25635,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape4" -p "lipThicknessTitle";
 		0.14318847656249978 0.036300659179694383 0
 		0.14318847656249978 0.028159141540531785 0
 		0.14318847656249978 0.020573616027844688 0
-		0.14556455612182606 0.014985561370857159 0
+		0.14556455612182606 0.014985561370857161 0
 		0.14794063568115229 0.00939750671386963 0
 		0.15218734741210979 0.005705833435069696 0
 		0.15648460388183602 0.0020141601562571054 0
@@ -24175,6 +25644,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape4" -p "lipThicknessTitle";
 		0.17519092559814478 -0.0015258789062431166 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape5" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046DB";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 23 0 no 3
@@ -24183,12 +25653,12 @@ createNode nurbsCurve -n "lipThicknessTitleShape5" -p "lipThicknessTitle";
 		 11 12 12
 		25
 		0.25885009765624978 6.8833827526759706e-15 0
-		0.24816894531249978 0.016166687011731851 0
-		0.23748779296874978 0.032333374023444383 0
+		0.24816894531249975 0.016166687011731851 0
+		0.23748779296874975 0.032333374023444383 0
 		0.24743652343749981 0.044578552246107073 0
 		0.25738525390624978 0.056823730468756883 0
-		0.24692583084106481 0.056823730468756883 0
-		0.23646640777587855 0.056823730468756883 0
+		0.24692583084106479 0.056823730468756883 0
+		0.23646640777587857 0.056823730468756883 0
 		0.22806596755981479 0.045722007751469507 0
 		0.21966552734374981 0.034620285034181908 0
 		0.21966552734374981 0.056647300720219507 0
@@ -24203,12 +25673,13 @@ createNode nurbsCurve -n "lipThicknessTitleShape5" -p "lipThicknessTitle";
 		0.21966552734374981 0.020982742309582081 0
 		0.22103166580200231 0.022821426391607114 0
 		0.22239780426025352 0.024660110473644359 0
-		0.23009014129638605 0.012330055236819515 0
-		0.23778247833251978 6.8833827526759706e-15 0
+		0.23009014129638605 0.012330055236819517 0
+		0.23778247833251975 6.8833827526759706e-15 0
 		0.24831628799438477 6.8833827526759706e-15 0
 		0.25885009765624978 6.8833827526759706e-15 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape6" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046DC";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 35 0 no 3
@@ -24220,7 +25691,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape6" -p "lipThicknessTitle";
 		0.31756591796874983 6.8833827526759706e-15 0
 		0.31756591796874983 0.018480777740481846 0
 		0.31756591796874983 0.036961555480969688 0
-		0.31756591796874983 0.047377586364757196 0
+		0.31756591796874983 0.047377586364757203 0
 		0.31296920776367226 0.052863597869882151 0
 		0.30837249755859353 0.058349609375006883 0
 		0.29968357086181602 0.058349609375006883 0
@@ -24250,12 +25721,13 @@ createNode nurbsCurve -n "lipThicknessTitleShape6" -p "lipThicknessTitle";
 		0.29946660995483354 0.035017967224132196 0
 		0.29974365234374978 0.031604766845707122 0
 		0.29974365234374978 0.028166770935069696 0
-		0.29974365234374978 0.014083385467531961 0
+		0.29974365234374978 0.01408338546753196 0
 		0.29974365234374978 6.8833827526759706e-15 0
 		0.30865478515624978 6.8833827526759706e-15 0
 		0.31756591796874983 6.8833827526759706e-15 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape7" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046DD";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 43 0 no 3
@@ -24265,24 +25737,24 @@ createNode nurbsCurve -n "lipThicknessTitleShape7" -p "lipThicknessTitle";
 		 17 18 18 19 19 20 20 21 21 22 22
 		45
 		0.35977268218994107 -0.0015258789062431166 0
-		0.36417293548583979 -0.0015258789062431166 0
+		0.36417293548583973 -0.0015258789062431166 0
 		0.36723327636718733 -0.0011563301086303657 0
-		0.37029361724853477 -0.00067806243895551788 0
-		0.37317752838134732 9.5367431644621803e-05 0
-		0.37631320953369107 0.00085449218750710543 0
-		0.37810897827148476 0.0015888214111445809 0
+		0.37029361724853482 -0.00067806243895551788 0
+		0.37317752838134738 9.5367431644621803e-05 0
+		0.37631320953369102 0.00085449218750710543 0
+		0.37810897827148482 0.0015888214111445809 0
 		0.37990474700927734 0.0023231506347696218 0
 		0.38208007812499978 0.003184318542481801 0
-		0.38208007812499978 0.010503292083744453 0
+		0.38208007812499978 0.010503292083744451 0
 		0.38208007812499978 0.017822265625007105 0
-		0.38114309310913108 0.017822265625007105 0
+		0.38114309310913103 0.017822265625007105 0
 		0.38020610809326105 0.017822265625007105 0
 		0.3790407180786135 0.016962051391606892 0
-		0.37719154357910101 0.015848159790044392 0
+		0.37719154357910106 0.015848159790044392 0
 		0.37534236907958984 0.014734268188482114 0
 		0.3731641769409173 0.013772010803232204 0
-		0.37068176269531228 0.012658119201669482 0
-		0.36769294738769476 0.011974811553956854 0
+		0.37068176269531233 0.012658119201669482 0
+		0.3676929473876947 0.011974811553956854 0
 		0.36470413208007729 0.011291503906256883 0
 		0.36161422729492226 0.011291503906256883 0
 		0.35801696777343728 0.011291503906256883 0
@@ -24290,8 +25762,8 @@ createNode nurbsCurve -n "lipThicknessTitleShape7" -p "lipThicknessTitle";
 		0.35193824768066351 0.012654304504406966 0
 		0.34965896606445229 0.014220237731944474 0
 		0.34732818603515603 0.015785217285156916 0
-		0.34591007232665977 0.018435955047619634 0
-		0.34449195861816356 0.021086692810069474 0
+		0.34591007232665977 0.018435955047619631 0
+		0.34449195861816356 0.02108669281006947 0
 		0.34423828124999978 0.025024414062506883 0
 		0.36367797851562478 0.025024414062506883 0
 		0.38311767578124978 0.025024414062506883 0
@@ -24311,6 +25783,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape7" -p "lipThicknessTitle";
 		0.35977268218994107 -0.0015258789062431166 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape8" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046DE";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 9 0 no 3
@@ -24330,6 +25803,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape8" -p "lipThicknessTitle";
 		0.36566162109374978 0.035705566406256883 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape9" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046DF";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 79 0 no 3
@@ -24355,25 +25829,25 @@ createNode nurbsCurve -n "lipThicknessTitleShape9" -p "lipThicknessTitle";
 		0.4307508468627923 0.031721115112306908 0
 		0.42463111877441351 0.033692359924319515 0
 		0.4219007492065423 0.034601211547856892 0
-		0.41894197463989236 0.035131931304944519 0
+		0.4189419746398923 0.035131931304944519 0
 		0.4159832000732423 0.03566265106201949 0
-		0.41370677947997986 0.036218643188481892 0
+		0.41370677947997986 0.036218643188481885 0
 		0.40930747985839855 0.037279129028331859 0
-		0.40799236297607355 0.038391113281257105 0
-		0.40667724609374983 0.039503097534181908 0
+		0.4079923629760735 0.038391113281257105 0
+		0.40667724609374983 0.039503097534181901 0
 		0.40667724609374983 0.041422843933106801 0
 		0.40667724609374983 0.043586730957032138 0
 		0.40932989120483354 0.044895172119144622 0
 		0.4119825363159173 0.046203613281257105 0
 		0.4158229827880861 0.046203613281257105 0
-		0.41870403289794861 0.046203613281257105 0
+		0.41870403289794866 0.046203613281257105 0
 		0.42145776748657227 0.045544624328619498 0
-		0.42421150207519476 0.044885635375981892 0
+		0.4242115020751947 0.044885635375981885 0
 		0.42643451690673856 0.043871879577644712 0
 		0.42830467224121105 0.043009757995606801 0
 		0.43027544021606479 0.041818141937257192 0
 		0.43224620819091736 0.040626525878907138 0
-		0.43315505981445235 0.039916992187507105 0
+		0.43315505981445229 0.039916992187507105 0
 		0.43386268615722601 0.039916992187507105 0
 		0.43457031249999978 0.039916992187507105 0
 		0.43457031249999978 0.047107696533207122 0
@@ -24382,39 +25856,39 @@ createNode nurbsCurve -n "lipThicknessTitleShape9" -p "lipThicknessTitle";
 		0.42612886428832986 0.057159423828132105 0
 		0.4211244583129885 0.058349609375006883 0
 		0.4151592254638673 0.058349609375006883 0
-		0.40889167785644476 0.058349609375006883 0
+		0.40889167785644481 0.058349609375006883 0
 		0.4039125442504885 0.056833744049081814 0
-		0.39893341064453108 0.055317878723156966 0
+		0.39893341064453103 0.055317878723156966 0
 		0.39554691314697227 0.052741050720219507 0
-		0.39215946197509732 0.0501136779785194 0
+		0.39215946197509727 0.0501136779785194 0
 		0.39041566848754855 0.046753883361819515 0
 		0.38867187499999983 0.043394088745119408 0
 		0.38867187499999983 0.039604187011732073 0
 		0.38867187499999983 0.032984733581544523 0
 		0.39203500747680609 0.028917312622082081 0
-		0.39539813995361356 0.024849891662607204 0
-		0.40207386016845731 0.022778511047369498 0
+		0.39539813995361361 0.024849891662607204 0
+		0.40207386016845725 0.022778511047369495 0
 		0.40445137023925726 0.022020339965831859 0
 		0.40753650665283225 0.021439075469982027 0
-		0.41062164306640603 0.020857810974131974 0
+		0.41062164306640597 0.020857810974131977 0
 		0.41264438629150357 0.020352363586431998 0
 		0.41643714904785106 0.0194435119628944 0
 		0.41775226593017606 0.018432617187507105 0
 		0.41906738281249978 0.017421722412119589 0
 		0.41906738281249978 0.015451431274419392 0
-		0.41906738281249978 0.012934684753419523 0
-		0.41621065139770486 0.011777400970469643 0
-		0.41335391998290982 0.010620117187507105 0
-		0.40961265563964855 0.010620117187507105 0
-		0.405972480773926 0.010620117187507105 0
-		0.40286302566528354 0.011454582214356801 0
-		0.39975357055663985 0.012289047241219597 0
+		0.41906738281249978 0.012934684753419525 0
+		0.41621065139770486 0.011777400970469644 0
+		0.41335391998290982 0.010620117187507104 0
+		0.40961265563964855 0.010620117187507104 0
+		0.405972480773926 0.010620117187507104 0
+		0.40286302566528354 0.011454582214356799 0
+		0.39975357055663985 0.012289047241219596 0
 		0.3972759246826173 0.013452529907231892 0
 		0.39439392089843733 0.014717102050781916 0
 		0.39277601242065352 0.015880584716807089 0
 		0.39115810394287109 0.017044067382819605 0
 		0.38989353179931607 0.018005371093756883 0
-		0.38916063308715859 0.018005371093756883 0
+		0.38916063308715854 0.018005371093756883 0
 		0.38842773437499983 0.018005371093756883 0
 		0.38842773437499983 0.010516643524182134 0
 		0.38842773437499983 0.0030279159545942846 0
@@ -24424,6 +25898,7 @@ createNode nurbsCurve -n "lipThicknessTitleShape9" -p "lipThicknessTitle";
 		0.40951442718505854 -0.0015258789062431166 0
 		;
 createNode nurbsCurve -n "lipThicknessTitleShape10" -p "lipThicknessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E0";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
 		2 79 0 no 3
@@ -24435,8 +25910,8 @@ createNode nurbsCurve -n "lipThicknessTitleShape10" -p "lipThicknessTitle";
 		 29 30 30 31 31 32 32 33 33 34 34 35
 		 35 36 36 37 37 38 38 39 39 40 40
 		81
-		0.46279811859130859 -0.0015258789062431166 0
-		0.46967506408691356 -0.0015258789062431166 0
+		0.46279811859130854 -0.0015258789062431166 0
+		0.46967506408691362 -0.0015258789062431166 0
 		0.47460508346557606 4.7683716952739985e-07 0
 		0.47953510284423856 0.0014047622680692928 0
 		0.48317623138427729 0.0040826797485447042 0
@@ -24447,25 +25922,25 @@ createNode nurbsCurve -n "lipThicknessTitleShape10" -p "lipThicknessTitle";
 		0.49035644531249983 0.024091720581056908 0
 		0.48719549179077104 0.027906417846681908 0
 		0.4840345382690423 0.031721115112306908 0
-		0.47791481018066356 0.033692359924319515 0
+		0.47791481018066351 0.033692359924319515 0
 		0.4751844406127923 0.034601211547856892 0
-		0.47222566604614236 0.035131931304944519 0
-		0.46926689147949235 0.03566265106201949 0
-		0.4669904708862298 0.036218643188481892 0
+		0.47222566604614241 0.035131931304944519 0
+		0.4692668914794923 0.03566265106201949 0
+		0.4669904708862298 0.036218643188481885 0
 		0.4625911712646486 0.037279129028331859 0
 		0.46127605438232361 0.038391113281257105 0
-		0.45996093749999978 0.039503097534181908 0
+		0.45996093749999978 0.039503097534181901 0
 		0.45996093749999978 0.041422843933106801 0
 		0.45996093749999978 0.043586730957032138 0
 		0.4626135826110836 0.044895172119144622 0
 		0.4652662277221673 0.046203613281257105 0
-		0.46910667419433605 0.046203613281257105 0
+		0.4691066741943361 0.046203613281257105 0
 		0.47198772430419855 0.046203613281257105 0
 		0.47474145889282232 0.045544624328619498 0
-		0.47749519348144481 0.044885635375981892 0
+		0.47749519348144481 0.044885635375981885 0
 		0.4797182083129885 0.043871879577644712 0
 		0.4815883636474611 0.043009757995606801 0
-		0.48355913162231484 0.041818141937257192 0
+		0.4835591316223149 0.041818141937257192 0
 		0.4855298995971673 0.040626525878907138 0
 		0.48643875122070229 0.039916992187507105 0
 		0.48714637756347606 0.039916992187507105 0
@@ -24481,28 +25956,28 @@ createNode nurbsCurve -n "lipThicknessTitleShape10" -p "lipThicknessTitle";
 		0.45221710205078103 0.055317878723156966 0
 		0.44883060455322232 0.052741050720219507 0
 		0.44544315338134727 0.0501136779785194 0
-		0.44369935989379861 0.046753883361819515 0
+		0.44369935989379866 0.046753883361819515 0
 		0.44195556640624978 0.043394088745119408 0
 		0.44195556640624978 0.039604187011732073 0
 		0.44195556640624978 0.032984733581544523 0
-		0.44531869888305603 0.028917312622082081 0
+		0.44531869888305597 0.028917312622082081 0
 		0.4486818313598635 0.024849891662607204 0
-		0.45535755157470725 0.022778511047369498 0
-		0.45773506164550731 0.022020339965831859 0
+		0.45535755157470725 0.022778511047369495 0
+		0.45773506164550726 0.022020339965831859 0
 		0.46082019805908231 0.021439075469982027 0
-		0.46390533447265603 0.020857810974131974 0
+		0.46390533447265597 0.020857810974131977 0
 		0.46592807769775352 0.020352363586431998 0
-		0.46972084045410101 0.0194435119628944 0
+		0.46972084045410106 0.0194435119628944 0
 		0.471035957336426 0.018432617187507105 0
 		0.47235107421874983 0.017421722412119589 0
 		0.47235107421874983 0.015451431274419392 0
-		0.47235107421874983 0.012934684753419523 0
-		0.4694943428039548 0.011777400970469643 0
-		0.46663761138915982 0.010620117187507105 0
-		0.4628963470458986 0.010620117187507105 0
-		0.45925617218017606 0.010620117187507105 0
-		0.45614671707153359 0.011454582214356801 0
-		0.45303726196288979 0.012289047241219597 0
+		0.47235107421874983 0.012934684753419525 0
+		0.4694943428039548 0.011777400970469644 0
+		0.46663761138915982 0.010620117187507104 0
+		0.4628963470458986 0.010620117187507104 0
+		0.45925617218017606 0.010620117187507104 0
+		0.45614671707153359 0.011454582214356799 0
+		0.45303726196288974 0.012289047241219596 0
 		0.4505596160888673 0.013452529907231892 0
 		0.44767761230468728 0.014717102050781916 0
 		0.44605970382690352 0.015880584716807089 0
@@ -24513,17 +25988,20 @@ createNode nurbsCurve -n "lipThicknessTitleShape10" -p "lipThicknessTitle";
 		0.44171142578124978 0.010516643524182134 0
 		0.44171142578124978 0.0030279159545942846 0
 		0.44535255432128856 0.0012063980102570149 0
-		0.45094013214111356 -0.00014543533324307134 0
+		0.45094013214111361 -0.00014543533324307134 0
 		0.45652770996093728 -0.0015258789062431166 0
-		0.46279811859130859 -0.0015258789062431166 0
+		0.46279811859130854 -0.0015258789062431166 0
 		;
 createNode transform -n "LipUpRollCtrl" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E1";
 	setAttr ".t" -type "double3" -3 3.5999999999999943 0 ;
 	setAttr ".s" -type "double3" 2 2 2 ;
 createNode transform -n "lipUpRollTCtrlMidP" -p "LipUpRollCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E2";
 	setAttr ".t" -type "double3" 0 0 -6.9388939039072284e-18 ;
 	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
 createNode transform -n "midLipUpRoll_ctl" -p "lipUpRollTCtrlMidP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E3";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -24551,6 +26029,7 @@ createNode transform -n "midLipUpRoll_ctl" -p "lipUpRollTCtrlMidP";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "midLipUpRoll_ctlShape" -p "midLipUpRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -24561,17 +26040,18 @@ createNode nurbsCurve -n "midLipUpRoll_ctlShape" -p "midLipUpRoll_ctl";
 		11
 		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
 		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
-		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
-		-0.22163883751087751 3.724304621039733e-17 -8.7965633225196802e-33
+		-0.15672232497824479 0.15672232497824487 -3.7016785574826765e-17
+		-0.22163883751087751 3.724304621039733e-17 -8.7965633225196774e-33
 		-0.15672232497824487 -0.15672232497824479 3.701678557482674e-17
 		-9.8937665011553583e-17 -0.2216388375108776 5.2349640195376755e-17
-		0.15672232497824479 -0.1567223249782449 3.7016785574826771e-17
+		0.15672232497824479 -0.1567223249782449 3.7016785574826765e-17
 		0.22163883751087751 -1.228314903657079e-16 2.9011992652195358e-32
 		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
 		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
-		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
+		-0.15672232497824479 0.15672232497824487 -3.7016785574826765e-17
 		;
 createNode nurbsCurve -n "midLipUpRoll_ctlShape1" -p "midLipUpRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -24579,14 +26059,16 @@ createNode nurbsCurve -n "midLipUpRoll_ctlShape1" -p "midLipUpRoll_ctl";
 		1 2 0 no 3
 		3 0 1 2
 		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		0.078741544435392705 0.18281056944069352 -4.9999999999999989e-14
 		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672457 -4.9999999999999989e-14
 		;
 createNode transform -n "lipUpRollTCtrlLAP" -p "LipUpRollCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E6";
 	setAttr ".t" -type "double3" 0.5 0 -6.9388939039072284e-18 ;
 	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
 createNode transform -n "l_lipUpRoll_ctl" -p "lipUpRollTCtrlLAP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E7";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -24614,6 +26096,7 @@ createNode transform -n "l_lipUpRoll_ctl" -p "lipUpRollTCtrlLAP";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "l_lipUpRoll_ctlShape" -p "l_lipUpRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E8";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -24624,17 +26107,18 @@ createNode nurbsCurve -n "l_lipUpRoll_ctlShape" -p "l_lipUpRoll_ctl";
 		11
 		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824479 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598387e-33
 		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
 		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413383e-17
 		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
 		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.15672232497824479 0.15672232497824487 -1.8508392787413383e-17
 		;
 createNode nurbsCurve -n "l_lipUpRoll_ctlShape1" -p "l_lipUpRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046E9";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -24642,77 +26126,16 @@ createNode nurbsCurve -n "l_lipUpRoll_ctlShape1" -p "l_lipUpRoll_ctl";
 		1 2 0 no 3
 		3 0 1 2
 		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		0.078741544435392705 0.18281056944069352 -4.9999999999999989e-14
 		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipUpRollTCtrlLBP" -p "LipUpRollCtrl";
-	setAttr ".t" -type "double3" 1.5 0 0 ;
-	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
-createNode transform -n "lipUpRollTCtrlLB" -p "lipUpRollTCtrlLBP";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rx";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipUpRollTCtrlLBShape" -p "lipUpRollTCtrlLB";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipUpRollTCtrlLBShape1" -p "lipUpRollTCtrlLB";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672457 -4.9999999999999989e-14
 		;
 createNode transform -n "lipUpRollTCtrlRAP" -p "LipUpRollCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046EA";
 	setAttr ".t" -type "double3" -0.5 0 -6.9388939039072284e-18 ;
 	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
 createNode transform -n "r_lipUpRoll_ctl" -p "lipUpRollTCtrlRAP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046EB";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -24740,6 +26163,7 @@ createNode transform -n "r_lipUpRoll_ctl" -p "lipUpRollTCtrlRAP";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "r_lipUpRoll_ctlShape" -p "r_lipUpRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046EC";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -24750,17 +26174,18 @@ createNode nurbsCurve -n "r_lipUpRoll_ctlShape" -p "r_lipUpRoll_ctl";
 		11
 		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824479 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598387e-33
 		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
 		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413383e-17
 		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
 		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.15672232497824479 0.15672232497824487 -1.8508392787413383e-17
 		;
 createNode nurbsCurve -n "r_lipUpRoll_ctlShape1" -p "r_lipUpRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046ED";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -24768,205 +26193,19 @@ createNode nurbsCurve -n "r_lipUpRoll_ctlShape1" -p "r_lipUpRoll_ctl";
 		1 2 0 no 3
 		3 0 1 2
 		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		0.078741544435392705 0.18281056944069352 -4.9999999999999989e-14
 		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipUpRollTCtrlRBP" -p "LipUpRollCtrl";
-	setAttr ".t" -type "double3" -1.5 0 0 ;
-	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
-createNode transform -n "lipUpRollTCtrlRB" -p "lipUpRollTCtrlRBP";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rx";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipUpRollTCtrlRBShape" -p "lipUpRollTCtrlRB";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipUpRollTCtrlRBShape1" -p "lipUpRollTCtrlRB";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipRollTCtrlRTipP" -p "LipUpRollCtrl";
-	setAttr ".t" -type "double3" -2 0 0 ;
-	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
-createNode transform -n "lipRollTCtrlRTip" -p "lipRollTCtrlRTipP";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rx";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipRollTCtrlRTipShape" -p "lipRollTCtrlRTip";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipRollTCtrlRTipShape1" -p "lipRollTCtrlRTip";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipRollTCtrlLTipP" -p "LipUpRollCtrl";
-	setAttr ".t" -type "double3" 2 0 0 ;
-	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
-createNode transform -n "lipRollTCtrlLTip" -p "lipRollTCtrlLTipP";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rx";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipRollTCtrlLTipShape" -p "lipRollTCtrlLTip";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipRollTCtrlLTipShape1" -p "lipRollTCtrlLTip";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672457 -4.9999999999999989e-14
 		;
 createNode transform -n "LipLoRollCtrl" -p "LipCtrl_box";
-	setAttr ".t" -type "double3" -3 -3.6999999999999957 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046EE";
+	setAttr ".t" -type "double3" -3 -3.6999999999999962 0 ;
 	setAttr ".s" -type "double3" 2 2 2 ;
 createNode transform -n "lipLoRollTCtrlMidP" -p "LipLoRollCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046EF";
 	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
 createNode transform -n "midLipLoRoll_ctl" -p "lipLoRollTCtrlMidP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F0";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -24994,6 +26233,7 @@ createNode transform -n "midLipLoRoll_ctl" -p "lipLoRollTCtrlMidP";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "midLipLoRoll_ctlShape" -p "midLipLoRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F1";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25004,17 +26244,18 @@ createNode nurbsCurve -n "midLipLoRoll_ctlShape" -p "midLipLoRoll_ctl";
 		11
 		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
 		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
-		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
-		-0.22163883751087751 3.724304621039733e-17 -8.7965633225196802e-33
+		-0.15672232497824479 0.15672232497824487 -3.7016785574826765e-17
+		-0.22163883751087751 3.724304621039733e-17 -8.7965633225196774e-33
 		-0.15672232497824487 -0.15672232497824479 3.701678557482674e-17
 		-9.8937665011553583e-17 -0.2216388375108776 5.2349640195376755e-17
-		0.15672232497824479 -0.1567223249782449 3.7016785574826771e-17
+		0.15672232497824479 -0.1567223249782449 3.7016785574826765e-17
 		0.22163883751087751 -1.228314903657079e-16 2.9011992652195358e-32
 		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
 		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
-		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
+		-0.15672232497824479 0.15672232497824487 -3.7016785574826765e-17
 		;
 createNode nurbsCurve -n "midLipLoRoll_ctlShape1" -p "midLipLoRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F2";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25022,14 +26263,16 @@ createNode nurbsCurve -n "midLipLoRoll_ctlShape1" -p "midLipLoRoll_ctl";
 		1 2 0 no 3
 		3 0 1 2
 		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		0.078741544435392705 0.18281056944069352 -4.9999999999999989e-14
 		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672457 -4.9999999999999989e-14
 		;
 createNode transform -n "lipLoRollTCtrlLAP" -p "LipLoRollCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F3";
 	setAttr ".t" -type "double3" 0.5 0 0 ;
 	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
 createNode transform -n "l_lipLoRoll_ctl" -p "lipLoRollTCtrlLAP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F4";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -25057,6 +26300,7 @@ createNode transform -n "l_lipLoRoll_ctl" -p "lipLoRollTCtrlLAP";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "l_lipLoRoll_ctlShape" -p "l_lipLoRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F5";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25067,17 +26311,18 @@ createNode nurbsCurve -n "l_lipLoRoll_ctlShape" -p "l_lipLoRoll_ctl";
 		11
 		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824479 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598387e-33
 		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
 		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413383e-17
 		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
 		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.15672232497824479 0.15672232497824487 -1.8508392787413383e-17
 		;
 createNode nurbsCurve -n "l_lipLoRoll_ctlShape1" -p "l_lipLoRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F6";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25085,77 +26330,16 @@ createNode nurbsCurve -n "l_lipLoRoll_ctlShape1" -p "l_lipLoRoll_ctl";
 		1 2 0 no 3
 		3 0 1 2
 		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		0.078741544435392705 0.18281056944069352 -4.9999999999999989e-14
 		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
-		;
-createNode transform -n "lipLoRollTCtrlLBP" -p "LipLoRollCtrl";
-	setAttr ".t" -type "double3" 1.5 0 0 ;
-	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
-createNode transform -n "lipLoRollTCtrlLB" -p "lipLoRollTCtrlLBP";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rx";
-	setAttr -l on ".sz";
-	setAttr -l on ".sx";
-	setAttr -l on ".sy";
-	setAttr ".mntl" -type "double3" -1 -1 0 ;
-	setAttr ".mxtl" -type "double3" 1 1 0 ;
-	setAttr ".mtxe" yes;
-	setAttr ".mtye" yes;
-	setAttr ".mtze" yes;
-	setAttr ".xtxe" yes;
-	setAttr ".xtye" yes;
-	setAttr ".xtze" yes;
-	setAttr ".mrze" yes;
-	setAttr ".xrze" yes;
-	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
-	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
-	setAttr ".msxe" yes;
-	setAttr ".msye" yes;
-	setAttr ".msze" yes;
-	setAttr ".xsxe" yes;
-	setAttr ".xsye" yes;
-	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipLoRollTCtrlLBShape" -p "lipLoRollTCtrlLB";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8
-		 9 10
-		11
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
-		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
-		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
-		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
-		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
-		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		;
-createNode nurbsCurve -n "lipLoRollTCtrlLBShape1" -p "lipLoRollTCtrlLB";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 31;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 2 0 no 3
-		3 0 1 2
-		3
-		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
-		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
-		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672457 -4.9999999999999989e-14
 		;
 createNode transform -n "lipLoRollTCtrlRAP" -p "LipLoRollCtrl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F7";
 	setAttr ".t" -type "double3" -0.5 0 0 ;
 	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
 createNode transform -n "r_lipLoRoll_ctl" -p "lipLoRollTCtrlRAP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F8";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -25183,6 +26367,7 @@ createNode transform -n "r_lipLoRoll_ctl" -p "lipLoRollTCtrlRAP";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "r_lipLoRoll_ctlShape" -p "r_lipLoRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046F9";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25193,18 +26378,615 @@ createNode nurbsCurve -n "r_lipLoRoll_ctlShape" -p "r_lipLoRoll_ctl";
 		11
 		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
-		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824479 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598387e-33
 		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
 		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
-		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413383e-17
 		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
 		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
-		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.15672232497824479 0.15672232497824487 -1.8508392787413383e-17
 		;
 createNode nurbsCurve -n "r_lipLoRoll_ctlShape1" -p "r_lipLoRoll_ctl";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046FA";
 	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069352 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672457 -4.9999999999999989e-14
+		;
+createNode transform -n "lipDetailP" -p "LipCtrl_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046FB";
+	setAttr ".t" -type "double3" -3 1.214306433183765e-16 0 ;
+	setAttr ".s" -type "double3" 2 0.5 1 ;
+createNode transform -n "upLipDetailGrp" -p "lipDetailP";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046FC";
+	setAttr ".t" -type "double3" -2 1.5 0 ;
+	setAttr ".s" -type "double3" 4 1 1 ;
+createNode transform -n "upLipDetailP0" -p "upLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046FD";
+	setAttr ".t" -type "double3" 0 -1.5 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "upLipDetail0" -p "upLipDetailP0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046FE";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "upLipDetail0Shape" -p "upLipDetail0";
+	rename -uid "C9B53860-0000-51A7-5771-AF40000046FF";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "upLipDetailP1" -p "upLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004700";
+	setAttr ".t" -type "double3" 0.16666666666666666 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "upLipDetail1" -p "upLipDetailP1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004701";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "upLipDetail1Shape" -p "upLipDetail1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004702";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "upLipDetailP2" -p "upLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004703";
+	setAttr ".t" -type "double3" 0.33333333333333331 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "upLipDetail2" -p "upLipDetailP2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004704";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "upLipDetail2Shape" -p "upLipDetail2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004705";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "upLipDetailP3" -p "upLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004706";
+	setAttr ".t" -type "double3" 0.5 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "upLipDetail3" -p "upLipDetailP3";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004707";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "upLipDetail3Shape" -p "upLipDetail3";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004708";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "upLipDetailP4" -p "upLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004709";
+	setAttr ".t" -type "double3" 0.66666666666666663 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "upLipDetail4" -p "upLipDetailP4";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000470A";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "upLipDetail4Shape" -p "upLipDetail4";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000470B";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "upLipDetailP5" -p "upLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000470C";
+	setAttr ".t" -type "double3" 0.83333333333333326 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "upLipDetail5" -p "upLipDetailP5";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000470D";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "upLipDetail5Shape" -p "upLipDetail5";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000470E";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "upLipDetailP6" -p "upLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000470F";
+	setAttr ".t" -type "double3" 1 -1.5 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "upLipDetail6" -p "upLipDetailP6";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004710";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "upLipDetail6Shape" -p "upLipDetail6";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004711";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "loLipDetailGrp" -p "lipDetailP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004712";
+	setAttr ".t" -type "double3" -2 -1.5 6.9388939039072284e-18 ;
+	setAttr ".s" -type "double3" 4 1 1 ;
+createNode transform -n "loLipDetailP1" -p "loLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004713";
+	setAttr ".t" -type "double3" 0.16666666666666666 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "loLipDetail1" -p "loLipDetailP1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004714";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "loLipDetail1Shape" -p "loLipDetail1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004715";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "loLipDetailP2" -p "loLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004716";
+	setAttr ".t" -type "double3" 0.33333333333333331 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "loLipDetail2" -p "loLipDetailP2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004717";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "loLipDetail2Shape" -p "loLipDetail2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004718";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "loLipDetailP3" -p "loLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004719";
+	setAttr ".t" -type "double3" 0.5 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "loLipDetail3" -p "loLipDetailP3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000471A";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "loLipDetail3Shape" -p "loLipDetail3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000471B";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "loLipDetailP4" -p "loLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000471C";
+	setAttr ".t" -type "double3" 0.66666666666666663 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "loLipDetail4" -p "loLipDetailP4";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000471D";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "loLipDetail4Shape" -p "loLipDetail4";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000471E";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "loLipDetailP5" -p "loLipDetailGrp";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000471F";
+	setAttr ".t" -type "double3" 0.83333333333333326 0 0 ;
+	setAttr ".s" -type "double3" 0.25 4 2 ;
+createNode transform -n "loLipDetail5" -p "loLipDetailP5";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004720";
+	setAttr -l on -k off ".v";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".mntl" -type "double3" -0.5 -0.5 -1 ;
+	setAttr ".mxtl" -type "double3" 0.5 0.5 1 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+createNode nurbsCurve -n "loLipDetail5Shape" -p "loLipDetail5";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004721";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 20;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		-0.055409709377719399 1.605634753618615e-17 0
+		-0.039180581244561224 -0.039180581244561204 0
+		-1.6696026817952599e-17 -0.055409709377719413 0
+		0.039180581244561197 -0.039180581244561224 0
+		0.055409709377719399 -2.9760662996402927e-17 0
+		0.039180581244561252 0.039180581244561197 0
+		-6.3215853039146633e-18 0.055409709377719399 0
+		-0.039180581244561218 0.039180581244561218 0
+		;
+createNode transform -n "LipUpCtrl0" -p "LipCtrl_box";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE000020FB";
+	setAttr ".t" -type "double3" -3 1.6 -7.8886090522101181e-31 ;
+	setAttr ".s" -type "double3" 2 2 2 ;
+createNode locator -n "LipUpCtrl0Shape" -p "LipUpCtrl0";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE000020FC";
+	setAttr -k off ".v" no;
+	setAttr ".tmp" yes;
+	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993917e-15 -1.6599728183816151e-18 ;
+createNode transform -n "lipUpCtrlMidP" -p "LipUpCtrl0";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE000020FD";
+	setAttr ".t" -type "double3" 0 0 -6.9388939039072284e-18 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipUpCtrlMidFloat" -p "lipUpCtrlMidP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE000020FE";
+	setAttr ".t" -type "double3" 0 0 1.3877787807814457e-17 ;
+createNode transform -n "lipUpCtrlMid" -p "lipUpCtrlMidFloat";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE000020FF";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sz";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipUpCtrlMidShape" -p "lipUpCtrlMid";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002100";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
+		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
+		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
+		-0.22163883751087751 3.724304621039733e-17 -8.7965633225196802e-33
+		-0.15672232497824487 -0.15672232497824479 3.701678557482674e-17
+		-9.8937665011553583e-17 -0.2216388375108776 5.2349640195376755e-17
+		0.15672232497824479 -0.1567223249782449 3.7016785574826771e-17
+		0.22163883751087751 -1.228314903657079e-16 2.9011992652195358e-32
+		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
+		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
+		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
+		;
+createNode nurbsCurve -n "lipUpCtrlMidShape1" -p "lipUpCtrlMid";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002101";
+	setAttr -k off ".v" no;
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25215,15 +26997,18 @@ createNode nurbsCurve -n "r_lipLoRoll_ctlShape1" -p "r_lipLoRoll_ctl";
 		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
 		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
 		;
-createNode transform -n "lipLoRollTCtrlRBP" -p "LipLoRollCtrl";
-	setAttr ".t" -type "double3" -1.5 0 0 ;
-	setAttr ".s" -type "double3" 0.25 0.25 0.25 ;
-createNode transform -n "lipLoRollTCtrlRB" -p "lipLoRollTCtrlRBP";
+createNode transform -n "lipUpCtrlLAP" -p "LipUpCtrl0";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002102";
+	setAttr ".t" -type "double3" 0.5 0 -7.0371497257887272e-18 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipUpCtrlLA" -p "lipUpCtrlLAP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002103";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
 	setAttr -l on -k off ".ry";
 	setAttr -l on -k off ".rx";
+	setAttr -l on ".rz";
 	setAttr -l on ".sz";
 	setAttr -l on ".sx";
 	setAttr -l on ".sy";
@@ -25245,7 +27030,8 @@ createNode transform -n "lipLoRollTCtrlRB" -p "lipLoRollTCtrlRBP";
 	setAttr ".xsxe" yes;
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
-createNode nurbsCurve -n "lipLoRollTCtrlRBShape" -p "lipLoRollTCtrlRB";
+createNode nurbsCurve -n "lipUpCtrlLAShape" -p "lipUpCtrlLA";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002104";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25266,8 +27052,9 @@ createNode nurbsCurve -n "lipLoRollTCtrlRBShape" -p "lipLoRollTCtrlRB";
 		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
 		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
 		;
-createNode nurbsCurve -n "lipLoRollTCtrlRBShape1" -p "lipLoRollTCtrlRB";
-	setAttr -k off ".v";
+createNode nurbsCurve -n "lipUpCtrlLAShape1" -p "lipUpCtrlLA";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002105";
+	setAttr -k off ".v" no;
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25278,16 +27065,613 @@ createNode nurbsCurve -n "lipLoRollTCtrlRBShape1" -p "lipLoRollTCtrlRB";
 		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
 		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
 		;
-createNode transform -n "lipDetailP" -p "LipCtrl_box";
-	setAttr ".t" -type "double3" -3 1.214306433183765e-16 0 ;
-	setAttr ".s" -type "double3" 2 0.5 1 ;
+createNode transform -n "lipUpCtrlLBP" -p "LipUpCtrl0";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002106";
+	setAttr ".t" -type "double3" 1 9.1072982488782372e-18 -4.4045713257223618e-20 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipUpCtrlLBFloat" -p "lipUpCtrlLBP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002107";
+	setAttr ".t" -type "double3" 0 0 8.8091426514447235e-20 ;
+createNode transform -n "lipUpCtrlLB" -p "lipUpCtrlLBFloat";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002108";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -av -k off ".ry";
+	setAttr -l on -av -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipUpCtrlLBShape" -p "lipUpCtrlLB";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002109";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
+		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		;
+createNode nurbsCurve -n "lipUpCtrlLBShape1" -p "lipUpCtrlLB";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000210A";
+	setAttr -k off ".v" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		;
+createNode transform -n "lipUpCtrlRAP" -p "LipUpCtrl0";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000210B";
+	setAttr ".t" -type "double3" -0.5 0 -7.0371497257887272e-18 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipUpCtrlRA" -p "lipUpCtrlRAP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000210C";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipUpCtrlRAShape" -p "lipUpCtrlRA";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000210D";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
+		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		;
+createNode nurbsCurve -n "lipUpCtrlRAShape1" -p "lipUpCtrlRA";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000210E";
+	setAttr -k off ".v" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		;
+createNode transform -n "lipUpCtrlRBP" -p "LipUpCtrl0";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000210F";
+	setAttr ".t" -type "double3" -1 9.1072982488782372e-18 -4.4045713257223618e-20 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipUpCtrlRBFloat" -p "lipUpCtrlRBP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002110";
+	setAttr ".t" -type "double3" 0 0 8.8091426514447235e-20 ;
+createNode transform -n "lipUpCtrlRB" -p "lipUpCtrlRBFloat";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002111";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipUpCtrlRBShape" -p "lipUpCtrlRB";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002112";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
+		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		;
+createNode nurbsCurve -n "lipUpCtrlRBShape1" -p "lipUpCtrlRB";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002113";
+	setAttr -k off ".v" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		;
+createNode transform -n "lipCtrlGuide18" -p "LipUpCtrl0";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002114";
+	setAttr ".tmp" yes;
+	setAttr ".r" -type "double3" 0 0 90 ;
+	setAttr ".s" -type "double3" 1 1.4907501765086961 1 ;
+createNode nurbsCurve -n "lipCtrlGuide2Shape18" -p "lipCtrlGuide18";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002115";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 1 0 no 3
+		2 0 1
+		2
+		0 1 0
+		0 -1 0
+		;
+createNode transform -n "LipLoCtrl" -p "LipCtrl_box";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002116";
+	setAttr ".t" -type "double3" -3 -1.6 1.3877787807813668e-17 ;
+	setAttr ".s" -type "double3" 2 2 2 ;
+createNode locator -n "LipLoCtrlShape" -p "LipLoCtrl";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002117";
+	setAttr -k off ".v" no;
+	setAttr ".tmp" yes;
+	setAttr ".lp" -type "double3" 7.3412345538530198e-17 -1.8546091311993917e-15 -1.6599728183816151e-18 ;
+createNode transform -n "lipLoCtrlMidP" -p "LipLoCtrl";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002118";
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipLoCtrlMidFloat" -p "lipLoCtrlMidP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002119";
+	setAttr ".t" -type "double3" 0 0 -1.3877787807814457e-17 ;
+createNode transform -n "lipLoCtrlMid" -p "lipLoCtrlMidFloat";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000211A";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -av -k off ".ry";
+	setAttr -l on -av -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipLoCtrlMidShape" -p "lipLoCtrlMid";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000211B";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
+		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
+		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
+		-0.22163883751087751 3.724304621039733e-17 -8.7965633225196802e-33
+		-0.15672232497824487 -0.15672232497824479 3.701678557482674e-17
+		-9.8937665011553583e-17 -0.2216388375108776 5.2349640195376755e-17
+		0.15672232497824479 -0.1567223249782449 3.7016785574826771e-17
+		0.22163883751087751 -1.228314903657079e-16 2.9011992652195358e-32
+		0.15672232497824501 0.15672232497824476 -3.701678557482674e-17
+		-3.0837904551524995e-17 0.2216388375108776 -5.2349640195376755e-17
+		-0.15672232497824481 0.15672232497824487 -3.7016785574826765e-17
+		;
+createNode nurbsCurve -n "lipLoCtrlMidShape1" -p "lipLoCtrlMid";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000211C";
+	setAttr -k off ".v" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		;
+createNode transform -n "lipLoCtrlLAP" -p "LipLoCtrl";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000211D";
+	setAttr ".t" -type "double3" 0.5 0 -9.8255821881498839e-20 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipLoCtrlLA" -p "lipLoCtrlLAP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000211E";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipLoCtrlLAShape" -p "lipLoCtrlLA";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000211F";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
+		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		;
+createNode nurbsCurve -n "lipLoCtrlLAShape1" -p "lipLoCtrlLA";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002120";
+	setAttr -k off ".v" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		;
+createNode transform -n "lipLoCtrlLBP" -p "LipLoCtrl";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002121";
+	setAttr ".t" -type "double3" 1 9.1072982488782372e-18 -4.4045713257223618e-20 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipLoCtrlLBFloat" -p "lipLoCtrlLBP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002122";
+	setAttr ".t" -type "double3" 0 0 -1.378969638130001e-17 ;
+createNode transform -n "lipLoCtrlLB" -p "lipLoCtrlLBFloat";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002123";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -av -k off ".ry";
+	setAttr -l on -av -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipLoCtrlLBShape" -p "lipLoCtrlLB";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002124";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
+		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		;
+createNode nurbsCurve -n "lipLoCtrlLBShape1" -p "lipLoCtrlLB";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002125";
+	setAttr -k off ".v" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		;
+createNode transform -n "lipLoCtrlRAP" -p "LipLoCtrl";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002126";
+	setAttr ".t" -type "double3" -0.5 0 -9.8255821881498839e-20 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipLoCtrlRA" -p "lipLoCtrlRAP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002127";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipLoCtrlRAShape" -p "lipLoCtrlRA";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002128";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
+		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		;
+createNode nurbsCurve -n "lipLoCtrlRAShape1" -p "lipLoCtrlRA";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002129";
+	setAttr -k off ".v" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		;
+createNode transform -n "lipLoCtrlRBP" -p "LipLoCtrl";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000212A";
+	setAttr ".t" -type "double3" -1 9.1072982488782372e-18 -4.4045713257223618e-20 ;
+	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
+createNode transform -n "lipLoCtrlRBFloat" -p "lipLoCtrlRBP";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000212B";
+	setAttr ".t" -type "double3" 0 0 -1.378969638130001e-17 ;
+createNode transform -n "lipLoCtrlRB" -p "lipLoCtrlRBFloat";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000212C";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr -l on -k off ".tz";
+	setAttr -l on -av -k off ".ry";
+	setAttr -l on -av -k off ".rx";
+	setAttr -l on ".rz";
+	setAttr -l on ".sz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr ".mntl" -type "double3" -1 -1 0 ;
+	setAttr ".mxtl" -type "double3" 1 1 0 ;
+	setAttr ".mtxe" yes;
+	setAttr ".mtye" yes;
+	setAttr ".mtze" yes;
+	setAttr ".xtxe" yes;
+	setAttr ".xtye" yes;
+	setAttr ".xtze" yes;
+	setAttr ".mrze" yes;
+	setAttr ".xrze" yes;
+	setAttr ".mnsl" -type "double3" 0.5 0.5 0.5 ;
+	setAttr ".mxsl" -type "double3" 1.5 1.5 1.5 ;
+	setAttr ".msxe" yes;
+	setAttr ".msye" yes;
+	setAttr ".msze" yes;
+	setAttr ".xsxe" yes;
+	setAttr ".xsye" yes;
+	setAttr ".xsze" yes;
+createNode nurbsCurve -n "lipLoCtrlRBShape" -p "lipLoCtrlRB";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000212D";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8
+		 9 10
+		11
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		-0.22163883751087751 3.724304621039733e-17 -4.3982816612598401e-33
+		-0.15672232497824487 -0.15672232497824479 1.850839278741337e-17
+		-9.8937665011553583e-17 -0.2216388375108776 2.6174820097688377e-17
+		0.15672232497824479 -0.1567223249782449 1.8508392787413386e-17
+		0.22163883751087751 -1.228314903657079e-16 1.4505996326097679e-32
+		0.15672232497824501 0.15672232497824476 -1.850839278741337e-17
+		-3.0837904551524995e-17 0.2216388375108776 -2.6174820097688377e-17
+		-0.15672232497824481 0.15672232497824487 -1.8508392787413383e-17
+		;
+createNode nurbsCurve -n "lipLoCtrlRBShape1" -p "lipLoCtrlRB";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000212E";
+	setAttr -k off ".v" no;
+	setAttr ".ove" yes;
+	setAttr ".ovc" 31;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 2 0 no 3
+		3 0 1 2
+		3
+		0.078741544435392705 0.18281056944069354 -4.9999999999999989e-14
+		-0.00069707109640904097 0.45397956978494447 -4.9999999999999989e-14
+		-0.079518458866231809 0.18301017777672454 -4.9999999999999989e-14
+		;
+createNode transform -n "lipCtrlGuide19" -p "LipLoCtrl";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE0000212F";
+	setAttr ".tmp" yes;
+	setAttr ".r" -type "double3" 0 0 90 ;
+	setAttr ".s" -type "double3" 1 1.4907501765086961 1 ;
+createNode nurbsCurve -n "lipCtrlGuide2Shape19" -p "lipCtrlGuide19";
+	rename -uid "3CC50860-0000-0ACE-57A1-18EE00002130";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 1 0 no 3
+		2 0 1
+		2
+		0 1 0
+		0 -1 0
+		;
 createNode transform -n "lipStickyP" -p "lipsTitle";
-	setAttr ".t" -type "double3" -3.8790067848533432 0.93279579006051705 0 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004722";
+	setAttr ".t" -type "double3" -3.8790067848533432 0.93279579006051716 0 ;
 createNode transform -n "blinkLevel_box1" -p "lipStickyP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004723";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 12.377 -11.361845352367851 0 ;
+	setAttr ".t" -type "double3" 12.377 -11.361845352367853 0 ;
 	setAttr ".s" -type "double3" 0.5 1 0.5 ;
 createNode nurbsCurve -n "blinkLevel_box1Shape" -p "blinkLevel_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004724";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25301,6 +27685,7 @@ createNode nurbsCurve -n "blinkLevel_box1Shape" -p "blinkLevel_box1";
 		-0.10000000000000037 0 2.1684043449710089e-18
 		;
 createNode transform -n "LlipClose" -p "blinkLevel_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004725";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -25309,9 +27694,9 @@ createNode transform -n "LlipClose" -p "blinkLevel_box1";
 	setAttr -l on ".sx";
 	setAttr -l on ".sy";
 	setAttr -l on ".sz";
-	setAttr ".rp" -type "double3" 0 -7.1054273576010023e-16 0 ;
+	setAttr ".rp" -type "double3" 0 -7.1054273576010032e-16 0 ;
 	setAttr ".sp" -type "double3" 0 -8.8817841970012523e-16 0 ;
-	setAttr ".spt" -type "double3" 0 1.7763568394002506e-16 0 ;
+	setAttr ".spt" -type "double3" 0 1.7763568394002508e-16 0 ;
 	setAttr ".mntl" -type "double3" 0 0 0 ;
 	setAttr ".mxtl" -type "double3" 0 1 0 ;
 	setAttr ".mtxe" yes;
@@ -25331,6 +27716,7 @@ createNode transform -n "LlipClose" -p "blinkLevel_box1";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "LlipCloseShape" -p "LlipClose";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004726";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25344,6 +27730,7 @@ createNode nurbsCurve -n "LlipCloseShape" -p "LlipClose";
 		0 0.072799039096448317 0
 		;
 createNode transform -n "RlipClose" -p "blinkLevel_box1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004727";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -25352,9 +27739,9 @@ createNode transform -n "RlipClose" -p "blinkLevel_box1";
 	setAttr -l on ".sx";
 	setAttr -l on ".sy";
 	setAttr -l on ".sz";
-	setAttr ".rp" -type "double3" 0 -7.1054273576010023e-16 0 ;
+	setAttr ".rp" -type "double3" 0 -7.1054273576010032e-16 0 ;
 	setAttr ".sp" -type "double3" 0 -8.8817841970012523e-16 0 ;
-	setAttr ".spt" -type "double3" 0 1.7763568394002506e-16 0 ;
+	setAttr ".spt" -type "double3" 0 1.7763568394002508e-16 0 ;
 	setAttr ".mntl" -type "double3" 0 0 0 ;
 	setAttr ".mxtl" -type "double3" 0 1 0 ;
 	setAttr ".mtxe" yes;
@@ -25374,6 +27761,7 @@ createNode transform -n "RlipClose" -p "blinkLevel_box1";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "RlipCloseShape" -p "RlipClose";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004728";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25387,8 +27775,9 @@ createNode nurbsCurve -n "RlipCloseShape" -p "RlipClose";
 		0 0.072799039096448317 0
 		;
 createNode transform -n "lid_innertwist_box3" -p "lipStickyP";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004729";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 12.377070340013839 -9.6629814313982099 0 ;
+	setAttr ".t" -type "double3" 12.377070340013841 -9.6629814313982099 0 ;
 	setAttr ".s" -type "double3" 0.5 0.5 0.5 ;
 	setAttr ".rp" -type "double3" 0 4.4408920985006262e-16 0 ;
 	setAttr ".sp" -type "double3" 0 8.8817841970012523e-16 0 ;
@@ -25396,6 +27785,7 @@ createNode transform -n "lid_innertwist_box3" -p "lipStickyP";
 	setAttr ".mnrl" -type "double3" 0 0 0 ;
 	setAttr ".mxrl" -type "double3" 0 0 180 ;
 createNode nurbsCurve -n "lid_innertwist_box3Shape" -p "lid_innertwist_box3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000472A";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25409,6 +27799,7 @@ createNode nurbsCurve -n "lid_innertwist_box3Shape" -p "lid_innertwist_box3";
 		-0.10000000000000037 -1 2.1684043449710089e-18
 		;
 createNode transform -n "LlipLevel" -p "lid_innertwist_box3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000472B";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -25439,6 +27830,7 @@ createNode transform -n "LlipLevel" -p "lid_innertwist_box3";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "LlipLevelShape" -p "LlipLevel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000472C";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25452,6 +27844,7 @@ createNode nurbsCurve -n "LlipLevelShape" -p "LlipLevel";
 		0 0.14559807819289663 0
 		;
 createNode transform -n "RlipLevel" -p "lid_innertwist_box3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000472D";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -25482,6 +27875,7 @@ createNode transform -n "RlipLevel" -p "lid_innertwist_box3";
 	setAttr ".xsye" yes;
 	setAttr ".xsze" yes;
 createNode nurbsCurve -n "RlipLevelShape" -p "RlipLevel";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000472E";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25495,30 +27889,36 @@ createNode nurbsCurve -n "RlipLevelShape" -p "RlipLevel";
 		0 0.14559807819289663 0
 		;
 createNode transform -n "lid_innertwist2" -p "lid_innertwist_box3";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000472F";
 	setAttr ".t" -type "double3" 0 0 2.7755575615628914e-17 ;
 	setAttr ".s" -type "double3" 0.1 0.1 0.1 ;
 createNode locator -n "lid_innertwist2Shape" -p "lid_innertwist2";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004730";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "lipClose_box" -p "lipStickyP";
-	setAttr ".t" -type "double3" 12.378270367703067 -10.848913276417861 5.1275958839365767e-30 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004731";
+	setAttr ".t" -type "double3" 12.378270367703069 -10.848913276417861 5.1275958839365781e-30 ;
 	setAttr ".s" -type "double3" 0.2 0.5 0.5 ;
-	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653501 -0.0010000000000001299 ;
+	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "lipClose_boxShape" -p "lipClose_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004732";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 0 no 3
 		5 0 1 2 3 4
 		5
-		-1 0 -4.1137425632826683e-18
+		-1 0 -4.1137425632826668e-18
 		0.999999999999999 0 5.3884000939589257e-19
 		0.999999999999999 1.5 6.6547143501041047e-19
 		-1 1.5 -3.9871111376681504e-18
-		-1 0 -4.1137425632826683e-18
+		-1 0 -4.1137425632826668e-18
 		;
 createNode transform -n "lipClose" -p "lipClose_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004733";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -25537,6 +27937,7 @@ createNode transform -n "lipClose" -p "lipClose_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "lipCloseShape" -p "lipClose";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004734";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -25545,27 +27946,31 @@ createNode nurbsCurve -n "lipCloseShape" -p "lipClose";
 		13 -2 -1 0 1 2 3 4 5 6 7 8
 		 9 10
 		11
-		0.19590290622280626 0.07836116248912238 -9.2541963937066851e-18
+		0.19590290622280623 0.07836116248912238 -9.2541963937066851e-18
 		-3.8547380689406243e-17 0.1108194187554388 -1.3087410048844189e-17
 		-0.19590290622280601 0.078361162489122435 -9.2541963937066913e-18
-		-0.27704854688859687 1.8621523105198665e-17 -2.1991408306299197e-33
-		-0.19590290622280609 -0.078361162489122393 9.2541963937066851e-18
-		-1.2367208126444199e-16 -0.1108194187554388 1.3087410048844189e-17
-		0.19590290622280598 -0.078361162489122449 9.2541963937066928e-18
+		-0.27704854688859687 1.8621523105198662e-17 -2.1991408306299194e-33
+		-0.19590290622280607 -0.078361162489122393 9.2541963937066851e-18
+		-1.2367208126444201e-16 -0.1108194187554388 1.3087410048844189e-17
+		0.19590290622280601 -0.078361162489122449 9.2541963937066928e-18
 		0.27704854688859687 -6.1415745182853949e-17 7.2529981630488394e-33
-		0.19590290622280626 0.07836116248912238 -9.2541963937066851e-18
+		0.19590290622280623 0.07836116248912238 -9.2541963937066851e-18
 		-3.8547380689406243e-17 0.1108194187554388 -1.3087410048844189e-17
 		-0.19590290622280601 0.078361162489122435 -9.2541963937066913e-18
 		;
 createNode transform -n "lid_innertwist1" -p "lipClose_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004735";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 0 1 2.7755575615621025e-17 ;
+	setAttr ".t" -type "double3" 0 1 2.7755575615621022e-17 ;
 	setAttr ".s" -type "double3" 0.5 0.2 0.2 ;
 createNode locator -n "lid_innertwist1Shape" -p "lid_innertwist1";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004736";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
 createNode transform -n "stickinessTitle" -p "lipClose_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004737";
 	setAttr ".v" no;
 	setAttr -av ".tmp" yes;
 	setAttr ".ove" yes;
@@ -25576,6 +27981,7 @@ createNode transform -n "stickinessTitle" -p "lipClose_box";
 	setAttr ".sp" -type "double3" -11.999056486381868 -3.1990164967398158 0.10000000000001304 ;
 	setAttr ".spt" -type "double3" -32.997405337550134 -6.3980329934796325 0.050000000000006525 ;
 createNode nurbsCurve -n "stickinessTitleShape" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004738";
 	setAttr -k off ".v";
 	setAttr ".ovc" 29;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25589,80 +27995,81 @@ createNode nurbsCurve -n "stickinessTitleShape" -p "stickinessTitle";
 		 35 36 36
 		73
 		0.084467627305570891 -0.889706788828177 0.050000000000006539
-		0.084467627305570919 -0.871262821371667 0.050000000000006539
+		0.084467627305570905 -0.871262821371667 0.050000000000006539
 		0.067699106009871973 -0.86042690261791954 0.050000000000006539
 		0.050930584714121485 -0.84959098386416987 0.050000000000006539
 		0.023354849861069615 -0.84959098386416987 0.050000000000006539
 		0.0041024503409692326 -0.84959098386416987 0.050000000000006539
 		-0.0076362175504274266 -0.8542781323719667 0.050000000000006539
 		-0.019374885441879153 -0.85896528087976709 0.050000000000006539
-		-0.026329744470079186 -0.86858679407712691 0.050000000000006539
-		-0.029807173984180091 -0.87349128192955672 0.050000000000006539
+		-0.026329744470079183 -0.86858679407712691 0.050000000000006539
+		-0.029807173984180091 -0.87349128192955683 0.050000000000006539
 		-0.031795448204327892 -0.87780584870370204 0.050000000000006539
 		-0.033783722424479246 -0.88212041547784692 0.050000000000006539
-		-0.035895018915178989 -0.88677651550783942 0.050000000000006539
+		-0.035895018915178989 -0.88677651550783931 0.050000000000006539
 		-0.039248254518028824 -0.89397741907712691 0.050000000000006539
-		-0.043409922184528549 -0.89649175995894936 0.050000000000006539
-		-0.047571589850978535 -0.89900610084077448 0.050000000000006539
-		-0.0546506427903799 -0.89900610084077448 0.050000000000006539
-		-0.059475459077129367 -0.89900610084077448 0.050000000000006539
-		-0.063371164311078809 -0.89742321429308458 0.050000000000006539
+		-0.043409922184528549 -0.89649175995894947 0.050000000000006539
+		-0.047571589850978535 -0.89900610084077437 0.050000000000006539
+		-0.0546506427903799 -0.89900610084077437 0.050000000000006539
+		-0.059475459077129367 -0.89900610084077437 0.050000000000006539
+		-0.063371164311078809 -0.89742321429308469 0.050000000000006539
 		-0.067266869545028252 -0.89584032774539157 0.050000000000006539
-		-0.069244598999130824 -0.89366810593975432 0.050000000000006539
-		-0.071719104098129316 -0.89100028012991672 0.050000000000006539
+		-0.069244598999130824 -0.89366810593975421 0.050000000000006539
+		-0.071719104098129316 -0.89100028012991683 0.050000000000006539
 		-0.072584946554627772 -0.88857967050184172 0.050000000000006539
 		-0.07345078901112978 -0.88615906087376717 0.050000000000006539
-		-0.07345078901112978 -0.88311748168960424 0.050000000000006539
+		-0.07345078901112978 -0.88311748168960413 0.050000000000006539
 		-0.07345078901112978 -0.87529795184557202 0.050000000000006539
-		-0.067362944080129106 -0.86788146639266472 0.050000000000006539
-		-0.061275099149130208 -0.86046498093975432 0.050000000000006539
+		-0.067362944080129106 -0.86788146639266461 0.050000000000006539
+		-0.061275099149130208 -0.86046498093975421 0.050000000000006539
 		-0.052454988171328987 -0.85531327690556191 0.050000000000006539
 		-0.052454988171328987 -0.8542892629583495 0.050000000000006539
 		-0.052454988171328987 -0.85326524901113932 0.050000000000006539
 		-0.073604273939178677 -0.85326524901113932 0.050000000000006539
 		-0.094753559707028367 -0.85326524901113932 0.050000000000006539
 		-0.10047585274837822 -0.85972567567580704 0.050000000000006539
-		-0.10383494655462777 -0.86789435444005447 0.050000000000006539
-		-0.10719404036087909 -0.8760630332043019 0.050000000000006539
-		-0.10719404036087909 -0.8843242715816243 0.050000000000006539
-		-0.10719404036087909 -0.90078582302133692 0.050000000000006539
-		-0.091108585576828327 -0.91178108490646192 0.050000000000006539
-		-0.075023130792779336 -0.92277634679158427 0.050000000000006539
-		-0.049061916785581028 -0.92277634679158427 0.050000000000006539
+		-0.10383494655462776 -0.86789435444005436 0.050000000000006539
+		-0.10719404036087908 -0.8760630332043019 0.050000000000006539
+		-0.10719404036087908 -0.8843242715816243 0.050000000000006539
+		-0.10719404036087908 -0.90078582302133692 0.050000000000006539
+		-0.091108585576828313 -0.91178108490646192 0.050000000000006539
+		-0.075023130792779322 -0.92277634679158427 0.050000000000006539
+		-0.049061916785581021 -0.92277634679158427 0.050000000000006539
 		-0.029809517265478869 -0.92277634679158427 0.050000000000006539
-		-0.017015201128728785 -0.9181202467615891 0.050000000000006539
-		-0.0042208849919787017 -0.91346414673159704 0.050000000000006539
+		-0.017015201128728785 -0.91812024676158932 0.050000000000006539
+		-0.0042208849919787017 -0.91346414673159715 0.050000000000006539
 		0.0033549435923221349 -0.90272488833327469 0.050000000000006539
 		0.0065839852839724156 -0.89806878830328174 0.050000000000006539
 		0.0088206473265708407 -0.8926991591041219 0.050000000000006539
 		0.011057309369171042 -0.88732952990496206 0.050000000000006539
-		0.013541187593522741 -0.88261133291935689 0.050000000000006539
-		0.015528290173021153 -0.87882459026788917 0.050000000000006539
-		0.019876248706321098 -0.87609291004143419 0.050000000000006539
-		0.024224207239619266 -0.87336122981497921 0.050000000000006539
-		0.031179066267769562 -0.87336122981497921 0.050000000000006539
-		0.037402821516721252 -0.87336122981497921 0.050000000000006539
+		0.013541187593522739 -0.88261133291935701 0.050000000000006539
+		0.015528290173021151 -0.87882459026788917 0.050000000000006539
+		0.019876248706321095 -0.87609291004143419 0.050000000000006539
+		0.024224207239619263 -0.87336122981497921 0.050000000000006539
+		0.031179066267769558 -0.87336122981497921 0.050000000000006539
+		0.037402821516721245 -0.87336122981497921 0.050000000000006539
 		0.041200108934271062 -0.87503609015541228 0.050000000000006539
 		0.044997396351771135 -0.87671095049584225 0.050000000000006539
 		0.047113379405169686 -0.87913038848324476 0.050000000000006539
 		0.048980974636121166 -0.88111631942205693 0.050000000000006539
-		0.049852675295971371 -0.88437289466950963 0.050000000000006539
+		0.049852675295971365 -0.88437289466950963 0.050000000000006539
 		0.050724375955871315 -0.88762946991695924 0.050000000000006539
 		0.050724375955871315 -0.88961540085577184 0.050000000000006539
 		0.050724375955871315 -0.89749351273339439 0.050000000000006539
 		0.044357680544921285 -0.90586840025589199 0.050000000000006539
 		0.03799098513402277 -0.91424328777838693 0.050000000000006539
 		0.026129294972070616 -0.92119228860322189 0.050000000000006539
-		0.026129294972070616 -0.92224676520789928 0.050000000000006539
-		0.026129294972070616 -0.92330124181257978 0.050000000000006539
-		0.048145594837069927 -0.92330124181257978 0.050000000000006539
-		0.070161894702120753 -0.92330124181257978 0.050000000000006539
-		0.076259112758520819 -0.91640847973999418 0.050000000000006539
-		0.080363370032020986 -0.90836692398864438 0.050000000000006539
-		0.084467627305570891 -0.90032536823729414 0.050000000000006539
+		0.026129294972070616 -0.92224676520789917 0.050000000000006539
+		0.026129294972070616 -0.92330124181257989 0.050000000000006539
+		0.048145594837069927 -0.92330124181257989 0.050000000000006539
+		0.070161894702120753 -0.92330124181257989 0.050000000000006539
+		0.076259112758520819 -0.91640847973999429 0.050000000000006539
+		0.080363370032020986 -0.90836692398864427 0.050000000000006539
+		0.084467627305570891 -0.90032536823729403 0.050000000000006539
 		0.084467627305570891 -0.889706788828177 0.050000000000006539
 		;
 createNode nurbsCurve -n "stickinessTitleShape1" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004739";
 	setAttr -k off ".v";
 	setAttr ".ovc" 29;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25676,7 +28083,7 @@ createNode nurbsCurve -n "stickinessTitleShape1" -p "stickinessTitle";
 		65
 		0.084767567317571707 -0.64609444050203779 0.050000000000006539
 		0.084767567317571707 -0.63945006625188772 0.050000000000006539
-		0.083551404300170024 -0.63566156613941749 0.050000000000006539
+		0.08355140430017001 -0.63566156613941749 0.050000000000006539
 		0.082100913148421245 -0.63187306602694238 0.050000000000006539
 		0.079424885853871391 -0.62752627913431758 0.050000000000006539
 		0.077313589363169871 -0.62398675266459291 0.050000000000006539
@@ -25702,10 +28109,10 @@ createNode nurbsCurve -n "stickinessTitleShape1" -p "stickinessTitle";
 		0.029733261678721423 -0.66277860366940289 0.050000000000006539
 		0.017982877380571527 -0.6650756052065977 0.050000000000006539
 		0.0062324930824198543 -0.66737260674378762 0.050000000000006539
-		-0.011051550108929387 -0.66737260674378762 0.050000000000006539
-		-0.027466235921778714 -0.66737260674378762 0.050000000000006539
+		-0.011051550108929388 -0.66737260674378762 0.050000000000006539
+		-0.027466235921778711 -0.66737260674378762 0.050000000000006539
 		-0.039527104997930163 -0.66516875064001024 0.050000000000006539
-		-0.051587974074129572 -0.6629648945362302 0.050000000000006539
+		-0.051587974074129565 -0.6629648945362302 0.050000000000006539
 		-0.058676400138928553 -0.65948863666280533 0.050000000000006539
 		-0.066509989671027892 -0.65570306565200787 0.050000000000006539
 		-0.069680449329078964 -0.65151269278908031 0.050000000000006539
@@ -25717,21 +28124,21 @@ createNode nurbsCurve -n "stickinessTitleShape1" -p "stickinessTitle";
 		-0.063266888291277634 -0.62708574224169278 0.050000000000006539
 		-0.059283310006927603 -0.62385787219069277 0.050000000000006539
 		-0.055113440855779128 -0.62131306865141778 0.050000000000006539
-		-0.050943571704628876 -0.61876826511211747 0.050000000000006539
+		-0.050943571704628883 -0.61876826511211747 0.050000000000006539
 		-0.047955887991328605 -0.61709164731066768 0.050000000000006539
 		-0.047955887991328605 -0.6159123909744425 0.050000000000006539
 		-0.047955887991328605 -0.61473313463821777 0.050000000000006539
 		-0.070019053483278693 -0.61473313463821777 0.050000000000006539
 		-0.092082218975177266 -0.61473313463821777 0.050000000000006539
-		-0.094441903288279672 -0.6170307219957426 0.050000000000006539
+		-0.094441903288279686 -0.6170307219957426 0.050000000000006539
 		-0.097674459901979371 -0.62075712515261749 0.050000000000006539
-		-0.10090701651562933 -0.62448352830946796 0.050000000000006539
+		-0.10090701651562932 -0.62448352830946796 0.050000000000006539
 		-0.10276992518392997 -0.62765047304551758 0.050000000000006539
 		-0.10500775886717956 -0.63168677516011773 0.050000000000006539
 		-0.10625086962002878 -0.63609624482867277 0.050000000000006539
-		-0.10749398037287977 -0.64050571449723759 0.050000000000006539
-		-0.10749398037287977 -0.6460323435464278 0.050000000000006539
-		-0.10749398037287977 -0.66683716695674511 0.050000000000006539
+		-0.10749398037287976 -0.64050571449723759 0.050000000000006539
+		-0.10749398037287976 -0.6460323435464278 0.050000000000006539
+		-0.10749398037287976 -0.66683716695674511 0.050000000000006539
 		-0.08133241581077949 -0.67910248733017264 0.050000000000006539
 		-0.055170851248677433 -0.69136780770359751 0.050000000000006539
 		-0.011175744020128942 -0.69136780770359751 0.050000000000006539
@@ -25741,6 +28148,7 @@ createNode nurbsCurve -n "stickinessTitleShape1" -p "stickinessTitle";
 		0.084767567317571707 -0.64609444050203779 0.050000000000006539
 		;
 createNode nurbsCurve -n "stickinessTitleShape2" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000473A";
 	setAttr -k off ".v";
 	setAttr ".ovc" 29;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25753,16 +28161,16 @@ createNode nurbsCurve -n "stickinessTitleShape2" -p "stickinessTitle";
 		0.031577424096221551 -0.53711896997114261 0.050000000000006539
 		-0.018013438981180241 -0.55428584909531786 0.050000000000006539
 		-0.060954069605028249 -0.53779383499814293 0.050000000000006539
-		-0.10389470022892777 -0.52130182090096755 0.050000000000006539
-		-0.10389470022892777 -0.53468137155331752 0.050000000000006539
-		-0.10389470022892777 -0.5480609222056928 0.050000000000006539
+		-0.10389470022892776 -0.52130182090096755 0.050000000000006539
+		-0.10389470022892776 -0.53468137155331752 0.050000000000006539
+		-0.10389470022892776 -0.5480609222056928 0.050000000000006539
 		-0.062574448654230008 -0.56291322518259268 0.050000000000006539
 		-0.021254197079528692 -0.57776552815951743 0.050000000000006539
 		-0.062574448654230008 -0.57776552815951743 0.050000000000006539
-		-0.10389470022892777 -0.57776552815951743 0.050000000000006539
-		-0.10389470022892777 -0.58938820362441791 0.050000000000006539
-		-0.10389470022892777 -0.60101087908931794 0.050000000000006539
-		-0.011363206527628233 -0.60101087908931794 0.050000000000006539
+		-0.10389470022892776 -0.57776552815951743 0.050000000000006539
+		-0.10389470022892776 -0.58938820362441791 0.050000000000006539
+		-0.10389470022892776 -0.60101087908931794 0.050000000000006539
+		-0.011363206527628232 -0.60101087908931794 0.050000000000006539
 		0.081168287173621539 -0.60101087908931794 0.050000000000006539
 		0.081168287173621539 -0.58938820362441791 0.050000000000006539
 		0.081168287173621539 -0.57776552815951743 0.050000000000006539
@@ -25776,6 +28184,7 @@ createNode nurbsCurve -n "stickinessTitleShape2" -p "stickinessTitle";
 		0.081168287173621567 -0.51995209084696736 0.050000000000006539
 		;
 createNode nurbsCurve -n "tongueIOTitle2Shape" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000473B";
 	setAttr -k off ".v";
 	setAttr ".ovc" 21;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25784,7 +28193,7 @@ createNode nurbsCurve -n "tongueIOTitle2Shape" -p "stickinessTitle";
 		 5 6 6 7 7 8 8 9 9 10 10 11
 		 11 12 12
 		25
-		0.077535174445831911 -0.70203907681340727 0.050000000000006421
+		0.077535174445831898 -0.70203907681340727 0.050000000000006421
 		0.06250441381943328 -0.70203907681340727 0.050000000000006421
 		0.047473653193031096 -0.70203907681340727 0.050000000000006421
 		0.047473653193031096 -0.70822615735031968 0.050000000000006421
@@ -25799,18 +28208,19 @@ createNode nurbsCurve -n "tongueIOTitle2Shape" -p "stickinessTitle";
 		-0.095003975442316646 -0.74845965846888962 0.050000000000006421
 		-0.079973214815918015 -0.74845965846888962 0.050000000000006421
 		-0.06494245418951583 -0.74845965846888962 0.050000000000006421
-		-0.06494245418951583 -0.74227257793197721 0.050000000000006421
+		-0.06494245418951583 -0.74227257793197732 0.050000000000006421
 		-0.06494245418951583 -0.73608549739506479 0.050000000000006421
 		-0.0087344004982690127 -0.73608549739506479 0.050000000000006421
 		0.047473653193031096 -0.73608549739506479 0.050000000000006421
-		0.047473653193031096 -0.74227257793197721 0.050000000000006421
+		0.047473653193031096 -0.74227257793197732 0.050000000000006421
 		0.047473653193031096 -0.74845965846888962 0.050000000000006421
 		0.06250441381943328 -0.74845965846888962 0.050000000000006421
-		0.077535174445831911 -0.74845965846888962 0.050000000000006421
-		0.077535174445831911 -0.72524936764114978 0.050000000000006421
-		0.077535174445831911 -0.70203907681340727 0.050000000000006421
+		0.077535174445831898 -0.74845965846888962 0.050000000000006421
+		0.077535174445831898 -0.72524936764114978 0.050000000000006421
+		0.077535174445831898 -0.70203907681340727 0.050000000000006421
 		;
 createNode nurbsCurve -n "tongueIOTitle2Shape1" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000473C";
 	setAttr -k off ".v";
 	setAttr ".ovc" 21;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25818,29 +28228,30 @@ createNode nurbsCurve -n "tongueIOTitle2Shape1" -p "stickinessTitle";
 		22 0 0 1 1 2 2 3 3 4 4 5
 		 5 6 6 7 7 8 8 9 9 10 10
 		21
-		0.077535174445831911 -0.37245904308132616 0.050000000000006421
+		0.077535174445831898 -0.37245904308132616 0.050000000000006421
 		-0.0087344004982690127 -0.37245904308132616 0.050000000000006421
 		-0.095003975442316646 -0.37245904308132616 0.050000000000006421
 		-0.095003975442316646 -0.3823513808889305 0.050000000000006421
 		-0.095003975442316646 -0.3922437186965384 0.050000000000006421
 		-0.045582703420517179 -0.3922437186965384 0.050000000000006421
 		0.0038385686012822884 -0.3922437186965384 0.050000000000006421
-		-0.045582703420517179 -0.40601499770940075 0.050000000000006421
+		-0.045582703420517179 -0.40601499770940069 0.050000000000006421
 		-0.095003975442316646 -0.41978627672226576 0.050000000000006421
 		-0.095003975442316646 -0.43307036683691846 0.050000000000006421
 		-0.095003975442316646 -0.44635445695157072 0.050000000000006421
 		-0.0087344004982690127 -0.44635445695157072 0.050000000000006421
-		0.077535174445831911 -0.44635445695157072 0.050000000000006421
-		0.077535174445831911 -0.43646211914396593 0.050000000000006421
-		0.077535174445831911 -0.42656978133635848 0.050000000000006421
+		0.077535174445831898 -0.44635445695157072 0.050000000000006421
+		0.077535174445831898 -0.43646211914396593 0.050000000000006421
+		0.077535174445831898 -0.42656978133635848 0.050000000000006421
 		0.017395746663386502 -0.42656978133635848 0.050000000000006421
 		-0.042743681119066013 -0.42656978133635848 0.050000000000006421
-		0.017395746663386502 -0.40992834799603317 0.050000000000006421
-		0.077535174445831911 -0.39328691465571053 0.050000000000006421
-		0.077535174445831911 -0.38287297886851812 0.050000000000006421
-		0.077535174445831911 -0.37245904308132616 0.050000000000006421
+		0.017395746663386502 -0.40992834799603323 0.050000000000006421
+		0.077535174445831898 -0.39328691465571058 0.050000000000006421
+		0.077535174445831898 -0.38287297886851807 0.050000000000006421
+		0.077535174445831898 -0.37245904308132616 0.050000000000006421
 		;
 createNode nurbsCurve -n "tongueIOTitle2Shape6" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000473D";
 	setAttr -k off ".v";
 	setAttr ".ovc" 21;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25848,25 +28259,26 @@ createNode nurbsCurve -n "tongueIOTitle2Shape6" -p "stickinessTitle";
 		18 0 0 1 1 2 2 3 3 4 4 5
 		 5 6 6 7 7 8 8
 		17
-		0.077535174445832133 -0.80907403018825352 0.050000000000006421
-		0.077535174445832133 -0.79823790043432874 0.050000000000006421
-		0.077535174445832133 -0.78740177068042838 0.050000000000006421
-		0.007694570418984803 -0.78740177068042838 0.050000000000006421
-		-0.06214603360786608 -0.78740177068042838 0.050000000000006421
+		0.077535174445832133 -0.80907403018825341 0.050000000000006421
+		0.077535174445832133 -0.79823790043432885 0.050000000000006421
+		0.077535174445832133 -0.78740177068042827 0.050000000000006421
+		0.007694570418984803 -0.78740177068042827 0.050000000000006421
+		-0.06214603360786608 -0.78740177068042827 0.050000000000006421
 		-0.06214603360786608 -0.77464310177660334 0.050000000000006421
 		-0.06214603360786608 -0.76188443287280405 0.050000000000006421
 		-0.078575004525116121 -0.76188443287280405 0.050000000000006421
-		-0.095003975442316424 -0.76188443287280405 0.050000000000006421
-		-0.095003975442316424 -0.79823790043432874 0.050000000000006421
-		-0.095003975442316424 -0.83459136799585343 0.050000000000006421
+		-0.095003975442316396 -0.76188443287280405 0.050000000000006421
+		-0.095003975442316396 -0.79823790043432885 0.050000000000006421
+		-0.095003975442316396 -0.83459136799585343 0.050000000000006421
 		-0.078575004525116121 -0.83459136799585343 0.050000000000006421
 		-0.06214603360786608 -0.83459136799585343 0.050000000000006421
 		-0.06214603360786608 -0.8218326990920537 0.050000000000006421
-		-0.06214603360786608 -0.80907403018825352 0.050000000000006421
-		0.007694570418984803 -0.80907403018825352 0.050000000000006421
-		0.077535174445832133 -0.80907403018825352 0.050000000000006421
+		-0.06214603360786608 -0.80907403018825341 0.050000000000006421
+		0.007694570418984803 -0.80907403018825341 0.050000000000006421
+		0.077535174445832133 -0.80907403018825341 0.050000000000006421
 		;
 createNode nurbsCurve -n "tongueIOTitle22Shape" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000473E";
 	setAttr -k off ".v";
 	setAttr ".ovc" 21;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25875,7 +28287,7 @@ createNode nurbsCurve -n "tongueIOTitle22Shape" -p "stickinessTitle";
 		 5 6 6 7 7 8 8 9 9 10 10 11
 		 11 12 12
 		25
-		0.077535174445835464 -0.46195451539291721 0.050000000000006421
+		0.07753517444583545 -0.46195451539291721 0.050000000000006421
 		0.062504413819436833 -0.46195451539291721 0.050000000000006421
 		0.047473653193034648 -0.46195451539291721 0.050000000000006421
 		0.047473653193034648 -0.46814159592982962 0.050000000000006421
@@ -25886,7 +28298,7 @@ createNode nurbsCurve -n "tongueIOTitle22Shape" -p "stickinessTitle";
 		-0.064942454189512278 -0.46195451539291721 0.050000000000006421
 		-0.079973214815914462 -0.46195451539291721 0.050000000000006421
 		-0.095003975442313093 -0.46195451539291721 0.050000000000006421
-		-0.095003975442313093 -0.48516480622065972 0.050000000000006421
+		-0.095003975442313093 -0.48516480622065966 0.050000000000006421
 		-0.095003975442313093 -0.50837509704839956 0.050000000000006421
 		-0.079973214815914462 -0.50837509704839956 0.050000000000006421
 		-0.064942454189512278 -0.50837509704839956 0.050000000000006421
@@ -25897,11 +28309,12 @@ createNode nurbsCurve -n "tongueIOTitle22Shape" -p "stickinessTitle";
 		0.047473653193034648 -0.50218801651148715 0.050000000000006421
 		0.047473653193034648 -0.50837509704839956 0.050000000000006421
 		0.062504413819436833 -0.50837509704839956 0.050000000000006421
-		0.077535174445835464 -0.50837509704839956 0.050000000000006421
-		0.077535174445835464 -0.48516480622065972 0.050000000000006421
-		0.077535174445835464 -0.46195451539291721 0.050000000000006421
+		0.07753517444583545 -0.50837509704839956 0.050000000000006421
+		0.07753517444583545 -0.48516480622065966 0.050000000000006421
+		0.07753517444583545 -0.46195451539291721 0.050000000000006421
 		;
 createNode nurbsCurve -n "bridgeTitle1Shape8" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF400000473F";
 	setAttr -k off ".v";
 	setAttr ".ovc" 29;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25937,6 +28350,7 @@ createNode nurbsCurve -n "bridgeTitle1Shape8" -p "stickinessTitle";
 		0.077473493067829524 -0.35427729427111387 0.050000000000000024
 		;
 createNode nurbsCurve -n "stickinessTitle3Shape" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004740";
 	setAttr -k off ".v";
 	setAttr ".ovc" 29;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -25950,8 +28364,8 @@ createNode nurbsCurve -n "stickinessTitle3Shape" -p "stickinessTitle";
 		 35 36 36
 		73
 		0.084467627305572668 -0.23843073012012772 0.050000000000006539
-		0.084467627305572696 -0.21998676266361772 0.050000000000006539
-		0.06769910600987375 -0.20915084390987027 0.050000000000006539
+		0.084467627305572709 -0.21998676266361772 0.050000000000006539
+		0.06769910600987375 -0.20915084390987029 0.050000000000006539
 		0.050930584714123261 -0.19831492515612059 0.050000000000006539
 		0.023354849861071392 -0.19831492515612059 0.050000000000006539
 		0.0041024503409710089 -0.19831492515612059 0.050000000000006539
@@ -25963,7 +28377,7 @@ createNode nurbsCurve -n "stickinessTitle3Shape" -p "stickinessTitle";
 		-0.033783722424477469 -0.23084435676979764 0.050000000000006539
 		-0.035895018915177213 -0.23550045679979015 0.050000000000006539
 		-0.039248254518027048 -0.24270136036907763 0.050000000000006539
-		-0.043409922184526772 -0.24521570125090009 0.050000000000006539
+		-0.043409922184526765 -0.24521570125090009 0.050000000000006539
 		-0.047571589850976759 -0.2477300421327252 0.050000000000006539
 		-0.054650642790378123 -0.2477300421327252 0.050000000000006539
 		-0.05947545907712759 -0.2477300421327252 0.050000000000006539
@@ -25974,7 +28388,7 @@ createNode nurbsCurve -n "stickinessTitle3Shape" -p "stickinessTitle";
 		-0.072584946554625995 -0.23730361179379245 0.050000000000006539
 		-0.073450789011128004 -0.23488300216571789 0.050000000000006539
 		-0.073450789011128004 -0.23184142298155497 0.050000000000006539
-		-0.073450789011128004 -0.22402189313752274 0.050000000000006539
+		-0.073450789011128004 -0.22402189313752272 0.050000000000006539
 		-0.067362944080127329 -0.21660540768461545 0.050000000000006539
 		-0.061275099149128431 -0.20918892223170504 0.050000000000006539
 		-0.05245498817132721 -0.20403721819751264 0.050000000000006539
@@ -25982,32 +28396,32 @@ createNode nurbsCurve -n "stickinessTitle3Shape" -p "stickinessTitle";
 		-0.05245498817132721 -0.20198919030309004 0.050000000000006539
 		-0.073604273939176901 -0.20198919030309004 0.050000000000006539
 		-0.094753559707026591 -0.20198919030309004 0.050000000000006539
-		-0.10047585274837645 -0.20844961696775777 0.050000000000006539
+		-0.10047585274837643 -0.20844961696775777 0.050000000000006539
 		-0.103834946554626 -0.21661829573200519 0.050000000000006539
-		-0.10719404036087732 -0.22478697449625262 0.050000000000006539
-		-0.10719404036087732 -0.23304821287357502 0.050000000000006539
+		-0.10719404036087732 -0.22478697449625265 0.050000000000006539
+		-0.10719404036087732 -0.23304821287357505 0.050000000000006539
 		-0.10719404036087732 -0.24950976431328764 0.050000000000006539
 		-0.091108585576826551 -0.26050502619841265 0.050000000000006539
-		-0.075023130792777559 -0.27150028808353499 0.050000000000006539
-		-0.049061916785579252 -0.27150028808353499 0.050000000000006539
+		-0.075023130792777545 -0.27150028808353499 0.050000000000006539
+		-0.049061916785579245 -0.27150028808353499 0.050000000000006539
 		-0.029809517265477092 -0.27150028808353499 0.050000000000006539
 		-0.017015201128727009 -0.26684418805353982 0.050000000000006539
 		-0.0042208849919769253 -0.26218808802354776 0.050000000000006539
 		0.0033549435923239113 -0.25144882962522541 0.050000000000006539
-		0.0065839852839741919 -0.24679272959523246 0.050000000000006539
-		0.0088206473265726171 -0.24142310039607262 0.050000000000006539
-		0.011057309369172819 -0.23605347119691278 0.050000000000006539
-		0.013541187593524517 -0.23133527421130762 0.050000000000006539
-		0.015528290173022929 -0.22754853155983989 0.050000000000006539
-		0.019876248706322874 -0.22481685133338492 0.050000000000006539
-		0.024224207239621043 -0.22208517110692994 0.050000000000006539
-		0.031179066267771338 -0.22208517110692994 0.050000000000006539
-		0.037402821516723028 -0.22208517110692994 0.050000000000006539
+		0.0065839852839741919 -0.24679272959523249 0.050000000000006539
+		0.0088206473265726171 -0.24142310039607265 0.050000000000006539
+		0.01105730936917282 -0.23605347119691281 0.050000000000006539
+		0.013541187593524516 -0.23133527421130759 0.050000000000006539
+		0.015528290173022928 -0.22754853155983987 0.050000000000006539
+		0.019876248706322871 -0.22481685133338492 0.050000000000006539
+		0.024224207239621043 -0.22208517110692991 0.050000000000006539
+		0.031179066267771335 -0.22208517110692991 0.050000000000006539
+		0.037402821516723021 -0.22208517110692991 0.050000000000006539
 		0.041200108934272839 -0.22376003144736301 0.050000000000006539
 		0.044997396351772911 -0.22543489178779297 0.050000000000006539
 		0.047113379405171463 -0.22785432977519549 0.050000000000006539
 		0.048980974636122943 -0.22984026071400765 0.050000000000006539
-		0.049852675295973148 -0.23309683596146036 0.050000000000006539
+		0.049852675295973155 -0.23309683596146036 0.050000000000006539
 		0.050724375955873091 -0.23635341120890996 0.050000000000006539
 		0.050724375955873091 -0.23833934214772257 0.050000000000006539
 		0.050724375955873091 -0.24621745402534512 0.050000000000006539
@@ -26024,6 +28438,7 @@ createNode nurbsCurve -n "stickinessTitle3Shape" -p "stickinessTitle";
 		0.084467627305572668 -0.23843073012012772 0.050000000000006539
 		;
 createNode nurbsCurve -n "stickinessTitle4Shape" -p "stickinessTitle";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004741";
 	setAttr -k off ".v";
 	setAttr ".ovc" 29;
 	setAttr ".cc" -type "nurbsCurve" 
@@ -26037,7 +28452,7 @@ createNode nurbsCurve -n "stickinessTitle4Shape" -p "stickinessTitle";
 		 35 36 36
 		73
 		0.084467627305574444 -0.15300193756511915 0.050000000000006539
-		0.084467627305574472 -0.13455797010860915 0.050000000000006539
+		0.084467627305574458 -0.13455797010860915 0.050000000000006539
 		0.067699106009875526 -0.1237220513548617 0.050000000000006539
 		0.050930584714125038 -0.11288613260111202 0.050000000000006539
 		0.023354849861073168 -0.11288613260111202 0.050000000000006539
@@ -26045,16 +28460,16 @@ createNode nurbsCurve -n "stickinessTitle4Shape" -p "stickinessTitle";
 		-0.0076362175504238738 -0.11757328110890886 0.050000000000006539
 		-0.0193748854418756 -0.12226042961670924 0.050000000000006539
 		-0.026329744470075633 -0.13188194281406906 0.050000000000006539
-		-0.029807173984176538 -0.13678643066649887 0.050000000000006539
+		-0.029807173984176535 -0.13678643066649887 0.050000000000006539
 		-0.031795448204324339 -0.14110099744064419 0.050000000000006539
 		-0.033783722424475693 -0.14541556421478907 0.050000000000006539
 		-0.035895018915175436 -0.15007166424478158 0.050000000000006539
 		-0.039248254518025272 -0.15727256781406906 0.050000000000006539
-		-0.043409922184524996 -0.15978690869589152 0.050000000000006539
+		-0.043409922184524989 -0.15978690869589152 0.050000000000006539
 		-0.047571589850974982 -0.16230124957771663 0.050000000000006539
 		-0.054650642790376347 -0.16230124957771663 0.050000000000006539
 		-0.059475459077125814 -0.16230124957771663 0.050000000000006539
-		-0.063371164311075256 -0.16071836303002673 0.050000000000006539
+		-0.063371164311075256 -0.16071836303002671 0.050000000000006539
 		-0.067266869545024699 -0.15913547648233373 0.050000000000006539
 		-0.069244598999127271 -0.15696325467669647 0.050000000000006539
 		-0.071719104098125763 -0.15429542886685887 0.050000000000006539
@@ -26064,26 +28479,26 @@ createNode nurbsCurve -n "stickinessTitle4Shape" -p "stickinessTitle";
 		-0.073450789011126227 -0.13859310058251417 0.050000000000006539
 		-0.067362944080125553 -0.13117661512960688 0.050000000000006539
 		-0.061275099149126655 -0.12376012967669647 0.050000000000006539
-		-0.052454988171325434 -0.11860842564250407 0.050000000000006539
+		-0.052454988171325434 -0.11860842564250408 0.050000000000006539
 		-0.052454988171325434 -0.11758441169529166 0.050000000000006539
-		-0.052454988171325434 -0.11656039774808147 0.050000000000006539
-		-0.073604273939175124 -0.11656039774808147 0.050000000000006539
-		-0.094753559707024815 -0.11656039774808147 0.050000000000006539
-		-0.10047585274837467 -0.1230208244127492 0.050000000000006539
+		-0.052454988171325434 -0.11656039774808148 0.050000000000006539
+		-0.073604273939175124 -0.11656039774808148 0.050000000000006539
+		-0.094753559707024815 -0.11656039774808148 0.050000000000006539
+		-0.10047585274837469 -0.1230208244127492 0.050000000000006539
 		-0.10383494655462422 -0.13118950317699662 0.050000000000006539
 		-0.10719404036087554 -0.13935818194124405 0.050000000000006539
 		-0.10719404036087554 -0.14761942031856645 0.050000000000006539
 		-0.10719404036087554 -0.16408097175827907 0.050000000000006539
 		-0.091108585576824774 -0.17507623364340408 0.050000000000006539
-		-0.075023130792775783 -0.18607149552852642 0.050000000000006539
-		-0.049061916785577475 -0.18607149552852642 0.050000000000006539
-		-0.029809517265475316 -0.18607149552852642 0.050000000000006539
+		-0.075023130792775783 -0.18607149552852639 0.050000000000006539
+		-0.049061916785577475 -0.18607149552852639 0.050000000000006539
+		-0.029809517265475316 -0.18607149552852639 0.050000000000006539
 		-0.017015201128725232 -0.18141539549853125 0.050000000000006539
 		-0.004220884991975149 -0.17675929546853919 0.050000000000006539
 		0.0033549435923256876 -0.16602003707021684 0.050000000000006539
 		0.0065839852839759683 -0.16136393704022389 0.050000000000006539
 		0.0088206473265743934 -0.15599430784106405 0.050000000000006539
-		0.011057309369174595 -0.15062467864190421 0.050000000000006539
+		0.011057309369174597 -0.15062467864190421 0.050000000000006539
 		0.013541187593526294 -0.14590648165629905 0.050000000000006539
 		0.015528290173024706 -0.14211973900483132 0.050000000000006539
 		0.019876248706324651 -0.13938805877837634 0.050000000000006539
@@ -26094,11 +28509,11 @@ createNode nurbsCurve -n "stickinessTitle4Shape" -p "stickinessTitle";
 		0.044997396351774688 -0.1400060992327844 0.050000000000006539
 		0.047113379405173239 -0.14242553722018692 0.050000000000006539
 		0.048980974636124719 -0.14441146815899908 0.050000000000006539
-		0.049852675295974924 -0.14766804340645179 0.050000000000006539
-		0.050724375955874867 -0.15092461865390139 0.050000000000006539
-		0.050724375955874867 -0.152910549592714 0.050000000000006539
-		0.050724375955874867 -0.16078866147033655 0.050000000000006539
-		0.044357680544924838 -0.16916354899283415 0.050000000000006539
+		0.049852675295974931 -0.14766804340645179 0.050000000000006539
+		0.050724375955874861 -0.15092461865390139 0.050000000000006539
+		0.050724375955874861 -0.152910549592714 0.050000000000006539
+		0.050724375955874861 -0.16078866147033655 0.050000000000006539
+		0.044357680544924838 -0.16916354899283417 0.050000000000006539
 		0.037990985134026323 -0.17753843651532908 0.050000000000006539
 		0.026129294972074169 -0.18448743734016404 0.050000000000006539
 		0.026129294972074169 -0.18554191394484143 0.050000000000006539
@@ -26106,28 +28521,31 @@ createNode nurbsCurve -n "stickinessTitle4Shape" -p "stickinessTitle";
 		0.04814559483707348 -0.18659639054952193 0.050000000000006539
 		0.070161894702124306 -0.18659639054952193 0.050000000000006539
 		0.076259112758524372 -0.17970362847693633 0.050000000000006539
-		0.080363370032024539 -0.17166207272558653 0.050000000000006539
+		0.080363370032024539 -0.17166207272558651 0.050000000000006539
 		0.084467627305574444 -0.1636205169742363 0.050000000000006539
 		0.084467627305574444 -0.15300193756511915 0.050000000000006539
 		;
 createNode transform -n "lipLevel_box" -p "lipStickyP";
-	setAttr ".t" -type "double3" 12.378270367703067 -9.7919770172269622 5.1275958839365767e-30 ;
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004742";
+	setAttr ".t" -type "double3" 12.378270367703069 -9.7919770172269622 5.1275958839365781e-30 ;
 	setAttr ".s" -type "double3" 0.2 0.1 0.5 ;
-	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653501 -0.0010000000000001299 ;
+	setAttr ".hdl" -type "double3" 0.025499964915767118 -0.46809335060653506 -0.0010000000000001299 ;
 createNode nurbsCurve -n "lipLevel_boxShape" -p "lipLevel_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004743";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
 	setAttr ".cc" -type "nurbsCurve" 
 		1 4 0 no 3
 		5 0 1 2 3 4
 		5
-		-1 -1.5 -4.1137425632826683e-18
+		-1 -1.5 -4.1137425632826668e-18
 		0.999999999999999 -1.5 5.3884000939589257e-19
 		0.999999999999999 1.5 6.6547143501041047e-19
 		-1 1.5 -3.9871111376681504e-18
-		-1 -1.5 -4.1137425632826683e-18
+		-1 -1.5 -4.1137425632826668e-18
 		;
 createNode transform -n "lipLevel" -p "lipLevel_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004744";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr -l on -k off ".tz";
@@ -26146,6 +28564,7 @@ createNode transform -n "lipLevel" -p "lipLevel_box";
 	setAttr ".xtye" yes;
 	setAttr ".xtze" yes;
 createNode nurbsCurve -n "lipLevelShape" -p "lipLevel";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004745";
 	setAttr -k off ".v";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 31;
@@ -26154,26 +28573,159 @@ createNode nurbsCurve -n "lipLevelShape" -p "lipLevel";
 		13 -2 -1 0 1 2 3 4 5 6 7 8
 		 9 10
 		11
-		0.19590290622280626 0.39180581244561191 -9.2541963937066851e-18
+		0.19590290622280623 0.39180581244561191 -9.2541963937066851e-18
 		-3.8547380689406243e-17 0.55409709377719396 -1.3087410048844189e-17
-		-0.19590290622280601 0.39180581244561219 -9.2541963937066913e-18
-		-0.27704854688859687 9.310761552599333e-17 -2.1991408306299197e-33
-		-0.19590290622280609 -0.39180581244561197 9.2541963937066851e-18
-		-1.2367208126444199e-16 -0.55409709377719396 1.3087410048844189e-17
-		0.19590290622280598 -0.39180581244561224 9.2541963937066928e-18
+		-0.19590290622280601 0.39180581244561213 -9.2541963937066913e-18
+		-0.27704854688859687 9.310761552599333e-17 -2.1991408306299194e-33
+		-0.19590290622280607 -0.39180581244561202 9.2541963937066851e-18
+		-1.2367208126444201e-16 -0.55409709377719396 1.3087410048844189e-17
+		0.19590290622280601 -0.39180581244561224 9.2541963937066928e-18
 		0.27704854688859687 -3.0707872591426976e-16 7.2529981630488394e-33
-		0.19590290622280626 0.39180581244561191 -9.2541963937066851e-18
+		0.19590290622280623 0.39180581244561191 -9.2541963937066851e-18
 		-3.8547380689406243e-17 0.55409709377719396 -1.3087410048844189e-17
-		-0.19590290622280601 0.39180581244561219 -9.2541963937066913e-18
+		-0.19590290622280601 0.39180581244561213 -9.2541963937066913e-18
 		;
 createNode transform -n "lipLevel0" -p "lipLevel_box";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004746";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 0 0 2.7755575615621025e-17 ;
+	setAttr ".t" -type "double3" 0 0 2.7755575615621022e-17 ;
 	setAttr ".s" -type "double3" 1 1.5 1 ;
 createNode locator -n "lipLevel0Shape" -p "lipLevel0";
+	rename -uid "C9B53860-0000-51A7-5771-AF4000004747";
 	setAttr -k off ".v";
 	setAttr ".tmp" yes;
-	setAttr ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los" -type "double3" 1 1 0 ;
+	setAttr -cb off ".los";
+createNode lightLinker -s -n "lightLinker1";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D35";
+	setAttr -s 2 ".lnk";
+	setAttr -s 2 ".slnk";
+createNode displayLayerManager -n "layerManager";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D36";
+createNode displayLayer -n "defaultLayer";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D37";
+createNode renderLayerManager -n "renderLayerManager";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D38";
+createNode renderLayer -n "defaultRenderLayer";
+	rename -uid "C9B53860-0000-51A7-5771-CFF600005D39";
+	setAttr ".g" yes;
+createNode script -n "uiConfigurationScriptNode";
+	rename -uid "C9B53860-0000-51A7-5771-D04D00005D6C";
+	setAttr ".b" -type "string" (
+		"// Maya Mel UI Configuration File.\n//\n//  This script is machine generated.  Edit at your own risk.\n//\n//\n\nglobal string $gMainPane;\nif (`paneLayout -exists $gMainPane`) {\n\n\tglobal int $gUseScenePanelConfig;\n\tint    $useSceneConfig = $gUseScenePanelConfig;\n\tint    $menusOkayInPanels = `optionVar -q allowMenusInPanels`;\tint    $nVisPanes = `paneLayout -q -nvp $gMainPane`;\n\tint    $nPanes = 0;\n\tstring $editorName;\n\tstring $panelName;\n\tstring $itemFilterName;\n\tstring $panelConfig;\n\n\t//\n\t//  get current state of the UI\n\t//\n\tsceneUIReplacement -update $gMainPane;\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Top View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            modelEditor -e \n                -camera \"top\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n"
+		+ "                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 1\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 1\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n"
+		+ "                -rendererName \"base_OpenGL_Renderer\" \n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 256 256 \n                -bumpResolution 512 512 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 1\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n"
+		+ "                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 639\n                -height 395\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n"
+		+ "                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"top\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 1\n            -backfaceCulling 0\n            -xray 1\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n"
+		+ "            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"base_OpenGL_Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n"
+		+ "            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 639\n            -height 395\n            -sceneRenderFilter 0\n            $editorName;\n"
+		+ "        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            modelEditor -e \n                -camera \"side\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n"
+		+ "                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -rendererName \"base_OpenGL_Renderer\" \n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 256 256 \n                -bumpResolution 512 512 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n"
+		+ "                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 1\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n"
+		+ "                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 638\n                -height 395\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"side\" \n            -useInteractiveMode 0\n"
+		+ "            -displayLights \"default\" \n            -displayAppearance \"wireframe\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 1\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"base_OpenGL_Renderer\" \n"
+		+ "            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n"
+		+ "            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 638\n            -height 395\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" == $panelName) {\n"
+		+ "\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            modelEditor -e \n                -camera \"front\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 1\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n"
+		+ "                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -rendererName \"vp2Renderer\" \n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 256 256 \n                -bumpResolution 512 512 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n"
+		+ "                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 0\n                -polymeshes 0\n                -subdivSurfaces 0\n                -planes 0\n                -lights 0\n                -cameras 0\n                -controlVertices 1\n                -hulls 0\n                -grid 0\n                -imagePlane 0\n                -joints 0\n                -ikHandles 0\n                -deformers 0\n                -dynamics 0\n                -particleInstancers 0\n                -fluids 0\n                -hairSystems 0\n                -follicles 0\n                -nCloths 0\n                -nParticles 0\n                -nRigids 0\n                -dynamicConstraints 0\n                -locators 1\n                -manipulators 1\n                -pluginShapes 0\n                -dimensions 0\n                -handles 0\n                -pivots 0\n                -textures 0\n                -strokes 0\n"
+		+ "                -motionTrails 0\n                -clipGhosts 0\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 639\n                -height 395\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 0 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n"
+		+ "            -twoSidedLighting 1\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n"
+		+ "            -maximumNumHardwareLights 0\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -nurbsCurves 1\n            -nurbsSurfaces 0\n            -polymeshes 0\n            -subdivSurfaces 0\n            -planes 0\n            -lights 0\n            -cameras 0\n            -controlVertices 1\n            -hulls 0\n            -grid 0\n            -imagePlane 0\n            -joints 0\n            -ikHandles 0\n            -deformers 0\n            -dynamics 0\n            -particleInstancers 0\n            -fluids 0\n            -hairSystems 0\n            -follicles 0\n            -nCloths 0\n            -nParticles 0\n            -nRigids 0\n            -dynamicConstraints 0\n            -locators 1\n            -manipulators 1\n            -pluginShapes 0\n            -dimensions 0\n"
+		+ "            -handles 0\n            -pivots 0\n            -textures 0\n            -strokes 0\n            -motionTrails 0\n            -clipGhosts 0\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 639\n            -height 395\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 0 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            modelEditor -e \n                -camera \"persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n"
+		+ "                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 1\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 1\n                -activeComponentsXray 0\n                -displayTextures 1\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n"
+		+ "                -rendererName \"base_OpenGL_Renderer\" \n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 256 256 \n                -bumpResolution 512 512 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 1\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 0\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n"
+		+ "                -hulls 1\n                -grid 0\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 638\n                -height 395\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n"
+		+ "                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 1\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 1\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n"
+		+ "            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"base_OpenGL_Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n"
+		+ "            -nurbsCurves 1\n            -nurbsSurfaces 0\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 638\n            -height 395\n            -sceneRenderFilter 0\n            $editorName;\n"
+		+ "        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `outlinerPanel -unParent -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            outlinerEditor -e \n                -docTag \"isolOutln_fromSeln\" \n                -showShapes 0\n                -showReferenceNodes 1\n                -showReferenceMembers 1\n                -showAttributes 0\n                -showConnected 0\n                -showAnimCurvesOnly 0\n                -showMuteInfo 1\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 1\n                -showAssets 1\n"
+		+ "                -showContainedOnly 1\n                -showPublishedAsConnected 0\n                -showContainerContents 1\n                -ignoreDagHierarchy 0\n                -expandConnections 0\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 0\n                -highlightActive 1\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"defaultSetFilter\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n"
+		+ "                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 0\n                -showPinIcons 0\n                -mapMotionTrails 0\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 1\n            -organizeByLayer 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n"
+		+ "            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 0\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n"
+		+ "            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 0\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\tif ($useSceneConfig) {\n\t\toutlinerPanel -e -to $panelName;\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"graphEditor\" -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n"
+		+ "                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n"
+		+ "                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 1\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showResults \"off\" \n"
+		+ "                -showBufferCurves \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -stackedCurves 0\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -displayNormalized 0\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -classicMode 1\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n"
+		+ "                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n"
+		+ "                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 1\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showResults \"off\" \n                -showBufferCurves \"off\" \n                -smoothness \"fine\" \n"
+		+ "                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -stackedCurves 0\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -displayNormalized 0\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -classicMode 1\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dopeSheetPanel\" -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n"
+		+ "                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n"
+		+ "                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n"
+		+ "                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n"
+		+ "                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n"
+		+ "                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"clipEditorPanel\" -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 0 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n"
+		+ "                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"sequenceEditorPanel\" -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 1 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n"
+		+ "\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperGraphPanel\" -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n"
+		+ "                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n"
+		+ "                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n"
+		+ "                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"visorPanel\" -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n"
+		+ "\t\t\t$panelName = `scriptedPanel -unParent  -type \"createNodePanel\" -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"polyTexturePlacementPanel\" -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" == $panelName) {\n"
+		+ "\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"renderWindowPanel\" -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"blendShapePanel\" (localizedPanelLabel(\"Blend Shape\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\tblendShapePanel -unParent -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels ;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tblendShapePanel -edit -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n"
+		+ "\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynRelEdPanel\" -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"relationshipPanel\" -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"referenceEditorPanel\" -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"componentEditorPanel\" (localizedPanelLabel(\"Component Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"componentEditorPanel\" -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynPaintScriptedPanelType\" -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"scriptEditorPanel\" -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"profilerPanel\" -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"Stereo\" -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels `;\nstring $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n"
+		+ "                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n"
+		+ "                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n"
+		+ "                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n"
+		+ "                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\nstring $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n"
+		+ "                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n"
+		+ "                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n"
+		+ "                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Model Panel5\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Model Panel5\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            modelEditor -e \n                -camera \"front\" \n                -useInteractiveMode 0\n"
+		+ "                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 1\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n"
+		+ "                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -rendererName \"base_OpenGL_Renderer\" \n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 256 256 \n                -bumpResolution 512 512 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 1\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 0\n                -subdivSurfaces 0\n                -planes 0\n"
+		+ "                -lights 0\n                -cameras 0\n                -controlVertices 0\n                -hulls 0\n                -grid 0\n                -imagePlane 0\n                -joints 0\n                -ikHandles 0\n                -deformers 0\n                -dynamics 0\n                -particleInstancers 0\n                -fluids 0\n                -hairSystems 0\n                -follicles 0\n                -nCloths 0\n                -nParticles 0\n                -nRigids 0\n                -dynamicConstraints 0\n                -locators 1\n                -manipulators 1\n                -pluginShapes 0\n                -dimensions 0\n                -handles 0\n                -pivots 0\n                -textures 0\n                -strokes 0\n                -motionTrails 0\n                -clipGhosts 0\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 578\n                -height 914\n                -sceneRenderFilter 0\n                $editorName;\n"
+		+ "            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Model Panel5\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 1\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n"
+		+ "            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"base_OpenGL_Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n"
+		+ "            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 0\n            -subdivSurfaces 0\n            -planes 0\n            -lights 0\n            -cameras 0\n            -controlVertices 0\n            -hulls 0\n            -grid 0\n            -imagePlane 0\n            -joints 0\n            -ikHandles 0\n            -deformers 0\n            -dynamics 0\n            -particleInstancers 0\n            -fluids 0\n            -hairSystems 0\n            -follicles 0\n            -nCloths 0\n            -nParticles 0\n            -nRigids 0\n            -dynamicConstraints 0\n            -locators 1\n            -manipulators 1\n            -pluginShapes 0\n            -dimensions 0\n            -handles 0\n            -pivots 0\n            -textures 0\n            -strokes 0\n            -motionTrails 0\n            -clipGhosts 0\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n"
+		+ "            -width 578\n            -height 914\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\tif ($useSceneConfig) {\n\t\tmodelPanel -e -to $panelName;\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph InputOutput1\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperGraphPanel\" -l (localizedPanelLabel(\"Hypergraph InputOutput1\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 1\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n"
+		+ "                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 1\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph InputOutput1\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n"
+		+ "            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 1\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 1\n                -limitGraphTraversal -1\n                -range 0 0 \n"
+		+ "                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"createNodePanel\" -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph InputOutput2\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperGraphPanel\" -l (localizedPanelLabel(\"Hypergraph InputOutput2\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n"
+		+ "            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n"
+		+ "                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph InputOutput2\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n"
+		+ "                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Model Panel6\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Model Panel6\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            modelEditor -e \n                -camera \"front\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n                -activeOnly 0\n                -ignorePanZoom 0\n"
+		+ "                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 1\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n"
+		+ "                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 0\n                -polymeshes 0\n                -subdivSurfaces 0\n                -planes 0\n                -lights 0\n                -cameras 0\n                -controlVertices 1\n                -hulls 0\n                -grid 0\n                -imagePlane 0\n                -joints 0\n                -ikHandles 0\n"
+		+ "                -deformers 0\n                -dynamics 0\n                -particleInstancers 0\n                -fluids 0\n                -hairSystems 0\n                -follicles 0\n                -nCloths 0\n                -nParticles 0\n                -nRigids 0\n                -dynamicConstraints 0\n                -locators 1\n                -manipulators 1\n                -pluginShapes 0\n                -dimensions 0\n                -handles 0\n                -pivots 0\n                -textures 0\n                -strokes 0\n                -motionTrails 0\n                -clipGhosts 0\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n"
+		+ "\t\tmodelPanel -edit -l (localizedPanelLabel(\"Model Panel6\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 1\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n"
+		+ "            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 4 4 \n            -bumpResolution 4 4 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 0\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -nurbsCurves 1\n            -nurbsSurfaces 0\n            -polymeshes 0\n            -subdivSurfaces 0\n            -planes 0\n            -lights 0\n            -cameras 0\n"
+		+ "            -controlVertices 1\n            -hulls 0\n            -grid 0\n            -imagePlane 0\n            -joints 0\n            -ikHandles 0\n            -deformers 0\n            -dynamics 0\n            -particleInstancers 0\n            -fluids 0\n            -hairSystems 0\n            -follicles 0\n            -nCloths 0\n            -nParticles 0\n            -nRigids 0\n            -dynamicConstraints 0\n            -locators 1\n            -manipulators 1\n            -pluginShapes 0\n            -dimensions 0\n            -handles 0\n            -pivots 0\n            -textures 0\n            -strokes 0\n            -motionTrails 0\n            -clipGhosts 0\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 0\n            -height 0\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n"
+		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperShadePanel\" -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n"
+		+ "                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -activeTab -1\n                -editorMode \"default\" \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n"
+		+ "                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -activeTab -1\n                -editorMode \"default\" \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n\t\tpanelConfiguration -label (localizedPanelLabel(\"Current Panel Layout\")) \n"
+		+ "\t\t\t-defaultImage \"\"\n\t\t\t-image \"\"\n\t\t\t-sc true\n\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"quad\\\" -ps 1 50 50 -ps 2 50 50 -ps 3 50 50 -ps 4 50 50 $gMainPane;\"\n\t\t\t-ap false\n\t\t\t\t(localizedPanelLabel(\"Top View\")) \n\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Top View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera top` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 1\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 639\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Top View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera top` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 1\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 639\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t-ap false\n\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 0\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 638\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 0\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 638\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t-ap false\n\t\t\t\t(localizedPanelLabel(\"Side View\")) \n\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Side View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera side` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"wireframe\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 638\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Side View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera side` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"wireframe\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 638\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t-ap false\n\t\t\t\t(localizedPanelLabel(\"Front View\")) \n\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Front View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera front` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 0\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 0\\n    -polymeshes 0\\n    -subdivSurfaces 0\\n    -planes 0\\n    -lights 0\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 0\\n    -grid 0\\n    -imagePlane 0\\n    -joints 0\\n    -ikHandles 0\\n    -deformers 0\\n    -dynamics 0\\n    -particleInstancers 0\\n    -fluids 0\\n    -hairSystems 0\\n    -follicles 0\\n    -nCloths 0\\n    -nParticles 0\\n    -nRigids 0\\n    -dynamicConstraints 0\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 0\\n    -dimensions 0\\n    -handles 0\\n    -pivots 0\\n    -textures 0\\n    -strokes 0\\n    -motionTrails 0\\n    -clipGhosts 0\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 639\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 0 \\n    $editorName\"\n"
+		+ "\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Front View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera front` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 0\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 0\\n    -polymeshes 0\\n    -subdivSurfaces 0\\n    -planes 0\\n    -lights 0\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 0\\n    -grid 0\\n    -imagePlane 0\\n    -joints 0\\n    -ikHandles 0\\n    -deformers 0\\n    -dynamics 0\\n    -particleInstancers 0\\n    -fluids 0\\n    -hairSystems 0\\n    -follicles 0\\n    -nCloths 0\\n    -nParticles 0\\n    -nRigids 0\\n    -dynamicConstraints 0\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 0\\n    -dimensions 0\\n    -handles 0\\n    -pivots 0\\n    -textures 0\\n    -strokes 0\\n    -motionTrails 0\\n    -clipGhosts 0\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 639\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 0 \\n    $editorName\";\n"
+		+ "        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"quad\\\" -ps 1 50 50 -ps 2 50 50 -ps 3 50 50 -ps 4 50 50 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Top View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Top View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera top` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 1\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 639\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Top View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera top` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 1\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 639\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 0\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 638\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 0\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 638\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Side View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Side View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera side` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"wireframe\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 638\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Side View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera side` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"wireframe\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 638\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Front View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Front View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera front` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 0\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 0\\n    -polymeshes 0\\n    -subdivSurfaces 0\\n    -planes 0\\n    -lights 0\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 0\\n    -grid 0\\n    -imagePlane 0\\n    -joints 0\\n    -ikHandles 0\\n    -deformers 0\\n    -dynamics 0\\n    -particleInstancers 0\\n    -fluids 0\\n    -hairSystems 0\\n    -follicles 0\\n    -nCloths 0\\n    -nParticles 0\\n    -nRigids 0\\n    -dynamicConstraints 0\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 0\\n    -dimensions 0\\n    -handles 0\\n    -pivots 0\\n    -textures 0\\n    -strokes 0\\n    -motionTrails 0\\n    -clipGhosts 0\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 639\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 0 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Front View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera front` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 0\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 0\\n    -polymeshes 0\\n    -subdivSurfaces 0\\n    -planes 0\\n    -lights 0\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 0\\n    -grid 0\\n    -imagePlane 0\\n    -joints 0\\n    -ikHandles 0\\n    -deformers 0\\n    -dynamics 0\\n    -particleInstancers 0\\n    -fluids 0\\n    -hairSystems 0\\n    -follicles 0\\n    -nCloths 0\\n    -nParticles 0\\n    -nRigids 0\\n    -dynamicConstraints 0\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 0\\n    -dimensions 0\\n    -handles 0\\n    -pivots 0\\n    -textures 0\\n    -strokes 0\\n    -motionTrails 0\\n    -clipGhosts 0\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 639\\n    -height 395\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 0 \\n    $editorName\"\n"
+		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        setFocus `paneLayout -q -p1 $gMainPane`;\n        sceneUIReplacement -deleteRemaining;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
+	setAttr ".st" 3;
+createNode script -n "sceneConfigurationScriptNode";
+	rename -uid "C9B53860-0000-51A7-5771-D04D00005D6D";
+	setAttr ".b" -type "string" "playbackOptions -min 1 -max 24 -ast 1 -aet 48 ";
+	setAttr ".st" 6;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -26181,7 +28733,13 @@ select -ne :time1;
 	setAttr -cb on ".bnm";
 	setAttr -k on ".o" 1;
 	setAttr ".unw" 1;
-lockNode -l 1 ;
+	setAttr -k on ".etw";
+	setAttr -k on ".tps";
+	setAttr -k on ".tms";
+select -ne :hardwareRenderingGlobals;
+	setAttr ".cons" no;
+	setAttr ".vac" 2;
+	setAttr ".fprt" yes;
 select -ne :renderPartition;
 	setAttr -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -26190,7 +28748,24 @@ select -ne :renderPartition;
 	setAttr -s 2 ".st";
 	setAttr -cb on ".an";
 	setAttr -cb on ".pt";
-lockNode -l 1 ;
+select -ne :renderGlobalsList1;
+	setAttr -k on ".cch";
+	setAttr -cb on ".ihi";
+	setAttr -k on ".nds";
+	setAttr -cb on ".bnm";
+select -ne :defaultShaderList1;
+	setAttr -k on ".cch";
+	setAttr -cb on ".ihi";
+	setAttr -k on ".nds";
+	setAttr -cb on ".bnm";
+	setAttr -s 4 ".s";
+select -ne :postProcessList1;
+	setAttr -k on ".cch";
+	setAttr -cb on ".ihi";
+	setAttr -k on ".nds";
+	setAttr -cb on ".bnm";
+	setAttr -s 2 ".p";
+select -ne :defaultRenderingList1;
 select -ne :initialShadingGroup;
 	setAttr -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -26218,7 +28793,6 @@ select -ne :initialShadingGroup;
 	setAttr -cb on ".mica";
 	setAttr -av -cb on ".micw";
 	setAttr -cb on ".mirw";
-lockNode -l 1 ;
 select -ne :initialParticleSE;
 	setAttr -av -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -26245,38 +28819,106 @@ select -ne :initialParticleSE;
 	setAttr -cb on ".mica";
 	setAttr -av -cb on ".micw";
 	setAttr -cb on ".mirw";
-lockNode -l 1 ;
-select -ne :defaultShaderList1;
+select -ne :defaultRenderGlobals;
 	setAttr -k on ".cch";
-	setAttr -cb on ".ihi";
+	setAttr -k on ".ihi";
 	setAttr -k on ".nds";
-	setAttr -cb on ".bnm";
-	setAttr -s 2 ".s";
-lockNode -l 1 ;
-select -ne :postProcessList1;
-	setAttr -k on ".cch";
-	setAttr -cb on ".ihi";
-	setAttr -k on ".nds";
-	setAttr -cb on ".bnm";
-	setAttr -s 2 ".p";
-lockNode -l 1 ;
-select -ne :defaultRenderingList1;
-select -ne :renderGlobalsList1;
-	setAttr -k on ".cch";
-	setAttr -cb on ".ihi";
-	setAttr -k on ".nds";
-	setAttr -cb on ".bnm";
-lockNode -l 1 ;
+	setAttr -k on ".bnm";
+	setAttr -k on ".macc";
+	setAttr -k on ".macd";
+	setAttr -k on ".macq";
+	setAttr -k on ".mcfr";
+	setAttr -k on ".ifg";
+	setAttr -k on ".clip";
+	setAttr -k on ".edm";
+	setAttr -k on ".edl";
+	setAttr -k on ".ren";
+	setAttr -av -k on ".esr";
+	setAttr -k on ".ors";
+	setAttr -k on ".sdf";
+	setAttr -k on ".outf";
+	setAttr -k on ".imfkey";
+	setAttr -k on ".gama";
+	setAttr -k on ".an";
+	setAttr -k on ".ar";
+	setAttr -k on ".fs";
+	setAttr -k on ".ef";
+	setAttr -av -k on ".bfs";
+	setAttr -k on ".me";
+	setAttr -k on ".se";
+	setAttr -k on ".be";
+	setAttr -k on ".ep" 1;
+	setAttr -k on ".fec";
+	setAttr -k on ".ofc";
+	setAttr -k on ".ofe";
+	setAttr -k on ".efe";
+	setAttr -k on ".oft";
+	setAttr -k on ".umfn";
+	setAttr -k on ".ufe";
+	setAttr -k on ".pff";
+	setAttr -k on ".peie";
+	setAttr -k on ".ifp";
+	setAttr -k on ".comp";
+	setAttr -k on ".cth";
+	setAttr -k on ".soll";
+	setAttr -k on ".rd";
+	setAttr -k on ".lp";
+	setAttr -k on ".sp";
+	setAttr -k on ".shs";
+	setAttr -k on ".lpr";
+	setAttr -k on ".gv";
+	setAttr -k on ".sv";
+	setAttr -k on ".mm";
+	setAttr -k on ".npu";
+	setAttr -k on ".itf";
+	setAttr -k on ".shp";
+	setAttr -k on ".isp";
+	setAttr -k on ".uf";
+	setAttr -k on ".oi";
+	setAttr -k on ".rut";
+	setAttr -k on ".mb";
+	setAttr -av -k on ".mbf";
+	setAttr -k on ".afp";
+	setAttr -k on ".pfb";
+	setAttr -k on ".pram";
+	setAttr -k on ".poam";
+	setAttr -k on ".prlm";
+	setAttr -k on ".polm";
+	setAttr -k on ".prm";
+	setAttr -k on ".pom";
+	setAttr -k on ".pfrm";
+	setAttr -k on ".pfom";
+	setAttr -av -k on ".bll";
+	setAttr -k on ".bls";
+	setAttr -k on ".smv";
+	setAttr -k on ".ubc";
+	setAttr -k on ".mbc";
+	setAttr -k on ".mbt";
+	setAttr -k on ".udbx";
+	setAttr -k on ".smc";
+	setAttr -k on ".kmv";
+	setAttr -k on ".isl";
+	setAttr -k on ".ism";
+	setAttr -k on ".imb";
+	setAttr -k on ".rlen";
+	setAttr -av -k on ".frts";
+	setAttr -k on ".tlwd";
+	setAttr -k on ".tlht";
+	setAttr -k on ".jfc";
+	setAttr -k on ".rsb";
+	setAttr -k on ".ope";
+	setAttr -k on ".oppf";
+	setAttr -k on ".hbl";
 select -ne :defaultResolution;
 	setAttr -av -k on ".cch";
 	setAttr -k on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -k on ".bnm";
-	setAttr -av -k on ".w";
-	setAttr -av -k on ".h";
-	setAttr -av -k on ".pa" 1;
+	setAttr -av -k on ".w" 640;
+	setAttr -av -k on ".h" 480;
+	setAttr -av -k on ".pa";
 	setAttr -av -k on ".al";
-	setAttr -av -k on ".dar";
+	setAttr -av -k on ".dar" 1.3333332538604736;
 	setAttr -av -k on ".ldar";
 	setAttr -cb on ".dpi";
 	setAttr -av -k on ".off";
@@ -26297,7 +28939,6 @@ select -ne :defaultLightSet;
 	setAttr -k on ".fo";
 	setAttr -k on ".epo";
 	setAttr -k on ".ro" yes;
-lockNode -l 1 ;
 select -ne :defaultObjectSet;
 	setAttr -k on ".cch";
 	setAttr -k on ".ihi";
@@ -26311,6 +28952,12 @@ select -ne :defaultObjectSet;
 	setAttr -k on ".fo";
 	setAttr -k on ".epo";
 	setAttr ".ro" yes;
+select -ne :defaultColorMgtGlobals;
+	setAttr ".vtn" -type "string" "Rec 709 gamma";
+	setAttr ".ovt" no;
+	setAttr ".povt" no;
+	setAttr ".otn" -type "string" "Rec 709 gamma";
+	setAttr ".potn" -type "string" "Rec 709 gamma";
 select -ne :hardwareRenderGlobals;
 	setAttr -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -26340,57 +28987,22 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k off -cb on ".mgcs";
 	setAttr -k off -cb on ".twa";
 	setAttr -k off -cb on ".twz";
-	setAttr -cb on ".hwcc";
-	setAttr -cb on ".hwdp";
-	setAttr -cb on ".hwql";
+	setAttr -k on ".hwcc";
+	setAttr -k on ".hwdp";
+	setAttr -k on ".hwql";
 	setAttr -k on ".hwfr";
 	setAttr -k on ".soll";
 	setAttr -k on ".sosl";
 	setAttr -k on ".bswa";
 	setAttr -k on ".shml";
 	setAttr -k on ".hwel";
-select -ne :hardwareRenderingGlobals;
-	setAttr ".otfna" -type "stringArray" 18 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surfaces" "Particles" "Fluids" "Image Planes" "UI:" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Misc. UI" "Ornaments"  ;
-	setAttr ".otfva" -type "Int32Array" 18 0 1 1 1 1 1
-		 1 0 0 0 0 0 0 0 0 0 0 0 ;
-select -ne :defaultHardwareRenderGlobals;
-	setAttr -k on ".cch";
-	setAttr -cb on ".ihi";
-	setAttr -k on ".nds";
-	setAttr -cb on ".bnm";
-	setAttr -av -k on ".rp";
-	setAttr -k on ".cai";
-	setAttr -k on ".coi";
-	setAttr -cb on ".bc";
-	setAttr -av -k on ".bcb";
-	setAttr -av -k on ".bcg";
-	setAttr -av -k on ".bcr";
-	setAttr -k on ".ei";
-	setAttr -av -k on ".ex";
-	setAttr -av -k on ".es";
-	setAttr -av -k on ".ef";
-	setAttr -av -k on ".bf";
-	setAttr -k on ".fii";
-	setAttr -av -k on ".sf";
-	setAttr -k on ".gr";
-	setAttr -k on ".li";
-	setAttr -k on ".ls";
-	setAttr -av -k on ".mb";
-	setAttr -k on ".ti";
-	setAttr -k on ".txt";
-	setAttr -k on ".mpr";
-	setAttr -k on ".wzd";
-	setAttr -k on ".fn" -type "string" "im";
-	setAttr -k on ".if";
-	setAttr -k on ".res" -type "string" "ntsc_4d 646 485 1.333";
-	setAttr -k on ".as";
-	setAttr -k on ".ds";
-	setAttr -k on ".lm";
-	setAttr -av -k on ".fir";
-	setAttr -k on ".aap";
-	setAttr -av -k on ".gh";
-	setAttr -cb on ".sd";
-lockNode -l 1 ;
+relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
+connectAttr "layerManager.dli[0]" "defaultLayer.id";
+connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
+connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "browDetail01PShape.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "browDetail02PShape.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "browDetail03PShape.iog" ":initialShadingGroup.dsm" -na;
@@ -26400,4 +29012,4 @@ connectAttr "browDetail06PShape.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "browDetail07PShape.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "browDetail08PShape.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "browDetail09PShape.iog" ":initialShadingGroup.dsm" -na;
-// End of myTwitchPanel04test.ma
+// End of myTwitchPanel07.ma
