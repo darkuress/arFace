@@ -25,6 +25,7 @@ class Core(object):
                  baseMaPath     = '/corp/projects/eng/jhwang/svn/maya/arFace/maFiles',
                  panelFilename  = 'panel.ma',
                  panelTopNode   = 'Panel',
+                 faceMainNode   = 'faceMain',
                  faceLocTopNode = 'faceLoc_grp',
                  locFileName    = 'locators.ma',
                  faceFactors    = {},
@@ -75,6 +76,7 @@ class Core(object):
         jsonData = open(self.jsonPath)
         self.locData = json.load(jsonData)
         
+        self.faceMainNode = faceMainNode
         self.faceFactors = {'main'    : 'faceFactors',
                             'eyebrow' : 'browFactor',
                             'eyelid'  : 'lidFactor'}

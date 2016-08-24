@@ -63,7 +63,7 @@ class Ctrls(Func.Func, Base.Base):
             #- making lids Ctrl group
             lidsCtrlGrp = cmds.group (em=True, w =True, n = uploPrefix + self.eyelidName + self.ctlSuffix + self.grpSuffix)
             allLidsCtlGrp.append(lidsCtrlGrp)
-            cntPos = cmds.xform (ctlP, q=1, ws =1, t = 1 )
+            cntPos = cmds.xform (ctlP, q=1, ws =1, t = 1)
             
             #- creating controller 
             if lr == self.prefix[0]:
@@ -83,9 +83,9 @@ class Ctrls(Func.Func, Base.Base):
                 cmds.xform(lidCtlP, ws = True, t =(cntPos[0], cntPos[1], cntPos[2]))
                 cmds.parent(lidCtlP, lidsCtrlGrp)
                 if pos == 'InCorner':
-                    cmds.setAttr(lidCtl +'.tx', -1 )
+                    cmds.setAttr(lidCtl +'.tx', -1)
                 elif pos == 'OutCorner':
-                    cmds.setAttr(lidCtl +'.tx', 1 )
+                    cmds.setAttr(lidCtl +'.tx', 1)
             
             details = []
             for i in range(1, lidJntsLen+1):
@@ -99,22 +99,22 @@ class Ctrls(Func.Func, Base.Base):
                                                               'vi'])
                 details.append(detailCtl[0])
                 detailCtlP = detailCtl[1]
-                cmds.parent (detailCtlP, ctlP )
+                cmds.parent (detailCtlP, ctlP)
                 increment = 2.0 /(lidJntsLen+1)
-                cmds.setAttr (detailCtlP + ".tx", increment*i - 1.0 )
-                cmds.setAttr (detailCtlP + ".ty", 0 )
-                cmds.setAttr (detailCtlP + ".tz", 0 )
+                cmds.setAttr (detailCtlP + ".tx", increment*i - 1.0)
+                cmds.setAttr (detailCtlP + ".ty", 0)
+                cmds.setAttr (detailCtlP + ".tz", 0)
 
-            #- eyelids controller curve shape ( different number of points )          
+            #- eyelids controller curve shape(different number of points)          
             tempCtlCrv = cmds.curve(d = 3, p =([0,0,0],[0.33,0,0],[0.66,0,0],[1,0,0])) 
-            cmds.rebuildCurve(tempCtlCrv, rt = 0, d = 3, kr = 0, s = 2 )   
+            cmds.rebuildCurve(tempCtlCrv, rt = 0, d = 3, kr = 0, s = 2)   
             lidCtlCrv = cmds.rename(tempCtlCrv, uploPrefix +'Ctl' + self.crvSuffix)
             cmds.parent(lidCtlCrv, self.eyelidCrvGrpName) 
-            ctlCrvCv = cmds.ls(lidCtlCrv + '.cv[*]', fl =True )#!!check same curve exist if Error : list index out of range
+            ctlCrvCv = cmds.ls(lidCtlCrv + '.cv[*]', fl =True)#!!check same curve exist if Error : list index out of range
                     
             #- corner twist curves setup (curves for corner Adjust 06/23/2016)
-            cornerCrv = cmds.duplicate(lidCtlCrv, n = uploPrefix +'Corner' + self.crvSuffix )
-            cornerCrvCv = cmds.ls(cornerCrv[0] + '.cv[*]', fl =True )
+            cornerCrv = cmds.duplicate(lidCtlCrv, n = uploPrefix +'Corner' + self.crvSuffix)
+            cornerCrvCv = cmds.ls(cornerCrv[0] + '.cv[*]', fl =True)
 
             if self.uploPrefix[0] in uploPrefix:
                 inCls = cmds.cluster(cornerCrvCv[0:2], n = uploPrefix[:2] +'inTwistCls')
@@ -125,7 +125,7 @@ class Ctrls(Func.Func, Base.Base):
             elif self.uploPrefix[1] in uploPrefix:
                 cmds.sets(cornerCrvCv[0:2], add = uploPrefix[:2] +'inTwistClsSet')
                 cmds.percent(uploPrefix[:2] +'inTwistCls', cornerCrvCv[1], v = 0.3) 
-                cmds.sets(cornerCrvCv[3:5], add = uploPrefix[:2] +'outTwistClsSet' )
+                cmds.sets(cornerCrvCv[3:5], add = uploPrefix[:2] +'outTwistClsSet')
                 cmds.percent(uploPrefix[:2] +'outTwistCls', cornerCrvCv[3], v = 0.3)
                 
                 #- corner twist setup (no need to use ClsHandle.rotateZ)
@@ -134,7 +134,86 @@ class Ctrls(Func.Func, Base.Base):
                 
                 cmds.connectAttr(uploPrefix[:2] + "outerLidTwist.tx" , uploPrefix[:2] +'outTwistClsHandle.tx')
                 cmds.connectAttr(uploPrefix[:2] + "outerLidTwist.ty" , uploPrefix[:2] +'outTwistClsHandle.ty')
-                 
+
+            #- lidCtl drive the center controlPoints on ctlCrv
+            #corner ctls setup                    
+            cmds.connectAttr(uploPrefix + "InCorner" + self.ctlSuffix + ".ty" , ctlCrvCv[0] + ".yValue")
+            cmds.connectAttr(uploPrefix + "InCorner" + self.ctlSuffix + ".ty" , ctlCrvCv[1] + ".yValue")
+            cmds.setAttr(ctlCrvCv[0] + ".xValue" , lock = True)     
+            cmds.setAttr(ctlCrvCv[1] + ".xValue" , lock = True) 
+
+            cmds.connectAttr(uploPrefix + "OutCorner" + self.ctlSuffix + ".ty" , ctlCrvCv[3] + ".yValue")
+            cmds.connectAttr(uploPrefix + "OutCorner" + self.ctlSuffix + ".ty" , ctlCrvCv[4] + ".yValue")
+            cmds.setAttr(ctlCrvCv[3] + ".xValue", lock = True)  
+            cmds.setAttr(ctlCrvCv[4] + ".xValue", lock = True)
+                                 
+            cntAddD = cmds.shadingNode('addDoubleLinear', asUtility=True, n= uploPrefix + "Cnt_AddD")    
+            if self.prefix[0] in uploPrefix: #left
+                #- center ctrl.tx drives center point (lidCtl_crv) 
+                lCntMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = uploPrefix +'Cnt_mult') 
+                cmds.connectAttr(uploPrefix + "Center" + self.ctlSuffix + ".tx", cntAddD + ".input1")
+                cmds.setAttr (cntAddD + ".input2", 0.5) 
+                cmds.connectAttr(cntAddD + ".output" , ctlCrvCv[2] + ".xValue")
+                #- center ctrl.ty drives ctlCrv center cv[2].yValue
+                cmds.connectAttr(uploPrefix + "Center" + self.ctlSuffix + ".ty" , lCntMult + ".input1Y")
+                cmds.setAttr (lCntMult + ".input2Y", 2) 
+                cmds.connectAttr(lCntMult + ".outputY", ctlCrvCv[2] + ".yValue")                
+                
+            if self.prefix[1] in uploPrefix: #right
+                #- center ctrl.tx drives ctlCrv center cv[2].xValue 
+                rCntMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = uploPrefix +'Cnt_mult')
+                cmds.connectAttr(uploPrefix + "Center" + self.ctlSuffix + ".tx" , rCntMult + ".input1X") 
+                cmds.setAttr(rCntMult + ".input2X", -1)
+                cmds.connectAttr(rCntMult + ".outputX", cntAddD + ".input1")
+                cmds.setAttr(cntAddD + ".input2", 0.5) 
+                cmds.connectAttr(cntAddD + ".output" , ctlCrvCv[2] + ".xValue")            
+                #center ctrl.ty drives ctlCrv center cv[2].yValue 
+                cmds.connectAttr(uploPrefix + "Center" + self.ctlSuffix + ".ty" , rCntMult + ".input1Y")
+                cmds.setAttr(rCntMult + ".input2Y", 2) 
+                cmds.connectAttr(rCntMult + ".outputY", ctlCrvCv[2] + ".yValue") 
+
+            detailPCtls = cmds.ls(uploPrefix + "Detail*" + self.grpSuffix, type = 'transform')
+            incrementYPoc = 1.0/(lidJntsLen +1)
+            incrementXPoc = 1.0/(lidJntsLen -1)    
+            for i in range (1, lidJntsLen+1):
+                #- POC for positionX on the eyelids ctl curve 
+                ctlXPOC = cmds.shadingNode('pointOnCurveInfo', asUtility=True, n = uploPrefix + 'CtlXPoc' + str(i).zfill(2)) 
+                cmds.connectAttr(uploPrefix + "Ctl_crvShape.worldSpace", ctlXPOC + '.inputCurve')   
+                cmds.setAttr(ctlXPOC + '.turnOnPercentage', 1)        
+                cmds.setAttr(ctlXPOC + '.parameter', incrementXPoc *(i-1))
+                
+                #- POC for positionY on the eyelids ctl curve
+                ctlYPOC = cmds.shadingNode('pointOnCurveInfo', asUtility=True, n = uploPrefix + 'CtlYPoc' + str(i).zfill(2)) 
+                cmds.connectAttr(uploPrefix + "Ctl_crvShape.worldSpace", ctlYPOC + '.inputCurve')   
+                cmds.setAttr(ctlYPOC + '.turnOnPercentage', 1)        
+                cmds.setAttr(ctlYPOC + '.parameter', incrementYPoc *i)
+                
+                #- POC on ctlCrv drive detail control parent  
+                cntRemoveX = cmds.shadingNode('addDoubleLinear', asUtility=True, n= uploPrefix +"RemoveX"+ str(i).zfill(2))
+                momMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = uploPrefix +'Mom'+ str(i).zfill(2)+'_mult')
+                cmds.connectAttr(ctlYPOC +".positionY", detailPCtls[i-1] + ".ty")
+                
+                #- Xvalue match between POC and CtrlP(detailPCtls[i] = 2*ctlPoc -1)
+                cmds.connectAttr(ctlXPOC +".positionX", momMult + ".input1X")
+                cmds.setAttr(momMult + ".input2X", 2)        
+                cmds.connectAttr(momMult + ".outputX", cntRemoveX + ".input1")            
+                cmds.setAttr( cntRemoveX  + ".input2", -1)
+                cmds.connectAttr(cntRemoveX +".output", detailPCtls[i-1] + ".tx")
+                
+                #- curves for corner Adjust 06/23/2016
+                cornerPOC = cmds.shadingNode('pointOnCurveInfo', asUtility=True, n = uploPrefix + 'CornerPoc' + str(i).zfill(2)) 
+                cmds.connectAttr(uploPrefix +"Corner" + self.crvSuffix + ".worldSpace", cornerPOC + '.inputCurve')   
+                cmds.setAttr(cornerPOC + '.turnOnPercentage', 1)        
+                cmds.setAttr(cornerPOC + '.parameter', incrementXPoc*(i-1))   
+
+        self.__jumperPanel()
+
+    def __jumperPanel(self):
+        """
+        create JumpPanel
+        """
+        self.jumperPanel()
+
     def createLidCtrls2(self, baseJnts):
         """
         create controller for lid
@@ -143,7 +222,7 @@ class Ctrls(Func.Func, Base.Base):
             print "create the face locators"
             
         else: 
-            eyeRotY = cmds.getAttr (self.lEyeLoc + '.ry' ) 
+            eyeRotY = cmds.getAttr (self.lEyeLoc + '.ry') 
             eyeCenterPos = cmds.xform(self.lEyeLoc, t = True, q = True, ws = True) 
         
         allLidsCtlGrp = []
@@ -153,10 +232,10 @@ class Ctrls(Func.Func, Base.Base):
             uploPrefix = lr + self.upDown
             
             #- creating crv group nodes
-            lidCrvGrp = cmds.group ( n = uploPrefix + 'crv' + self.grpSuffix, em =True )
+            lidCrvGrp = cmds.group(n = uploPrefix + 'crv' + self.grpSuffix, em =True)
             allLidsCrvGrp.append(lidCrvGrp)
             #topJnt = [jnt for jnt in baseJnts if jnt.startswith(lr)]
-            #tempJnts = cmds.listRelatives ( topJnt, ad =True )
+            #tempJnts = cmds.listRelatives(topJnt, ad =True)
             childJnts = cmds.ls (uploPrefix + '*%s*%s' %(self.blinkJntName, self.jntSuffix)) 
             wideJnts = cmds.ls (uploPrefix + '*%s*%s' %(self.wideJntName, self.jntSuffix))
             childJnts.sort()
@@ -175,78 +254,77 @@ class Ctrls(Func.Func, Base.Base):
                 cmds.setAttr (lidsCtrlGrp + ".ry", -eyeRotY)                
             
             #- final lid shape curve
-            lidCrv = cmds.curve ( d = 3, p =([0,0,0],[0.33,0,0],[0.66,0,0],[1,0,0])) 
-            cmds.rebuildCurve ( rt = 0, d = 1, kr = 0, s = jntNum-1 )  
+            lidCrv = cmds.curve(d = 3, p =([0,0,0],[0.33,0,0],[0.66,0,0],[1,0,0])) 
+            cmds.rebuildCurve(rt = 0, d = 1, kr = 0, s = jntNum-1)  
             tempCrv = cmds.rename (lidCrv, uploPrefix +'Lid' + self.crvSuffix)
             cmds.parent (tempCrv, lidCrvGrp)
-            lidCrvShape = cmds.listRelatives (tempCrv, c = True )
+            lidCrvShape = cmds.listRelatives (tempCrv, c = True)
             
-            wideJntCrv = cmds.duplicate ( tempCrv, n= uploPrefix +'WideJnt' + self.crvSuffix) 
-            wideJntCrvShape = cmds.listRelatives ( wideJntCrv, c = True ) 
+            wideJntCrv = cmds.duplicate(tempCrv, n= uploPrefix +'WideJnt' + self.crvSuffix) 
+            wideJntCrvShape = cmds.listRelatives(wideJntCrv, c = True) 
 
-            #- eyelids controller curve shape ( different number of points, so can not be target of the blendShape)      
-            lidCtlCrv = cmds.curve ( d = 3, p =([0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0], [1,0,0]))
+            #- eyelids controller curve shape(different number of points, so can not be target of the blendShape)      
+            lidCtlCrv = cmds.curve(d = 3, p =([0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0], [1,0,0]))
             #- rebuildCurve? 
-            #cmds.rebuildCurve ( rt = 0, d = 1, kr = 0, s = jntNum-1 )  
+            #cmds.rebuildCurve(rt = 0, d = 1, kr = 0, s = jntNum-1)  
             tempCtlCrv = cmds.rename (lidCtlCrv, uploPrefix +'Ctl' + self.crvSuffix)
-            lidCtlCrvShape = cmds.listRelatives ( tempCtlCrv, c = True ) 
+            lidCtlCrvShape = cmds.listRelatives(tempCtlCrv, c = True) 
             cmds.parent (tempCtlCrv, lidCrvGrp) 
 
             #- eyeClose(blink) lid shape        
-            blinkCrv = cmds.duplicate ( tempCrv, n= uploPrefix +'Blink' + self.crvSuffix)
+            blinkCrv = cmds.duplicate(tempCrv, n= uploPrefix +'Blink' + self.crvSuffix)
             
             #- eyeWide(suprise) lid shape        
-            wideCrv = cmds.duplicate ( tempCrv, n= uploPrefix +'Wide' + self.crvSuffix)
+            wideCrv = cmds.duplicate(tempCrv, n= uploPrefix +'Wide' + self.crvSuffix)
                         
             #- eyeSquint lid shape        
-            squintCrv = cmds.duplicate ( tempCrv, n= uploPrefix +'Squint' + self.crvSuffix) 
+            squintCrv = cmds.duplicate(tempCrv, n= uploPrefix +'Squint' + self.crvSuffix) 
                         
             if lr == self.prefix[1]: 
                 cmds.hide (blinkCrv, wideCrv, squintCrv)
                         
             #- eyeDirection lid shape        
-            lookUp = cmds.duplicate ( tempCrv, n= uploPrefix +'LookUp' + self.crvSuffix) 
+            lookUp = cmds.duplicate(tempCrv, n= uploPrefix +'LookUp' + self.crvSuffix) 
 
 
-            lookDn = cmds.duplicate ( tempCrv, n= uploPrefix +'LookDn' + self.crvSuffix) 
-            lookLeft = cmds.duplicate ( tempCrv, n= uploPrefix +'LookLeft' + self.crvSuffix)                 
-            lookRight = cmds.duplicate ( tempCrv, n= uploPrefix +'LookRight' + self.crvSuffix) 
+            lookDn = cmds.duplicate(tempCrv, n= uploPrefix +'LookDn' + self.crvSuffix) 
+            lookLeft = cmds.duplicate(tempCrv, n= uploPrefix +'LookLeft' + self.crvSuffix)                 
+            lookRight = cmds.duplicate(tempCrv, n= uploPrefix +'LookRight' + self.crvSuffix) 
 
-            crvBS = cmds.blendShape ( blinkCrv[0], lookUp[0], lookDn[0], lookLeft[0], lookRight[0], tempCrv, n = uploPrefix + 'LidCrvBS')
-            cmds.blendShape( crvBS[0], edit=True, w=[(0, 1), (1, 1), (2, 1), (3, 1), (4, 1)] )
+            crvBS = cmds.blendShape(blinkCrv[0], lookUp[0], lookDn[0], lookLeft[0], lookRight[0], tempCrv, n = uploPrefix + 'LidCrvBS')
+            cmds.blendShape( crvBS[0], edit=True, w=[(0, 1), (1, 1), (2, 1), (3, 1), (4, 1)])
               
-            wideBS = cmds.blendShape ( wideCrv[0], squintCrv[0], wideJntCrv, n = uploPrefix + 'WideJntBS' )
-            cmds.blendShape( wideBS[0], edit=True, w=[(0, 1), (1, 1)] )
+            wideBS = cmds.blendShape(wideCrv[0], squintCrv[0], wideJntCrv, n = uploPrefix + 'WideJntBS')
+            cmds.blendShape( wideBS[0], edit=True, w=[(0, 1), (1, 1)])
             
             index = 0 
             indices = 0
 
             for jnt in childJnts:
-                print 'jnt : ', jnt
                 miValue = 1
                 wideJnt = wideJnts[index]
                 childJnt = cmds.listRelatives (jnt, c =True)
-                childPos = cmds.xform ( childJnt[0], t = True, q = True, ws = True)
+                childPos = cmds.xform(childJnt[0], t = True, q = True, ws = True)
                 jntIndex = jnt.split(self.jntSuffix)[0].split('Blink')[1]
                 #pocNode on the final lid curve 
-                pocNode = cmds.shadingNode ( 'pointOnCurveInfo', asUtility=True, n = uploPrefix + 'Poc' + jntIndex)
-                cmds.connectAttr ( lidCrvShape[0] + ".worldSpace",  pocNode + '.inputCurve')   
-                cmds.setAttr ( pocNode + '.turnOnPercentage', 1 )        
+                pocNode = cmds.shadingNode('pointOnCurveInfo', asUtility=True, n = uploPrefix + 'Poc' + jntIndex)
+                cmds.connectAttr(lidCrvShape[0] + ".worldSpace",  pocNode + '.inputCurve')   
+                cmds.setAttr(pocNode + '.turnOnPercentage', 1)        
                 increment = 1.0/(jntNum-1)
-                cmds.setAttr ( pocNode + '.parameter', increment *index )     
+                cmds.setAttr(pocNode + '.parameter', increment *index)     
                 initialX = cmds.getAttr (pocNode + '.positionX')
                 
                 #- pocNode on the wideJnt curve
-                wideJntPocNode = cmds.shadingNode ( 'pointOnCurveInfo', asUtility=True, n = uploPrefix + 'wideJntPoc' + jntIndex)
-                cmds.connectAttr ( wideJntCrvShape[0] + ".worldSpace",  wideJntPocNode + '.inputCurve')   
-                cmds.setAttr ( wideJntPocNode + '.turnOnPercentage', 1 )        
-                cmds.setAttr ( wideJntPocNode + '.parameter', increment *index )  
+                wideJntPocNode = cmds.shadingNode('pointOnCurveInfo', asUtility=True, n = uploPrefix + 'wideJntPoc' + jntIndex)
+                cmds.connectAttr(wideJntCrvShape[0] + ".worldSpace",  wideJntPocNode + '.inputCurve')   
+                cmds.setAttr(wideJntPocNode + '.turnOnPercentage', 1)        
+                cmds.setAttr(wideJntPocNode + '.parameter', increment *index)  
                 
                 #- pocNode on the eyelids ctls curve
-                ctlPocNode = cmds.shadingNode ( 'pointOnCurveInfo', asUtility=True, n = uploPrefix + 'CtlPoc' + jntIndex)
-                cmds.connectAttr ( lidCtlCrvShape[0] + ".worldSpace", ctlPocNode + '.inputCurve')   
-                cmds.setAttr ( ctlPocNode + '.turnOnPercentage', 1 )        
-                cmds.setAttr ( ctlPocNode + '.parameter', increment *index ) 
+                ctlPocNode = cmds.shadingNode('pointOnCurveInfo', asUtility=True, n = uploPrefix + 'CtlPoc' + jntIndex)
+                cmds.connectAttr(lidCtlCrvShape[0] + ".worldSpace", ctlPocNode + '.inputCurve')   
+                cmds.setAttr(ctlPocNode + '.turnOnPercentage', 1)        
+                cmds.setAttr(ctlPocNode + '.parameter', increment *index) 
                 
                 #- creating controller 
                 if lr == self.prefix[0]:
@@ -259,11 +337,11 @@ class Ctrls(Func.Func, Base.Base):
                                                         color = cColor,
                                                            lockAttr = [])
                 cmds.xform(lidCtlP, ws = True, t =(childPos[0], childPos[1], childPos[2] + self.offset))
-                cmds.parent (lidCtlP, lidsCtrlGrp )
+                cmds.parent (lidCtlP, lidsCtrlGrp)
 
                 index = index + 1
                 
-                self.crvCtrlToJnt ( uploPrefix, lidCtl, jnt, wideJnt, pocNode, wideJntPocNode, ctlPocNode, initialX, self.rotateScale , miValue, index )
+                self.crvCtrlToJnt(uploPrefix, lidCtl, jnt, wideJnt, pocNode, wideJntPocNode, ctlPocNode, initialX, self.rotateScale , miValue, index)
     
         return {'lidsCtlGrp' : allLidsCtlGrp, 'lidsCrvGrp' : allLidsCrvGrp, 'numJnts' : jntNum}
         

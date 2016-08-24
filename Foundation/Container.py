@@ -38,7 +38,7 @@ class Container(Core.Core, Util.Util):
         lEarPos         = cmds.xform('lEarPos', t = True, q = True, ws = True)
         nosePos         = cmds.xform('nosePos', t = True, q = True, ws = True)
        
-        faceMain        = cmds.group(em =1, n = 'faceMain',)    
+        faceMain        = cmds.group(em =1, n = self.faceMainNode,)    
         clsGroup        = cmds.group(em =1, n = 'cls' + self.grpSuffix, p = faceMain)
         crvGroup        = cmds.group(em =1, n = 'crv' + self.grpSuffix, p = faceMain)
         jntGroup        = cmds.group(em =1, n = 'jnt' + self.grpSuffix, p = faceMain)
