@@ -519,8 +519,8 @@ class UI(Core.Core):
         """
         creating eyelid controllr
         """
-        self.upperEyelid.createCtrls(self.upperEyelid.baseJnts)
-        self.lowerEyelid.createCtrls(self.lowerEyelid.baseJnts)
+        self.upperEyelid.createCtrls(self.upperEyelid.baseJnts + self.lowerEyelid.baseJnts)
+        #self.lowerEyelid.createCtrls(self.lowerEyelid.baseJnts)
     
     def connectToEyelidControlPanel(self, *args):
         """

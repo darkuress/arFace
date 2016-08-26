@@ -44,6 +44,8 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.wideJntName  = 'Wide'
         self.scaleJntName = 'Scale'
         
+        self.eyeRig       = 'eyeRig'
+        self.eyeRigP      = 'eyeRigP'
         self.eyelidName   = 'EyeLid'
         
         self.innerOuter = ['inner','outer']
@@ -60,6 +62,8 @@ class Base(Core.Core, Util.Util, Controller.Controller):
             self.lEyeLoc     = str([x for x in self.locData['setupLoc'] if 'eye' in x.lower()][0])
         else:
             self.lEyeLoc     = ''
+        
+        self.jumperPanelName = 'jumperPanel'
         
         self.eyelidCrvJsonLoc = os.path.join(self.jsonBasePath, 'eyelidCrvData.json')
     

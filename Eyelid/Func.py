@@ -31,7 +31,8 @@ class Func(Base.Base):
         if not cmds.objExists(jumperPanel):
             #set the start with plusMinusAverage  
             cmds.group( n = "jumperPanel", em = 1, p = self.faceMainNode)   
-    
+        else:
+            return
         if not cmds.objExists('lids_EXP'):
             #set the start with plusMinusAverage
             
@@ -44,9 +45,8 @@ class Func(Base.Base):
         #nodes for ValAB
         
         pushY_mult = cmds.shadingNode( 'multiplyDivide', asUtility =1, n ='lidPushY_mult')
-
-        for LR in self.prefix:
     
+        for LR in self.prefix:    
             if LR == self.prefix[0]:
                 XYZ = 'X'
     
@@ -96,7 +96,7 @@ class Func(Base.Base):
             rotX_invert = cmds.shadingNode( 'multiplyDivide', asUtility =1, n = LR + 'rotX_invert')
             cmds.connectAttr(self.faceFactors['eyelid'] + '.eyeBallRotX_scale', rotX_invert + '.input1X')
             cmds.setAttr(rotX_invert + '.input2X', -1)
-    
+            
             cmds.setAttr(eyeRotX_mult + '.operation', 2)
             cmds.connectAttr(LR + 'eyeballRot.rotateX', eyeRotX_mult + '.input1X')
             cmds.connectAttr(rotX_invert + '.outputX', eyeRotX_mult + '.input2X')
@@ -104,8 +104,8 @@ class Func(Base.Base):
             eyeUD_mult = cmds.shadingNode( 'multiplyDivide', asUtility =1, n = LR + 'eyeUD_mult')
             cmds.connectAttr(eyeRotX_mult + '.outputX', eyeUD_mult + '.input1X')
             cmds.connectAttr(eyeRotX_mult + '.outputX', eyeUD_mult + '.input1Y')
-            cmds.connectAttr('faceFactors.range_'+LR+'eyeU', eyeUD_mult + '.input2X')
-            cmds.connectAttr('faceFactors.range_'+LR+'eyeD', eyeUD_mult + '.input2Y')
+            cmds.connectAttr(self.faceFactors['eyelid'] + '.range_'+LR+'eyeU', eyeUD_mult + '.input2X')
+            cmds.connectAttr(self.faceFactors['eyelid'] + '.range_'+LR+'eyeD', eyeUD_mult + '.input2Y')
             
             pushY_con = cmds.shadingNode( 'condition', asUtility =1, n = LR + 'lidPushY_con')
             cmds.connectAttr(LR + 'eyeballRot.rotateX', pushY_con+'.firstTerm')
@@ -126,8 +126,8 @@ class Func(Base.Base):
             eyeLR_mult = cmds.shadingNode( 'multiplyDivide', asUtility =1, n = LR + 'eyeLR_mult')
             cmds.connectAttr(eyeRotY_mult + '.outputX', eyeLR_mult + '.input1X')
             cmds.connectAttr(eyeRotY_mult + '.outputX', eyeLR_mult + '.input1Y')
-            cmds.connectAttr('faceFactors.range_'+LR+'eyeR', eyeLR_mult + '.input2X')
-            cmds.connectAttr('faceFactors.range_'+LR+'eyeL', eyeLR_mult + '.input2Y')
+            cmds.connectAttr(self.faceFactors['eyelid'] + '.range_'+LR+'eyeR', eyeLR_mult + '.input2X')
+            cmds.connectAttr(self.faceFactors['eyelid'] + '.range_'+LR+'eyeL', eyeLR_mult + '.input2Y')
             
             pushX_con = cmds.shadingNode( 'condition', asUtility =1, n = LR + 'lidPushX_con')
             cmds.connectAttr(LR + 'eyeballRot.rotateY', pushX_con +'.firstTerm')
@@ -136,7 +136,8 @@ class Func(Base.Base):
             cmds.connectAttr(eyeLR_mult + '.outputX', pushX_con+ '.colorIfTrueG')
             cmds.connectAttr(eyeLR_mult + '.outputY', pushX_con+ '.colorIfFalseG')
             cmds.connectAttr(pushX_con+ '.outColorG', 'jumperPanel.' +LR+ 'lidPushX') 
-            
+    
+        return jumperPanel
         
     def crvCtrlToJnt(self, uploPrefix, lidCtl, jnt, wideJnt, pocNode, wideJntPocNode, ctlPocNode, initialX, RotateScale ,miValue, index):
         #connect browCtrlCurve and controller to the brow joints
@@ -205,7 +206,7 @@ class Func(Base.Base):
             cmds.connectAttr(blinkGap + ".output",(upJnt.split('Blink',1)[0] + str(index+1).zfill(2)+'_remap'+'.outputMax'))  
             cmds.connectAttr(ctlMult + ".outputY",  jnt + '.rx') 
             cmds.connectAttr(wideJntMult + '.outputY', wideJnt + '.rx')
-
+    
     def createLidCtl(self, miNum):
         """
         create sub controller for the control panel
