@@ -57,7 +57,7 @@ class Container(Core.Core, Util.Util):
         jawSemiAdd = cmds.group(n = 'jawSemiAdd', em =True, parent = jaw )     
         jawSemi    = cmds.group(n = 'jawSemi', em =True, parent = jaw ) 
         cmds.setAttr(jawSemi + ".translate", 0,0,0)
-        jawClose   = cmds.joint(n = 'jawClose_jnt', relative = True, p = [ 0, 0, 0])        
+        jawClose   = cmds.joint(n = 'jawClose' + self.jntSuffix, relative = True, p = [ 0, 0, 0])        
         jotStable  = cmds.group(n = 'lipJotStable', em =True, parent = jaw ) 
         lipJotP    = cmds.group(n = 'lipJotP', em =True, parent = jotStable)        
     
@@ -72,7 +72,9 @@ class Container(Core.Core, Util.Util):
         cmds.xform(bodyHeadP, ws = 1, t = headSkelPos)    
         bodyHead         = cmds.group(em = 1, n = 'bodyHeadTRS', p = bodyHeadP)
         cmds.xform(bodyHead, ws = 1, t = headSkelPos)
-    
+        attachCtlGrp     = cmds.group(em = 1, n = 'attachCtl' + self.grpSuffix, p = bodyHead)
+        cmds.xform(attachCtlGrp, ws = 1, t = headSkelPos)
+        
         supportRig = cmds.group(em =1, n = 'supportRig', p = headSkel)
     
         lEarP = cmds.group(em =1, n = self.prefix[0] + 'ear' + self.grpSuffix, p = supportRig)
