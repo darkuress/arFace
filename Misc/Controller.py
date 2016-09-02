@@ -19,7 +19,6 @@ class Controller(object):
        
     @classmethod
     def circleController(cls, name, mode, radius, color = 0, lockAttr = ['sc', 'vi']):
-        print name
         if mode == 'xy':
             cmds.circle( n = name, nr=(0, 0, 1), c=(0, 0, 0), r = radius )
         if mode == 'yz':
@@ -43,7 +42,25 @@ class Controller(object):
                 cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)
             elif attr == 'vi':
                 cmds.setAttr('%s.visibility' %name, lock = True, keyable = False, channelBox = False)
-        
+            elif attr == 'tx':
+                cmds.setAttr('%s.translateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ty':               
+                cmds.setAttr('%s.translateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'tz':
+                cmds.setAttr('%s.translateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rx':
+                cmds.setAttr('%s.rotateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ry':
+                cmds.setAttr('%s.rotateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rz':
+                cmds.setAttr('%s.rotateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sx':
+                cmds.setAttr('%s.scaleX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sy':
+                cmds.setAttr('%s.scaleY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sz':
+                cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)            
+                
         #adding color
         cmds.setAttr(name + 'Shape.overrideEnabled', 1)
         cmds.setAttr(name + 'Shape.overrideColor', color)   
@@ -78,7 +95,25 @@ class Controller(object):
                 cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)
             elif attr == 'vi':
                 cmds.setAttr('%s.visibility' %name, lock = True, keyable = False, channelBox = False)
-        
+            elif attr == 'tx':
+                cmds.setAttr('%s.translateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ty':               
+                cmds.setAttr('%s.translateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'tz':
+                cmds.setAttr('%s.translateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rx':
+                cmds.setAttr('%s.rotateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ry':
+                cmds.setAttr('%s.rotateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rz':
+                cmds.setAttr('%s.rotateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sx':
+                cmds.setAttr('%s.scaleX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sy':
+                cmds.setAttr('%s.scaleY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sz':
+                cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)
+                
         #color change   
         cmds.setAttr(name + 'Shape.overrideEnabled', 1)
         cmds.setAttr(name + 'Shape.overrideColor', color)   
@@ -109,6 +144,24 @@ class Controller(object):
                 cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)
             elif attr == 'vi':
                 cmds.setAttr('%s.visibility' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'tx':
+                cmds.setAttr('%s.translateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ty':               
+                cmds.setAttr('%s.translateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'tz':
+                cmds.setAttr('%s.translateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rx':
+                cmds.setAttr('%s.rotateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ry':
+                cmds.setAttr('%s.rotateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rz':
+                cmds.setAttr('%s.rotateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sx':
+                cmds.setAttr('%s.scaleX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sy':
+                cmds.setAttr('%s.scaleY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sz':
+                cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)       
         
         #color change
         shapeNode = cmds.listRelatives(name)
@@ -155,7 +208,24 @@ class Controller(object):
                 cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)
             elif attr == 'vi':
                 cmds.setAttr('%s.visibility' %name, lock = True, keyable = False, channelBox = False)
-        
+            elif attr == 'tx':
+                cmds.setAttr('%s.translateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ty':               
+                cmds.setAttr('%s.translateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'tz':
+                cmds.setAttr('%s.translateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rx':
+                cmds.setAttr('%s.rotateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ry':
+                cmds.setAttr('%s.rotateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rz':
+                cmds.setAttr('%s.rotateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sx':
+                cmds.setAttr('%s.scaleX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sy':
+                cmds.setAttr('%s.scaleY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sz':
+                cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)               
         
         shapeNode = cmds.listRelatives(name)
         cmds.rename(shapeNode, name + 'Shape')
@@ -189,6 +259,24 @@ class Controller(object):
                 cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)
             elif attr == 'vi':
                 cmds.setAttr('%s.visibility' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'tx':
+                cmds.setAttr('%s.translateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ty':               
+                cmds.setAttr('%s.translateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'tz':
+                cmds.setAttr('%s.translateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rx':
+                cmds.setAttr('%s.rotateX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'ry':
+                cmds.setAttr('%s.rotateY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'rz':
+                cmds.setAttr('%s.rotateZ' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sx':
+                cmds.setAttr('%s.scaleX' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sy':
+                cmds.setAttr('%s.scaleY' %name, lock = True, keyable = False, channelBox = False)
+            elif attr == 'sz':
+                cmds.setAttr('%s.scaleZ' %name, lock = True, keyable = False, channelBox = False)       
             
         shapeNode = cmds.listRelatives(name)
             

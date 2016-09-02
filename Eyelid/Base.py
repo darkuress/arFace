@@ -53,6 +53,7 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.eyelidJntGrpName  = 'eyelidJnt' + self.grpSuffix
         self.eyelidCtlGrpName  = 'eyelidCtl' + self.grpSuffix
         self.eyelidCrvGrpName  = 'eyelidCrv' + self.grpSuffix
+        self.eyelidClsGrpName  = 'eyelidCls' + self.grpSuffix
         
         #eyelid joints and location position 
         self.upEyelidVtxs    = self.locData.get('upEyelidVtxs', [])

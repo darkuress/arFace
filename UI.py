@@ -549,19 +549,19 @@ class UI(Core.Core):
         if cmds.objExists(eyelidBase.eyelidCrvGrpName):
             topLidCrvGrp = cmds.listRelatives(eyelidBase.eyelidCrvGrpName)
             for topGrp in topLidCrvGrp:
-                if self.prefix[0] + self.uplo[0] in topGrp:
+                if self.prefix[0] + self.uploPrefix[0] in topGrp:
                     for crv in ['None'] + cmds.listRelatives(topGrp):
                         cmds.optionMenu(self.lUpLidCrvOptionMenu, e = True)
                         cmds.menuItem(label = str(crv), p = self.lUpLidCrvOptionMenu)
-                elif self.prefix[0] + self.uplo[1] in topGrp:
+                elif self.prefix[0] + self.uploPrefix[1] in topGrp:
                     for crv in ['None'] + cmds.listRelatives(topGrp):
                         cmds.optionMenu(self.lLoLidCrvOptionMenu, e = True)
                         cmds.menuItem(label = str(crv), p = self.lLoLidCrvOptionMenu)
-                elif self.prefix[1] + self.uplo[0] in topGrp:
+                elif self.prefix[1] + self.uploPrefix[0] in topGrp:
                     for crv in ['None'] + cmds.listRelatives(topGrp):
                         cmds.optionMenu(self.rUpLidCrvOptionMenu, e = True)
                         cmds.menuItem(label = str(crv), p = self.rUpLidCrvOptionMenu)
-                elif self.prefix[1] + self.uplo[1] in topGrp:
+                elif self.prefix[1] + self.uploPrefix[1] in topGrp:
                     for crv in ['None'] + cmds.listRelatives(topGrp):
                         cmds.optionMenu(self.rLoLidCrvOptionMenu, e = True)
                         cmds.menuItem(label = str(crv), p = self.rLoLidCrvOptionMenu)

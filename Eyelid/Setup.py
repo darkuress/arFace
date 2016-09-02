@@ -85,8 +85,6 @@ class Setup(Joints.Joints, Ctrls.Ctrls, HelpPanel.HelpPanel):
             for blinkGapNode in blinkGapNodes:
                 blinkJnt = self.prefix[0] + self.uplo[0] + 'LidBlink' + str(index).zfill(2) + self.jntSuffix
                 blinJntRo = cmds.xform(blinkJnt, ro = True, q = True)
-                print blinkJnt
-                print blinkGapNode
                 cmds.setAttr(blinkGapNode + '.input2', blinJntRo[0])
                 index = index + 1
         
