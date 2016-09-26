@@ -54,11 +54,11 @@ class Container(Core.Core, Util.Util):
         jawRig     = cmds.group(em =1, n = 'jawRig', p = headSkel)
         cmds.xform(jawRig, ws = 1, t = jawRigPos)
         jaw        = cmds.group(em =1, n = 'jaw', p = jawRig)    
-        jawSemiAdd = cmds.group(n = 'jawSemiAdd', em =True, parent = jaw )     
-        jawSemi    = cmds.group(n = 'jawSemi', em =True, parent = jaw ) 
+        jawSemiAdd = cmds.group(n = 'jawSemiAdd', em =True, parent = jaw)     
+        jawSemi    = cmds.group(n = 'jawSemi', em =True, parent = jaw) 
         cmds.setAttr(jawSemi + ".translate", 0,0,0)
         jawClose   = cmds.joint(n = 'jawClose' + self.jntSuffix, relative = True, p = [ 0, 0, 0])        
-        jotStable  = cmds.group(n = 'lipJotStable', em =True, parent = jaw ) 
+        jotStable  = cmds.group(n = 'lipJotStable', em =True, parent = jaw) 
         lipJotP    = cmds.group(n = 'lipJotP', em =True, parent = jotStable)        
     
         #-eyeRig hierarchy
