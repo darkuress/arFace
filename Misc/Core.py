@@ -79,7 +79,8 @@ class Core(object):
         self.faceMainNode = faceMainNode
         self.faceFactors = {'main'    : 'faceFactors',
                             'eyebrow' : 'browFactor',
-                            'eyelid'  : 'lidFactor'}
+                            'eyelid'  : 'lidFactor',
+                            'lip'      : 'lipFactor'}
         
         self.headSkelPos = self.locData['setupLoc']['headSkelPos']
         self.headGeo     = self.locData['headGeo'] 
