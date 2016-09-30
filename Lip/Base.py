@@ -27,9 +27,9 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         Util.Util.__init__(self)
         Controller.Controller.__init__(self)
 
-        #- lip joints and location position         
+        #- lip joints and location position
         self.lipEPos        = self.locData['setupLoc']['lipEPos']
-        self.lipEPos        = [-self.lipEpos[0], self.lipEpos[1], self.lipEpos[2]]
+        self.lipWPos        = [-self.lipEPos[0], self.lipEPos[1], self.lipEPos[2]]
         self.lipNPos        = self.locData['setupLoc']['lipNPos']
         self.lipSPos        = self.locData['setupLoc']['lipSPos']
         self.lipYPos        = self.locData['setupLoc']['lipYPos']
@@ -40,4 +40,6 @@ class Base(Core.Core, Util.Util, Controller.Controller):
 
         self.uplipVtxs    = eval(self.locData['upLipVtxs'])
         self.lolipVtxs    = eval(self.locData['loLipVtxs'])
+        self.uplipVtxs    = self.sortSelected(self.uplipVtxs)
+        self.lolipVtxs    = self.sortSelected(self.lolipVtxs)
         

@@ -30,8 +30,8 @@ class Setup(Joints.Joints, Ctrls.Ctrls):
         creating joints on selected vertaxes
         """
         lipInfo = self.createJnts(self.upDown)
-        self.lipJntGrp = lipInfo['lipJntGrp']
-        self.lipCrvGrp = lipInfo['lipCrvGrp']
+        #self.lipJntGrp = lipInfo['lipJntGrp']
+        #self.lipCrvGrp = lipInfo['lipCrvGrp']
         
     def createCtrls(self):
         """

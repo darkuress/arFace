@@ -10,6 +10,7 @@
 import maya.cmds as cmds
 import Base
 reload(Base)
+import math
 import fnmatch
 import re
 
@@ -22,19 +23,49 @@ class Func(Base.Base):
         Base.Base.__init__(self, **kw)
 
 
+    def mirrorCurve(lCrv, rCrv):
+        """
+        mirroring curve
+        """
+        lCrvCv = cmds.ls(lCrv + '.cv[*]', fl =1)
+        rCrvCv = cmds.ls(rCrv + '.cv[*]', fl =1)
+        cvLeng = len(lCrvCv)
+        
+        for i in range(cvLeng):
+            mirrorAdd = cmds.shadingNode('addDoubleLinear', asUtility=True, n = 'mirror' + str(i) + '_add')
+            cmds.setAttr(mirrorAdd + '.input1', 1)
+            reversMult = cmds.shadingNode('multiplyDivide', asUtility =1, n = 'reverse%s_mult'%str(i).zfill(2))
+            cmds.connectAttr(lCrvCv[i] + '.xValue', reversMult+ '.input1X')
+            cmds.setAttr(reversMult+ '.input2X', -1)
+            cmds.connectAttr(reversMult+ '.outputX', mirrorAdd + '.input2')
+            cmds.connectAttr(mirrorAdd + '.output', rCrvCv[cvLeng-i-1] + '.xValue')
+            cmds.connectAttr(lCrvCv[i] + '.yValue', rCrvCv[cvLeng-i-1] + '.yValue')
+            cmds.connectAttr(lCrvCv[i] + '.zValue', rCrvCv[cvLeng-i-1] + '.zValue')
+
+    def distance(inputA=[1,1,1], inputB=[2,2,2]):
+        """
+        distance func
+        inputA = [x, x, x]
+        inputB = [y, y, y]
+        """
+        return math.sqrt(pow(inputB[0]-inputA[0], 2) + pow(inputB[1]-inputA[1], 2) + pow(inputB[2]-inputA[2], 2))
+
+
+
+
     def createLipJoint(self, upLow, jawRigPos, lipYPos, poc, lipJotGrp, i):
         """
         """    
-        lipJotX  = cmds.group( n = upLow + 'LipJotX' + str(i), em =True, parent = lipJotGrp) 
-        lipJotZ  = cmds.group( n = upLow +' LipJotZ' + str(i), em =True, parent = lipJotX) 
+        lipJotX  = cmds.group(n = upLow + 'LipJotX' + str(i), em =True, parent = lipJotGrp) 
+        lipJotZ  = cmds.group(n = upLow +' LipJotZ' + str(i), em =True, parent = lipJotX) 
        
-        lipJotY  = cmds.group( n = upLow +'LipJotY' + str(i), em =True, parent = lipJotZ)     
-        lipJot   = cmds.group( n = upLow +'LipJot' + str(i), em =True, parent = lipJotY)
-        lipRollJotT = cmds.group( n = upLow +'LipRollJotT' + str(i), em =True, parent = lipJot)
+        lipJotY  = cmds.group(n = upLow +'LipJotY' + str(i), em =True, parent = lipJotZ)     
+        lipJot   = cmds.group(n = upLow +'LipJot' + str(i), em =True, parent = lipJotY)
+        lipRollJotT = cmds.group(n = upLow +'LipRollJotT' + str(i), em =True, parent = lipJot)
         cmds.setAttr(lipJotY + ".tz", lipYPos[2])
          
         #lip joint placement on the curve with verts tx        
-        lipRollJotP = cmds.group( n =upLow + 'LipRollJotP' + str(i), em =True, p = lipRollJotT) 
+        lipRollJotP = cmds.group(n =upLow + 'LipRollJotP' + str(i), em =True, p = lipRollJotT) 
         pocPosX = cmds.getAttr(poc + '.positionX')
         pocPosY = cmds.getAttr(poc + '.positionY')
         pocPosZ = cmds.getAttr(poc + '.positionZ')
@@ -48,13 +79,13 @@ class Func(Base.Base):
         create detail controller in the panel
         """
         detailCtlP = cmds.group(em =True, n = updn  + 'LipDetailP'+ str(i))
-        detailCtl = cmds.circle(n = updn  + 'LipDetail' + str(i), ch=False, o =True, nr =(0, 0, 1), r = 0.05 )
+        detailCtl = cmds.circle(n = updn  + 'LipDetail' + str(i), ch=False, o =True, nr =(0, 0, 1), r = 0.05)
         cmds.parent(detailCtl[0], detailCtlP)
         cmds.setAttr(detailCtl[0]+"Shape.overrideEnabled", 1)
-        cmds.setAttr( detailCtl[0]+"Shape.overrideColor", 20)
+        cmds.setAttr(detailCtl[0]+"Shape.overrideColor", 20)
         cmds.setAttr(detailCtl[0]+'.translate', 0,0,0)
-        cmds.transformLimits(detailCtl[0], tx =(-.5, .5), etx=( True, True))
-        cmds.transformLimits(detailCtl[0], ty =(-.5, .5), ety=( True, True))
+        cmds.transformLimits(detailCtl[0], tx =(-.5, .5), etx=(True, True))
+        cmds.transformLimits(detailCtl[0], ty =(-.5, .5), ety=(True, True))
         attTemp = ['scaleX','scaleY','scaleZ', 'rotateX','rotateY','rotateZ', 'tz', 'visibility' ]  
         for y in attTemp:
             cmds.setAttr(detailCtl[0] +"."+ y, lock = True, keyable = False, channelBox =False)
@@ -82,10 +113,10 @@ class Func(Base.Base):
         jawSemiAddPosMult = cmds.shadingNode ('multiplyDivide', asUtility = 1, n = 'jawSemiAddPos_mult')
         jawSemiAddRotMult = cmds.shadingNode ('multiplyDivide', asUtility = 1, n = 'jawSemiAddRot_mult')
         cmds.connectAttr('jawSemi.translate', jawSemiAddPosMult + '.input1')
-        cmds.setAttr(jawSemiAddPosMult + '.input2', .5,.5,.5 )
+        cmds.setAttr(jawSemiAddPosMult + '.input2', .5,.5,.5)
         cmds.connectAttr(jawSemiAddPosMult + '.output', 'jawSemiAdd.translate')
         cmds.connectAttr('jawSemi.rotate', jawSemiAddRotMult + '.input1')
-        cmds.setAttr(jawSemiAddRotMult + '.input2', .5,.5,.5 )
+        cmds.setAttr(jawSemiAddRotMult + '.input2', .5,.5,.5)
         cmds.connectAttr(jawSemiAddRotMult + '.output', 'jawSemiAdd.rotate')
 
         for upLow in self.uplo:        
