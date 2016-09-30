@@ -29,6 +29,7 @@ class Base(Core.Core, Util.Util, Controller.Controller):
 
         #- lip joints and location position         
         self.lipEPos        = self.locData['setupLoc']['lipEPos']
+        self.lipEPos        = [-self.lipEpos[0], self.lipEpos[1], self.lipEpos[2]]
         self.lipNPos        = self.locData['setupLoc']['lipNPos']
         self.lipSPos        = self.locData['setupLoc']['lipSPos']
         self.lipYPos        = self.locData['setupLoc']['lipYPos']
