@@ -688,9 +688,9 @@ class UI(Core.Core):
         reload(LipSetup)
         lipRotateScale = cmds.textField(self.lipRotateScaleTextField, q = True, tx = True)
         
-        upLip = LipSetup.Setup(upDown = self.uplo[0],
+        upLip = LipSetup.Setup(upDown = self.uploPrefix[0],
                                rotateScale = float(lipRotateScale))
-        loLip = LipSetup.Setup(upDown = self.uplo[1],
+        loLip = LipSetup.Setup(upDown = self.uploPrefix[1],
                                rotateScale = float(lipRotateScale))
         
         return upLip, loLip
