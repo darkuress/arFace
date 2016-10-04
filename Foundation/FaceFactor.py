@@ -97,6 +97,8 @@ class FaceFactor(Core.Core, Util.Util):
         cmds.addAttr(self.lipFactor, longName= 'swivel_lipJntX_rz', attributeType='float', dv =15)
         cmds.addAttr(self.lipFactor, longName= 'swivel_lipJntP_sx', attributeType='float', dv =0.05 )
         cmds.addAttr(self.lipFactor, longName= 'swivel_lipJntP_sz', attributeType='float', dv =0.02 )
+        cmds.addAttr(self.lipFactor, longName= 'swivel_jawSemi_sx', attributeType='float', dv =0.05 )
+        cmds.addAttr(self.lipFactor, longName= 'swivel_jawSemi_sz', attributeType='float', dv =0.02 )
         
         #UDLR   
         cmds.addAttr(self.lipFactor, longName= 'UDLR_TX_scale', attributeType='float', dv =1 )

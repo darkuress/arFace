@@ -113,7 +113,7 @@ class Joints(Func.Func):
                         edit=True,
                         w=[(0, 1),(1, 1),(2, 1),(3, 1),(4, 1),(5, 1),(6, 1),(7, 1),(8, 1),(9, 1),(10, 1),(11, 1),(12, 1)])
 
-        #- lip freeform Ctrls curve( different number of points(4), so can not be target of the blendShape)      
+        #- lip freeform Ctrls curve(different number of points(4), so can not be target of the blendShape)      
         templipCtlCrv = cmds.curve(d = 3, p =([0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0])) 
         cmds.rebuildCurve(rt = 0, d = 3, kr = 0, s = 4)   
         lipCtlCrv = cmds.rename(templipCtlCrv, upLow +'LipCtl' + self.crvSuffix)
@@ -217,7 +217,7 @@ class Joints(Func.Func):
                 if upLow == self.uploPrefix[0]:
                     corners = self.createLipJoint(upLow, self.lipYPos, poc, lipJotGrp, i)
                     print corners
-                    self.createDetailCtl( upLow, i)
+                    self.createDetailCtl(upLow, i)
                     cmds.parent(upLow +'LipDetailP'+ str(i), lipDetailP)
                     cmds.setAttr(upLow +'LipDetailP'+ str(i)+'.tx', linearDist*i)
                     cmds.setAttr(upLow +'LipDetailP'+ str(i)+'.ty', -1.5)
@@ -260,6 +260,10 @@ class Joints(Func.Func):
             cmds.setAttr(lipRollYZPoc  + '.parameter', increment)
             
             increment = increment + linearDist
+        
+        if upLow == self.uploPrefix[1]:
+            self.__bridgeJoints()
+            #self.indiCrvSetup('lip')
             
     def createLipJoint(self, upLow, lipYPos, poc, lipJotGrp, i):   
         """
@@ -270,7 +274,7 @@ class Joints(Func.Func):
        
         lipJotY  = cmds.group(n = upLow +'LipJotY' + str(i), em =True, parent = lipJotZ)     
         lipJot   = cmds.group(n = upLow +'LipJot' + str(i), em =True, parent = lipJotY)
-        lipRollJotT = cmds.group( n = upLow +'LipRollJotT' + str(i), em =True, parent = lipJot)
+        lipRollJotT = cmds.group(n = upLow +'LipRollJotT' + str(i), em =True, parent = lipJot)
         cmds.setAttr(lipJotY + ".tz", lipYPos[2])
          
         #lip joint placement on the curve with verts tx        
@@ -294,11 +298,55 @@ class Joints(Func.Func):
         cmds.setAttr(detailCtl[0]+"Shape.overrideEnabled", 1)
         cmds.setAttr(detailCtl[0]+"Shape.overrideColor", 20)
         cmds.setAttr(detailCtl[0]+'.translate', 0,0,0)
-        cmds.transformLimits(detailCtl[0], tx =(-.5, .5), etx=( True, True))
-        cmds.transformLimits(detailCtl[0], ty =(-.5, .5), ety=( True, True))
+        cmds.transformLimits(detailCtl[0], tx =(-.5, .5), etx=(True, True))
+        cmds.transformLimits(detailCtl[0], ty =(-.5, .5), ety=(True, True))
         attTemp = ['scaleX','scaleY','scaleZ', 'rotateX','rotateY','rotateZ', 'tz', 'visibility' ]  
         for y in attTemp:
             cmds.setAttr(detailCtl[0] +"."+ y, lock = True, keyable = False, channelBox =False) 
+
+    def __bridgeJoints(self):    
+        """
+        bridge joints
+        """
+        noseP = cmds.group(n = 'noseP', em =True, p = "noseRig")
+        cmds.xform(noseP, relative = True, t = [ 0, 0, 0])
+        noseJnt = cmds.joint(n = 'nose' + self.jntSuffix, relative = True, p = [ 0, 0, 0])
+        
+        for prefix in self.prefix:
+            # ear / nose joint
+            lEarP = cmds.group(n = prefix + 'earP', em =True, p = prefix + "ear" + self.grpSuffix)
+            cmds.xform(lEarP, relative = True, t = [ 0, 0, 0])
+            lEarJnt = cmds.joint(n = prefix + 'ear' + self.jntSuffix, relative = True, p = [ 0, 0, 0]) 
+            
+            # cheek joint - check the cheek/squintPush group and angle
+            cheekP = cmds.group(n = prefix + 'cheekP', em =True, p = prefix + "cheek" + self.grpSuffix)
+            cmds.xform(cheekP, relative = True, t = [ 0, 0, 0])
+            upCheekP = cmds.duplicate(cheekP, n = prefix + 'upCheekP')
+            cmds.parent(upCheekP[0], cheekP)
+            upCheekJnt = cmds.joint(n = prefix + 'upCheek' + self.jntSuffix, relative = True, p = [ 0, 0, 0])
+            
+            midCheekP = cmds.duplicate(upCheekP, po =1, n = prefix + 'midCheekP')
+            midCheekRotY = cmds.group(midCheekP, n= prefix + 'midCheekRotY', p = cheekP)
+            cmds.xform(midCheekRotY, piv = self.lipYPos, ws =1)
+            midCheekRotX = cmds.group(midCheekRotY, n= prefix + 'midCheekRotX', p = cheekP)
+            cmds.xform(midCheekRotX, piv = self.jawRigPos, ws =1)
+            cmds.select(midCheekP[0])
+            midCheekJnt = cmds.joint(n = prefix + 'midCheek' + self.jntSuffix, relative = True, p = [ 0, 0, 0]) 
+               
+            #- squintPuff joint
+            sqiuntPuff = cmds.group(n = prefix + 'squintPuffP', em =True, p = prefix + "squintPuff" + self.grpSuffix)
+            cmds.xform(sqiuntPuff, relative = True, t = [ 0, 0, 0])
+            sqiuntPuffJnt = cmds.joint(n = prefix + 'squintPuff' + self.jntSuffix, relative = True, p = [ 0, 0, 0]) 
+
+            #- lowCheek joint
+            lowCheek = cmds.group(n = prefix + 'lowCheekP', em =True, p = prefix + "lowCheek" + self.grpSuffix)
+            cmds.xform(lowCheek, relative = True, t = [ 0, 0, 0])
+            loCheekRotY = cmds.group(lowCheek, n= prefix + 'loCheekRotY', p = prefix + "lowCheek" + self.grpSuffix)
+            cmds.xform(loCheekRotY, piv = self.lipYPos, ws =1)
+            loCheekRotX = cmds.group(loCheekRotY, n= prefix + 'loCheekRotX', p = prefix + "lowCheek" + self.grpSuffix)
+            cmds.xform(loCheekRotX, piv = self.jawRigPos, ws =1)
+            cmds.select(lowCheek)    
+            lowCheekJnt = cmds.joint(n = prefix + 'lowCheek' + self.jntSuffix, relative = True, p = [ 0, 0, 0]) 
 
         ##- lip curve for LipJotX translateYZ
         #tempTylipCrv  = cmds.curve(d = 3, p =([0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0])) 
