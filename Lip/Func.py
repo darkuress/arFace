@@ -23,7 +23,7 @@ class Func(Base.Base):
         Base.Base.__init__(self, **kw)
 
 
-    def mirrorCurve(lCrv, rCrv):
+    def mirrorCurve(self, lCrv, rCrv):
         """
         mirroring curve
         """
@@ -42,7 +42,7 @@ class Func(Base.Base):
             cmds.connectAttr(lCrvCv[i] + '.yValue', rCrvCv[cvLeng-i-1] + '.yValue')
             cmds.connectAttr(lCrvCv[i] + '.zValue', rCrvCv[cvLeng-i-1] + '.zValue')
 
-    def distance(inputA=[1,1,1], inputB=[2,2,2]):
+    def distance(self, inputA=[1,1,1], inputB=[2,2,2]):
         """
         distance func
         inputA = [x, x, x]

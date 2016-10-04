@@ -43,3 +43,4 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.uplipVtxs    = self.sortSelected(self.uplipVtxs)
         self.lolipVtxs    = self.sortSelected(self.lolipVtxs)
         
+        self.cheekCrvGrp  = 'cheekCrv' + self.grpSuffix
