@@ -112,8 +112,7 @@ class FaceFactor(Core.Core, Util.Util):
         cmds.addAttr(self.lipFactor, longName= 'tzSum_lipJntX_tz', attributeType='float', dv =1.5 )
         cmds.addAttr(self.lipFactor, longName= 'tySum_lipJntX_rx', attributeType='float', dv =-20 )
         cmds.addAttr(self.lipFactor, longName= 'txSum_lipJntX_ry', attributeType='float', dv =6 )
-    
-        
+
         #jawOpen
         cmds.addAttr(self.lipFactor, longName= 'jawOpenTX_scale', attributeType='float', dv =1.5 ) 
         cmds.addAttr(self.lipFactor, longName= 'jawOpenTY_scale', attributeType='float', dv =2 )  

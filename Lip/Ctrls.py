@@ -10,6 +10,7 @@
 import maya.cmds as cmds
 import Func
 reload(Func)
+import re
 
 class Ctrls(Func.Func):
     def __init__(self, upDown, rotateScale, **kw):
@@ -23,7 +24,9 @@ class Ctrls(Func.Func):
         Func.Func.__init__(self, **kw)
     
     def createLipCtrls(self):
-        self.__mouthCtlToCrv()
+        if self.upDown == self.uploPrefix[0]:
+            self.__mouthCtlToCrv()
+        self.__lipCrvToJoint()
 
     def __mouthCtlToCrv(self):    
         """
@@ -85,35 +88,19 @@ class Ctrls(Func.Func):
             cmds.connectAttr(swivelTranXMult + '.outputY', 'jawSemi.ry')
             cmds.connectAttr(swivelTranXMult + '.outputZ', 'jawSemi.rz')
             # swivel.ty mainly control lipJotP.ty
-            lipPScale_sum = cmds.shadingNode('plusMinusAverage', asUtility= True, n = 'lipPScale_sum')			
+            lipPScaleSum = cmds.shadingNode('plusMinusAverage', asUtility= True, n = 'lipPScaleSum')			
             cmds.connectAttr(swivelTranYMult + '.outputY', 'jawSemi.ty')        
             #lipP scale down as lipP/jawSemi goes down
-            cmds.setAttr(lipPScale_sum+'.input2D[0].input2Dx', 1)
-            cmds.setAttr(lipPScale_sum+'.input2D[0].input2Dy', 1)             
+            cmds.setAttr(lipPScaleSum+'.input2D[0].input2Dx', 1)
+            cmds.setAttr(lipPScaleSum+'.input2D[0].input2Dy', 1)             
             cmds.connectAttr(self.faceFactors['lip'] + ".swivel_lipJntP_sx", swivelTranYMult + '.input2X')        
             cmds.connectAttr(self.faceFactors['lip'] + ".swivel_lipJntP_sz", swivelTranYMult + '.input2Z')
-            cmds.connectAttr(swivelTranYMult + '.outputX', lipPScale_sum+'.input2D[1].input2Dx')
-            cmds.connectAttr(swivelTranYMult + '.outputZ', lipPScale_sum+'.input2D[1].input2Dy')
-            cmds.connectAttr(lipPScale_sum + '.output2Dx', 'lipJotP.sx')
-            cmds.connectAttr(lipPScale_sum + '.output2Dy', 'lipJotP.sz')
-                    
-            #jawSemi scale down for swivel/UDLR ctrl
-            jawSemiScaleMult = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'jawSemiScale_mult')
-            cmds.connectAttr('swivel_ctrl.ty', jawSemiScaleMult + '.input1X') # for scale
-                    
-            cmds.connectAttr('swivel_ctrl.ty', jawSemiScaleMult + '.input1Y')
-            cmds.connectAttr('swivel_ctrl.ty', jawSemiScaleMult + '.input1Z') # for scale
-            
-            jawSemiScale_sum = cmds.shadingNode('plusMinusAverage', asUtility= True, n = 'jawSemiScale_sum')
-            cmds.setAttr(jawSemiScale_sum+'.input2D[0].input2Dx', 1)
-            
-            cmds.setAttr(jawSemiScale_sum+'.input2D[0].input2Dy', 1)             
-            cmds.connectAttr(self.faceFactors['lip'] + ".swivel_jawSemi_sx", jawSemiScaleMult + '.input2X')        
-            cmds.connectAttr(self.faceFactors['lip'] + ".swivel_jawSemi_sz", jawSemiScaleMult + '.input2Z')
-            cmds.connectAttr(jawSemiScaleMult + '.outputX', jawSemiScale_sum+'.input2D[1].input2Dx')
-            cmds.connectAttr(jawSemiScaleMult + '.outputZ', jawSemiScale_sum+'.input2D[1].input2Dy')
-            cmds.connectAttr(jawSemiScale_sum + '.output2Dx', 'jawSemi.sx')
-            cmds.connectAttr(jawSemiScale_sum + '.output2Dy', 'jawSemi.sz')        
+            cmds.connectAttr(swivelTranYMult + '.outputX', lipPScaleSum+'.input2D[1].input2Dx')
+            cmds.connectAttr(swivelTranYMult + '.outputZ', lipPScaleSum+'.input2D[1].input2Dy')
+            cmds.connectAttr(lipPScaleSum + '.output2Dx', 'lipJotP.sx')
+            cmds.connectAttr(lipPScaleSum + '.output2Dy', 'lipJotP.sz')
+            cmds.connectAttr(lipPScaleSum + '.output2Dx', 'jawSemi.sx')
+            cmds.connectAttr(lipPScaleSum + '.output2Dy', 'jawSemi.sz')
             
         #jaw_UDLRIO.ty --> 1.lipJotX0.ty / 2. lipJotP.sx. sz / jaw_UDLRIO.tx --> lipJotX0.tz
         if not cmds.listConnections('lowJaw_dir', d =1):	
@@ -137,83 +124,241 @@ class Ctrls(Func.Func):
             cmds.connectAttr(self.faceFactors['lip'] + '.jawOpen_jawCloseRY', jawCloseRotMult + '.input2Y')   	
             cmds.connectAttr(jawCloseRotMult + '.outputY', 'jawClose' + self.jntSuffix + '.ry')        
         
-        if not cmds.listConnections('jaw_UDLR', d =1):
-            UDLRTMult = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'UDLR_mult')
-            UDLRTscaleMult = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'UDLRscale_mult')
-            jawCloseTranMult = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'jawCloseTran_mult')
-            jawUDLRJnt = self.indiCrvSetup('TyLip')
-            cmds.connectAttr('jaw_UDLR.tx',  UDLRTMult + '.input1X')
-            cmds.connectAttr(self.faceFactors['lip'] + ".UDLR_TX_scale",  UDLRTMult + '.input2X')
-            cmds.connectAttr(UDLRTMult + '.outputX', jawUDLRJnt + '.tz')
-    
-            cmds.connectAttr('jaw_UDLR.ty',  UDLRTMult + '.input1Y')
-            cmds.connectAttr(self.faceFactors['lip'] + ".UDLR_TY_scale",  UDLRTMult + '.input2Y')
-            cmds.connectAttr(UDLRTMult + '.outputY', jawUDLRJnt + '.ty')
-               
-            # jaw_UDLRIO.ty --> 1.lipJotX0.ty / 2. lipJotP.sx. sz / jaw_UDLRIO.tx --> lipJotX0.tz                
-            cmds.connectAttr('jaw_UDLR.ty', UDLRTscaleMult + '.input1X')
-            cmds.connectAttr('jaw_UDLR.ty', UDLRTscaleMult + '.input1Z')
-            cmds.connectAttr(self.faceFactors['lip'] + ".swivel_lipJntP_sx", UDLRTscaleMult + '.input2X')        
-            cmds.connectAttr(self.faceFactors['lip'] + ".swivel_lipJntP_sz", UDLRTscaleMult + '.input2Z')
-            cmds.connectAttr(UDLRTscaleMult + '.outputX', lipPScale_sum+'.input2D[2].input2Dx')
-            cmds.connectAttr(UDLRTscaleMult + '.outputZ', lipPScale_sum+'.input2D[2].input2Dy') 
-    
-            # jaw_UDLR.ty --> jawSemiScale
-            UDLRJawSemi_mult = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'UDLRJawSemi_mult')
-            cmds.connectAttr('jaw_UDLR.ty', UDLRJawSemi_mult + '.input1X')
-            cmds.connectAttr('jaw_UDLR.ty', UDLRJawSemi_mult + '.input1Z')
-    
-            cmds.connectAttr(self.faceFactors['lip'] + ".UDLR_jawSemi_sx", UDLRJawSemi_mult + '.input2X')        
-            cmds.connectAttr(self.faceFactors['lip'] + ".UDLR_jawSemi_sz", UDLRJawSemi_mult + '.input2Z')
-            cmds.connectAttr(UDLRJawSemi_mult + '.outputX', jawSemiScale_sum+'.input2D[2].input2Dx')
-            cmds.connectAttr(UDLRJawSemi_mult + '.outputZ', jawSemiScale_sum+'.input2D[2].input2Dy')
+        #if not cmds.listConnections('jaw_UDLR', d =1):
+        UDLRTMult = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'UDLR_mult')
+        UDLRTscaleMult = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'UDLRscale_mult')
+        jawCloseTranMult = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'jawCloseTran_mult')
+        jawUDLRJnt = self.indiCrvSetup('TyLip')
+        cmds.connectAttr('jaw_UDLR.tx',  UDLRTMult + '.input1X')
+        cmds.connectAttr(self.faceFactors['lip'] + ".UDLR_TX_scale",  UDLRTMult + '.input2X')
+        cmds.connectAttr(UDLRTMult + '.outputX', jawUDLRJnt + '.tz')
+
+        cmds.connectAttr('jaw_UDLR.ty',  UDLRTMult + '.input1Y')
+        cmds.connectAttr(self.faceFactors['lip'] + ".UDLR_TY_scale",  UDLRTMult + '.input2Y')
+        cmds.connectAttr(UDLRTMult + '.outputY', jawUDLRJnt + '.ty')
+           
+        # jaw_UDLRIO.ty --> 1.lipJotX0.ty / 2. lipJotP.sx. sz / jaw_UDLRIO.tx --> lipJotX0.tz                
+        cmds.connectAttr('jaw_UDLR.ty', UDLRTscaleMult + '.input1X')
+        cmds.connectAttr('jaw_UDLR.ty', UDLRTscaleMult + '.input1Z')
+        cmds.connectAttr(self.faceFactors['lip'] + ".swivel_lipJntP_sx", UDLRTscaleMult + '.input2X')        
+        cmds.connectAttr(self.faceFactors['lip'] + ".swivel_lipJntP_sz", UDLRTscaleMult + '.input2Z')
+        cmds.connectAttr(UDLRTscaleMult + '.outputX', lipPScaleSum +'.input2D[2].input2Dx')
+        cmds.connectAttr(UDLRTscaleMult + '.outputZ', lipPScaleSum +'.input2D[2].input2Dy') 
+
+        # jawClose' + self.jntSuffix + '.ty = UDLR.ty * 2   / jawClose' + self.jntSuffix + '.tz = UDLR.tx * 1.1 	
+        cmds.connectAttr('jaw_UDLR.tx', jawCloseTranMult + '.input1X')
+        cmds.connectAttr(self.faceFactors['lip'] + '.UDLR_jawCloseTZ', jawCloseTranMult + '.input2X')   	
+        cmds.connectAttr(jawCloseTranMult + '.outputX', 'jawClose' + self.jntSuffix + '.tz')     
+        
+        cmds.connectAttr('jaw_UDLR.ty', jawCloseTranMult + '.input1Y')
+        cmds.connectAttr(self.faceFactors['lip'] + '.UDLR_jawCloseTY', jawCloseTranMult + '.input2Y')   	
+        cmds.connectAttr(jawCloseTranMult + '.outputY', 'jawClose' + self.jntSuffix + '.ty')
             
-            # jawClose' + self.jntSuffix + '.ty = UDLR.ty * 2   / jawClose' + self.jntSuffix + '.tz = UDLR.tx * 1.1 	
-            cmds.connectAttr('jaw_UDLR.tx', jawCloseTranMult + '.input1X')
-            cmds.connectAttr(self.faceFactors['lip'] + '.UDLR_jawCloseTZ', jawCloseTranMult + '.input2X')   	
-            cmds.connectAttr(jawCloseTranMult + '.outputX', 'jawClose' + self.jntSuffix + '.tz')     
-            
-            cmds.connectAttr('jaw_UDLR.ty', jawCloseTranMult + '.input1Y')
-            cmds.connectAttr(self.faceFactors['lip'] + '.UDLR_jawCloseTY', jawCloseTranMult + '.input2Y')   	
-            cmds.connectAttr(jawCloseTranMult + '.outputY', 'jawClose' + self.jntSuffix + '.ty')
-            
-        tySum_cheekIn = cmds.shadingNode('plusMinusAverage', asUtility = 1, n = 'cheekXIn_sum')
-        cmds.connectAttr(UDLRTscaleMult + '.outputX', tySum_cheekIn + '.input2D[0].input2Dx') 
-        cmds.connectAttr(swivelTranYMult + '.outputX', tySum_cheekIn + '.input2D[1].input2Dx')
-        cmds.connectAttr(UDLRTscaleMult + '.outputZ', tySum_cheekIn + '.input2D[0].input2Dy')
-        cmds.connectAttr(swivelTranYMult + '.outputZ', tySum_cheekIn + '.input2D[1].input2Dy')
+        tySumCheekIn = cmds.shadingNode('plusMinusAverage', asUtility = 1, n = 'cheekXIn_sum')
+        cmds.connectAttr(UDLRTscaleMult + '.outputX', tySumCheekIn + '.input2D[0].input2Dx') 
+        cmds.connectAttr(swivelTranYMult + '.outputX', tySumCheekIn + '.input2D[1].input2Dx')
+        cmds.connectAttr(UDLRTscaleMult + '.outputZ', tySumCheekIn + '.input2D[0].input2Dy')
+        cmds.connectAttr(swivelTranYMult + '.outputZ', tySumCheekIn + '.input2D[1].input2Dy')
     
         cheekIn_reverse = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'cheekTX_reverse')
-        cmds.connectAttr(tySum_cheekIn + '.output2Dx', cheekIn_reverse + '.input1X')
+        cmds.connectAttr(tySumCheekIn + '.output2Dx', cheekIn_reverse + '.input1X')
         cmds.setAttr(cheekIn_reverse + '.input2X', -1)
         
         midCheekRX = [ 'l_midCheekRotX', 'r_midCheekRotX' ]
         loCheekRX = [ 'l_loCheekRotX', 'r_loCheekRotX' ]    
         for cheek in midCheekRX + loCheekRX:
-            cheek_sum = cmds.shadingNode('plusMinusAverage', asUtility= True, n = cheek[ :-4] + '_sum')
+            cheekSum = cmds.shadingNode('plusMinusAverage', asUtility= True, n = cheek[ :-4] + '_sum')
             cheekRx_addD = cmds.shadingNode('addDoubleLinear', asUtility= True, n = cheek[ :-4] + '_add')
-            cmds.connectAttr(swivelTranXMult + '.outputX', cheek_sum + '.input3D[0].input3Dx')
-            cmds.connectAttr(cheek_sum + '.output3Dx', cheek + '.tx') # swivel.tx        
-            cmds.connectAttr(swivelTranYMult + '.outputY', cheek_sum + '.input3D[0].input3Dy')
-            cmds.connectAttr(jawCloseTranMult + '.outputY', cheek_sum + '.input3D[1].input3Dy') #jaw_UDLRIO.ty --> jawClose' + self.jntSuffix + '.ty 
-            cmds.connectAttr(cheek_sum + '.output3Dy', cheek + '.ty') # swivel.ty   
-            cmds.connectAttr(swivelTranXMult + '.outputY', cheek_sum + '.input3D[0].input3Dz')
-            cmds.connectAttr(jawCloseRotMult + '.outputY', cheek_sum + '.input3D[1].input3Dz') # jawClose' + self.jntSuffix + '.ry <--jawOpen.tx *(jawOpen_jawCloseRY) 
-            cmds.connectAttr(cheek_sum + '.output3Dz', cheek + '.ry') # swivel.tx
+            cmds.connectAttr(swivelTranXMult + '.outputX', cheekSum + '.input3D[0].input3Dx')
+            cmds.connectAttr(cheekSum + '.output3Dx', cheek + '.tx') # swivel.tx        
+            cmds.connectAttr(swivelTranYMult + '.outputY', cheekSum + '.input3D[0].input3Dy')
+            cmds.connectAttr(jawCloseTranMult + '.outputY', cheekSum + '.input3D[1].input3Dy') #jaw_UDLRIO.ty --> jawClose' + self.jntSuffix + '.ty 
+            cmds.connectAttr(cheekSum + '.output3Dy', cheek + '.ty') # swivel.ty   
+            cmds.connectAttr(swivelTranXMult + '.outputY', cheekSum + '.input3D[0].input3Dz')
+            cmds.connectAttr(jawCloseRotMult + '.outputY', cheekSum + '.input3D[1].input3Dz') # jawClose' + self.jntSuffix + '.ry <--jawOpen.tx *(jawOpen_jawCloseRY) 
+            cmds.connectAttr(cheekSum + '.output3Dz', cheek + '.ry') # swivel.tx
             cmds.connectAttr(swivelTranXMult + '.outputZ', cheek + '.rz') # swivel.tx
             cmds.connectAttr(jawCloseRotMult + '.outputX', cheekRx_addD + '.input1') #'jawClose' + self.jntSuffix + '.rx' <--'lowJaw_dir.ty'          
             cmds.connectAttr(jawCloseTranMult + '.outputX', cheek + '.tz')  #jaw_UDLRIO.tx --> jawClose' + self.jntSuffix + '.tz
             
             if 'l_' in cheek:
-                cmds.connectAttr(tySum_cheekIn + '.output2Dx',  cheek_sum + '.input3D[1].input3Dx')
+                cmds.connectAttr(tySumCheekIn + '.output2Dx',  cheekSum + '.input3D[1].input3Dx')
             elif 'r_' in cheek:
-                cmds.connectAttr( cheekIn_reverse + '.outputX',  cheek_sum + '.input3D[1].input3Dx')
+                cmds.connectAttr( cheekIn_reverse + '.outputX',  cheekSum + '.input3D[1].input3Dx')
                 
             if '_mid' in cheek:
                 cmds.connectAttr(mouthTyMult + '.outputY', cheekRx_addD + '.input2')              
             elif '_lo' in cheek:
                 cmds.connectAttr(mouthTyMult + '.outputZ', cheekRx_addD + '.input2')            
             cmds.connectAttr(cheekRx_addD + '.output', cheek + '.rx')  # jawClose' + self.jntSuffix + '.rx <-- jawOpen.ty *(jawOpen_jawCloseRX) 
+
+    def __lipCrvToJoint(self):
+        """
+        """
+        #main lipCtrls connect with LipCtl_crv   
+        UD = self.upDown.title()
+        lipCtrls=['lip' + UD + 'CtrlRB', 'lip' + UD + 'CtrlRA', 'lip' + UD + 'CtrlMid', 'lip' + UD + 'CtrlLA', 'lip' + UD + 'CtrlLB']
+        lipCtrls.insert(0, 'lipCtrlRTip')
+        lipCtrls.append('lipCtrlLTip')
+        lipCtrlLen = len(lipCtrls)
+        
+        for x in range( 0, lipCtrlLen):
+            # curve cv xValue zero out
+            zeroX = cmds.shadingNode('addDoubleLinear', asUtility=True, n = self.upDown + lipCtrls[x].split('Ctrl', 1)[1] + '_xAdd') 
+            cvTx = cmds.getAttr(self.upDown + 'LipCtl_crv.controlPoints['+str(x)+'].xValue') 
+            cmds.connectAttr(lipCtrls[x] +'.tx', zeroX + '.input1')
+            cmds.setAttr(zeroX + '.input2' , cvTx) 
+            cmds.connectAttr(zeroX + '.output', self.upDown + 'LipCtl_crv.controlPoints['+str(x)+'].xValue')
+            # main ctrl's TY drive the ctrl curve point yValue
+            cmds.connectAttr(lipCtrls[x] +'.ty' , self.upDown + 'LipCtl_crv.controlPoints['+str(x)+'].yValue') 
+        
+        #main lipRoll Ctrls connect with 'LipRollCtl_crv' /'RollYZCtl_crv' 
+        mainRollCtrlP = cmds.listRelatives('Lip'+ self.upDown.title() + 'RollCtrl', ad =1, type = 'transform')
+        regex = re.compile(r'Roll_ctl')
+        lipRollCtls = []
+        for x in mainRollCtrlP:        
+            if re.search(regex, x):
+                lipRollCtls.append(x)
+                
+        rollCtlDict = { 0:2, 1:3, 2:1 }
+        for q, p in rollCtlDict.items(): 
+            # lipRollCtrl  to 'RollCtl_crv' 
+            cmds.connectAttr(lipRollCtls[q]+ '.rz', self.upDown + 'LipRoll_crv.controlPoints[%s].yValue'%p) 
+            # lipRollCtrl  to 'RollYZCtl_crv' 
+            cmds.connectAttr(lipRollCtls[q]+ '.ty', self.upDown + 'RollYZ_crv.controlPoints[%s].yValue'%p)
+            cmds.connectAttr(lipRollCtls[q]+ '.tx', self.upDown + 'RollYZ_crv.controlPoints[%s].zValue'%p)
+        
+        # curve's Poc drive the joint
+        lipJots= cmds.ls(self.upDown + 'LipJotX*', fl=True, type ='transform')
+        jotNum = len(lipJots)
+          
+        if self.upDown == 'up':
+            min = 0
+            max = jotNum
+        elif self.upDown == 'lo':  
+            min = 1
+            max = jotNum+1
+            
+        for i in range(min, max):
+            jotXMult     = cmds.shadingNode('multiplyDivide',   asUtility=True, n = self.upDown + 'JotXRot' + str(i)+'_mult')
+            jotX_AddD    = cmds.shadingNode('addDoubleLinear',  asUtility=True, n = self.upDown + 'JotXRY' + str(i) + '_add')
+            jntYMult     = cmds.shadingNode('multiplyDivide',   asUtility=True, n = self.upDown + 'JotYRot' + str(i)+'_mult')
+            jntY_AddD    = cmds.shadingNode('addDoubleLinear',  asUtility=True, n = self.upDown + 'JotYRZ' + str(i) + '_add')
+            mouthTX_AddD = cmds.shadingNode('addDoubleLinear',  asUtility=True, n = self.upDown + 'MouthTX' + str(i) + '_add')
+            mouthTY_AddD = cmds.shadingNode('addDoubleLinear',  asUtility=True, n = self.upDown + 'MouthTY' + str(i) + '_add')
+            jotXPosMult  = cmds.shadingNode('multiplyDivide',   asUtility=True, n = self.upDown + 'LipJotXPos' + str(i)+'_mult')
+            plusTXAvg    = cmds.shadingNode('plusMinusAverage', asUtility=True, n = self.upDown + 'TX' + str(i) +'_plus')   
+            plusTYAvg    = cmds.shadingNode('plusMinusAverage', asUtility=True, n = self.upDown + 'TY' + str(i) +'_plus')  
+            jotXPosAvg   = cmds.shadingNode('plusMinusAverage', asUtility=True, n = self.upDown + 'LipJotXPos' + str(i)+'_plus')        
+            jotX_rzAddD  = cmds.shadingNode('addDoubleLinear',  asUtility=True, n = self.upDown + 'RZ' + str(i) + '_add')
+            rollYZMult   = cmds.shadingNode('multiplyDivide',   asUtility=True, n = self.upDown + 'RollYZ' + str(i)+'_mult')
+            poc = self.upDown +'LipCrv' + str(i) + '_poc'
+            initialX = cmds.getAttr(poc + '.positionX')
+            
+            TYpoc = self.upDown +'LipTy' + str(i) + '_poc'
+            initialTYX = cmds.getAttr(TYpoc + '.positionX')
+            
+            ctlPoc = self.upDown +'LipCtl' + str(i) + '_poc'
+            initialCtlX = cmds.getAttr(ctlPoc + '.positionX')
+            
+            lipRollPoc = self.upDown +'LipRoll' + str(i) + '_poc'
+            rollYZPoc = self.upDown +'LipRollYZ' + str(i) + '_poc'     
+            
+            if i==0 or i==jotNum-1:
+                zeroTip = cmds.shadingNode('addDoubleLinear', asUtility=True, n = 'zeroTip' + str(i) + '_plus')
+                momTY = cmds.getAttr(self.upDown + 'LipDetailP' + str(i) +'.ty')
+                cmds.connectAttr(ctlPoc + '.positionY', zeroTip + '.input1' )
+                cmds.setAttr(zeroTip + '.input2', momTY)
+                cmds.connectAttr(zeroTip + '.output', self.upDown + 'LipDetailP' +str(i) + '.ty')
+                
+            else:
+                # LipCtl_crv connect with lipDetailP(lipDetailCtrl parents)
+                cmds.connectAttr(ctlPoc + '.positionY', self.upDown + 'LipDetailP' +str(i) + '.ty')        
+            
+            #TranslateX add up for        
+            #1. curve translateX add up for LipJotX       swivelTranX_mult.outputY - ry
+            swivelTranXMult = 'swivelTranX_mult'
+            swivelTranYMult = 'swivelTranY_mult'
+            mouthTxMult = 'mouthTranX_mult'
+            mouthTyMult = 'mouthTranY_mult'
+            
+            cmds.connectAttr(poc + '.positionX', plusTXAvg + '.input3D[0].input3Dx') 
+            cmds.setAttr(plusTXAvg + '.input3D[1].input3Dx', -initialX) 
+            #swivel.tx --> not lipJotX.tx but lipJotP.tx   
+            cmds.connectAttr(plusTXAvg + '.output3Dx', jotXMult + '.input1X') 
+            cmds.connectAttr(self.faceFactors['lip'] + '.txSum_lipJntX_ry', jotXMult + '.input2X')       
+            cmds.connectAttr(jotXMult + '.outputX', jotX_AddD + '.input1')
+            cmds.connectAttr(swivelTranXMult + '.outputY', jotX_AddD + '.input2')
+            cmds.connectAttr(jotX_AddD + '.output', self.upDown + 'LipJotX'+str(i)+'.ry') 
+            
+            #swivel.tx / rz --> lipJotX.rz        
+            cmds.connectAttr('swivel_ctrl.rz',  jotX_rzAddD+ '.input1') 
+            cmds.connectAttr(swivelTranXMult + '.outputZ', jotX_rzAddD + '.input2') 
+            cmds.connectAttr(jotX_rzAddD + '.output', self.upDown + 'LipJotX'+str(i)+'.rz')
+            
+            # curve translateY add up(joint(LipJotX)"rx" driven by both curves(lipCrv, lipCtlCrv))
+            # ty(input3Dy) / extra ty(input3Dx) seperate out for jawSemi
+           
+            cmds.setAttr(plusTYAvg + '.operation', 1)
+            cmds.connectAttr(poc + '.positionY', plusTYAvg + '.input1D[0]')
+            cmds.connectAttr(ctlPoc + '.positionY', plusTYAvg + '.input1D[1]') 
+            cmds.connectAttr(self.upDown + 'LipDetail'+ str(i) + '.ty', plusTYAvg + '.input1D[2]')    
+            #connect translateY plusAvg to joint rotateX Mult        
+            cmds.connectAttr(plusTYAvg + '.output1D', jotXMult + '.input1Y')  
+            cmds.connectAttr(self.faceFactors['lip'] + '.tySum_lipJntX_rx', jotXMult + '.input2Y') 
+            cmds.connectAttr(jotXMult + '.outputY', mouthTY_AddD + '.input1')
+            cmds.connectAttr(mouthTyMult + '.outputX', mouthTY_AddD + '.input2')  
+            cmds.connectAttr(mouthTY_AddD + '.output', self.upDown + 'LipJotX'+ str(i) + '.rx')   
+            
+            #joint(LipJotX) translateX driven by poc positionX sum
+            cmds.connectAttr(TYpoc + '.positionX', jotXPosAvg + '.input3D[0].input3Dx') 
+            cmds.setAttr(jotXPosAvg + '.input3D[1].input3Dx', -initialTYX)        
+            cmds.connectAttr(jotXPosAvg + '.output3Dx', jotXPosMult + '.input1X')  
+            cmds.connectAttr(self.faceFactors['lip'] + '.txSum_lipJntX_tx', jotXPosMult + '.input2X') 
+            cmds.connectAttr(jotXPosMult + '.outputX', self.upDown + 'LipJotX'+ str(i) + '.tx')
+             
+            #2. poc positionY,Z sum drive joint("lipJotX") translateY,Z
+            cmds.connectAttr(TYpoc + '.positionY',  jotXPosAvg + '.input3D[0].input3Dy')
+            
+            cmds.connectAttr(jotXPosAvg + '.output3Dy', jotXPosMult + '.input1Y')
+            cmds.connectAttr(self.faceFactors['lip'] + '.tySum_lipJntX_ty', jotXPosMult + '.input2Y')  
+            cmds.connectAttr(jotXPosMult + '.outputY', self.upDown + 'LipJotX'+str(i)+'.ty')     
+            
+            # joint(LipJotX) translateZ driven by poc positionZ sum
+            cmds.connectAttr(TYpoc + '.positionZ', jotXPosAvg + '.input3D[0].input3Dz')
+            cmds.connectAttr(poc + '.positionZ', jotXPosAvg + '.input3D[1].input3Dz') 
+            cmds.connectAttr(rollYZPoc + '.positionZ', jotXPosAvg + '.input3D[2].input3Dz') 
+            cmds.connectAttr(jotXPosAvg + '.output3Dz', jotXPosMult + '.input1Z')
+            cmds.connectAttr(self.faceFactors['lip'] + '.tzSum_lipJntX_tz', jotXPosMult + '.input2Z') 
+            cmds.connectAttr(jotXPosMult + '.outputZ', self.upDown + 'LipJotX'+ str(i) + '.tz')          
+            
+            #3. LipCtlCrv Poc.positionX + LipDetail.tx for LipJotY 
+            # mouth_move.tx --> lipJotY0.ry .rz /mouth_move.rz --> lipJotY0.rz
+            cmds.connectAttr(ctlPoc + '.positionX', plusTXAvg + '.input3D[0].input3Dy')  
+            cmds.setAttr(plusTXAvg + '.input3D[1].input3Dy', -initialCtlX)  
+            cmds.connectAttr(self.upDown + 'LipDetail'+ str(i)+'.tx', plusTXAvg + '.input3D[2].input3Dy')
+            cmds.connectAttr(plusTXAvg + '.output3Dy', jntYMult + '.input1Y')          
+            cmds.connectAttr(self.faceFactors['lip'] + '.txSum_lipJntY_ry', jntYMult + '.input2Y')   
+            cmds.connectAttr(jntYMult + '.outputY', mouthTX_AddD+ '.input1')
+            cmds.connectAttr(mouthTxMult + '.outputX', mouthTX_AddD+ '.input2')  
+            cmds.connectAttr(mouthTX_AddD+ '.output', self.upDown+'LipJotY'+str(i)+'.ry') 
+           
+            cmds.connectAttr('mouth_move.rz', jntY_AddD + '.input1')          
+            cmds.connectAttr(mouthTxMult + '.outputZ', jntY_AddD + '.input2')   
+            cmds.connectAttr(jntY_AddD + '.output', self.upDown+'LipJotY'+str(i)+'.rz') 
+            
+            #lipRollYZCrv --> lipRollJotT* .ty / tz
+            cmds.connectAttr(rollYZPoc + '.positionY', rollYZMult + '.input1Y')
+            cmds.connectAttr(self.faceFactors['lip'] + '.YZPoc_rollJntT_ty', rollYZMult + '.input2Y') 
+            cmds.connectAttr(rollYZMult + '.outputY', self.upDown+'LipRollJotT'+str(i)+'.ty')
+            
+            cmds.connectAttr(rollYZPoc + '.positionZ', rollYZMult + '.input1Z')
+            cmds.connectAttr(self.faceFactors['lip'] + '.YZPoc_rollJntT_tz', rollYZMult + '.input2Z') 
+            cmds.connectAttr(rollYZMult + '.outputZ', self.upDown+'LipRollJotT' + str(i)+'.tz')
+            
+            #lipRollCrv --> lipRollJot*_jnt 
+            cmds.connectAttr(lipRollPoc + '.positionY', self.upDown+'LipRollJot' + str(i) + self.jntSuffix + '.rx')
+
 
 
 

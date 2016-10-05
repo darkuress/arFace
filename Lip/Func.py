@@ -86,23 +86,23 @@ class Func(Base.Base):
         lCorner = cmds.joint(n= 'lCorner' + name + self.jntSuffix, relative = True, p = [ 0, 0, 0])  
     
         indiGrp = cmds.group(lipCrvStart, uplipCrvMid, lolipCrvMid, lipCrvEnd, upCrv, loCrv, n = name + '_indiGrp') 
-        cmds.parent (indiGrp, 'upLipCrv' + self.grpSuffix)
+        cmds.parent(indiGrp, 'upLipCrv' + self.grpSuffix)
     
         #skinning
         upSkin = cmds.skinCluster(rCorner, midUpJnt, lCorner, upCrv, toSelectedBones = 1)    
         loSkin = cmds.skinCluster(rCorner, midLoJnt, lCorner, loCrv, toSelectedBones = 1)
-        
     
-        numVal = { 0: 15, 1:0.85, 2:0.98, 4: 0.98, 5:0.85, 6:0.15 }
-        for key, val in numVal.items():    
+        numVal = { 0: 0.15, 1:0.85, 2:0.98, 4: 0.98, 5:0.85, 6:0.15 }
+        for key, val in numVal.items():
+            print upSkin[0], '...', upCVs[key], '...', midUpJnt, '..', val
             cmds.skinPercent(upSkin[0], upCVs[key], tv =(midUpJnt, val))
-            cmds.skinPercent(loSkin[0], loCVs[key], tv =(midLoJnt, val))         
+            cmds.skinPercent(loSkin[0], loCVs[key], tv =(midLoJnt, val))    
         
         ctlCrvs = { 'JawOpen':'lowJaw_dir', 'TyLip':'jaw_UDLR' }
         if name in ctlCrvs.keys():
-            cornerMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = name +'Corner_mult')
-            dampMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = name + 'damp_mult')
-            txAvg = cmds.shadingNode('plusMinusAverage', asUtility=True, n = name + 'TX_plus')
+            cornerMult = cmds.shadingNode('multiplyDivide',   asUtility=True, n = name + 'Corner_mult')
+            dampMult   = cmds.shadingNode('multiplyDivide',   asUtility=True, n = name + 'damp_mult')
+            txAvg      = cmds.shadingNode('plusMinusAverage', asUtility=True, n = name + 'TX_plus')
             #endAvg = cmds.shadingNode('plusMinusAverage', asUtility=True, n = name + 'TY' + str(i) +'_plus')  
             # corner tx value
             cmds.connectAttr(midLoJnt+ '.tx', cornerMult+ '.input1X')  
