@@ -198,11 +198,11 @@ class UI(Core.Core):
         cmds.setParent('..')
         cmds.setParent('..')
         
-        cmds.separator( height=20, width = 600, style='in' )
-
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Connect To Control Panel', w = 200, c = partial(self.connectToEyelidControlPanel))
-        cmds.setParent('..')
+        #cmds.separator( height=20, width = 600, style='in' )
+        #
+        #cmds.rowColumnLayout(numberOfColumns = 2)
+        #cmds.button(label = 'Connect To Control Panel', w = 200, c = partial(self.connectToEyelidControlPanel))
+        #cmds.setParent('..')
         
         cmds.separator( height=20, width = 600, style='in' )
         
@@ -709,9 +709,9 @@ class UI(Core.Core):
         creating eyebrow controllr
         """
         self.upLip.createCtrls()
-        #self.loLip.createCtrls()
-        self.upLip.prarendGrp()
-        self.loLip.prarendGrp()
+        self.loLip.createCtrls()
+        #self.upLip.prarendGrp()
+        #self.loLip.prarendGrp()
     
     def copyCvWeights(self, *args):
         """
