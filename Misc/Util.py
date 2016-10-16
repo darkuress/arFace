@@ -1,3 +1,14 @@
+#!/bin/env python
+ ###############################################################################
+ #
+ #    auto rig  Misc/Util.py
+ #
+ #    $HeadURL: $
+ #    $Revision: $ 1
+ #    $Author:  $ Jonghwan Hwang
+ #    $Date: $ 2016 - 09 - 25
+ #
+
 import maya.cmds as cmds
 import json
 import os
