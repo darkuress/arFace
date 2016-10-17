@@ -23,6 +23,7 @@ class Core(object):
                  jsonFileName   = 'info.json',
                  jsonBasePath   = '/corp/projects/eng/jhwang/svn/test/facialTest',
                  baseMaPath     = '/corp/projects/eng/jhwang/svn/maya/arFace/maFiles',
+                 configFile     = '', 
                  panelFilename  = 'panel.ma',
                  panelTopNode   = 'Panel',
                  faceMainNode   = 'faceMain',
@@ -33,7 +34,21 @@ class Core(object):
         """
         basic variables
         """
-        
+        try:
+            if configFile and os.path.exists(configFile):
+                configJsonData = open(configFile)
+                self.configData = json.load(configJsonData)
+                if _platform == 'win32':
+                    jsonBasePath  = self.configData['windows']['jsonBasePath']
+                    baseMaPath    = self.configData['windows']['baseMaPath']
+                    
+                elif _platform == 'linux2':
+                    jsonBasePath  = self.configData['linux']['jsonBasePath']
+                    baseMaPath    = self.configData['linux']['baseMaPath']
+                    
+        except:
+            raise ValueError("%s is not a valid pass or file is empty" %configFile)
+            
         #- checking os type in test mode
         if _platform == 'win32':
             jsonBasePath  = os.path.join('F:', os.sep, 'facialTest')

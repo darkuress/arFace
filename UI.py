@@ -13,12 +13,12 @@ if cmds.window('faceSetupUI', ex = True):
 cmds.window('faceSetupUI', widthHeight=(600, 500) )
 
 class UI(Core.Core):
-    def __init__(self):
+    def __init__(self, configFile = ''):
         
         """
         UI Main function
         """
-        Core.Core.__init__(self)
+        Core.Core.__init__(self, configFile = configFile)
         
         form = cmds.formLayout()
         #- creating tabs
