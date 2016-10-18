@@ -115,7 +115,7 @@ class Core(object):
             self.__class__.__name__,
             `self.cPrefix`,
             `self.prefix`,            
-            `self.uplo`,
+            `self.uploPrefix`,
             `self.ctlSuffix`,
             `self.jntSuffix`,
             `self.grpSuffix`,
