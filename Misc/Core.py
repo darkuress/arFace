@@ -97,8 +97,11 @@ class Core(object):
                             'eyelid'  : 'lidFactor',
                             'lip'      : 'lipFactor'}
         
-        self.headSkelPos = self.locData['setupLoc']['headSkelPos']
-        self.headGeo     = self.locData['headGeo'] 
+        if self.locData.has_key('setupLoc'):
+            if self.locData['setupLoc'].has_key('headSkelPos'):
+                self.headSkelPos = self.locData['setupLoc']['headSkelPos']
+        if self.locData.has_key('headGeo'):
+            self.headGeo     = self.locData['headGeo'] 
         
     def writeLocInfoData(self, data):
         """
