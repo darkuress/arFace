@@ -10,7 +10,7 @@ import os
 
 if cmds.window('faceSetupUI', ex = True):
     cmds.deleteUI('faceSetupUI')    
-cmds.window('faceSetupUI', widthHeight=(600, 500) )
+cmds.window('faceSetupUI',menuBar=True, widthHeight=(600, 500) )
 
 class UI(Core.Core):
     def __init__(self, configFile = ''):
@@ -20,6 +20,10 @@ class UI(Core.Core):
         """
         Core.Core.__init__(self, configFile = configFile)
         
+        cmds.menu(label='Tools')
+        cmds.menuItem(label='NG Skin Tool', c = partial(self.openNgSkinTool))
+        cmds.menuItem(label='Copy Layer Tool', c = partial(self.openCopyLayersTool))
+                
         form = cmds.formLayout()
         #- creating tabs
         tabs = cmds.tabLayout(innerMarginWidth=5, innerMarginHeight=5)
@@ -144,10 +148,17 @@ class UI(Core.Core):
         cmds.rowColumnLayout(numberOfColumns=1)
         cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..')
-        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.rowColumnLayout(numberOfColumns = 3)
         cmds.button(label = 'Save', c = self.saveInfoFile)
+        cmds.button(label = 'Build Foundation', c = self.buildFoundation)
         cmds.button(label = 'Build/Rebuild')
         cmds.setParent('..')
+
+        cmds.separator( height=20, width = 600, style='in' )
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Ng Skin Tool', w = 200, c = partial(self.openNgSkinTool))
+        cmds.setParent('..')  
         
         cmds.setParent('..')
         #-}
@@ -206,11 +217,9 @@ class UI(Core.Core):
         
         cmds.separator( height=20, width = 600, style='in' )
         
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Help Panel', w = 200, c = partial(self.eyelidHelpPanel))
-        cmds.setParent('..')
-        
-        cmds.separator( height=20, width = 600, style='in' )
+        #cmds.rowColumnLayout(numberOfColumns = 2)
+        #cmds.button(label = 'Help Panel', w = 200, c = partial(self.eyelidHelpPanel))
+        #cmds.setParent('..')
         
         cmds.rowColumnLayout(numberOfColumns = 2)
         self.lUpLidCrvOptionMenu = cmds.optionMenu(label='Left   Up',
@@ -226,6 +235,8 @@ class UI(Core.Core):
                                                    changeCommand = partial(self.runLidCrvDropdownMenu, 'rLo'))
         self.updateLidCrvDropdownMenu()
         cmds.setParent('..')
+        
+        cmds.separator( height=20, width = 600, style='in' )
         
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Save Curves', c = partial(self.saveEyelidCurve))
@@ -322,14 +333,14 @@ class UI(Core.Core):
         cmds.setParent('..' )
         #-}
         
-        #- sixth tab{
-        bridgeTab = cmds.columnLayout()
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Create Bridge Joints', w = 200, c = partial(self.createBridgeJoint))
-        cmds.setParent('..')
-        
-        cmds.setParent('..' )
-        #-}
+        ##- sixth tab{
+        #bridgeTab = cmds.columnLayout()
+        #cmds.rowColumnLayout(numberOfColumns = 2)
+        #cmds.button(label = 'Create Bridge Joints', w = 200, c = partial(self.createBridgeJoint))
+        #cmds.setParent('..')
+        #
+        #cmds.setParent('..' )
+        ##-}
         
         cmds.tabLayout(tabs,
                        edit=True,
@@ -337,8 +348,7 @@ class UI(Core.Core):
                                  (runAllTab, 'Run It All'),
                                  (eyelidTab, 'eyelid'),
                                  (eyebrowTab, 'eyebrow'),
-                                 (lipTab, 'lip'),
-                                 (bridgeTab, 'bridge'))
+                                 (lipTab, 'lip'))
                       )
         
         cmds.showWindow()
@@ -376,7 +386,15 @@ class UI(Core.Core):
         reload(ImportMa)
         ihp = ImportMa.Create()
         panelTopNode = ihp.importHelpPanel()
-        
+
+    def buildFoundation(self, *args):
+        """
+        build all foundation together
+        """
+        self.importFacialLoc()
+        self.createHierarchy()
+        self.importControlPanel()
+
     def saveInfoFile(self, *args):
         """
         save/update info file
