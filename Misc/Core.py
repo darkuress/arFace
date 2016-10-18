@@ -34,8 +34,9 @@ class Core(object):
         """
         basic variables
         """
-        try:
-            if configFile and os.path.exists(configFile):
+        
+        if configFile and os.path.exists(configFile):
+            try:
                 configJsonData = open(configFile)
                 self.configData = json.load(configJsonData)
                 if _platform == 'win32':
@@ -45,17 +46,16 @@ class Core(object):
                 elif _platform == 'linux2':
                     jsonBasePath  = self.configData['linux']['jsonBasePath']
                     baseMaPath    = self.configData['linux']['baseMaPath']
-                    
-        except:
-            raise ValueError("%s is not a valid pass or file is empty" %configFile)
-            
-        #- checking os type in test mode
-        if _platform == 'win32':
-            jsonBasePath  = os.path.join('F:', os.sep, 'facialTest')
-            baseMaPath      = os.path.join('C:', os.sep, 'documents', 'maya', 'maya2015', 'scripts', 'arFace', 'maFiles')
-
-        elif _platform == 'linux2':
-            jsonBasePath  = '/corp/projects/eng/jhwang/svn/test/facialTest'
+            except:
+                raise ValueError("%s is not a valid pass or file is empty" %configFile)
+        else:
+            #- checking os type in test mode
+            if _platform == 'win32':
+                jsonBasePath  = os.path.join('F:', os.sep, 'facialTest')
+                baseMaPath      = os.path.join('C:', os.sep, 'documents', 'maya', 'maya2015', 'scripts', 'arFace', 'maFiles')
+    
+            elif _platform == 'linux2':
+                jsonBasePath  = '/corp/projects/eng/jhwang/svn/test/facialTest'
         
         self.cPrefix          = cPrefix
         self.prefix           = prefix
