@@ -162,12 +162,6 @@ class UI(Core.Core):
         cmds.button(label = 'Build/Rebuild')
         cmds.setParent('..')
 
-        cmds.separator( height=20, width = 600, style='in' )
-        
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Ng Skin Tool', w = 200, c = partial(self.openNgSkinTool))
-        cmds.setParent('..')  
-        
         cmds.setParent('..')
         #-}
 
@@ -281,23 +275,7 @@ class UI(Core.Core):
         self.eyebrowRotateScaleTextField = cmds.textField('eyebrowRotateScaleTextField', tx = 10)
         cmds.setParent('..' )
         cmds.setParent('..' )
-        cmds.setParent('..' )
-        
-        #cmds.separator( height=20, width = 600, style='in' )
-        #
-        #cmds.rowColumnLayout(numberOfColumns = 2)
-        #cmds.button(label = 'Connect To Control Panel', w = 200, c = partial(self.connectToEyebrowControlPanel))
-        #cmds.setParent('..')        
-
-        cmds.separator( height=20, width = 600, style='in' )
-        
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Ng Skin Tool', w = 200, c = partial(self.openNgSkinTool))
-        cmds.setParent('..')  
-        
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Copy Layers Tool', w = 200, c = partial(self.openCopyLayersTool))
-        cmds.setParent('..')          
+        cmds.setParent('..' )       
         
         cmds.separator( height=20, width = 600, style='in' )
         cmds.rowColumnLayout(numberOfColumns = 2)
