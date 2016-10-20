@@ -87,21 +87,23 @@ class Core(object):
             with open(self.jsonPath, 'a') as outfile:
                 json.dump({}, outfile)
             outfile.close()
-            
-        jsonData = open(self.jsonPath)
-        self.locData = json.load(jsonData)
         
+        self.locData = self.updateLocdata(self.jsonPath)
+        
+        #jsonData = open(self.jsonPath)
+        #self.locData = json.load(jsonData)
+        #
         self.faceMainNode = faceMainNode
         self.faceFactors = {'main'    : 'faceFactors',
                             'eyebrow' : 'browFactor',
                             'eyelid'  : 'lidFactor',
                             'lip'      : 'lipFactor'}
         
-        if self.locData.has_key('setupLoc'):
-            if self.locData['setupLoc'].has_key('headSkelPos'):
-                self.headSkelPos = self.locData['setupLoc']['headSkelPos']
-        if self.locData.has_key('headGeo'):
-            self.headGeo     = self.locData['headGeo'] 
+        #if self.locData.has_key('setupLoc'):
+        #    if self.locData['setupLoc'].has_key('headSkelPos'):
+        #        self.headSkelPos = self.locData['setupLoc']['headSkelPos']
+        #if self.locData.has_key('headGeo'):
+        #    self.headGeo     = self.locData['headGeo'] 
         
     def writeLocInfoData(self, data):
         """
@@ -112,6 +114,21 @@ class Core(object):
             json.dump(data, outfile)
         outfile.close()
 
+    def updateLocdata(self, jsonPath):
+        """
+        update existing self.locData
+        """       
+        jsonData = open(self.jsonPath)
+        self.locData = json.load(jsonData)
+
+        if self.locData.has_key('setupLoc'):
+            if self.locData['setupLoc'].has_key('headSkelPos'):
+                self.headSkelPos = self.locData['setupLoc']['headSkelPos']
+        if self.locData.has_key('headGeo'):
+            self.headGeo     = self.locData['headGeo']
+        
+        return self.locData
+        
     def __repr__(self):
         return "%s.%s(cPrefix=%s, prefix=%s, uplo=%s, ctlSuffix=%s, jntSuffix=%s, grpSuffix=%s, crvSuffix=%s, jntGrp=%s, crvGrp=%s, clsGrp=%s, ctlGrp=%s, jsonPath=%s, panelPath=%s, faceLocPath=%s)" % (
             self.__module__,

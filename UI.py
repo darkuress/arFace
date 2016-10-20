@@ -20,11 +20,19 @@ class UI(Core.Core):
         """
         Core.Core.__init__(self, configFile = configFile)
         
+        #- constructing Menu Items
+        cmds.menu(label='File')
+        cmds.menuItem(label='Open', c = partial(self.openInfoFile))
+
         cmds.menu(label='Tools')
         cmds.menuItem(label='NG Skin Tool', c = partial(self.openNgSkinTool))
         cmds.menuItem(label='Copy Layer Tool', c = partial(self.openCopyLayersTool))
-                
+        
+        cmds.menu(label='Help')
+        cmds.menuItem(label='Ask sshin')
+                        
         form = cmds.formLayout()
+        
         #- creating tabs
         tabs = cmds.tabLayout(innerMarginWidth=5, innerMarginHeight=5)
         cmds.formLayout(form, edit=True, attachForm=((tabs, 'top', 0), (tabs, 'left', 0), (tabs, 'bottom', 0), (tabs, 'right', 0)) )
@@ -418,7 +426,67 @@ class UI(Core.Core):
                            message='Location : %s' %self.jsonPath,
                            button=['ok'],
                            defaultButton='ok')
-    
+
+    def openInfoFile(self, *args):
+        """
+        manually load info.json
+        """
+        filename = cmds.fileDialog2(fileMode=1, caption="Import Info.json")
+        self.locData = self.updateLocdata(filename)
+        self.updateLocFields(self.locData)
+
+    def updateLocFields(self, locData, *args):
+        """
+        update locator data in the text field
+        """        
+        if locData.get('headGeo'):
+            self.headGeoTextField = cmds.textField(self.headGeoTextField, e = True, tx = locData['headGeo'])
+        else:
+            self.headGeoTextField = cmds.textField(self.headGeoTextField, e = True, tx = '')
+        
+        
+        if locData.get('setupLoc'):
+            insertText = str(self.locData['setupLoc'].keys())
+        else:
+            insertText = ''
+        cmds.textField(self.setupLocTextField, e = True, tx = insertText)
+        
+        if locData.has_key('eyebrowVtxs'):
+            insertText = locData['eyebrowVtxs']
+        else:
+            insertText = ''
+        cmds.textField(self.eyebrowVertsTextField, e = True, tx = insertText)
+        
+        if locData.has_key('upEyelidVtxs'):
+            insertText = locData['upEyelidVtxs']
+        else:
+            insertText = ''            
+        cmds.textField(self.upEyelidVertsTextField, e = True, tx = insertText)
+        
+        if locData.has_key('loEyelidVtxs'):
+            insertText = locData['loEyelidVtxs']
+        else:
+            insertText = ''      
+        cmds.textField(self.loEyelidVertsTextField, e = True, tx = insertText)
+        
+        if locData.has_key('cnrEyelidVtxs'):
+            insertText = self.locData['cnrEyelidVtxs']
+        else:
+            insertText = ''      
+        cmds.textField(self.cnrEyelidVertsTextField, e = True, tx = insertText)
+        
+        if locData.has_key('upLipVtxs'):
+            insertText = locData['upLipVtxs']
+        else:
+            insertText = ''      
+        cmds.textField(self.upLipVertsTextField, e = True, tx = insertText)
+        
+        if locData.has_key('loLipVtxs'):
+            insertText = locData['loLipVtxs']
+        else:
+            insertText = ''      
+        cmds.textField(self.loLipVertsTextField, e = True, tx = insertText)
+        
     def updateEyebrowVtxTextField(self, *args):
         """
         updating save TextField
