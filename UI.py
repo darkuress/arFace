@@ -317,16 +317,6 @@ class UI(Core.Core):
         cmds.separator( height=20, width = 600, style='in' )
         
         cmds.setParent('..' )
-        #-}
-        
-        ##- sixth tab{
-        #bridgeTab = cmds.columnLayout()
-        #cmds.rowColumnLayout(numberOfColumns = 2)
-        #cmds.button(label = 'Create Bridge Joints', w = 200, c = partial(self.createBridgeJoint))
-        #cmds.setParent('..')
-        #
-        #cmds.setParent('..' )
-        ##-}
         
         cmds.tabLayout(tabs,
                        edit=True,
