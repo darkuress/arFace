@@ -211,18 +211,8 @@ class UI(Core.Core):
         cmds.setParent('..')
         cmds.setParent('..')
         
-        #cmds.separator( height=20, width = 600, style='in' )
-        #
-        #cmds.rowColumnLayout(numberOfColumns = 2)
-        #cmds.button(label = 'Connect To Control Panel', w = 200, c = partial(self.connectToEyelidControlPanel))
-        #cmds.setParent('..')
-        
         cmds.separator( height=20, width = 600, style='in' )
-        
-        #cmds.rowColumnLayout(numberOfColumns = 2)
-        #cmds.button(label = 'Help Panel', w = 200, c = partial(self.eyelidHelpPanel))
-        #cmds.setParent('..')
-        
+                
         cmds.rowColumnLayout(numberOfColumns = 2)
         self.lUpLidCrvOptionMenu = cmds.optionMenu(label='Left   Up',
                                                    changeCommand = partial(self.runLidCrvDropdownMenu, 'lUp'))
@@ -307,6 +297,10 @@ class UI(Core.Core):
         self.lipRotateScaleTextField = cmds.textField('lipRotateScaleTextField', tx = 10)
         cmds.setParent('..' )
         cmds.setParent('..' )
+
+        cmds.separator( height=20, width = 600, style='in' )
+        
+        cmds.button(label = 'Curve on edge loop', c = partial(self.curveOnEdgeLoop))
         
         cmds.separator( height=20, width = 600, style='in' )
 
@@ -766,7 +760,17 @@ class UI(Core.Core):
         self.loLip.createCtrls()
         #self.upLip.prarendGrp()
         #self.loLip.prarendGrp()
-    
+
+    def curveOnEdgeLoop(self, *args):
+        """
+        curve on edge loop tool
+        making it as static function? 
+        """
+        from Lip import Func
+        reload(Func)
+        lipFunc = Func.Func()
+        lipFunc.curveOnEdgeLoop()
+        
     def copyCvWeights(self, *args):
         """
         copy cv weights

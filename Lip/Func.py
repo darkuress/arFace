@@ -139,6 +139,65 @@ class Func(Base.Base):
             cmds.connectAttr(ctlCrvs[name] + '.tz', midLoJnt + '.tz')'''
         return midLoJnt
 
+    def curveOnEdgeLoop(self):
+        """
+        first two edge selection are important( it determines the first vertex)
+        create curve based on the ordered vertices list
+        """
+        myList = cmds.ls(os=1, fl=1)
+        allVerts = self.orderedVertsEdgeLoop(myList)
+        vertsPos = []
+        for v in allVerts:
+            pos = cmds.xform(v, q =1, ws =1, t =1)
+            vertsPos.append(pos)
+        cmds.curve(n= 'loftCurve01', d =1, per =1, p = vertsPos)
+    
+    def orderedVertsEdgeLoop(self, myList):
+        """
+        select two adjasent edges( second edge is the curve direction)
+        return list of verts on edgeLoop
+        """        
+        cmds.select(myList[0], r =1)
+        cmds.ConvertSelectionToVertices()
+        firstVert = cmds.ls(sl=1, fl=1)
+        cmds.select(myList[1], r =1)
+        cmds.ConvertSelectionToVertices()
+        secondVert = cmds.ls(sl=1, fl=1)
+        repeatVert = [i for i in firstVert if i in secondVert]
+        secondVert.remove(repeatVert[0])
+        nextVert = secondVert[0] 
+        firstVert.remove(repeatVert[0])
+        
+        cmds.polySelectSp(myList[1], loop =1)
+        sel = cmds.ls( sl=1, fl=1 )
+        edgeLen = len(sel)-2
+        orderedVerts = []    
+        for i in range(edgeLen):
+            selEdges = [x for x in sel if x not in myList]        
+            nextVert_edge = self.findConnectVert(selEdges, nextVert)
+            
+            orderedVerts.append(nextVert) 
+            nextVert = nextVert_edge[0]               
+            myList.append(nextVert_edge[1])
+        
+        orderedVerts.append(firstVert[0])
+        orderedVerts.insert(0,repeatVert[0]) 
+        orderedVerts.insert(0,firstVert[0])
+        
+        return orderedVerts        
+            
+    def findConnectVert(self, selEdges, nextVert):
+        nextVertEdge =[]
+        for edge in selEdges:
+            cmds.select(edge, r =1)
+            cmds.ConvertSelectionToVertices()
+            tempVert = cmds.ls(sl=1, fl=1)        
+            if nextVert in tempVert:
+                tempVert.remove(nextVert)
+                nextVertEdge =[tempVert[0], edge ]            
+        return nextVertEdge
+
+
     def copyCvWeighs(self):
         """
         copy surface cv's weight to curve's cv
