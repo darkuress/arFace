@@ -26,6 +26,7 @@ class Joints(Base.Base):
         
         if kw.get('locData'):
             self.eyeBrowVtxs = kw.get('locData')['eyebrowVtxs']
+            print self.eyeBrowVtxs
 
     def createJnts(self):
         """
