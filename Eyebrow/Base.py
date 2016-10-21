@@ -15,8 +15,10 @@ from arFace.Misc import Util
 reload(Util)
 from arFace.Misc import Controller
 reload(Controller)
+from arFace import UI
+reload(UI)
 
-class Base(Core.Core, Util.Util, Controller.Controller):
+class Base(Core.Core, Util.Util, Controller.Controller, UI.UI):
     def __init__(self, **kw):
         """
         initializing variables
@@ -24,6 +26,7 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         
         #initializing Global variables
         #super(Core.Core, self, **kw).__init__()
+        UI.UI.__init__(self)
         Core.Core.__init__(self, **kw)
         Util.Util.__init__(self)
         Controller.Controller.__init__(self)
