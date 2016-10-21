@@ -26,14 +26,15 @@ class Joints(Base.Base):
         
         if kw.get('locData'):
             self.eyeBrowVtxs = kw.get('locData')['eyebrowVtxs']
-            print self.eyeBrowVtxs
 
     def createJnts(self):
         """
         creating joints on selected vertaxes
         """
         sel = eval(self.eyeBrowVtxs)
+        print 'sel : ', self.eyeBrowVtxs
         tempVerts = sel[:-1]
+        print 'tempVerts : ', tempVerts
         verts = self.sortSelected(tempVerts)
         browBall = sel[-1]
         browBallPos = cmds.xform(browBall, t = True, q = True, ws = True)
