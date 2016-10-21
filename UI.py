@@ -536,6 +536,7 @@ class UI(Core.Core):
         making eyelidSetup instance
         """
         #- somehow it's not working when everything is imported at the top
+        locData = self.updateSelfLocData()
         from Eyelid import Setup as EyelidSetup
         reload(EyelidSetup)
         eyelidCtrlSize    = cmds.textField(self.eyelidCtrlSizeTextField, q = True, tx = True)
@@ -546,16 +547,19 @@ class UI(Core.Core):
                                         offset      = float(eyelidCtrlOffset),
                                         rotateScale = float(eyelidRotateScale),
                                         upDown      = self.uploPrefix[0],
+                                        locData     = locData
                                         )
         lowerEyelid = EyelidSetup.Setup(size        = float(eyelidCtrlSize),
                                         offset      = float(eyelidCtrlOffset),
                                         rotateScale = float(eyelidRotateScale),
                                         upDown      = self.uploPrefix[1],
+                                        locData     = locData
                                         )
         cornerEyelid = EyelidSetup.Setup(size       = float(eyelidCtrlSize),
                                         offset      = float(eyelidCtrlOffset),
                                         rotateScale = float(eyelidRotateScale),
                                         upDown      = self.cnrPrefix,
+                                        locData     = locData
                                         )
         
         return upperEyelid, lowerEyelid, cornerEyelid

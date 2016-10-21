@@ -33,10 +33,11 @@ class Ctrls(Func.Func, Base.Base):
         Func.Func.__init__(self, **kw)
         Base.Base.__init__(self, **kw)
     
-    def createLidCtrls(self, baseJnts):
+    def createLidCtrls(self, baseJnts, lEyeLoc):
         """
         create controller for lid
         """
+        self.lEyeLoc = lEyeLoc
         if not cmds.objExists(self.eyelidCtlGrpName):
             cmds.createNode('transform', n = self.eyelidCtlGrpName)
             cmds.createNode('transform', n = self.eyelidClsGrpName)

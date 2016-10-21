@@ -29,18 +29,22 @@ class Joints(Base.Base):
             print "create the eye locators"
             raise 
 
-    def createJnts(self, updown = 'up'):
+    def createJnts(self,
+                   updown        = 'up',
+                   upEyelidVtxs  = '',
+                   loEyelidVtxs  = '',
+                   cnrEyelidVtxs = ''):
         """
         creatint Joints
         """       
         #Eyelid Vertexes        
         #verts = cmds.ls( os = True, fl = True)
         if updown == self.uploPrefix[0]:
-            verts = eval(self.upEyelidVtxs)
+            verts = eval(upEyelidVtxs)
         elif updown == self.uploPrefix[1]:
-            verts = eval(self.loEyelidVtxs)
+            verts = eval(loEyelidVtxs)
         elif updown == self.cnrPrefix:
-            verts = eval(self.cnrEyelidVtxs)
+            verts = eval(cnrEyelidVtxs)
         geoName = self.headGeo
         
         #- list vertices by tx position order

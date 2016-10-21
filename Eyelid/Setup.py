@@ -12,10 +12,8 @@ import Joints
 reload(Joints)
 import Ctrls
 reload(Ctrls)
-import HelpPanel
-reload(HelpPanel)
 
-class Setup(Joints.Joints, Ctrls.Ctrls, HelpPanel.HelpPanel):
+class Setup(Joints.Joints, Ctrls.Ctrls):
     def __init__(self,
                  size = 1,
                  offset = 1,
@@ -27,14 +25,27 @@ class Setup(Joints.Joints, Ctrls.Ctrls, HelpPanel.HelpPanel):
         """
         Joints.Joints.__init__(self, **kw)
         Ctrls.Ctrls.__init__(self, upDown, size, offset, rotateScale, **kw)
-        HelpPanel.HelpPanel.__init__(self)
         self.upDown = upDown
-        
+        if kw.get('locData'):
+            self.locData = kw.get('locData')
+
+        #eyelid joints and location position 
+        self.upEyelidVtxs    = self.locData.get('upEyelidVtxs', [])
+        self.loEyelidVtxs    = self.locData.get('loEyelidVtxs', [])
+        self.cnrEyelidVtxs   = self.locData.get('cnrEyelidVtxs', [])
+        if self.locData.get('setupLoc'):
+            self.lEyeLoc     = str([x for x in self.locData['setupLoc'] if 'eye' in x.lower()][0])
+        else:
+            self.lEyeLoc     = ''
+
     def createJoints(self):
         """
         creating joints on selected vertaxes
         """
-        baseJntsP = self.createJnts(self.upDown)
+        baseJntsP = self.createJnts(updown        = self.upDown,
+                                    upEyelidVtxs  = self.upEyelidVtxs,
+                                    loEyelidVtxs  = self.loEyelidVtxs,
+                                    cnrEyelidVtxs = self.cnrEyelidVtxs)
         self.group(baseJntsP, self.eyelidJntGrpName)
         if not cmds.listRelatives(self.eyelidJntGrpName, p = True):
             cmds.parent(self.eyelidJntGrpName, self.jntGrp)
@@ -46,7 +57,7 @@ class Setup(Joints.Joints, Ctrls.Ctrls, HelpPanel.HelpPanel):
         select base joints and run the script
         """
         cmds.select(cl = True)
-        self.ctrlInfo = self.createLidCtrls(jnts)
+        self.ctrlInfo = self.createLidCtrls(jnts, self.lEyeLoc)
         #self.group(self.ctrlInfo['lidsCtlGrp'], self.eyelidCtlGrpName)
         #self.group(self.ctrlInfo['lidsCrvGrp'], self.eyelidCrvGrpName)
         #
