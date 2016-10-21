@@ -365,6 +365,23 @@ class UI(Core.Core):
         self.createHierarchy()
         self.importControlPanel()
 
+    def updateLocData(self, *args):
+        """
+        update self.locData with Text Field's value
+        """
+        self.locData = {}
+        locNameData                   = cmds.textField(self.setupLocTextField, q = True, tx = True)
+        self.locData['headGeo']       = cmds.textField(self.headGeoTextField, q = True, tx = True) 
+        self.locData['setupLoc']      = SetupLoc.SetupLoc.saveLocPos(locNameData) if locNameData else {}
+        self.locData['eyebrowVtxs']   = cmds.textField(self.eyebrowVertsTextField, q = True, tx = True)
+        self.locData['upEyelidVtxs']  = cmds.textField(self.upEyelidVertsTextField, q = True, tx = True)
+        self.locData['loEyelidVtxs']  = cmds.textField(self.loEyelidVertsTextField, q = True, tx = True)
+        self.locData['cnrEyelidVtxs'] = cmds.textField(self.cnrEyelidVertsTextField, q = True, tx = True)
+        self.locData['upLipVtxs']     = cmds.textField(self.upLipVertsTextField, q = True, tx = True)
+        self.locData['loLipVtxs']     = cmds.textField(self.loLipVertsTextField, q = True, tx = True)
+        
+        return self.locData
+
     def saveInfoFile(self, *args):
         """
         save/update info file
@@ -372,16 +389,7 @@ class UI(Core.Core):
         from Foundation import SetupLoc
         reload(SetupLoc)
         
-        locData = {}
-        locNameData              = cmds.textField(self.setupLocTextField, q = True, tx = True)
-        locData['headGeo']       = cmds.textField(self.headGeoTextField, q = True, tx = True) 
-        locData['setupLoc']      = SetupLoc.SetupLoc.saveLocPos(locNameData) if locNameData else {}
-        locData['eyebrowVtxs']   = cmds.textField(self.eyebrowVertsTextField, q = True, tx = True)
-        locData['upEyelidVtxs']  = cmds.textField(self.upEyelidVertsTextField, q = True, tx = True)
-        locData['loEyelidVtxs']  = cmds.textField(self.loEyelidVertsTextField, q = True, tx = True)
-        locData['cnrEyelidVtxs'] = cmds.textField(self.cnrEyelidVertsTextField, q = True, tx = True)
-        locData['upLipVtxs']     = cmds.textField(self.upLipVertsTextField, q = True, tx = True)
-        locData['loLipVtxs']     = cmds.textField(self.loLipVertsTextField, q = True, tx = True)
+        locData = self.updateLocData()
         
         self.writeLocInfoData(locData)
         cmds.confirmDialog(title='Info Saved',
@@ -669,6 +677,8 @@ class UI(Core.Core):
         eyebrowCtrlSize    = cmds.textField(self.eyebrowCtrlSizeTextField, q = True, tx = True)
         eyebrowCtrlOffset  = cmds.textField(self.eyebrowCtrlOffsetTextField, q = True, tx = True)
         eyebrowRotateScale = cmds.textField(self.eyebrowRotateScaleTextField, q = True, tx = True)
+        
+        locData = self.updateLocData()
         
         eyebrow = EyebrowSetup.Setup(size        = float(eyebrowCtrlSize),
                                      offset      = float(eyebrowCtrlOffset),
