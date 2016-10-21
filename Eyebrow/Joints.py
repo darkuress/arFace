@@ -26,13 +26,13 @@ class Joints(Base.Base):
         
         if kw.get('locData'):
             self.eyeBrowVtxs = kw.get('locData')['eyebrowVtxs']
-            print 'self.eyeBrowVtxs : ', self.eyeBrowVtxs
             
-    def createJnts(self, eyeBrowVtxs = []):
+    def createJnts(self, eyeBrowVtxs):
         """
         creating joints on selected vertaxes
         """
         self.eyeBrowVtxs = eyeBrowVtxs
+        print 'self.eyeBrowVtxs : ', self.eyeBrowVtxs , ' type : ', type(self.eyeBrowVtxs)
         sel = eval(self.eyeBrowVtxs)
         print 'sel : ', self.eyeBrowVtxs
         tempVerts = sel[:-1]
