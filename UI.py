@@ -365,10 +365,13 @@ class UI(Core.Core):
         self.createHierarchy()
         self.importControlPanel()
 
-    def updateLocData(self, *args):
+    def updateSelfLocData(self, *args):
         """
         update self.locData with Text Field's value
         """
+        from Foundation import SetupLoc
+        reload(SetupLoc)
+        
         self.locData = {}
         locNameData                   = cmds.textField(self.setupLocTextField, q = True, tx = True)
         self.locData['headGeo']       = cmds.textField(self.headGeoTextField, q = True, tx = True) 
@@ -385,11 +388,8 @@ class UI(Core.Core):
     def saveInfoFile(self, *args):
         """
         save/update info file
-        """
-        from Foundation import SetupLoc
-        reload(SetupLoc)
-        
-        locData = self.updateLocData()
+        """       
+        locData = self.updateSelfLocData()
         
         self.writeLocInfoData(locData)
         cmds.confirmDialog(title='Info Saved',
@@ -672,14 +672,14 @@ class UI(Core.Core):
         """
         making eyebrowSetup instance
         """
+        self.locData = self.updateSelfLocData()
+        print self.locData
+        
         from Eyebrow import Setup as EyebrowSetup
         reload(EyebrowSetup)
         eyebrowCtrlSize    = cmds.textField(self.eyebrowCtrlSizeTextField, q = True, tx = True)
         eyebrowCtrlOffset  = cmds.textField(self.eyebrowCtrlOffsetTextField, q = True, tx = True)
         eyebrowRotateScale = cmds.textField(self.eyebrowRotateScaleTextField, q = True, tx = True)
-        
-        locData = self.updateLocData()
-        
         eyebrow = EyebrowSetup.Setup(size        = float(eyebrowCtrlSize),
                                      offset      = float(eyebrowCtrlOffset),
                                      rotateScale = float(eyebrowRotateScale)
