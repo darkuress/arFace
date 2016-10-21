@@ -25,12 +25,13 @@ class Setup(Joints.Joints, Ctrls.Ctrls):
         
         Joints.Joints.__init__(self, **kw)
         Ctrls.Ctrls.__init__(self, size, offset, rotateScale, **kw)
+        self.eyeBrowVtxs = kw.get('locData')['eyebrowVtxs']
          
     def createJoints(self):
         """
         creating joints on selected vertaxes
         """
-        allJnts = self.createJnts()
+        allJnts = self.createJnts(self.eyeBrowVtxs)
         #- grouping joints
         self.group(allJnts, self.eyebrowJntGrpName)
         cmds.parent(self.eyebrowJntGrpName, self.jntGrp)
