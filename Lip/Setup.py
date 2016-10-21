@@ -24,12 +24,13 @@ class Setup(Joints.Joints, Ctrls.Ctrls):
         Joints.Joints.__init__(self, **kw)
         Ctrls.Ctrls.__init__(self, upDown, rotateScale)
         self.upDown = upDown
+        self.locData = kw.get('locData')
         
     def createJoints(self):
         """
         creating joints on selected vertaxes
         """
-        lipInfo = self.createJnts(self.upDown)
+        lipInfo = self.createJnts(self.upDown, self.locData)
         #self.lipJntGrp = lipInfo['lipJntGrp']
         #self.lipCrvGrp = lipInfo['lipCrvGrp']
         

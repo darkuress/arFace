@@ -745,14 +745,17 @@ class UI(Core.Core):
         """
         making lipSetup instance
         """
+        locData = self.updateSelfLocData()
         from Lip import Setup as LipSetup
         reload(LipSetup)
         lipRotateScale = cmds.textField(self.lipRotateScaleTextField, q = True, tx = True)
         
         upLip = LipSetup.Setup(upDown = self.uploPrefix[0],
-                               rotateScale = float(lipRotateScale))
+                               rotateScale = float(lipRotateScale),
+                               locData = locData)
         loLip = LipSetup.Setup(upDown = self.uploPrefix[1],
-                               rotateScale = float(lipRotateScale))
+                               rotateScale = float(lipRotateScale),
+                               locData = locData)
         
         return upLip, loLip
     

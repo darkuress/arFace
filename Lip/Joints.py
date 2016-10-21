@@ -21,10 +21,28 @@ class Joints(Func.Func):
         
         self.allBaseJnts = list()
 
-    def createJnts(self, upLow):
+    def createJnts(self, upLow, locData = ''):
         """
         creating joints
         """
+        if locData:
+            self.locData        = locData
+            #- lip joints and location position
+            self.lipEPos        = self.locData['setupLoc']['lipEPos']
+            self.lipWPos        = [-self.lipEPos[0], self.lipEPos[1], self.lipEPos[2]]
+            self.lipNPos        = self.locData['setupLoc']['lipNPos']
+            self.lipSPos        = self.locData['setupLoc']['lipSPos']
+            self.lipYPos        = self.locData['setupLoc']['lipYPos']
+            self.jawRigPos      = self.locData['setupLoc']['jawRigPos']
+            self.cheekPos       = self.locData['setupLoc']['cheekPos']
+            self.squintPuffPos  = self.locData['setupLoc']['squintPuffPos']
+            self.lowCheekPos    = self.locData['setupLoc']['lowCheekPos']
+    
+            self.uplipVtxs    = eval(self.locData['upLipVtxs'])
+            self.lolipVtxs    = eval(self.locData['loLipVtxs'])
+            self.uplipVtxs    = self.sortSelected(self.uplipVtxs)
+            self.lolipVtxs    = self.sortSelected(self.lolipVtxs)            
+        
         if upLow == self.uploPrefix[0]:
             verts = self.uplipVtxs
         elif upLow == self.uploPrefix[1]:
