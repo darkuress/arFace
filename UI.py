@@ -672,6 +672,7 @@ class UI(Core.Core):
         """
         making eyebrowSetup instance
         """
+        locData = self.updateSelfLocData()
         from Eyebrow import Setup as EyebrowSetup
         reload(EyebrowSetup)
         eyebrowCtrlSize    = cmds.textField(self.eyebrowCtrlSizeTextField, q = True, tx = True)
@@ -679,7 +680,8 @@ class UI(Core.Core):
         eyebrowRotateScale = cmds.textField(self.eyebrowRotateScaleTextField, q = True, tx = True)
         eyebrow = EyebrowSetup.Setup(size        = float(eyebrowCtrlSize),
                                      offset      = float(eyebrowCtrlOffset),
-                                     rotateScale = float(eyebrowRotateScale)
+                                     rotateScale = float(eyebrowRotateScale),
+                                     locData     = locData
                                     )
         
         return eyebrow

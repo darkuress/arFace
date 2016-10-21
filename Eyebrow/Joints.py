@@ -23,6 +23,9 @@ class Joints(Base.Base):
         
         self.browRotXCrvPos = cmds.xform(self.browRotXCrv, t = True, q = True, ws = True)
         self.browRotYCrvPos = cmds.xform(self.browRotYCrv, t = True, q = True, ws = True)
+        
+        if kw.get('locData'):
+            self.eyeBrowVtxs = kw.get('locData')['eyebrowVtxs']
 
     def createJnts(self):
         """
