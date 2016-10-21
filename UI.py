@@ -321,7 +321,7 @@ class UI(Core.Core):
                                  (lipTab, 'lip'))
                       )
         
-        cmds.showWindow()
+        self.updateSelfLocData()
     
     def importFacialLoc(self, *args):
         """
@@ -672,9 +672,6 @@ class UI(Core.Core):
         """
         making eyebrowSetup instance
         """
-        self.locData = self.updateSelfLocData()
-        print self.locData
-        
         from Eyebrow import Setup as EyebrowSetup
         reload(EyebrowSetup)
         eyebrowCtrlSize    = cmds.textField(self.eyebrowCtrlSizeTextField, q = True, tx = True)
@@ -806,4 +803,10 @@ class UI(Core.Core):
         """
         self.bridge = self.__bridgeInstance()
         self.bridge.createJoints()
+        
+        
+    def loadInMaya(self, *args):
+        """
+        """
+        cmds.showWindow()
         
