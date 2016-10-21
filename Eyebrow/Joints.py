@@ -33,10 +33,8 @@ class Joints(Base.Base):
         """
         self.eyeBrowVtxs = eyeBrowVtxs
         sel = eval(self.eyeBrowVtxs)
-        tempVerts = sel[:-1]
+        tempVerts = sel
         verts = self.sortSelected(tempVerts)
-        browBall = sel[-1]
-        browBallPos = cmds.xform(browBall, t = True, q = True, ws = True)
         cmds.select(cl = True)
         index = 1
         
