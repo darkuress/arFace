@@ -37,10 +37,5 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.cheekPos       = self.locData['setupLoc']['cheekPos']
         self.squintPuffPos  = self.locData['setupLoc']['squintPuffPos']
         self.lowCheekPos    = self.locData['setupLoc']['lowCheekPos']
-
-        self.uplipVtxs    = eval(self.locData['upLipVtxs'])
-        self.lolipVtxs    = eval(self.locData['loLipVtxs'])
-        self.uplipVtxs    = self.sortSelected(self.uplipVtxs)
-        self.lolipVtxs    = self.sortSelected(self.lolipVtxs)
         
         self.cheekCrvGrp  = 'cheekCrv' + self.grpSuffix
