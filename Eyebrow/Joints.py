@@ -44,7 +44,7 @@ class Joints(Base.Base):
 
                 baseCntJnt = cmds.joint(n = self.baseCntJntName + str(index).zfill(2) + self.jntSuffix,
                                         p = [ 0, self.browRotXCrvPos[1], self.browRotXCrvPos[2]])
-                ryCntJnt   = cmds.joint(n = self.browRotYJntName + self.jntSuffix,
+                ryCntJnt   = cmds.joint(n = self.browRotYJntName.replace(self.prefix[0], self.cPrefix) + self.jntSuffix,
                                         p = [ 0, self.browRotYCrvPos[1], self.browRotYCrvPos[2]])
                 parentCntJnt = cmds.joint(n = self.parentCntJntName + str(index).zfill(2) + self.jntSuffix,
                                           p = vertPos)

@@ -29,10 +29,10 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         Controller.Controller.__init__(self)
         
         #initializing local variables
-        self.jntName          = 'Brow0'
-        self.browBase         = 'BrowBase'
+        self.jntName          = 'brow0'
+        self.browBase         = 'browBase'
         self.browRotY         = 'browRotY'
-        self.browP            = 'BrowP'
+        self.browP            = 'browP'
         self.baseCntJntName   = self.cPrefix + self.browBase
         self.browRotYJntName  = self.cPrefix + self.browRotY
         self.parentCntJntName = self.cPrefix + 'BrowP'
