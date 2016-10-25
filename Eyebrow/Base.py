@@ -35,7 +35,7 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.browP            = 'browP'
         self.baseCntJntName   = self.cPrefix + self.browBase
         self.browRotYJntName  = self.cPrefix + self.browRotY
-        self.parentCntJntName = self.cPrefix + 'BrowP'
+        self.parentCntJntName = self.cPrefix + 'browP'
         self.ljntName         = self.prefix[0] + self.jntName
         self.baseJntName      = self.prefix[0] + self.browBase
         self.parentJntName    = self.prefix[0] + self.browP
