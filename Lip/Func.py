@@ -187,6 +187,8 @@ class Func(Base.Base):
         return orderedVerts        
             
     def findConnectVert(self, selEdges, nextVert):
+        """
+        """
         nextVertEdge =[]
         for edge in selEdges:
             cmds.select(edge, r =1)
@@ -197,6 +199,18 @@ class Func(Base.Base):
                 nextVertEdge =[tempVert[0], edge ]            
         return nextVertEdge
 
+
+    def loftFacePart(self, facePart):
+        """
+        making poligon map
+        """
+        crvSel = cmds.ls(os=1, fl=1, type = 'transform')
+        loft_suf = cmds.loft(crvSel, n = facePart + 'Tip_map', ch =1, u=1, c=0, ar= 1, d=1, ss= 1, rn= 0, po= 1, rsn = 1)
+        suf_inputs = cmds.listHistory( loft_suf[0])
+        tessel = [x for x in suf_inputs if cmds.nodeType(x) == 'nurbsTessellate']
+        cmds.setAttr(tessel[0]+".format", 3)
+        cmds.delete(loft_suf[0], ch =1)
+        wide_suf = cmds.duplicate(loft_suf[0], n = facePart + 'Wide_map')
 
     def copyCvWeighs(self):
         """

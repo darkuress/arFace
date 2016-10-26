@@ -301,6 +301,10 @@ class UI(Core.Core):
         cmds.separator( height=20, width = 600, style='in' )
         
         cmds.button(label = 'Curve on edge loop', c = partial(self.curveOnEdgeLoop))
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Loft Face Part',     c = partial(self.loftFacePart))
+        self.loftFacePartTextField = cmds.textField('loftFacepartTextField', tx = '')
+        cmds.setParent('..' )
         
         cmds.separator( height=20, width = 600, style='in' )
 
@@ -786,6 +790,17 @@ class UI(Core.Core):
         reload(Func)
         lipFunc = Func.Func()
         lipFunc.curveOnEdgeLoop()
+        
+    def loftFacePart(self, *args):
+        """
+        curve on edge loop tool
+        making it as static function? 
+        """
+        from Lip import Func
+        reload(Func)
+        lipFunc = Func.Func()
+        facePart = cmds.textField(self.loftFacePartTextField, q = True, tx = True)
+        lipFunc.loftFacePart()        
         
     def copyCvWeights(self, *args):
         """
