@@ -105,12 +105,14 @@ class Core(object):
         #if self.locData.has_key('headGeo'):
         #    self.headGeo     = self.locData['headGeo'] 
         
-    def writeLocInfoData(self, data):
+    def writeLocInfoData(self, data, jsonPath = ''):
         """
         writing info data json file
         """
+        if not jsonPath:
+            jsonPath = self.jsonPath
         
-        with open(self.jsonPath, 'w+') as outfile:
+        with open(jsonPath, 'w+') as outfile:
             json.dump(data, outfile)
         outfile.close()
 

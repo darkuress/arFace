@@ -22,7 +22,8 @@ class UI(Core.Core):
         
         #- constructing Menu Items
         cmds.menu(label='File')
-        cmds.menuItem(label='Open', c = partial(self.openInfoFile))
+        cmds.menuItem(label='Open Info.json', c = partial(self.openInfoFile))
+        cmds.menuItem(label='Save Info.json', c = partial(self.saveInfoFile))
 
         cmds.menu(label='Tools')
         cmds.menuItem(label='NG Skin Tool', c = partial(self.openNgSkinTool))
@@ -157,7 +158,6 @@ class UI(Core.Core):
         cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..')
         cmds.rowColumnLayout(numberOfColumns = 3)
-        cmds.button(label = 'Save', c = self.saveInfoFile)
         cmds.button(label = 'Build Foundation', c = self.buildFoundation)
         cmds.button(label = 'Build/Rebuild')
         cmds.setParent('..')
@@ -395,9 +395,11 @@ class UI(Core.Core):
         """       
         locData = self.updateSelfLocData()
         
-        self.writeLocInfoData(locData)
+        filename = cmds.fileDialog2(fileMode=0, caption="Save Info.json")[0]
+                
+        self.writeLocInfoData(locData, jsonPath = filename)
         cmds.confirmDialog(title='Info Saved',
-                           message='Location : %s' %self.jsonPath,
+                           message='Location : %s' %filename,
                            button=['ok'],
                            defaultButton='ok')
 
