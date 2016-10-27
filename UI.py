@@ -395,13 +395,16 @@ class UI(Core.Core):
         """       
         locData = self.updateSelfLocData()
         
-        filename = cmds.fileDialog2(fileMode=0, caption="Save Info.json")[0]
-                
-        self.writeLocInfoData(locData, jsonPath = filename)
-        cmds.confirmDialog(title='Info Saved',
-                           message='Location : %s' %filename,
-                           button=['ok'],
-                           defaultButton='ok')
+        try:
+            filename = cmds.fileDialog2(fileMode=0, caption="Save Info.json")[0]
+                    
+            self.writeLocInfoData(locData, jsonPath = filename)
+            cmds.confirmDialog(title='Info Saved',
+                               message='Location : %s' %filename,
+                               button=['ok'],
+                               defaultButton='ok')
+        except:
+            pass
 
     def openInfoFile(self, *args):
         """
