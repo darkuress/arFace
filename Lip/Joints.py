@@ -42,7 +42,7 @@ class Joints(Func.Func):
             self.lolipVtxs    = eval(self.locData['loLipVtxs'])
             self.uplipVtxs    = self.sortSelected(self.uplipVtxs)
             self.lolipVtxs    = self.sortSelected(self.lolipVtxs)            
-        
+            
         if upLow == self.uploPrefix[0]:
             verts = self.uplipVtxs
         elif upLow == self.uploPrefix[1]:
