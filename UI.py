@@ -585,6 +585,8 @@ class UI(Core.Core):
         """
         self.upperEyelid.createCtrls(self.upperEyelid.baseJnts + self.lowerEyelid.baseJnts)
         #self.lowerEyelid.createCtrls(self.lowerEyelid.baseJnts)
+
+        self.updateLidCrvDropdownMenu()
     
     def connectToEyelidControlPanel(self, *args):
         """
@@ -592,15 +594,6 @@ class UI(Core.Core):
         """
         self.lowerEyelid.connectToControlPanel()
         self.updateLidCrvDropdownMenu()
-
-    def eyelidHelpPanel(self, *args):
-        """
-        doing the help panel thing
-        """
-        from Eyelid import Setup as EyelidSetup
-        reload(EyelidSetup)
-        eyelid = EyelidSetup.Setup()
-        eyelid.helpPanel()
     
     def updateLidCrvDropdownMenu(self, *args):
         """
@@ -612,23 +605,19 @@ class UI(Core.Core):
 
         if cmds.objExists(eyelidBase.eyelidCrvGrpName):
             topLidCrvGrp = cmds.listRelatives(eyelidBase.eyelidCrvGrpName)
-            for topGrp in topLidCrvGrp:
-                if self.prefix[0] + self.uploPrefix[0] in topGrp:
-                    for crv in ['None'] + cmds.listRelatives(topGrp):
-                        cmds.optionMenu(self.lUpLidCrvOptionMenu, e = True)
-                        cmds.menuItem(label = str(crv), p = self.lUpLidCrvOptionMenu)
-                elif self.prefix[0] + self.uploPrefix[1] in topGrp:
-                    for crv in ['None'] + cmds.listRelatives(topGrp):
-                        cmds.optionMenu(self.lLoLidCrvOptionMenu, e = True)
-                        cmds.menuItem(label = str(crv), p = self.lLoLidCrvOptionMenu)
-                elif self.prefix[1] + self.uploPrefix[0] in topGrp:
-                    for crv in ['None'] + cmds.listRelatives(topGrp):
-                        cmds.optionMenu(self.rUpLidCrvOptionMenu, e = True)
-                        cmds.menuItem(label = str(crv), p = self.rUpLidCrvOptionMenu)
-                elif self.prefix[1] + self.uploPrefix[1] in topGrp:
-                    for crv in ['None'] + cmds.listRelatives(topGrp):
-                        cmds.optionMenu(self.rLoLidCrvOptionMenu, e = True)
-                        cmds.menuItem(label = str(crv), p = self.rLoLidCrvOptionMenu)
+            for crv in topLidCrvGrp:
+                if self.prefix[0] + self.uploPrefix[0] in crv:
+                    cmds.optionMenu(self.lUpLidCrvOptionMenu, e = True)
+                    cmds.menuItem(label = str(crv), p = self.lUpLidCrvOptionMenu)
+                elif self.prefix[0] + self.uploPrefix[1] in crv:
+                    cmds.optionMenu(self.lLoLidCrvOptionMenu, e = True)
+                    cmds.menuItem(label = str(crv), p = self.lLoLidCrvOptionMenu)
+                elif self.prefix[1] + self.uploPrefix[0] in crv:
+                    cmds.optionMenu(self.rUpLidCrvOptionMenu, e = True)
+                    cmds.menuItem(label = str(crv), p = self.rUpLidCrvOptionMenu)
+                elif self.prefix[1] + self.uploPrefix[1] in crv:
+                    cmds.optionMenu(self.rLoLidCrvOptionMenu, e = True)
+                    cmds.menuItem(label = str(crv), p = self.rLoLidCrvOptionMenu)
     
     def runLidCrvDropdownMenu(self, lrUplo, *args):
         """

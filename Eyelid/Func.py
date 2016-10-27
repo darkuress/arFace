@@ -613,9 +613,8 @@ class Func(Base.Base):
             print "curve is not setup yet"
         else:
             topLidCrvGrp = cmds.listRelatives(self.eyelidCrvGrpName)
-            for topGrp in topLidCrvGrp:
-                for crv in cmds.listRelatives(topGrp):        
-                    crvs.append(crv)
+            for crv in topLidCrvGrp:
+                crvs.append(crv)
         return crvs
     
     def hideAlLCrv(self):
