@@ -20,6 +20,9 @@ class UI(Core.Core):
         """
         Core.Core.__init__(self, configFile = configFile)
         
+        #- some color definition
+        self.textColor = [0.8, 0.7, 0.6]
+        
         #- constructing Menu Items
         cmds.menu(label='File')
         cmds.menuItem(label='Open Info.json', c = partial(self.openInfoFile))
@@ -42,88 +45,88 @@ class UI(Core.Core):
         runAllTab = cmds.columnLayout()
         
         cmds.rowColumnLayout(numberOfColumns=3)
-        cmds.text(label='Head Geo : ', w = 150)
+        cmds.text(label='Head Geo : ', w = 150, bgc = self.textColor)
         if self.locData.get('headGeo'):
             insertText = str(self.locData['headGeo'])
         else:
             insertText = ''
-        self.headGeoTextField = cmds.textField('headGeoTextField', tx = insertText, w = 300)
+        self.headGeoTextField = cmds.textField('headGeoTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateHeadGeoTextField)
         cmds.setParent('..' )
         
         #- select and save vertexes text field menus 
         cmds.rowColumnLayout(numberOfColumns=3)
-        cmds.text(label='Setup Locators : ', w = 150)
+        cmds.text(label='Setup Locators : ', w = 150, bgc = self.textColor)
         if self.locData.get('setupLoc'):
             insertText = str(self.locData['setupLoc'].keys())
         else:
             insertText = ''
-        self.setupLocTextField = cmds.textField('setupLocTextField', tx = insertText, w = 300)
+        self.setupLocTextField = cmds.textField('setupLocTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateSetupLocTextField)
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)       
-        cmds.text(label='Eyebrow Vertexes : ', w = 150)
+        cmds.text(label='Eyebrow Vertexes : ', w = 150, bgc = self.textColor)
         if self.locData.has_key('eyebrowVtxs'):
             insertText = self.locData['eyebrowVtxs']
         else:
             insertText = ''
-        self.eyebrowVertsTextField = cmds.textField('eyebrowVertsTextField', tx = insertText, w = 300)
+        self.eyebrowVertsTextField = cmds.textField('eyebrowVertsTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateEyebrowVtxTextField)
         cmds.button(label = 'Select', c = partial(self.selectVertexes, self.eyebrowVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)       
-        cmds.text(label='Up Eyelid Vertexes : ', w = 150)
+        cmds.text(label='Up Eyelid Vertexes : ', w = 150, bgc = self.textColor)
         if self.locData.has_key('upEyelidVtxs'):
             insertText = self.locData['upEyelidVtxs']
         else:
             insertText = ''            
-        self.upEyelidVertsTextField = cmds.textField('upEyelidVertsTextField', tx = insertText, w = 300)
+        self.upEyelidVertsTextField = cmds.textField('upEyelidVertsTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateUpEyelidVtxTextField)
         cmds.button(label = 'Select', c = partial(self.selectVertexes, self.upEyelidVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)       
-        cmds.text(label='Low Eyelid Vertexes : ', w = 150)
+        cmds.text(label='Low Eyelid Vertexes : ', w = 150, bgc = self.textColor)
         if self.locData.has_key('loEyelidVtxs'):
             insertText = self.locData['loEyelidVtxs']
         else:
             insertText = ''      
-        self.loEyelidVertsTextField = cmds.textField('loEyelidVertsTextField', tx = insertText, w = 300)
+        self.loEyelidVertsTextField = cmds.textField('loEyelidVertsTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateLoEyelidVtxTextField)
         cmds.button(label = 'Select', c = partial(self.selectVertexes, self.loEyelidVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)
-        cmds.text(label='Corner Eyelid Vertexes : ', w = 150)
+        cmds.text(label='Corner Eyelid Vertexes : ', w = 150, bgc = self.textColor)
         if self.locData.has_key('cnrEyelidVtxs'):
             insertText = self.locData['cnrEyelidVtxs']
         else:
             insertText = ''      
-        self.cnrEyelidVertsTextField = cmds.textField('cnrEyelidVertsTextField', tx = insertText, w = 300)
+        self.cnrEyelidVertsTextField = cmds.textField('cnrEyelidVertsTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateCnrEyelidVtxTextField)
         cmds.button(label = 'Select', c = partial(self.selectVertexes, self.cnrEyelidVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)
-        cmds.text(label='Up lip Vertexes : ', w = 150)
+        cmds.text(label='Up lip Vertexes : ', w = 150, bgc = self.textColor)
         if self.locData.has_key('upLipVtxs'):
             insertText = self.locData['upLipVtxs']
         else:
             insertText = ''      
-        self.upLipVertsTextField = cmds.textField('upLipVertsTextField', tx = insertText, w = 300)
+        self.upLipVertsTextField = cmds.textField('upLipVertsTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateUpLipVtxTextField)
         cmds.button(label = 'Select', c = partial(self.selectVertexes, self.upLipVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)
-        cmds.text(label='Low lip Vertexes : ', w = 150)
+        cmds.text(label='Low lip Vertexes : ', w = 150, bgc = self.textColor)
         if self.locData.has_key('loLipVtxs'):
             insertText = self.locData['loLipVtxs']
         else:
             insertText = ''      
-        self.loLipVertsTextField = cmds.textField('loLipVertsTextField', tx = insertText, w = 300)
+        self.loLipVertsTextField = cmds.textField('loLipVertsTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', c = self.updateLoLipVtxTextField)
         cmds.button(label = 'Select', c = partial(self.selectVertexes, self.loLipVertsTextField))
         cmds.setParent('..' )
