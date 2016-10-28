@@ -10,7 +10,7 @@ import os
 
 if cmds.window('faceSetupUI', ex = True):
     cmds.deleteUI('faceSetupUI')    
-cmds.window('faceSetupUI',menuBar=True, widthHeight=(600, 500) )
+cmds.window('faceSetupUI',menuBar=True, widthHeight=(600, 500), bgc = [0.3, 0.1, 0.3] )
 
 class UI(Core.Core):
     def __init__(self, configFile = ''):
