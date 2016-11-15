@@ -10,7 +10,7 @@ import os
 
 if cmds.window('faceSetupUI', ex = True):
     cmds.deleteUI('faceSetupUI')    
-cmds.window('faceSetupUI',menuBar=True, widthHeight=(600, 500), bgc = [0.3, 0.1, 0.3] )
+cmds.window('faceSetupUI',menuBar=True, widthHeight=(600, 500), bgc = [0.25, 0.3, 0.3] )
 
 class UI(Core.Core):
     def __init__(self, configFile = ''):
@@ -22,6 +22,8 @@ class UI(Core.Core):
         
         #- some color definition
         self.textColor = [0.8, 0.7, 0.6]
+        self.buttonColor = [0.64, 0.42, 0.33]
+        self.buttonColor2 = [0.44, 0.23, 0.8]
         
         #- constructing Menu Items
         cmds.menu(label='File')
@@ -51,7 +53,7 @@ class UI(Core.Core):
         else:
             insertText = ''
         self.headGeoTextField = cmds.textField('headGeoTextField', ed = False, tx = insertText, w = 300)
-        cmds.button(label = '        <<        ', c = self.updateHeadGeoTextField)
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateHeadGeoTextField)
         cmds.setParent('..' )
         
         #- select and save vertexes text field menus 
@@ -62,7 +64,7 @@ class UI(Core.Core):
         else:
             insertText = ''
         self.setupLocTextField = cmds.textField('setupLocTextField', ed = False, tx = insertText, w = 300)
-        cmds.button(label = '        <<        ', c = self.updateSetupLocTextField)
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateSetupLocTextField)
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)       
@@ -72,8 +74,8 @@ class UI(Core.Core):
         else:
             insertText = ''
         self.eyebrowVertsTextField = cmds.textField('eyebrowVertsTextField', ed = False, tx = insertText, w = 300)
-        cmds.button(label = '        <<        ', c = self.updateEyebrowVtxTextField)
-        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.eyebrowVertsTextField))
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateEyebrowVtxTextField)
+        cmds.button(label = 'Select', bgc = self.buttonColor2, c = partial(self.selectVertexes, self.eyebrowVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)       
@@ -83,8 +85,8 @@ class UI(Core.Core):
         else:
             insertText = ''            
         self.upEyelidVertsTextField = cmds.textField('upEyelidVertsTextField', ed = False, tx = insertText, w = 300)
-        cmds.button(label = '        <<        ', c = self.updateUpEyelidVtxTextField)
-        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.upEyelidVertsTextField))
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateUpEyelidVtxTextField)
+        cmds.button(label = 'Select', bgc = self.buttonColor2, c = partial(self.selectVertexes, self.upEyelidVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)       
@@ -94,8 +96,8 @@ class UI(Core.Core):
         else:
             insertText = ''      
         self.loEyelidVertsTextField = cmds.textField('loEyelidVertsTextField', ed = False, tx = insertText, w = 300)
-        cmds.button(label = '        <<        ', c = self.updateLoEyelidVtxTextField)
-        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.loEyelidVertsTextField))
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateLoEyelidVtxTextField)
+        cmds.button(label = 'Select', bgc = self.buttonColor2, c = partial(self.selectVertexes, self.loEyelidVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)
@@ -105,8 +107,8 @@ class UI(Core.Core):
         else:
             insertText = ''      
         self.cnrEyelidVertsTextField = cmds.textField('cnrEyelidVertsTextField', ed = False, tx = insertText, w = 300)
-        cmds.button(label = '        <<        ', c = self.updateCnrEyelidVtxTextField)
-        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.cnrEyelidVertsTextField))
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateCnrEyelidVtxTextField)
+        cmds.button(label = 'Select', bgc = self.buttonColor2, c = partial(self.selectVertexes, self.cnrEyelidVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)
@@ -116,8 +118,8 @@ class UI(Core.Core):
         else:
             insertText = ''      
         self.upLipVertsTextField = cmds.textField('upLipVertsTextField', ed = False, tx = insertText, w = 300)
-        cmds.button(label = '        <<        ', c = self.updateUpLipVtxTextField)
-        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.upLipVertsTextField))
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateUpLipVtxTextField)
+        cmds.button(label = 'Select', bgc = self.buttonColor2, c = partial(self.selectVertexes, self.upLipVertsTextField))
         cmds.setParent('..' )
 
         cmds.rowColumnLayout(numberOfColumns=4)
@@ -127,34 +129,34 @@ class UI(Core.Core):
         else:
             insertText = ''      
         self.loLipVertsTextField = cmds.textField('loLipVertsTextField', ed = False, tx = insertText, w = 300)
-        cmds.button(label = '        <<        ', c = self.updateLoLipVtxTextField)
-        cmds.button(label = 'Select', c = partial(self.selectVertexes, self.loLipVertsTextField))
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateLoLipVtxTextField)
+        cmds.button(label = 'Select', bgc = self.buttonColor2, c = partial(self.selectVertexes, self.loLipVertsTextField))
         cmds.setParent('..' )
         
         
-        #- Global controller size, offset and rotate scale menu
-        cmds.rowColumnLayout(numberOfColumns=1)
-        cmds.separator( height=20, width = 600, style='in' )
-        cmds.setParent('..')
+        ##- Global controller size, offset and rotate scale menu
+        #cmds.rowColumnLayout(numberOfColumns=1)
+        #cmds.separator( height=20, width = 600, style='in' )
+        #cmds.setParent('..')
         
-        cmds.rowColumnLayout(numberOfColumns=3)
-        
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.text(label='Controller Size : ', w = 100)
-        self.globCtrlSizeTextField = cmds.textField('globCtrlSizeTextField', tx = 1, w = 30)
-        cmds.setParent('..')
-        
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.text(label='Controller Offset : ', w = 100)
-        self.globCtrlOffsetTextField = cmds.textField('globCtrlOffsetTextField', tx = 1, w = 30)
-        cmds.setParent('..')
-        
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.text(label='Rotate Scale : ', w = 100)
-        self.globRotateScaleTextField = cmds.textField('globRotateScaleTextField', tx = 10, w = 30)
-        cmds.setParent('..')
-        
-        cmds.setParent('..')
+        #cmds.rowColumnLayout(numberOfColumns=3)
+        #
+        #cmds.rowColumnLayout(numberOfColumns = 2)
+        #cmds.text(label='Controller Size : ', w = 100)
+        #self.globCtrlSizeTextField = cmds.textField('globCtrlSizeTextField', tx = 1, w = 30)
+        #cmds.setParent('..')
+        #
+        #cmds.rowColumnLayout(numberOfColumns = 2)
+        #cmds.text(label='Controller Offset : ', w = 100)
+        #self.globCtrlOffsetTextField = cmds.textField('globCtrlOffsetTextField', tx = 1, w = 30)
+        #cmds.setParent('..')
+        #
+        #cmds.rowColumnLayout(numberOfColumns = 2)
+        #cmds.text(label='Rotate Scale : ', w = 100)
+        #self.globRotateScaleTextField = cmds.textField('globRotateScaleTextField', tx = 10, w = 30)
+        #cmds.setParent('..')
+        #
+        #cmds.setParent('..')
         
         #- run all buttons
         cmds.rowColumnLayout(numberOfColumns=1)
