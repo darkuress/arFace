@@ -51,7 +51,8 @@ class Core(object):
         else:
             #- checking os type in test mode
             if _platform == 'win32':
-                jsonBasePath  = os.path.join('F:', os.sep, 'facialTest')
+                #jsonBasePath  = os.path.join('F:', os.sep, 'facialTest')
+                jsonBasePath  = os.path.join('j:', os.sep, 'work_place', 'facialTest')
                 baseMaPath      = os.path.join('C:', os.sep, 'documents', 'maya', 'maya2015', 'scripts', 'arFace', 'maFiles')
     
             elif _platform == 'linux2':
@@ -120,9 +121,9 @@ class Core(object):
         """
         update existing self.locData
         """       
-        jsonData = open(self.jsonPath)
+        jsonData = open(jsonPath)
         self.locData = json.load(jsonData)
-
+        
         if self.locData.has_key('setupLoc'):
             if self.locData['setupLoc'].has_key('headSkelPos'):
                 self.headSkelPos = self.locData['setupLoc']['headSkelPos']

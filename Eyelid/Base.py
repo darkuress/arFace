@@ -60,7 +60,10 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.loEyelidVtxs    = self.locData.get('loEyelidVtxs', [])
         self.cnrEyelidVtxs   = self.locData.get('cnrEyelidVtxs', [])
         if self.locData.get('setupLoc'):
-            self.lEyeLoc     = str([x for x in self.locData['setupLoc'] if 'eye' in x.lower()][0])
+            try:
+                self.lEyeLoc     = str([x for x in self.locData['setupLoc'] if 'eye' in x.lower()][0])
+            except:
+                self.lEyeLoc = ''
         else:
             self.lEyeLoc     = ''
         

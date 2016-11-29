@@ -415,7 +415,7 @@ class UI(Core.Core):
         """
         manually load info.json
         """
-        filename = cmds.fileDialog2(fileMode=1, caption="Import Info.json")
+        filename = str(cmds.fileDialog2(fileMode=1, caption="Import Info.json")[0])
         self.locData = self.updateLocdata(filename)
         self.updateLocFields(self.locData)
 
