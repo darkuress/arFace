@@ -78,10 +78,13 @@ class Core(object):
         self.panelTopNode     = panelTopNode
         self.faceLocTopNode   = faceLocTopNode
         
+		#- for UI
+        self.eyelidCrvGrpName  = 'eyelidCrv' + self.grpSuffix
+		
         #- need to read json
         self.jsonFileName     = jsonFileName
         self.jsonBasePath     = jsonBasePath
-        self.jsonPath         = os.path.join(self.jsonBasePath, self.jsonFileName)
+        self.jsonPath         = os.path.join(jsonBasePath, jsonFileName)
         
         #- create json if not exists
         if not os.path.exists(self.jsonPath):

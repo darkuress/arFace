@@ -20,6 +20,8 @@ class UI(Core.Core):
         """
         Core.Core.__init__(self, configFile = configFile)
         
+        self.configFile = configFile
+		
         #- some color definition
         self.textColor = [0.8, 0.7, 0.6]
         self.buttonColor = [0.64, 0.42, 0.33]
@@ -338,7 +340,7 @@ class UI(Core.Core):
         """
         from Foundation import ImportMa
         reload(ImportMa)        
-        ifl = ImportMa.Create()
+        ifl = ImportMa.Create(configFile = self.configFile)
         FacialLocTopNode = ifl.importLocators()
         FacialLocTopNode = ifl.placeLocators()
         
@@ -349,12 +351,12 @@ class UI(Core.Core):
         """
         from Foundation import Container
         reload(Container)        
-        ch = Container.Container()
+        ch = Container.Container(configFile = self.configFile)
         ch.placeFaceRig()
 
         from Foundation import FaceFactor
         reload(FaceFactor)
-        fcf = FaceFactor.FaceFactor()
+        fcf = FaceFactor.FaceFactor(configFile = self.configFile)
         faceFactorNode = fcf.create()
 
     def importControlPanel(self, *args):
@@ -363,7 +365,7 @@ class UI(Core.Core):
         """
         from Foundation import ImportMa
         reload(ImportMa)
-        ihp = ImportMa.Create()
+        ihp = ImportMa.Create(configFile = self.configFile)
         panelTopNode = ihp.importHelpPanel()
 
     def buildFoundation(self, *args):
@@ -609,12 +611,8 @@ class UI(Core.Core):
         """
         update the curve list on drop down menu in eyelid panel
         """
-        from Eyelid import Base
-        reload(Base)
-        eyelidBase = Base.Base()
-
-        if cmds.objExists(eyelidBase.eyelidCrvGrpName):
-            topLidCrvGrp = cmds.listRelatives(eyelidBase.eyelidCrvGrpName)
+        if cmds.objExists(self.eyelidCrvGrpName):
+            topLidCrvGrp = cmds.listRelatives(self.eyelidCrvGrpName)
             for crv in topLidCrvGrp:
                 if self.prefix[0] + self.uploPrefix[0] in crv:
                     cmds.optionMenu(self.lUpLidCrvOptionMenu, e = True)

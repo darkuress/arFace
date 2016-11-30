@@ -39,6 +39,7 @@ class Create(Core.Core):
         """
         importing the halp panel
         """
+        print '......', self.faceLocPath
         if not cmds.objExists(self.faceLocTopNode):
             cmds.file(self.faceLocPath,
                       i = True,

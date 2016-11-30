@@ -15,11 +15,11 @@ from ..Misc import Util
 reload(Util)
 
 class Container(Core.Core, Util.Util):
-    def __init__(self):
+    def __init__(self, **kw):
         """
         initializing variables
         """
-        Core.Core.__init__(self)
+        Core.Core.__init__(self, **kw)
         Util.Util.__init__(self)
         
     def placeFaceRig(self):
