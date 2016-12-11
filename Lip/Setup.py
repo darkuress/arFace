@@ -22,7 +22,7 @@ class Setup(Joints.Joints, Ctrls.Ctrls):
         initializing variables
         """
         Joints.Joints.__init__(self, **kw)
-        Ctrls.Ctrls.__init__(self, upDown, rotateScale)
+        Ctrls.Ctrls.__init__(self, upDown, rotateScale, **kw)
         self.upDown = upDown
         self.locData = kw.get('locData')
         

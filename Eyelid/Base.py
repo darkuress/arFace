@@ -29,6 +29,10 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         Util.Util.__init__(self)
         Controller.Controller.__init__(self)
 
+        if kw.get('locData'):
+            self.locData = kw.get('locData')
+            self.headGeo = self.locData['headGeo']
+      		
         self.lrUplow = []
         for lr in self.prefix:
             self.lrUplow.append(lr + self.uploPrefix[0])
@@ -69,5 +73,6 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         
         self.jumperPanelName = 'jumperPanel'
         
-        self.eyelidCrvJsonLoc = os.path.join(self.jsonBasePath, 'eyelidCrvData.json')
+		#- not implimented yet
+        #self.eyelidCrvJsonLoc = os.path.join(self.jsonBasePath, 'eyelidCrvData.json')
     

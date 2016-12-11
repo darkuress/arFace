@@ -46,8 +46,11 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.eyebrowCtlGrpName = 'eyebrowCtl' + self.grpSuffix
         self.eyebrowCrvGrpName = 'eyebrowCrv' + self.grpSuffix
         
-        self.eyeBrowVtxs      = self.locData['eyebrowVtxs']
+        #self.eyeBrowVtxs      = self.locData['eyebrowVtxs']
         
+        if kw.get('locData'):
+            self.locData = kw.get('locData')
+		
         #new
         self.browRotXCrv      = [x for x in self.locData['setupLoc'] if 'rotXPivot' in x][0]
         self.browRotYCrv      = [x for x in self.locData['setupLoc'] if 'rotYPivot' in x][0]
