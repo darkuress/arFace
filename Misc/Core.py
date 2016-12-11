@@ -34,8 +34,10 @@ class Core(object):
         """
         basic variables
         """
-        
-        if configFile and os.path.exists(configFile):
+        if not configFile:
+            jsonBasePath  = ''
+            baseMaPath = os.path.dirname(os.path.abspath(__file__)).replace('Misc', 'maFiles')
+        elif configFile and os.path.exists(configFile):
             try:
                 configJsonData = open(configFile)
                 self.configData = json.load(configJsonData)
@@ -48,15 +50,15 @@ class Core(object):
                     baseMaPath    = self.configData['linux']['baseMaPath']
             except:
                 raise ValueError("%s is not a valid pass or file is empty" %configFile)
-        else:
-            #- checking os type in test mode
-            if _platform == 'win32':
-                #jsonBasePath  = os.path.join('F:', os.sep, 'facialTest')
-                jsonBasePath  = os.path.join('j:', os.sep, 'work_place', 'facialTest')
-                baseMaPath      = os.path.join('C:', os.sep, 'documents', 'maya', 'maya2015', 'scripts', 'arFace', 'maFiles')
-    
-            elif _platform == 'linux2':
-                jsonBasePath  = '/corp/projects/eng/jhwang/svn/test/facialTest'
+        #else:
+        #    #- checking os type in test mode
+        #    if _platform == 'win32':
+        #        #jsonBasePath  = os.path.join('F:', os.sep, 'facialTest')
+        #        jsonBasePath  = os.path.join('j:', os.sep, 'work_place', 'facialTest')
+        #        baseMaPath      = os.path.join('C:', os.sep, 'documents', 'maya', 'maya2015', 'scripts', 'arFace', 'maFiles')
+        # 
+        #    elif _platform == 'linux2':
+        #       jsonBasePath  = '/corp/projects/eng/jhwang/svn/test/facialTest'
         
         self.cPrefix          = cPrefix
         self.prefix           = prefix
@@ -81,22 +83,26 @@ class Core(object):
 		#- for UI
         self.eyelidCrvGrpName  = 'eyelidCrv' + self.grpSuffix
 		
+		#- Use this for custom setting
         #- need to read json
-        self.jsonFileName     = jsonFileName
-        self.jsonBasePath     = jsonBasePath
-        self.jsonPath         = os.path.join(jsonBasePath, jsonFileName)
+        #self.jsonFileName     = jsonFileName
+        #self.jsonBasePath     = jsonBasePath
+        #self.jsonPath         = os.path.join(jsonBasePath, jsonFileName)
         
         #- create json if not exists
-        if not os.path.exists(self.jsonPath):
-            with open(self.jsonPath, 'a') as outfile:
-                json.dump({}, outfile)
-            outfile.close()
+        #if not os.path.exists(self.jsonPath):
+        #    with open(self.jsonPath, 'a') as outfile:
+        #        json.dump({}, outfile)
+        #    outfile.close()
         
-        self.locData = self.updateLocdata(self.jsonPath)
+        #self.locData = self.updateLocdata(self.jsonPath)
         
         #jsonData = open(self.jsonPath)
         #self.locData = json.load(jsonData)
         #
+		
+        self.locData = {}
+		
         self.faceMainNode = faceMainNode
         self.faceFactors = {'main'    : 'faceFactors',
                             'eyebrow' : 'browFactor',
