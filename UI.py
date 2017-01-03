@@ -33,8 +33,8 @@ class UI(Core.Core):
         cmds.menuItem(label='Save Info.json', c = partial(self.saveInfoFile))
 
         cmds.menu(label='Tools')
-        cmds.menuItem(label='NG Skin Tool', c = partial(self.openNgSkinTool))
-        cmds.menuItem(label='Copy Layer Tool', c = partial(self.openCopyLayersTool))
+        cmds.menuItem(label = 'NG Skin Tool', c = partial(self.openNgSkinTool))
+        cmds.menuItem(label = 'Copy Layer Tool', c = partial(self.openCopyLayersTool))
         
         cmds.menu(label='Help')
         cmds.menuItem(label='Ask sshin')
@@ -219,7 +219,10 @@ class UI(Core.Core):
         cmds.setParent('..')
         
         cmds.separator( height=20, width = 600, style='in' )
-                
+        
+        cmds.rowColumnLayout(numberOfColumns = 1)
+        cmds.button(label = 'Create Curve Camera', c = partial(self.createCurveCam))
+        cmds.setParent('..')
         cmds.rowColumnLayout(numberOfColumns = 2)
         self.lUpLidCrvOptionMenu = cmds.optionMenu(label='Left   Up',
                                                    changeCommand = partial(self.runLidCrvDropdownMenu, 'lUp'))
@@ -238,8 +241,8 @@ class UI(Core.Core):
         cmds.separator( height=20, width = 600, style='in' )
         
         cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Save Curves', c = partial(self.saveEyelidCurve))
-        cmds.button(label = 'Load Curves', c = partial(self.loadEyelidCurve))
+        cmds.button(label = 'Save Curves', c = partial(self.saveEyelidCurve), en = False)
+        cmds.button(label = 'Load Curves', c = partial(self.loadEyelidCurve), en = False)
         cmds.setParent('..')
         
         cmds.setParent('..')
@@ -316,12 +319,73 @@ class UI(Core.Core):
         cmds.separator( height=20, width = 600, style='in' )
 
         cmds.rowColumnLayout(numberOfColumns = 2)
-        cmds.button(label = 'Copy CV weight', c = partial(self.copyCvWeights))
+        cmds.button(label = 'Copy CV weight', c = partial(self.copyCvWeights), en = False)
         cmds.setParent('..')
         
         cmds.separator( height=20, width = 600, style='in' )
         
         cmds.setParent('..' )
+        
+        #- sixth tab{
+        skinningTab = cmds.columnLayout()
+        cmds.rowColumnLayout(numberOfColumns = 2)      
+        cmds.text('External Tool ', bgc = [0.5, 0.5, 0])
+        cmds.separator( height=20, width = 600, style='in' )
+        cmds.setParent('..')
+        cmds.rowColumnLayout(numberOfColumns = 1)      
+        cmds.button(label = 'NG Skin Tool', c = partial(self.openNgSkinTool))
+        cmds.setParent('..')
+        cmds.rowColumnLayout(numberOfColumns = 1)      
+        cmds.button(label = 'Copy Layer Tool', c = partial(self.openCopyLayersTool))                
+        cmds.setParent('..')
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)    
+        cmds.text('Eyelid ', bgc = [0.5, 0.5, 0])
+        cmds.separator( height=20, width = 600, style='in')
+        cmds.setParent('..')
+        cmds.rowColumnLayout(numberOfColumns = 1)
+        cmds.button(label = 'Create Curve Camera', c = partial(self.createCurveCam))
+        cmds.setParent('..')
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        self.lUpLidCrvOptionMenu = cmds.optionMenu(label='Left   Up',
+                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'lUp'))
+        self.rUpLidCrvOptionMenu = cmds.optionMenu(label='Right  Up',
+                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'rUp'))
+        cmds.setParent('..')
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        self.lLoLidCrvOptionMenu = cmds.optionMenu(label='Left Low',
+                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'lLo'))
+        
+        self.rLoLidCrvOptionMenu = cmds.optionMenu(label='Right Low',
+                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'rLo'))
+        self.updateLidCrvDropdownMenu()
+        cmds.setParent('..')
+        
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)    
+        cmds.text('Eyebrow ', bgc = [0.5, 0.5, 0])
+        cmds.separator( height=20, width = 600, style='in' )
+        cmds.setParent('..')
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Create Surface Map Geo', w = 200, c = partial(self.createBrowSurfaceMapGeo))
+        cmds.setParent('..')
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Skin Eyebrow Map Surface', w = 200, c = partial(self.skinBrowSurfaceMapGeo))
+        cmds.setParent('..')        
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)    
+        cmds.text('Lip ', bgc = [0.5, 0.5, 0])
+        cmds.separator( height=20, width = 600, style='in')
+        cmds.setParent('..')
+        cmds.button(label = 'Curve on edge loop', c = partial(self.curveOnEdgeLoop))
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Loft Face Part',     c = partial(self.loftFacePart))
+        self.loftFacePartTextField = cmds.textField('loftFacepartTextField', tx = '')
+        cmds.setParent('..' )
+        
+        cmds.setParent('..')
+        #-}
         
         cmds.tabLayout(tabs,
                        edit=True,
@@ -329,7 +393,8 @@ class UI(Core.Core):
                                  (runAllTab, 'Run It All'),
                                  (eyelidTab, 'eyelid'),
                                  (eyebrowTab, 'eyebrow'),
-                                 (lipTab, 'lip'))
+                                 (lipTab, 'lip'),
+                                 (skinningTab, 'skinning'))
                       )
         
         self.updateSelfLocData()
@@ -627,6 +692,27 @@ class UI(Core.Core):
                     cmds.optionMenu(self.rLoLidCrvOptionMenu, e = True)
                     cmds.menuItem(label = str(crv), p = self.rLoLidCrvOptionMenu)
     
+    def createCurveCam(self, *args):
+        """
+        create orthographic camera for eyelid curve
+        """
+        curveCam = 'curveCam'
+        if not cmds.objExists(curveCam + '*'):
+            curveCam = cmds.camera(n = curveCam, orthographic = True)[0]
+            curveCamShape = cmds.listRelatives(curveCam)[0]
+            cmds.xform(curveCam, t = [0,0,5])
+        else:
+            curveCam = cmds.ls('curveCam*')
+            curveCamShape = cmds.listRelatives(curveCam)[0]
+        
+        myLabel = 'Curve Panel'
+        cmds.window(w = 500, h = 500, title='Curve Window')
+        cmds.frameLayout(lv=0 )
+        panel = cmds.modelPanel(l=myLabel )
+        cmds.showWindow()
+
+        cmds.lookThru(curveCamShape, panel)
+                    
     def runLidCrvDropdownMenu(self, lrUplo, *args):
         """
         show only selected crv
