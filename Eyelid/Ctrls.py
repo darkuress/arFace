@@ -359,9 +359,10 @@ class Ctrls(Func.Func, Base.Base):
                     pushMath = cmds.expression(n=uploPrefix+"pushCrv_math%s"%str(i+1), s=" %s=%s*((-%s+1)/2*%s +(%s+1)/2*%s) + %s*((-%s+1)/2*%s +(%s+1)/2*%s)"%(lid0, valA, pushX, pushA0, pushX, pushB0, valB, pushX, pushC0, pushX, pushD0), 
                     o = self.jumperPanelName + '.' + uploPrefix + 'Push_Lid%s'%str(i), ae =1) 
             
-            cornerLidGrp = cmds.group(em =1, n = 'cornerLid' + self.grpSuffix, p = 'eyeLidCtl' + self.grpSuffix)          
             corners = [self.prefix[0] + 'inner',self.prefix[0] + 'outer', self.prefix[1] + 'inner',self.prefix[1] + 'outer']
-            
+        
+        cornerLidGrp = cmds.group(em =1, n = 'cornerLid' + self.grpSuffix, p = 'eyeLidCtl' + self.grpSuffix)
+        
         for cn in corners:
             # eyeLid ctrls attach to body
             #- creating controller 

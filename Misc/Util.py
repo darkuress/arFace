@@ -180,3 +180,48 @@ class Util(object):
             if regex:
                 result.append( str(regex.group()) )
         return result
+
+    @classmethod
+    def orderedVert(cls, lipEye):
+        """
+        select vert
+        """
+        vertSel = cmds.ls(os=1, fl=1)
+        if len(vertSel) == 3:
+
+            vert1Pos = cmds.xform(vertSel[0], q =1, ws =1, t=1 )        
+            vert2Pos = cmds.xform (vertSel[1], q=1, ws=1, t=1 )
+            #vert3Pos = cmds.xform (vertSel[2], q=1, ws=1, t=1 )
+            vertDict = { vertSel[0]:vert1Pos[0], vertSel[1]:vert2Pos[0] }
+            txPos = vertDict.values()
+            for x,y in vertDict.items():
+                if y == max(txPos):
+                    lCornerVert = x
+     
+            vertDict.pop(lCornerVert)
+            rCornerVert = vertDict.keys() 
+            secndVert = vertSel[2]        
+
+            cmds.select ( rCornerVert, secndVert, r=1)       
+            # get ordered verts on the edgeLoop
+            ordered = orderedVert_edgeLoop()
+            
+            # get up/lo verts    
+            for v, y in enumerate(ordered):
+                if y == lCornerVert:
+                    endNum = v+1   
+                    
+            if lipEye == 'eye':
+                upVert = ordered[1:endNum-1]
+                loVert = ordered[endNum:]
+                
+            elif lipEye == 'lip':
+                upVert = ordered[:endNum]
+                loVert = ordered[endNum-1:]
+                loVert.append(rCornerVert)
+           
+            # store the verts seperately for up / lo 
+            print "up verts : ", upVert 
+            print "low verts : ", loVert[::-1]
+        else:
+            print 'select three points!'        

@@ -5,6 +5,7 @@ from functools import partial
 import maya.cmds as cmds
 from Misc import Core
 reload(Core)
+from Misc import Util
 import json
 import os
 
@@ -193,6 +194,7 @@ class UI(Core.Core):
         eyelidTab = cmds.columnLayout()
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Create Joints', c = partial(self.createEyelidJoint))
+        cmds.button(label = 'Select Vertexes', c = partial(self.selectEyelidVertexes))
         cmds.setParent('..')
         
         cmds.separator( height=20, width = 600, style='in' )
@@ -293,6 +295,7 @@ class UI(Core.Core):
         lipTab = cmds.columnLayout()
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Create Joints', c = partial(self.createLipJoint))
+        cmds.button(label = 'Select Vertexes', c = partial(self.selectLipVertexes))
         cmds.setParent('..')
         
         cmds.separator( height=20, width = 600, style='in' )
@@ -846,6 +849,16 @@ class UI(Core.Core):
         
         return upLip, loLip
     
+    def selectEyelidVertexes(self, *args):
+        """
+        """
+        Util.Util.orderedVert('eye')
+        
+    def selectLipVertexes(self, *args):
+        """
+        """
+        Util.Util.orderedVert('lip')
+        
     def createLipJoint(self, *args):
         """
         creating lip jnt
