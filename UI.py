@@ -165,9 +165,8 @@ class UI(Core.Core):
         cmds.rowColumnLayout(numberOfColumns=1)
         cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..')
-        cmds.rowColumnLayout(numberOfColumns = 3)
-        cmds.button(label = 'Build Foundation', c = self.buildFoundation)
-        cmds.button(label = 'Build/Rebuild')
+        cmds.rowColumnLayout(numberOfColumns = 3)        
+        #cmds.button(label = 'Build/Rebuild')
         cmds.setParent('..')
 
         cmds.setParent('..')
@@ -186,7 +185,11 @@ class UI(Core.Core):
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Import Control Panel', w = 200, c = partial(self.importControlPanel))
         cmds.setParent('..')
-
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'ReBuild Foundation', w = 200, c = self.buildFoundation)
+        cmds.setParent('..')
+        
         cmds.setParent('..' )
         #-}
         
