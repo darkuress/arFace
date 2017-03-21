@@ -411,7 +411,7 @@ class UI(Core.Core):
         """
         from Foundation import ImportMa
         reload(ImportMa)        
-        ifl = ImportMa.Create(configFile = self.configFile)
+        ifl = ImportMa.Create(configFile = self.configFile, locData = self.locData)
         FacialLocTopNode = ifl.importLocators()
         FacialLocTopNode = ifl.placeLocators()
         

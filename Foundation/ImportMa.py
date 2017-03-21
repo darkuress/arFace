@@ -19,7 +19,8 @@ class Create(Core.Core):
         """
         #initializing Global variables
         Core.Core.__init__(self, **kw)
-    
+        self.locData = kw.get('locData')
+        
     def importHelpPanel(self):
         """
         importing the halp panel
