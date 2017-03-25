@@ -50,6 +50,7 @@ class Joints(Base.Base):
                                           p = vertPos)
                 cmds.setAttr(baseCntJnt+'.rotateOrder', 2)
                 cmds.joint(n = self.cPrefix + self.jntName + str(index), p = vertPos)
+                cmds.joint(ryCntJnt, e=1, oj= 'zyx', secondaryAxisOrient = 'yup', ch=1,  zso=1)
                 cmds.select(cl = True)
                 
                 #- save base joints
@@ -64,7 +65,8 @@ class Joints(Base.Base):
                 cmds.setAttr(baseJnt+'.rotateOrder', 2)
                 cmds.joint(n = self.ljntName + str(index) + self.jntSuffix, p = vertPos)
                 cmds.select(cl = True)
-                               
+                cmds.joint(ryJnt, e=1, oj= 'zyx', secondaryAxisOrient = 'yup', ch=1,  zso=1)
+                
                 #- miorroring joints
                 #- so far mirroring in Util module does not work with this code
                 #- self.mirrorJoints(baseJnt, prefix = self.prefix)
