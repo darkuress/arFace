@@ -386,7 +386,13 @@ class Func(Base.Base):
                 cmds.connectAttr(startSum + '.output2Dx', txForJnt + '.input1')            
                 cmds.setAttr(txForJnt + '.input2', -ctlTX)
                 cmds.connectAttr(txForJnt + '.output', rotY_mult + '.input1X')
-                cmds.connectAttr(self.faceFactors['eyelid'] + '.lidRotateY_scale', rotY_mult + '.input2X')
+                if self.prefix[1] in UD:
+                    rotY_mult_inv = cmds.shadingNode('multiplyDivide', asUtility=True, n = UD + 'BlinkRY_mult_inv' + str(i+1).zfill(2))
+                    cmds.setAttr(rotY_mult_inv + '.input1X', -1)
+                    cmds.connectAttr(self.faceFactors['eyelid'] + '.lidRotateY_scale', rotY_mult_inv + '.input2X')            
+                    cmds.connectAttr(rotY_mult_inv + '.outputX', rotY_mult + '.input2X')
+                else:
+                    cmds.connectAttr(self.faceFactors['eyelid'] + '.lidRotateY_scale', rotY_mult + '.input2X')
                 cmds.connectAttr(rotY_mult + '.outputX', jnts[i] + '.ry')
                 
                 #Wide tx  

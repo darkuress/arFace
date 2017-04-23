@@ -417,7 +417,7 @@ class Ctrls(Func.Func, Base.Base):
                 blinkRemap = cmds.shadingNode('remapValue', asUtility =1, n =  UD + 'RemapBlink' + str(i+1).zfill(2))
                 loStart = loPOC + '.positionY'
                 minLen = 'upMin_crvShape.controlPoints[%s].yValue'%str(i)
-                cmds.expression(n="remapMax_math"+ str(i), s = "%s=%s - %s*%s;"%(blinkRemap+'.outputMax', loStart, minLen, upLevel), o = 'outputMax', ae =1)           
+                #cmds.expression(n="remapMax_math"+ str(i), s = "%s=%s - %s*%s;"%(blinkRemap+'.outputMax', loStart, minLen, upLevel), o = 'outputMax', ae =1)           
     
                 #condition for upStart to include Min/Max curves 
                 minMaxMult = cmds.shadingNode('multiplyDivide', asUtility =1, n = UD + 'MinMax_mult'+ str(i+1).zfill(2))
