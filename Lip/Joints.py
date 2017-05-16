@@ -74,6 +74,10 @@ class Joints(Func.Func):
         lipCrv        = cmds.rename(templipCrv, upLow + 'Lip' + self.crvSuffix)
         lipCrvShape   = cmds.listRelatives(lipCrv, c = True)
         lipCrvGrp     = self.group([lipCrv, guideCrv], upLow + 'LipCrv' + self.grpSuffix)
+        self.group(lipCrvGrp, self.lipPCrvGrp)
+        
+        if not cmds.listRelatives(self.lipPCrvGrp, p = True):
+            self.group(self.lipPCrvGrp, self.crvGrp)
 
         #- lip curve for LipJotX tx,ty for UDLR ctrl
         tempTyCrv = cmds.curve(d = 3, p =([0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0])) 

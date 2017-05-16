@@ -330,7 +330,63 @@ class UI(Core.Core):
         
         cmds.separator( height=20, width = 600, style='in' )
         
+        cmds.gridLayout(numberOfColumns=4, cellWidthHeight=(80, 20))
+        self.loCvLabel = cmds.text(label = 'lower Curve')
+        self.emptyLabel = cmds.text(label = '')
+        self.emptyLabel = cmds.text(label = '')
+        self.emptyLabel = cmds.text(label = '')
+        
+        self.rloJntLabel = cmds.text(label = 'right joint')
+        self.cloJntLabel = cmds.text(label = 'center joint')
+        self.lloJntLabel = cmds.text(label = 'left joint')
+        self.emptyLabel = cmds.text(label = '')
+       
+        self.rloJntTextField = cmds.textField()
+        self.cloJntTextField = cmds.textField()
+        self.lloJntTextField = cmds.textField()
+        self.confirmskinButton = cmds.button(l = 'confirm', c = self.setLoCvInfo)
+        
+        loCrvName = 'loJawOpen_crv'
+        self.locCvpButton  = cmds.button(l = 'center cv', width = 80, c = partial(self.loadLoCvInfo, loCrvName + '.cv[3]'))
+        self.lo1CvpButton = cmds.button(l = 'left 1 cv', width = 80, c = partial(self.loadLoCvInfo, loCrvName + '.cv[4]'))
+        self.lo2CvpButton = cmds.button(l = 'left 2 cv', width = 80, c = partial(self.loadLoCvInfo, loCrvName + '.cv[5]'))
+        self.lo3CvpButton = cmds.button(l = 'left 3 cv', width = 80, c = partial(self.loadLoCvInfo, loCrvName + '.cv[6]'))
+        cmds.setParent('..')
+       
+        self.currentLoCvp = ''
+        cmds.separator( height=20, width = 600, style='in' )
+
+        cmds.gridLayout(numberOfColumns=4, cellWidthHeight=(80, 20))
+        self.upCvLabel = cmds.text(label = 'upper Curve')
+        self.emptyLabel = cmds.text(label = '')
+        self.emptyLabel = cmds.text(label = '')
+        self.emptyLabel = cmds.text(label = '')
+        
+        self.rupJntLabel = cmds.text(label = 'right joint')
+        self.cupJntLabel = cmds.text(label = 'center joint')
+        self.lupJntLabel = cmds.text(label = 'left joint')
+        self.emptyLabel = cmds.text(label = '')
+       
+        self.rupJntTextField = cmds.textField()
+        self.cupJntTextField = cmds.textField()
+        self.lupJntTextField = cmds.textField()
+        self.confirmskinButton = cmds.button(l = 'confirm', c = self.setUpCvInfo)
+        
+        upCrvName = 'upJawOpen_crv'
+        self.upcCvpButton = cmds.button(l = 'center cv', width = 80, c = partial(self.upadUpCvInfo, upCrvName + '.cv[3]'))
+        self.up1CvpButton = cmds.button(l = 'left 1 cv', width = 80, c = partial(self.upadUpCvInfo, upCrvName + '.cv[4]'))
+        self.up2CvpButton = cmds.button(l = 'left 2 cv', width = 80, c = partial(self.upadUpCvInfo, upCrvName + '.cv[5]'))
+        self.up3CvpButton = cmds.button(l = 'left 3 cv', width = 80, c = partial(self.upadUpCvInfo, upCrvName + '.cv[6]'))
+        cmds.setParent('..')
+       
+        self.currentUpCvp = ''
+        cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..' )
+        
+        
+        
+        
+        
         
         #- sixth tab{
         skinningTab = cmds.columnLayout()
@@ -372,6 +428,11 @@ class UI(Core.Core):
         cmds.text('Eyebrow ', bgc = [0.5, 0.5, 0])
         cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..')
+
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button(label = 'Skinning Tool', w = 200, c = partial(self.importSkinningTool))
+        cmds.setParent('..')
+
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Create Surface Map Geo', w = 200, c = partial(self.createBrowSurfaceMapGeo))
         cmds.setParent('..')
@@ -851,7 +912,119 @@ class UI(Core.Core):
                                locData = locData)
         
         return upLip, loLip
-    
+
+    def loadLoCvInfo(self, cvp, *args):
+        """
+        update jaw open lower cv weight
+        """
+        self.currentLoCvp = cvp
+        crvName = cvp.split('.cv')[0]
+        crvShape = cmds.listRelatives(crvName)[0]
+        self.crvLoSkinCluster = cmds.listConnections(crvShape, type = 'skinCluster')[0]
+                
+        self.influenceJnts = cmds.skinPercent(self.crvLoSkinCluster, cvp, q = True, transform  = None)
+        
+        for jnt in self.influenceJnts:
+            influence = cmds.skinPercent(self.crvLoSkinCluster, cvp, q = True, transform  = jnt)
+            influence = str(round(float(influence), 3))
+            if str(jnt).startswith('r'):
+                cmds.textField(self.rloJntTextField, e = True, text = influence)
+            elif str(jnt).startswith('c'):
+                cmds.textField(self.cloJntTextField, e = True, text = influence)
+            elif str(jnt).startswith('l'):
+                cmds.textField(self.lloJntTextField, e = True, text = influence)               
+
+    def setLoCvInfo(self, *args):
+        """
+        set jaw open lower cv weight
+        """
+        rjntInf = float(cmds.textField(self.rloJntTextField, q = True, text = True))
+        cjntInf = float(cmds.textField(self.cloJntTextField, q = True, text = True))
+        ljntInf = float(cmds.textField(self.lloJntTextField, q = True, text = True))
+       
+        transVal = []
+        transValMirror = []
+        for jnt in self.influenceJnts:
+            if str(jnt).startswith('l'):
+                transVal.append((str(jnt), ljntInf))
+                transValMirror.append((str(jnt), rjntInf))
+            elif str(jnt).startswith('c'):
+                transVal.append((str(jnt), cjntInf))
+                transValMirror.append((str(jnt), cjntInf))
+            elif str(jnt).startswith('r'):
+                transVal.append((str(jnt), rjntInf))
+                transValMirror.append((str(jnt), ljntInf))
+               
+        #mirroring
+        if str(self.currentLoCvp).split('[')[-1].startswith('6'):
+           mirrorCvp = self.currentLoCvp.replace('[6]', '[0]')
+        elif str(self.currentLoCvp).split('[')[-1].startswith('5'):
+           mirrorCvp = self.currentLoCvp.replace('[5]', '[1]')
+        elif str(self.currentLoCvp).split('[')[-1].startswith('4'):
+           mirrorCvp = self.currentLoCvp.replace('[4]', '[2]')
+       
+        #apply skinning
+        cmds.skinPercent(self.crvLoSkinCluster, self.currentLoCvp, tv = transVal)       
+        cmds.skinPercent(self.crvLoSkinCluster, mirrorCvp, tv = transValMirror)
+        
+        self.loadLoCvInfo(self.currentLoCvp)
+
+    def upadUpCvInfo(self, cvp, *args):
+        """
+        update jaw open upwer cv weight
+        """
+        self.currentUpCvp = cvp
+        crvName = cvp.split('.cv')[0]
+        crvShape = cmds.listRelatives(crvName)[0]
+        self.crvUpSkinCluster = cmds.listConnections(crvShape, type = 'skinCluster')[0]
+                
+        self.influenceJnts = cmds.skinPercent(self.crvUpSkinCluster, cvp, q = True, transform  = None)
+        
+        for jnt in self.influenceJnts:
+            influence = cmds.skinPercent(self.crvUpSkinCluster, cvp, q = True, transform  = jnt)
+            influence = str(round(float(influence), 3))
+            if str(jnt).startswith('r'):
+                cmds.textField(self.rupJntTextField, e = True, text = influence)
+            elif str(jnt).startswith('c'):
+                cmds.textField(self.cupJntTextField, e = True, text = influence)
+            elif str(jnt).startswith('l'):
+                cmds.textField(self.lupJntTextField, e = True, text = influence)               
+
+    def setUpCvInfo(self, *args):
+        """
+        set jaw open upwer cv weight
+        """
+        rjntInf = float(cmds.textField(self.rupJntTextField, q = True, text = True))
+        cjntInf = float(cmds.textField(self.cupJntTextField, q = True, text = True))
+        ljntInf = float(cmds.textField(self.lupJntTextField, q = True, text = True))
+       
+        transVal = []
+        transValMirror = []
+        for jnt in self.influenceJnts:
+            if str(jnt).startswith('l'):
+                transVal.append((str(jnt), ljntInf))
+                transValMirror.append((str(jnt), rjntInf))
+            elif str(jnt).startswith('c'):
+                transVal.append((str(jnt), cjntInf))
+                transValMirror.append((str(jnt), cjntInf))
+            elif str(jnt).startswith('r'):
+                transVal.append((str(jnt), rjntInf))
+                transValMirror.append((str(jnt), ljntInf))
+               
+        #mirroring
+        if str(self.currentUpCvp).split('[')[-1].startswith('6'):
+           mirrorCvp = self.currentUpCvp.replace('[6]', '[0]')
+        elif str(self.currentUpCvp).split('[')[-1].startswith('5'):
+           mirrorCvp = self.currentUpCvp.replace('[5]', '[1]')
+        elif str(self.currentUpCvp).split('[')[-1].startswith('4'):
+           mirrorCvp = self.currentUpCvp.replace('[4]', '[2]')
+       
+        #apply skinning
+        cmds.skinPercent(self.crvUpSkinCluster, self.currentUpCvp, tv = transVal)       
+        cmds.skinPercent(self.crvUpSkinCluster, mirrorCvp, tv = transValMirror)
+        
+        self.upadUpCvInfo(self.currentUpCvp)
+        
     def selectEyelidVertexes(self, *args):
         """
         """
@@ -927,6 +1100,14 @@ class UI(Core.Core):
         self.bridge = self.__bridgeInstance()
         self.bridge.createJoints()
         
+    def importSkinningTool(self, *args):
+        """
+        import brow skinning tool
+        """
+        from arFace import FaceSkinUI
+        reload(FaceSkinUI)
+
+        FaceSkinUI.faceSkinUI()
         
     def loadInMaya(self, *args):
         """

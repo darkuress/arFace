@@ -44,3 +44,5 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.lowCheekPos    = self.locData['setupLoc']['lowCheekPos']
         
         self.cheekCrvGrp  = 'cheekCrv' + self.grpSuffix
+        
+        self.lipPCrvGrp = 'lipCrv_grp'
