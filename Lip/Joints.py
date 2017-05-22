@@ -372,6 +372,49 @@ class Joints(Func.Func):
             cmds.select(lowCheek)    
             lowCheekJnt = cmds.joint(n = prefix + 'lowCheek' + self.jntSuffix, relative = True, p = [ 0, 0, 0]) 
         
+            #- connectng cheek curve and joint 
+            cvLs = cmds.ls(prefix + 'cheek' + self.crvSuffix + '.cv[*]', fl = 1 )
+            cvLen = len(cvLs)
+            lipCorner = cmds.group (em =1, n= prefix + 'lipCorner', p ='supportRig')    
+            cheekList = [prefix + 'lowCheek' + self.grpSuffix, lipCorner, prefix + 'cheek' + self.grpSuffix, prefix + 'squintPuff' + self.grpSuffix]
+            cheekWorld = cmds.group(em =1, n= prefix + 'cheekWorld', p ='supportRig')
+            cmds.parent (cheekList, cheekWorld)
+            inverseMatrix = cmds.shadingNode('decomposeMatrix', asUtility=1, n = prefix +'inverseMat' )
+            #plusAvg = cmds.shadingNode( 'plusMinusAverage')
+            cmds.connectAttr(self.headGeo + '.worldInverseMatrix', inverseMatrix + '.inputMatrix' )
+            cmds.connectAttr(inverseMatrix + '.outputTranslate', cheekWorld + '.translate' )
+            cmds.connectAttr(inverseMatrix + '.outputRotate', cheekWorld + '.rotate' )
+            cmds.connectAttr(inverseMatrix + '.outputScale', cheekWorld + '.scale' )
+            cmds.connectAttr(inverseMatrix + '.outputShear', cheekWorld + '.shear' )
+            
+            for v in range(0, cvLen):
+                cheekPoc = cmds.shadingNode('pointOnCurveInfo', asUtility =True, n = prefix + 'cheek' + str(v) + '_poc' )
+                cmds.connectAttr(prefix + 'cheek' + self.crvSuffix + 'Shape.worldSpace ', cheekPoc + '.inputCurve')  
+                cmds.setAttr(cheekPoc + '.parameter', v )           
+                cmds.connectAttr(cheekPoc + '.positionX', cheekList[v] + '.tx')
+                cmds.connectAttr(cheekPoc + '.positionY', cheekList[v] + '.ty')
+                cmds.connectAttr(cheekPoc + '.positionZ', cheekList[v] + '.tz')  
+
         return True
 
+    def setLipJntLabel(self, uploPrefix):
+        jntY = cmds.ls(uploPrefix + 'LipY*' + self.jntSuffix, fl=1, type = 'joint')
+        jntNum = len(jntY)
+        rightUp = jntY[0:jntNum/2]
+        leftUp = jntY[jntNum/2+1: ]
+        rightLo =loJntY[0: loJntNum/2] 
+        leftLo = loJntY[loJntNum/2+1: ]
+        leftLo.reverse()
+        rightUp.reverse()
+        leftJnt = leftUp + leftLo
+        rightJnt = rightUp + rightLo
+        for i, j in enumerate(leftJnt):
+            cmds.setAttr(j + '.side', 1)
+            cmds.setAttr(j + '.type', 18)
+            cmds.setAttr(j + '.otherType', str(i).zfill(2), type = "string")
+        for id, k in enumerate(rightJnt):
+            cmds.setAttr(k + '.side', 2)
+            cmds.setAttr(k + '.type', 18)
+            cmds.setAttr(k + '.otherType', str(id).zfill(2), type = "string")            
+        
         #return {'lipJntGrp' : lipJotGrp , 'lipCrvGrp' : lipCrvGrp}

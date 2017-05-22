@@ -1053,6 +1053,15 @@ class UI(Core.Core):
         #self.upLip.prarendGrp()
         #self.loLip.prarendGrp()
 
+    def lipJntLabel(self, *args):
+        """
+        labeling for lipY_jnt mirror weight
+        """
+        from Lip import Func
+        reload(Func)
+        lipFunc = Func.Func()
+        lipFunc.setLipJntLabel()
+
     def curveOnEdgeLoop(self, *args):
         """
         curve on edge loop tool

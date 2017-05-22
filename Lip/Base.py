@@ -45,4 +45,4 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         
         self.cheekCrvGrp  = 'cheekCrv' + self.grpSuffix
         
-        self.lipPCrvGrp = 'lipCrv_grp'
+        self.lipPCrvGrp = 'lipCrv' + self.grpSuffix

@@ -22,7 +22,31 @@ class Func(Base.Base):
         #local variables
         Base.Base.__init__(self, **kw)
 
-
+    def setLipJntLabel(self):
+        """
+        labeling for liyY_jnt mirror weight
+        """
+        upJntY = cmds.ls('upLipY*' + self.jntSuffix, fl=1, type = 'joint')
+        loJntY = cmds.ls('loLipY*' + self.jntSuffix, fl=1, type = 'joint')
+        upJntNum = len(upJntY)
+        loJntNum = len(loJntY)
+        rightUp = upJntY[0:upJntNum/2]
+        leftUp = upJntY[upJntNum/2+1: ]
+        rightLo =loJntY[0: loJntNum/2] 
+        leftLo = loJntY[loJntNum/2+1: ]
+        leftLo.reverse()
+        rightUp.reverse()
+        leftJnt = leftUp + leftLo
+        rightJnt = rightUp + rightLo
+        for i, j in enumerate(leftJnt):
+            cmds.setAttr(j + '.side', 1)
+            cmds.setAttr(j + '.type', 18)
+            cmds.setAttr(j + '.otherType', str(i).zfill(2), type = "string")
+        for id, k in enumerate(rightJnt):
+            cmds.setAttr(k + '.side', 2)
+            cmds.setAttr(k + '.type', 18)
+            cmds.setAttr(k + '.otherType', str(id).zfill(2), type = "string")    
+        
     def mirrorCurve(self, lCrv, rCrv):
         """
         mirroring curve
