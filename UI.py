@@ -3,6 +3,7 @@
 
 from functools import partial
 import maya.cmds as cmds
+import maya.mel as mel
 from Misc import Core
 reload(Core)
 from Misc import Util
@@ -225,26 +226,6 @@ class UI(Core.Core):
         
         cmds.separator( height=20, width = 600, style='in' )
         
-        cmds.rowColumnLayout(numberOfColumns = 1)
-        cmds.button(label = 'Create Curve Camera', c = partial(self.createCurveCam))
-        cmds.setParent('..')
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        self.lUpLidCrvOptionMenu = cmds.optionMenu(label='Left   Up',
-                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'lUp'))
-        self.rUpLidCrvOptionMenu = cmds.optionMenu(label='Right  Up',
-                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'rUp'))
-        cmds.setParent('..')
-        cmds.rowColumnLayout(numberOfColumns = 2)
-        self.lLoLidCrvOptionMenu = cmds.optionMenu(label='Left Low',
-                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'lLo'))
-        
-        self.rLoLidCrvOptionMenu = cmds.optionMenu(label='Right Low',
-                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'rLo'))
-        self.updateLidCrvDropdownMenu()
-        cmds.setParent('..')
-        
-        cmds.separator( height=20, width = 600, style='in' )
-        
         cmds.rowColumnLayout(numberOfColumns = 2)
         cmds.button(label = 'Save Curves', c = partial(self.saveEyelidCurve), en = False)
         cmds.button(label = 'Load Curves', c = partial(self.loadEyelidCurve), en = False)
@@ -341,9 +322,9 @@ class UI(Core.Core):
         self.lloJntLabel = cmds.text(label = 'left joint')
         self.emptyLabel = cmds.text(label = '')
        
-        self.rloJntTextField = cmds.textField()
-        self.cloJntTextField = cmds.textField()
-        self.lloJntTextField = cmds.textField()
+        self.rloJntFloatField = cmds.floatField(minValue = 0, maxValue = 1, en = False)
+        self.cloJntFloatField = cmds.floatField(minValue = 0, maxValue = 1, ec = partial(self.cloJntFloatFieldCB))
+        self.lloJntFloatField = cmds.floatField(minValue = 0, maxValue = 1, ec = partial(self.lloJntFloatFieldCB))
         self.confirmskinButton = cmds.button(l = 'confirm', c = self.setLoCvInfo)
         
         loCrvName = 'loJawOpen_crv'
@@ -367,9 +348,9 @@ class UI(Core.Core):
         self.lupJntLabel = cmds.text(label = 'left joint')
         self.emptyLabel = cmds.text(label = '')
        
-        self.rupJntTextField = cmds.textField()
-        self.cupJntTextField = cmds.textField()
-        self.lupJntTextField = cmds.textField()
+        self.rupJntFloatField = cmds.floatField(minValue = 0, maxValue = 1, en = False)
+        self.cupJntFloatField = cmds.floatField(minValue = 0, maxValue = 1, ec = partial(self.cupJntFloatFieldCB))
+        self.lupJntFloatField = cmds.floatField(minValue = 0, maxValue = 1, ec = partial(self.lupJntFloatFieldCB))
         self.confirmskinButton = cmds.button(l = 'confirm', c = self.setUpCvInfo)
         
         upCrvName = 'upJawOpen_crv'
@@ -737,13 +718,13 @@ class UI(Core.Core):
         connect eyelid setup with control panel
         """
         self.lowerEyelid.connectToControlPanel()
-        self.updateLidCrvDropdownMenu()
+        self.updateLidCrvDropdownMenu(runByInit = True)
     
-    def updateLidCrvDropdownMenu(self, *args):
+    def updateLidCrvDropdownMenu(self, runByInit = False, *args):
         """
         update the curve list on drop down menu in eyelid panel
         """
-        if cmds.objExists(self.eyelidCrvGrpName):
+        if cmds.objExists(self.eyelidCrvGrpName) or runByInit:
             topLidCrvGrp = cmds.listRelatives(self.eyelidCrvGrpName)
             for crv in topLidCrvGrp:
                 if self.prefix[0] + self.uploPrefix[0] in crv:
@@ -764,21 +745,29 @@ class UI(Core.Core):
         create orthographic camera for eyelid curve
         """
         curveCam = 'curveCam'
+        
         if not cmds.objExists(curveCam + '*'):
             curveCam = cmds.camera(n = curveCam, orthographic = True)[0]
-            curveCamShape = cmds.listRelatives(curveCam)[0]
-            cmds.xform(curveCam, t = [0,0,5])
-        else:
-            curveCam = cmds.ls('curveCam*')
-            curveCamShape = cmds.listRelatives(curveCam)[0]
+            
+        curveCam = cmds.ls('curveCam*')
+        curveCamShape = cmds.listRelatives(curveCam)[0]
+        curveCamShape = cmds.listRelatives(curveCam)[0]
+        cmds.xform(curveCam, t = [0.488,-0.256,5.059])
         
-        myLabel = 'Curve Panel'
-        cmds.window(w = 500, h = 500, title='Curve Window')
+        if cmds.getPanel(withLabel = 'Curve Panel'):
+            cmds.deleteUI(cmds.getPanel(withLabel = 'Curve Panel'), panel = True)
+        
+        cmds.window('CurveWindow', w = 500, h = 500, title='Curve Window')
         cmds.frameLayout(lv=0 )
-        panel = cmds.modelPanel(l=myLabel )
+        self.curvePanel = cmds.modelPanel(label = 'Curve Panel')
+        mel.eval('lookThroughModelPanel front %s;' %self.curvePanel)
+        cmds.modelEditor(self.curvePanel, e = True, grid = False)
+        
+        
+        
         cmds.showWindow()
 
-        cmds.lookThru(curveCamShape, panel)
+        cmds.lookThru(curveCamShape, self.curvePanel)
                     
     def runLidCrvDropdownMenu(self, lrUplo, *args):
         """
@@ -787,26 +776,36 @@ class UI(Core.Core):
         from Eyelid import Func
         reload(Func)
         eyelidFunc = Func.Func()
-        if lrUplo == 'lUp':
-            if cmds.optionMenu(self.lUpLidCrvOptionMenu, q = True, v = True) == 'None':
-                eyelidFunc.hideAlLCrv()
-            else:
-                eyelidFunc.showCrv(cmds.optionMenu(self.lUpLidCrvOptionMenu, q = True, v = True))
+        if not cmds.window('CurveWindow', ex = True):
+            self.createCurveCam()
+
+        self.curvePanel = cmds.getPanel(withLabel = 'Curve Panel')
+        
+        if lrUplo == 'lUp':              
+            cmds.select(cmds.optionMenu(self.lUpLidCrvOptionMenu, q = True, v = True), r = True) 
+            mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
+            mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
+            cmds.select(cl = True)
+
         elif lrUplo == 'lLo':
-            if cmds.optionMenu(self.lLoLidCrvOptionMenu, q = True, v = True) == 'None':
-                eyelidFunc.hideAlLCrv()
-            else:
-                eyelidFunc.showCrv(cmds.optionMenu(self.lLoLidCrvOptionMenu, q = True, v = True))
+            cmds.select(cmds.optionMenu(self.lLoLidCrvOptionMenu, q = True, v = True), r = True) 
+            mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
+            mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
+            cmds.select(cl = True)
+
+        
         elif lrUplo == 'rUp':
-            if cmds.optionMenu(self.rUpLidCrvOptionMenu, q = True, v = True) == 'None':
-                eyelidFunc.hideAlLCrv()
-            else:
-                eyelidFunc.showCrv(cmds.optionMenu(self.rUpLidCrvOptionMenu, q = True, v = True))
+            cmds.select(cmds.optionMenu(self.rUpLidCrvOptionMenu, q = True, v = True), r = True) 
+            mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
+            mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
+            cmds.select(cl = True)
+
         elif lrUplo == 'rLo':
-            if cmds.optionMenu(self.rLoLidCrvOptionMenu, q = True, v = True) == 'None':
-                eyelidFunc.hideAlLCrv()
-            else:
-                eyelidFunc.showCrv(cmds.optionMenu(self.rLoLidCrvOptionMenu, q = True, v = True))
+            cmds.select(cmds.optionMenu(self.rUpLidCrvOptionMenu, q = True, v = True), r = True) 
+            mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
+            mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
+            cmds.select(cl = True)
+
     
     def saveEyelidCurve(self, *args):
         """
@@ -912,7 +911,19 @@ class UI(Core.Core):
                                locData = locData)
         
         return upLip, loLip
-
+    
+    def cloJntFloatFieldCB(self, *args):
+        """
+        """
+        cmds.floatField(self.lloJntFloatField, e = True, v = 1 - cmds.floatField(self.cloJntFloatField, q = True, v = True))
+        self.setLoCvInfo()
+        
+    def lloJntFloatFieldCB(self, *args): 
+        """
+        """
+        cmds.floatField(self.cloJntFloatField, e = True, v = 1 - cmds.floatField(self.lloJntFloatField, q = True, v = True))
+        self.setLoCvInfo()
+        
     def loadLoCvInfo(self, cvp, *args):
         """
         update jaw open lower cv weight
@@ -926,21 +937,21 @@ class UI(Core.Core):
         
         for jnt in self.influenceJnts:
             influence = cmds.skinPercent(self.crvLoSkinCluster, cvp, q = True, transform  = jnt)
-            influence = str(round(float(influence), 3))
+            influence = round(float(influence), 3)
             if str(jnt).startswith('r'):
-                cmds.textField(self.rloJntTextField, e = True, text = influence)
+                cmds.floatField(self.rloJntFloatField, e = True, value = influence)
             elif str(jnt).startswith('c'):
-                cmds.textField(self.cloJntTextField, e = True, text = influence)
+                cmds.floatField(self.cloJntFloatField, e = True, value = influence)
             elif str(jnt).startswith('l'):
-                cmds.textField(self.lloJntTextField, e = True, text = influence)               
+                cmds.floatField(self.lloJntFloatField, e = True, value = influence)               
 
     def setLoCvInfo(self, *args):
         """
         set jaw open lower cv weight
         """
-        rjntInf = float(cmds.textField(self.rloJntTextField, q = True, text = True))
-        cjntInf = float(cmds.textField(self.cloJntTextField, q = True, text = True))
-        ljntInf = float(cmds.textField(self.lloJntTextField, q = True, text = True))
+        rjntInf = float(cmds.floatField(self.rloJntFloatField, q = True, value = True))
+        cjntInf = float(cmds.floatField(self.cloJntFloatField, q = True, value = True))
+        ljntInf = float(cmds.floatField(self.lloJntFloatField, q = True, value = True))
        
         transVal = []
         transValMirror = []
@@ -962,13 +973,28 @@ class UI(Core.Core):
            mirrorCvp = self.currentLoCvp.replace('[5]', '[1]')
         elif str(self.currentLoCvp).split('[')[-1].startswith('4'):
            mirrorCvp = self.currentLoCvp.replace('[4]', '[2]')
-       
+        elif str(self.currentLoCvp).split('[')[-1].startswith('3'):
+           mirrorCvp = self.currentLoCvp.replace('[3]', '[3]')
+           
         #apply skinning
         cmds.skinPercent(self.crvLoSkinCluster, self.currentLoCvp, tv = transVal)       
         cmds.skinPercent(self.crvLoSkinCluster, mirrorCvp, tv = transValMirror)
         
         self.loadLoCvInfo(self.currentLoCvp)
 
+        
+    def cupJntFloatFieldCB(self, *args):
+        """
+        """
+        cmds.floatField(self.lupJntFloatField, e = True, v = 1 - cmds.floatField(self.cupJntFloatField, q = True, v = True))
+        self.setUpCvInfo()
+        
+    def lupJntFloatFieldCB(self, *args): 
+        """
+        """
+        cmds.floatField(self.cupJntFloatField, e = True, v = 1 - cmds.floatField(self.lupJntFloatField, q = True, v = True))
+        self.setUpCvInfo()
+        
     def upadUpCvInfo(self, cvp, *args):
         """
         update jaw open upwer cv weight
@@ -982,21 +1008,21 @@ class UI(Core.Core):
         
         for jnt in self.influenceJnts:
             influence = cmds.skinPercent(self.crvUpSkinCluster, cvp, q = True, transform  = jnt)
-            influence = str(round(float(influence), 3))
+            influence = round(float(influence), 3)
             if str(jnt).startswith('r'):
-                cmds.textField(self.rupJntTextField, e = True, text = influence)
+                cmds.floatField(self.rupJntFloatField, e = True, value = influence)
             elif str(jnt).startswith('c'):
-                cmds.textField(self.cupJntTextField, e = True, text = influence)
+                cmds.floatField(self.cupJntFloatField, e = True, value = influence)
             elif str(jnt).startswith('l'):
-                cmds.textField(self.lupJntTextField, e = True, text = influence)               
+                cmds.floatField(self.lupJntFloatField, e = True, value = influence)               
 
     def setUpCvInfo(self, *args):
         """
         set jaw open upwer cv weight
         """
-        rjntInf = float(cmds.textField(self.rupJntTextField, q = True, text = True))
-        cjntInf = float(cmds.textField(self.cupJntTextField, q = True, text = True))
-        ljntInf = float(cmds.textField(self.lupJntTextField, q = True, text = True))
+        rjntInf = float(cmds.floatField(self.rupJntFloatField, q = True, value = True))
+        cjntInf = float(cmds.floatField(self.cupJntFloatField, q = True, value = True))
+        ljntInf = float(cmds.floatField(self.lupJntFloatField, q = True, value = True))
        
         transVal = []
         transValMirror = []
@@ -1018,7 +1044,10 @@ class UI(Core.Core):
            mirrorCvp = self.currentUpCvp.replace('[5]', '[1]')
         elif str(self.currentUpCvp).split('[')[-1].startswith('4'):
            mirrorCvp = self.currentUpCvp.replace('[4]', '[2]')
+        elif str(self.currentUpCvp).split('[')[-1].startswith('3'):
+           mirrorCvp = self.currentUpCvp.replace('[3]', '[3]')
        
+           
         #apply skinning
         cmds.skinPercent(self.crvUpSkinCluster, self.currentUpCvp, tv = transVal)       
         cmds.skinPercent(self.crvUpSkinCluster, mirrorCvp, tv = transValMirror)
