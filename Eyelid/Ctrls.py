@@ -201,7 +201,7 @@ class Ctrls(Func.Func, Base.Base):
                     #- center ctrl.tx drives ctlCrv center cv[2].xValue 
                     rCntMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = uploPrefix +'Cnt_mult')
                     cmds.connectAttr(uploPrefix + "Center" + self.ctlSuffix + ".tx" , rCntMult + ".input1X") 
-                    cmds.setAttr(rCntMult + ".input2X", -1)
+                    #cmds.setAttr(rCntMult + ".input2X", -1)
                     cmds.connectAttr(rCntMult + ".outputX", cntAddD + ".input1")
                     cmds.setAttr(cntAddD + ".input2", 0.5) 
                     cmds.connectAttr(cntAddD + ".output" , ctlCrvCv[2] + ".xValue")            
