@@ -325,7 +325,7 @@ class Ctrls(Func.Func, Base.Base):
                     #- creating controller 
                     if lr == self.prefix[0]:
                         cColor = 6
-                    else:
+                    elif lr == self.prefix[1]:
                         cColor = 17
                     childPos = cmds.xform(cmds.listRelatives(jnts[i], c=1, type ='joint')[0], t = True, q = True, ws = True)
                     lidCtl, lidCtlP  = self.circleController(uploPrefix + 'Lid'+ str(i+1).zfill(2) + self.ctlSuffix,
