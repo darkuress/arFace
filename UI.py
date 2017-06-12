@@ -10,6 +10,12 @@ from Misc import Util
 import json
 import os
 
+#- load necessary plutin
+if not cmds.pluginInfo('matrixNodes.mll', loaded = True, q = True):
+    print "Loading Plug in, 'matrixNodes.mll'"
+    cmds.loadPlugin('matrixNodes.mll')
+
+#- initialize window
 if cmds.window('faceSetupUI', ex = True):
     cmds.deleteUI('faceSetupUI')    
 cmds.window('faceSetupUI',menuBar=True, widthHeight=(600, 500), bgc = [0.25, 0.3, 0.3] )
@@ -135,6 +141,17 @@ class UI(Core.Core):
         self.loLipVertsTextField = cmds.textField('loLipVertsTextField', ed = False, tx = insertText, w = 300)
         cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateLoLipVtxTextField)
         cmds.button(label = 'Select', bgc = self.buttonColor2, c = partial(self.selectVertexes, self.loLipVertsTextField))
+        cmds.setParent('..' )
+
+        cmds.rowColumnLayout(numberOfColumns=4)
+        cmds.text(label='Lip Corner Vertexes : ', w = 150, bgc = self.textColor)
+        if self.locData.has_key('lipCnrVtxs'):
+            insertText = self.locData['lipCnrVtxs']
+        else:
+            insertText = ''      
+        self.lipCnrVertsTextField = cmds.textField('lipCnrVertsTextField', ed = False, tx = insertText, w = 300)
+        cmds.button(label = '        <<        ', bgc = self.buttonColor, c = self.updateLipCnrVtxTextField)
+        cmds.button(label = 'Select', bgc = self.buttonColor2, c = partial(self.selectVertexes, self.lipCnrVertsTextField))
         cmds.setParent('..' )
         
         
@@ -389,18 +406,23 @@ class UI(Core.Core):
         cmds.rowColumnLayout(numberOfColumns = 1)
         cmds.button(label = 'Create Curve Camera', c = partial(self.createCurveCam))
         cmds.setParent('..')
-        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.rowColumnLayout(numberOfColumns = 3)
         self.lUpLidCrvOptionMenu = cmds.optionMenu(label='Left   Up',
                                                    changeCommand = partial(self.runLidCrvDropdownMenu, 'lUp'))
         self.rUpLidCrvOptionMenu = cmds.optionMenu(label='Right  Up',
                                                    changeCommand = partial(self.runLidCrvDropdownMenu, 'rUp'))
+        self.upLidCrvOptionMenu = cmds.optionMenu(label='Up',
+                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'up'))
+        
         cmds.setParent('..')
-        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.rowColumnLayout(numberOfColumns = 3)
         self.lLoLidCrvOptionMenu = cmds.optionMenu(label='Left Low',
                                                    changeCommand = partial(self.runLidCrvDropdownMenu, 'lLo'))
-        
         self.rLoLidCrvOptionMenu = cmds.optionMenu(label='Right Low',
                                                    changeCommand = partial(self.runLidCrvDropdownMenu, 'rLo'))
+        self.loLidCrvOptionMenu = cmds.optionMenu(label='Lo',
+                                                   changeCommand = partial(self.runLidCrvDropdownMenu, 'lo'))
+        
         self.updateLidCrvDropdownMenu()
         cmds.setParent('..')
         
@@ -506,6 +528,7 @@ class UI(Core.Core):
         self.locData['cnrEyelidVtxs'] = cmds.textField(self.cnrEyelidVertsTextField, q = True, tx = True)
         self.locData['upLipVtxs']     = cmds.textField(self.upLipVertsTextField, q = True, tx = True)
         self.locData['loLipVtxs']     = cmds.textField(self.loLipVertsTextField, q = True, tx = True)
+        self.locData['lipCnrVtxs']    = cmds.textField(self.lipCnrVertsTextField, q = True, tx = True)
         
         return self.locData
 
@@ -585,6 +608,13 @@ class UI(Core.Core):
         else:
             insertText = ''      
         cmds.textField(self.loLipVertsTextField, e = True, tx = insertText)
+
+        if locData.has_key('lipCnrVtxs'):
+            insertText = locData['lipCnrVtxs']
+        else:
+            insertText = ''      
+        cmds.textField(self.lipCnrVertsTextField, e = True, tx = insertText)
+                
         
     def updateEyebrowVtxTextField(self, *args):
         """
@@ -649,6 +679,14 @@ class UI(Core.Core):
         #- selected vertexes
         vtx = str(cmds.ls(sl = True, fl = True))
         cmds.textField(self.loLipVertsTextField, e = True, tx = vtx)        
+
+    def updateLipCnrVtxTextField(self, *args):
+        """
+        updating save TextField
+        """
+        #- selected vertexes
+        vtx = str(cmds.ls(sl = True, fl = True))
+        cmds.textField(self.lipCnrVertsTextField, e = True, tx = vtx)  
         
     def selectVertexes(self, txtField, *args):
         """
@@ -739,7 +777,13 @@ class UI(Core.Core):
                 elif self.prefix[1] + self.uploPrefix[1] in crv:
                     cmds.optionMenu(self.rLoLidCrvOptionMenu, e = True)
                     cmds.menuItem(label = str(crv), p = self.rLoLidCrvOptionMenu)
-    
+                elif str(crv).startswith(self.uploPrefix[0]):
+                    cmds.optionMenu(self.upLidCrvOptionMenu, e = True)
+                    cmds.menuItem(label = str(crv), p = self.upLidCrvOptionMenu)
+                elif str(crv).startswith(self.uploPrefix[1]):
+                    cmds.optionMenu(self.loLidCrvOptionMenu, e = True)
+                    cmds.menuItem(label = str(crv), p = self.loLidCrvOptionMenu)
+                    
     def createCurveCam(self, *args):
         """
         create orthographic camera for eyelid curve
@@ -752,7 +796,10 @@ class UI(Core.Core):
         curveCam = cmds.ls('curveCam*')
         curveCamShape = cmds.listRelatives(curveCam)[0]
         curveCamShape = cmds.listRelatives(curveCam)[0]
-        cmds.xform(curveCam, t = [0.488,-0.256,5.059])
+        cmds.xform(curveCam, t = [0.491,-0.027,5.059])
+        attrs = ['.tx', '.ty', '.tz', '.rx', '.ry', '.rz', '.sx', '.sy', '.sz', '.v']
+        for attr in attrs:
+            cmds.setAttr(curveCam[0] + attr, lock = True)
         
         if cmds.getPanel(withLabel = 'Curve Panel'):
             cmds.deleteUI(cmds.getPanel(withLabel = 'Curve Panel'), panel = True)
@@ -768,7 +815,13 @@ class UI(Core.Core):
         cmds.showWindow()
 
         cmds.lookThru(curveCamShape, self.curvePanel)
-                    
+
+        #-making first isolation
+        cmds.select(cmds.optionMenu(self.lUpLidCrvOptionMenu, q = True, v = True), r = True) 
+        mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
+        mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
+        cmds.select(cl = True)
+        
     def runLidCrvDropdownMenu(self, lrUplo, *args):
         """
         show only selected crv
@@ -805,7 +858,19 @@ class UI(Core.Core):
             mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
             mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
             cmds.select(cl = True)
-
+        
+        elif lrUplo == 'up':
+            cmds.select(cmds.optionMenu(self.upLidCrvOptionMenu, q = True, v = True), r = True) 
+            mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
+            mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
+            cmds.select(cl = True)
+            
+        elif lrUplo == 'lo':
+            cmds.select(cmds.optionMenu(self.loLidCrvOptionMenu, q = True, v = True), r = True) 
+            mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
+            mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
+            cmds.select(cl = True)
+         
     
     def saveEyelidCurve(self, *args):
         """

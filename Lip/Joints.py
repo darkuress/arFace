@@ -286,7 +286,7 @@ class Joints(Func.Func):
         if upLow == self.uploPrefix[1]:
             self.__bridgeJoints()
             #self.indiCrvSetup('lip')
-            
+        
     def createLipJoint(self, upLow, lipYPos, poc, lipJotGrp, i):   
         """
         draw joints
@@ -381,7 +381,7 @@ class Joints(Func.Func):
             cmds.parent (cheekList, cheekWorld)
             inverseMatrix = cmds.shadingNode('decomposeMatrix', asUtility=1, n = prefix +'inverseMat' )
             #plusAvg = cmds.shadingNode( 'plusMinusAverage')
-            cmds.connectAttr(self.headGeo + '.worldInverseMatrix', inverseMatrix + '.inputMatrix' )
+            cmds.connectAttr(self.headGeo + '.inverseMatrix', inverseMatrix + '.inputMatrix' )
             cmds.connectAttr(inverseMatrix + '.outputTranslate', cheekWorld + '.translate' )
             cmds.connectAttr(inverseMatrix + '.outputRotate', cheekWorld + '.rotate' )
             cmds.connectAttr(inverseMatrix + '.outputScale', cheekWorld + '.scale' )
@@ -395,26 +395,6 @@ class Joints(Func.Func):
                 cmds.connectAttr(cheekPoc + '.positionY', cheekList[v] + '.ty')
                 cmds.connectAttr(cheekPoc + '.positionZ', cheekList[v] + '.tz')  
 
-        return True
-
-    def setLipJntLabel(self, uploPrefix):
-        jntY = cmds.ls(uploPrefix + 'LipY*' + self.jntSuffix, fl=1, type = 'joint')
-        jntNum = len(jntY)
-        rightUp = jntY[0:jntNum/2]
-        leftUp = jntY[jntNum/2+1: ]
-        rightLo =loJntY[0: loJntNum/2] 
-        leftLo = loJntY[loJntNum/2+1: ]
-        leftLo.reverse()
-        rightUp.reverse()
-        leftJnt = leftUp + leftLo
-        rightJnt = rightUp + rightLo
-        for i, j in enumerate(leftJnt):
-            cmds.setAttr(j + '.side', 1)
-            cmds.setAttr(j + '.type', 18)
-            cmds.setAttr(j + '.otherType', str(i).zfill(2), type = "string")
-        for id, k in enumerate(rightJnt):
-            cmds.setAttr(k + '.side', 2)
-            cmds.setAttr(k + '.type', 18)
-            cmds.setAttr(k + '.otherType', str(id).zfill(2), type = "string")            
+        return True        
         
         #return {'lipJntGrp' : lipJotGrp , 'lipCrvGrp' : lipCrvGrp}

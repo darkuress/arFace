@@ -47,6 +47,8 @@ class Func(Base.Base):
             cmds.setAttr(k + '.type', 18)
             cmds.setAttr(k + '.otherType', str(id).zfill(2), type = "string")    
         
+        return True
+        
     def mirrorCurve(self, lCrv, rCrv):
         """
         mirroring curve
