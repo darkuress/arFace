@@ -47,9 +47,9 @@ class Container(Core.Core, Util.Util):
         faceGeoGroup    = cmds.group(em =1, n = 'faceGeo' + self.grpSuffix, p = faceMain)
         spn             = cmds.group(em =1, n = 'spn', p = faceMain)
         headSkel        = cmds.group(em =1, n = 'headSkel', p = spn)
-        
+        headSkelJnt = cmds.joint(n = 'headSkel' + self.jntSuffix)
         cmds.xform(headSkel, ws = 1, t = headSkelPos)
-    
+        
         #-jawRig hierarchy
         jawRig     = cmds.group(em =1, n = 'jawRig', p = headSkel)
         cmds.xform(jawRig, ws = 1, t = jawRigPos)
@@ -75,8 +75,9 @@ class Container(Core.Core, Util.Util):
         attachCtlGrp     = cmds.group(em = 1, n = 'attachCtl' + self.grpSuffix, p = bodyHead)
         cmds.xform(attachCtlGrp, ws = 1, t = headSkelPos)
         
+        #- support rig
         supportRig = cmds.group(em =1, n = 'supportRig', p = headSkel)
-    
+
         lEarP = cmds.group(em =1, n = self.prefix[0] + 'ear' + self.grpSuffix, p = supportRig)
         cmds.xform(lEarP, ws = 1, t = lEarPos)
         rEarP = cmds.group(em =1, n = self.prefix[1] + 'ear' + self.grpSuffix, p = supportRig)

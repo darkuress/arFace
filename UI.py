@@ -43,6 +43,9 @@ class UI(Core.Core):
         cmds.menu(label='Tools')
         cmds.menuItem(label = 'NG Skin Tool', c = partial(self.openNgSkinTool))
         cmds.menuItem(label = 'Copy Layer Tool', c = partial(self.openCopyLayersTool))
+        cmds.menuItem(label = '---------------')
+        cmds.menuItem(label = 'Create Panel Camera', c = partial(self.createPanelCam))
+        cmds.menuItem(label = 'Create Curve Camera', c = partial(self.createCurveCam))
         
         cmds.menu(label='Help')
         cmds.menuItem(label='Ask sshin')
@@ -829,19 +832,38 @@ class UI(Core.Core):
         self.curvePanel = cmds.modelPanel(label = 'Curve Panel')
         mel.eval('lookThroughModelPanel front %s;' %self.curvePanel)
         cmds.modelEditor(self.curvePanel, e = True, grid = False)
+
+    def createPanelCam(self, *args):
+        """
+        create panel cam to help animate
+        """
+        panelCam = 'panelCam'
         
+        if not cmds.objExists(panelCam + '*'):
+            panelCam = cmds.camera(n = panelCam, orthographic = True)[0]
+            
+        panelCam = cmds.ls('panelCam*')
+        panelCamShape = cmds.listRelatives(panelCam)[0]
+        panelCamShape = cmds.listRelatives(panelCam)[0]
+        cmds.xform(panelCam, t = [54.271, -0.19 , 39])
+        attrs = ['.tx', '.ty', '.tz', '.rx', '.ry', '.rz', '.sx', '.sy', '.sz', '.v']
+        for attr in attrs:
+            cmds.setAttr(panelCam[0] + attr, lock = True)
+        
+        if cmds.getPanel(withLabel = 'Panel Panel'):
+            cmds.deleteUI(cmds.getPanel(withLabel = 'Panel Panel'), panel = True)
+        
+        cmds.window('CurveWindow', w = 500, h = 500, title='Panel Window')
+        cmds.frameLayout(lv=0 )
+        self.panelPanel = cmds.modelPanel(label = 'Panel Panel')
+        mel.eval('lookThroughModelPanel front %s;' %self.panelPanel)
+        cmds.modelEditor(self.panelPanel, e = True, grid = False)        
         
         
         cmds.showWindow()
 
-        cmds.lookThru(curveCamShape, self.curvePanel)
+        cmds.lookThru(panelCamShape, self.panelPanel)
 
-        #-making first isolation
-        cmds.select(cmds.optionMenu(self.lUpLidCrvOptionMenu, q = True, v = True), r = True) 
-        mel.eval('isolateSelect -state 0 %s' %self.curvePanel)
-        mel.eval('isolateSelect -state 1 %s' %self.curvePanel)
-        cmds.select(cl = True)
-        
     def runLidCrvDropdownMenu(self, lrUplo, *args):
         """
         show only selected crv

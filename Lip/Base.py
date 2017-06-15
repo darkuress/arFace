@@ -38,6 +38,7 @@ class Base(Core.Core, Util.Util, Controller.Controller):
         self.lipNPos        = self.locData['setupLoc']['lipNPos']
         self.lipSPos        = self.locData['setupLoc']['lipSPos']
         self.lipYPos        = self.locData['setupLoc']['lipYPos']
+        self.headSkelPos    = self.locData['setupLoc']['headSkelPos']
         self.jawRigPos      = self.locData['setupLoc']['jawRigPos']
         self.cheekPos       = self.locData['setupLoc']['cheekPos']
         self.squintPuffPos  = self.locData['setupLoc']['squintPuffPos']
