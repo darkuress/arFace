@@ -381,11 +381,6 @@ class UI(Core.Core):
         cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..' )
         
-        
-        
-        
-        
-        
         #- sixth tab{
         skinningTab = cmds.columnLayout()
         cmds.rowColumnLayout(numberOfColumns = 2)      
@@ -467,7 +462,8 @@ class UI(Core.Core):
                                  (skinningTab, 'skinning'))
                       )
         
-        self.updateSelfLocData()
+        #self.updateSelfLocData()
+        self.loadSession()
     
     def importFacialLoc(self, *args):
         """
@@ -530,6 +526,9 @@ class UI(Core.Core):
         self.locData['loLipVtxs']     = cmds.textField(self.loLipVertsTextField, q = True, tx = True)
         self.locData['lipCnrVtxs']    = cmds.textField(self.lipCnrVertsTextField, q = True, tx = True)
         
+        #- save session
+        self.saveSession(self.locData)
+        
         return self.locData
 
     def saveInfoFile(self, *args):
@@ -547,8 +546,8 @@ class UI(Core.Core):
                                button=['ok'],
                                defaultButton='ok')
         except:
-            pass
-
+            print "File loading failed"
+        
     def openInfoFile(self, *args):
         """
         manually load info.json
@@ -556,11 +555,32 @@ class UI(Core.Core):
         filename = str(cmds.fileDialog2(fileMode=1, caption="Import Info.json")[0])
         self.locData = self.updateLocdata(filename)
         self.updateLocFields(self.locData)
+        
+        #- save session
+        self.saveSession(self.locData)
+    
+    def saveSession(self, locDats, *args):
+        """
+        save current session information 
+        """
+        import json
+        sessionJson = json.dumps(locDats)
+        cmds.optionVar(sv = ('arFacePrefs', sessionJson))
+        cmds.savePrefs(g = 1)        
+        
+    def loadSession(self, *args):
+        """
+        load session info when opening the ui
+        """
+        if cmds.optionVar(ex='arFacePrefs'):
+            import json
+            self.session = json.loads(cmds.optionVar(q = 'arFacePrefs'))
+            self.updateLocFields(self.session)
 
     def updateLocFields(self, locData, *args):
         """
         update locator data in the text field
-        """        
+        """     
         if locData.get('headGeo'):
             self.headGeoTextField = cmds.textField(self.headGeoTextField, e = True, tx = locData['headGeo'])
         else:
@@ -568,7 +588,7 @@ class UI(Core.Core):
         
         
         if locData.get('setupLoc'):
-            insertText = str(self.locData['setupLoc'].keys())
+            insertText = str(locData['setupLoc'].keys())
         else:
             insertText = ''
         cmds.textField(self.setupLocTextField, e = True, tx = insertText)
@@ -592,7 +612,7 @@ class UI(Core.Core):
         cmds.textField(self.loEyelidVertsTextField, e = True, tx = insertText)
         
         if locData.has_key('cnrEyelidVtxs'):
-            insertText = self.locData['cnrEyelidVtxs']
+            insertText = locData['cnrEyelidVtxs']
         else:
             insertText = ''      
         cmds.textField(self.cnrEyelidVertsTextField, e = True, tx = insertText)
@@ -1211,7 +1231,7 @@ class UI(Core.Core):
         reload(FaceSkinUI)
 
         FaceSkinUI.faceSkinUI()
-        
+    
     def loadInMaya(self, *args):
         """
         """
