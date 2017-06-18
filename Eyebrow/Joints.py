@@ -70,7 +70,8 @@ class Joints(Base.Base):
                 #- miorroring joints
                 #- so far mirroring in Util module does not work with this code
                 #- self.mirrorJoints(baseJnt, prefix = self.prefix)
-                cmds.mirrorJoint(baseJnt, mirrorYZ= True, searchReplace=(self.prefix[0], self.prefix[1]))
+                mirrJnt = cmds.mirrorJoint(baseJnt, mirrorYZ= True, searchReplace=(self.prefix[0], self.prefix[1]), mirrorBehavior = 1)
+                cmds.joint(mirrJnt, e=1, oj= 'zyx', secondaryAxisOrient = 'yup', ch=1,  zso=1)
                 cmds.select(cl = True)
                 index = index + 1
                 
