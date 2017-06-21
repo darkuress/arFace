@@ -82,7 +82,32 @@ class Core(object):
         
 		#- for UI
         self.eyelidCrvGrpName  = 'eyelidCrv' + self.grpSuffix
-		
+        
+        #- all factors
+        self.lidFactorList  = []
+        for LR in self.prefix:
+            if 'l_' in LR:
+                XYZ = 'y'
+            else: XYZ = 'x' 
+            self.lidFactorList.append('range_' + LR + "eyeU")
+            self.lidFactorList.append('range_' + LR + "eyeD")
+            self.lidFactorList.append('range_' + LR + "eyeL")
+            self.lidFactorList.append('range_' + LR + "eyeR")
+            self.lidFactorList.append(LR + "loBlinkLevel")
+            self.lidFactorList.append(LR + "upBlinkLevel")
+        self.browFactorList = ['lidRotateX_scale', 'lidRotateY_scale', 'browUp_scale', 'browDown_scale', 'browRotateY_scale']
+        self.lipFactorList  = ['swivel_lipJntP_tx', 'swivel_lipJntP_ty', 
+                               'swivel_lipJntX_ry', 'swivel_lipJntX_rz', 
+                               'swivel_lipJntP_sx', 'swivel_lipJntP_sz', 
+                               'swivel_jawSemi_sx', 'swivel_jawSemi_sz', 
+                               'UDLR_TX_scale', 'UDLR_TY_scale', 'txSum_lipJntX_tx', 'tySum_lipJntX_ty', 'UDLR_jawCloseTY', 'UDLR_jawCloseTZ', 
+                               'tzSum_lipJntX_tz', 'tySum_lipJntX_rx', 'txSum_lipJntX_ry',
+                               'jawOpenTX_scale', 'jawOpenTY_scale', 'jawOpen_jawCloseRX', 'jawOpen_jawCloseRY', 
+                               'mouth_lipJntX_rx', 'mouth_lipJntY_ry', 'mouth_lipJntY_rz', 
+                               'txSum_lipJntY_ry', 'txSum_lipJntY_rz', 'mouth_midCheekRY', 'mouth_midCheekRZ',
+                               'mouth_midCheekRX', 'mouth_loCheekRY', 'mouth_loCheekRZ', 'mouth_loCheekRX', 
+                               'YZPoc_rollJntT_ty', 'YZPoc_rollJntT_tz']
+        
 		#- Use this for custom setting
         #- need to read json
         #self.jsonFileName     = jsonFileName

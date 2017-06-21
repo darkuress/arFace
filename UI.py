@@ -455,6 +455,35 @@ class UI(Core.Core):
         cmds.setParent('..')
         #-}
         
+        #- seventh tab{
+        factorTab = cmds.scrollLayout()
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)
+        cmds.button('Refresh', c = self.updateFactorSlider)
+        cmds.setParent('..')
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)  
+        cmds.text('Eyebrow ', bgc = [0.5, 0.5, 0])
+        cmds.separator( height=20, width = 600, style='in' )
+        cmds.setParent('..')
+        for attr in self.browFactorList:
+            cmds.floatSliderGrp(attr, label=attr, field=True, dc = partial(self.connectFactors, 'brow', attr))
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)  
+        cmds.text('Eyelid ', bgc = [0.5, 0.5, 0])
+        cmds.separator( height=20, width = 600, style='in' )
+        cmds.setParent('..')
+        for attr in self.lidFactorList:
+            cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 1.0, dc = partial(self.connectFactors, 'eyelid', attr))
+        
+        cmds.rowColumnLayout(numberOfColumns = 2)  
+        cmds.text('Lip ', bgc = [0.5, 0.5, 0])
+        cmds.separator( height=20, width = 600, style='in' )
+        cmds.setParent('..')
+        for attr in self.lipFactorList:
+            cmds.floatSliderGrp(attr, label=attr, field=True, dc = partial(self.connectFactors, 'lip', attr))
+        #-}
+        
         cmds.tabLayout(tabs,
                        edit=True,
                        tabLabel=((foundationTab, 'foundation'),
@@ -462,7 +491,8 @@ class UI(Core.Core):
                                  (eyelidTab, 'eyelid'),
                                  (eyebrowTab, 'eyebrow'),
                                  (lipTab, 'lip'),
-                                 (skinningTab, 'skinning'))
+                                 (skinningTab, 'skinning'),
+                                 (factorTab, 'Factors'))
                       )
         
         #self.updateSelfLocData()
@@ -1253,7 +1283,33 @@ class UI(Core.Core):
         reload(FaceSkinUI)
 
         FaceSkinUI.faceSkinUI()
-    
+
+    def updateFactorSlider(self, *args):
+        """
+        update slider values
+        """
+        for attr in self.browFactorList:
+            val = cmds.getAttr(self.faceFactors['eyebrow'] + '.' + attr)
+            cmds.floatSliderGrp(attr, e = True, v = val)
+        for attr in self.lidFactorList:
+            val = cmds.getAttr(self.faceFactors['eyelid'] + '.' + attr)
+            cmds.floatSliderGrp(attr, e = True, v = val)
+        for attr in self.lipFactorList:
+            val = cmds.getAttr(self.faceFactors['lip'] + '.' + attr)
+            cmds.floatSliderGrp(attr, e = True, v = val)
+
+    def connectFactors(self, part, factor, *args):
+        """
+        manipulate faceFactor with slider
+        """
+        val = cmds.floatSliderGrp(factor, q = True, v = True)
+        if part == 'brow':
+            cmds.setAttr(self.faceFactors['eyebrow'] + '.' + factor, val)
+        elif part == 'eyelid':
+            cmds.setAttr(self.faceFactors['eyelid'] + '.' + factor, val)
+        elif part == 'lip':
+            cmds.setAttr(self.faceFactors['lip'] + '.' + factor, val)
+            
     def loadInMaya(self, *args):
         """
         """
