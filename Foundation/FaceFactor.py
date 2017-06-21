@@ -42,9 +42,10 @@ class FaceFactor(Core.Core, Util.Util):
         self.browFactor = cmds.createNode('transform', n = self.faceFactors['eyebrow'])
         cmds.parent(self.browFactor, self.node)
         
-        cmds.addAttr(self.browFactor, longName= 'lidRotateX_scale', attributeType='float', dv = 20) 
-        cmds.addAttr(self.browFactor, longName= 'lidRotateY_scale', attributeType='float', dv = 20) 
-        cmds.addAttr(self.browFactor, longName= 'browRotateX_scale', attributeType='float', dv = 20) 
+        cmds.addAttr(self.browFactor, longName= 'lidRotateX_scale',  attributeType='float', dv = 20) 
+        cmds.addAttr(self.browFactor, longName= 'lidRotateY_scale',  attributeType='float', dv = 20) 
+        cmds.addAttr(self.browFactor, longName= 'browUp_scale',      attributeType='float', dv = 20)
+        cmds.addAttr(self.browFactor, longName= 'browDown_scale',    attributeType='float', dv = 10) 
         cmds.addAttr(self.browFactor, longName= 'browRotateY_scale', attributeType='float', dv = 20) 
         
         return self.browFactor

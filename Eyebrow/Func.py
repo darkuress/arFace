@@ -39,6 +39,9 @@ class Func(Base.Base):
         return x, y, z, orderJnts
 
     def crvCtrlToJnt(self, browCtrl, browDetail, jnt, rotYJnt, ctlBase, rotYCtl, shapePOC, POC, initialX, index):
+        """
+        lots of utility nodes
+        """
         #connect browCtrlCurve and controller to the brow joints
         ctrlMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = jnt.split('Base', 1)[0] +'CtrlMult'+ str(index) )
         jntMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = jnt.split('Base', 1)[0] +'JntMult'+ str(index) )
@@ -65,8 +68,7 @@ class Func(Base.Base):
         cmds.connectAttr(addBrowCtl + '.output3Dx', jntMult+'.input1X')
         cmds.connectAttr(self.faceFactors['eyebrow'] + '.browRotateY_scale', jntMult+'.input2X')
         cmds.connectAttr(jntMult+'.outputX', rotYJnt + '.ry' )    
-        
-        
+                
         #brow TY sum    
         #1. POC.ty sum
         cmds.connectAttr(POC + '.positionY', browXYZSum +'.input3D[0].input3Dy')
@@ -78,14 +80,23 @@ class Func(Base.Base):
         cmds.connectAttr('browReverse_mult.outputX', ctrlMult +'.input2Y')
         cmds.connectAttr(ctrlMult+'.outputY', ctlBase + '.rx' )
         
-        #add browCtl.ty
+        #new
+        browCond = cmds.shadingNode("condition", asUtility=1, n = "browScale_Cond") 
         cmds.connectAttr(browXYZSum + '.output3Dy', addBrowCtl + '.input3D[0].input3Dy')
         cmds.connectAttr(browCtrl + '.ty', addBrowCtl + '.input3D[1].input3Dy')        
-        #add BrowCtl.ty --> jntMult.rx 
-        cmds.connectAttr(addBrowCtl + '.output3Dy', jntMult+'.input1Y')
-        cmds.connectAttr('browReverse_mult.outputX', jntMult+'.input2Y')
-        cmds.connectAttr(jntMult+'.outputY', jnt + '.rx' ) 
-             
+        
+        #add BrowCtl.ty --> jntMult.rx      
+        cmds.connectAttr(addBrowCtl + ".output3Dy", browCond + ".firstTerm" )
+        cmds.setAttr(browCond + ".secondTerm", 0 )
+        cmds.setAttr(browCond + ".operation", 2 )  #greater than 
+
+        cmds.connectAttr('browReverse_mult.outputX', browCond+".colorIfTrueR")
+        cmds.connectAttr('browReverse_mult.outputZ', browCond+".colorIfFalseR")
+         
+        cmds.connectAttr(addBrowCtl + ".output3Dy", jntMult + ".input1Y")
+        cmds.connectAttr(browCond+".outColorR", jntMult + ".input2Y")
+        cmds.connectAttr(jntMult+'.outputY',  jnt + '.rx')
+        
         #brow TZ sum
         browPCtl =cmds.listRelatives( cmds.listRelatives (rotYCtl, c =1, type = 'transform')[0], c =1, type = 'transform')
         browPJnt = cmds.listRelatives(rotYJnt, c =1, type = 'joint')
