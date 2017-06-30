@@ -85,6 +85,7 @@ class Core(object):
         
         #- all factors
         self.lidFactorList  = []
+        self.lidFactorList = self.lidFactorList + ['lidRotateX_scale', 'lidRotateY_scale', 'eyeBallRotX_scale', 'eyeBallRotY_scale']
         for LR in self.prefix:
             if 'l_' in LR:
                 XYZ = 'y'
@@ -95,7 +96,7 @@ class Core(object):
             self.lidFactorList.append('range_' + LR + "eyeR")
             self.lidFactorList.append(LR + "loBlinkLevel")
             self.lidFactorList.append(LR + "upBlinkLevel")
-        self.browFactorList = ['lidRotateX_scale', 'lidRotateY_scale', 'browUp_scale', 'browDown_scale', 'browRotateY_scale']
+        self.browFactorList = ['browUp_scale', 'browDown_scale', 'browRotateY_scale']
         self.lipFactorList  = ['swivel_lipJntP_tx', 'swivel_lipJntP_ty', 
                                'swivel_lipJntX_ry', 'swivel_lipJntX_rz', 
                                'swivel_lipJntP_sx', 'swivel_lipJntP_sz', 

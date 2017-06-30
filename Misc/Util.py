@@ -224,4 +224,143 @@ class Util(object):
             print "up verts : ", upVert 
             print "low verts : ", loVert[::-1]
         else:
-            print 'select three points!'        
+            print 'select three points!'       
+    
+    @classmethod
+    def orderedVertUpLo(cls, lipEye):
+        """
+        lip or eye
+        """        
+        mySel = cmds.ls(sl=1, fl=1)
+        vertSel = []
+        if lipEye == 'eye':
+            for v in mySel:
+                vPos = cmds.xform(v, q=1, ws=1, t=1 )
+                if vPos[0]>0:
+                    vertSel.append(v)
+        elif lipEye == 'lip':
+            vertSel = mySel
+        
+        if len(vertSel) == 3:
+            vertPosDict = {}
+            for vt in vertSel:
+                vertPos = cmds.xform( vt, q =1, ws =1, t=1 )        
+                vertPosDict[vt] = vertPos 
+            
+            xMaxPos = max(vertPosDict[vertSel[0]][0], vertPosDict[vertSel[1]][0], vertPosDict[vertSel[2]][0])
+            for j, x in vertPosDict.items():
+                if x[0] == xMaxPos:
+                    lCornerVert = j
+            
+            vertPosDict.pop(lCornerVert)
+            vertSel.remove(lCornerVert)
+     
+            yMaxPos = max(vertPosDict[vertSel[0]][1], vertPosDict[vertSel[1]][1] )
+            for i, y in vertPosDict.items():
+                if y[1] == yMaxPos:
+                    secndVert = i
+            
+            vertSel.remove(secndVert)
+            
+            rCornerVert = vertSel[0]        
+     
+            cmds.select ( rCornerVert, secndVert, r=1)       
+            # get ordered verts on the edgeLoop
+            ordered = cls.orderedVertsEdgeLoop()
+            
+            # get up/lo verts    
+            for v, y in enumerate(ordered):
+                if y == lCornerVert:
+                    endNum = v+1   
+                    
+            if lipEye == 'eye':            
+                if cmds.attributeQuery("upLidVerts", node = "lidFactor", exists=1)==False:
+                    cmds.addAttr( "lidFactor", ln ="upLidVerts", dt = "stringArray"  )
+                
+                if cmds.attributeQuery("loLidVerts", node = "lidFactor", exists=1)==False:            
+                    cmds.addAttr( "lidFactor", ln ="loLidVerts", dt = "stringArray"  )
+                
+                upVert = ordered[1:endNum-1]
+                loVert = ordered[endNum:]
+                cmds.setAttr("lidFactor.upLidVerts", type= "stringArray", *([len(upVert)] + upVert) )
+                cmds.setAttr("lidFactor.loLidVerts", type= "stringArray", *([len(loVert)] + loVert) )
+                
+            elif lipEye == 'lip':
+                if cmds.attributeQuery("upLipVerts", node = "lipFactor", exists=1)==False:
+                    cmds.addAttr( "lipFactor", ln ="upLipVerts", dt = "stringArray"  )
+                if cmds.attributeQuery("loLipVerts", node = "lipFactor", exists=1)==False:
+                    cmds.addAttr( "lipFactor", ln ="loLipVerts", dt = "stringArray"  )
+                upVert = ordered[:endNum]
+                loVert = ordered[endNum-1:]
+                loVert.append(rCornerVert)
+                cmds.setAttr("lipFactor.upLipVerts", type= "stringArray", *([len(upVert)] + upVert) )
+                cmds.setAttr("lipFactor.loLipVerts", type= "stringArray", *([len(loVert)] + loVert) )
+     
+        else:
+            print 'select 3 vertices on edge loop!'
+     
+    @classmethod
+    def upVertSel(cls, LidLip):
+        """
+        #LidLip = "eye" or "lip"
+        """
+        if LidLip =="eye":
+            LidLip ="lid"
+            
+        orderVert = cmds.getAttr( LidLip+"Factor.up" + LidLip.title()+"Verts")
+        cmds.select(orderVert)
+     
+    @classmethod 
+    def loVertSel(cls, LidLip):
+        if LidLip =="eye":
+            LidLip ="lid"    
+        orderVert = cmds.getAttr( LidLip+"Factor.lo" + LidLip.title()+"Verts")
+        cmds.select(orderVert)
+
+    @classmethod
+    def getEdgeVertDict(cls, edgeList):
+        """
+        #make the list of edgeLoop dictionary( { edge: [vert1, vert2]}) 
+        """
+        edgeVertDict = {}
+        for edge in edgeList:
+            cmds.select(edge, r =1)
+            cmds.ConvertSelectionToVertices()
+            edgeVert = cmds.ls(sl=1, fl=1)
+            edgeVertDict[edge] = edgeVert
+        return edgeVertDict
+    
+    @classmethod
+    def orderedVertsEdgeLoop(cls):
+        """
+        #select 2 adjasent vertices ( corner and direction vertex)
+        #list vertexes on edge loop( for curves )   
+        """
+        myVert = cmds.ls( os=1, fl=1 )
+        if len(myVert)==2:
+            firstVert = myVert[0]
+            secondVert = myVert[1]
+            
+            cmds.select (firstVert,secondVert, r =1)
+            mel.eval('ConvertSelectionToContainedEdges')        
+            firstEdge = cmds.ls( sl=1 )[0]
+            
+            cmds.polySelectSp( firstEdge, loop =1 )
+            edges = cmds.ls( sl=1, fl=1 )
+            edgeDict = cls.getEdgeVertDict(edges) #{edge: [vert1, vert2], ...}
+            ordered = [firstVert, secondVert]
+            for i in range( len(edges)-2 ):            
+                del edgeDict[firstEdge]
+                #print edgeDict
+                for x, y in edgeDict.iteritems():
+                    if secondVert in y:                    
+                        xVerts = y
+                        xVerts.remove(secondVert)
+                        firstEdge = x
+            
+                secondVert = xVerts[0]
+                ordered.append( secondVert )
+            return ordered
+        
+        else:
+            print 'select 2 adjasent vertex!!'            

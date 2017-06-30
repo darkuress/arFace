@@ -467,21 +467,27 @@ class UI(Core.Core):
         cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..')
         for attr in self.browFactorList:
-            cmds.floatSliderGrp(attr, label=attr, field=True, dc = partial(self.connectFactors, 'brow', attr))
+            cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 100.0, dc = partial(self.connectFactors, 'brow', attr))
         
         cmds.rowColumnLayout(numberOfColumns = 2)  
         cmds.text('Eyelid ', bgc = [0.5, 0.5, 0])
         cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..')
         for attr in self.lidFactorList:
-            cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 1.0, dc = partial(self.connectFactors, 'eyelid', attr))
+            if attr in ['lidRotateX_scale', 'lidRotateY_scale', 'eyeBallRotX_scale', 'eyeBallRotY_scale']:
+                cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 100.0, dc = partial(self.connectFactors, 'eyelid', attr))
+            else:
+                cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 1.0, dc = partial(self.connectFactors, 'eyelid', attr))
         
         cmds.rowColumnLayout(numberOfColumns = 2)  
         cmds.text('Lip ', bgc = [0.5, 0.5, 0])
         cmds.separator( height=20, width = 600, style='in' )
         cmds.setParent('..')
         for attr in self.lipFactorList:
-            cmds.floatSliderGrp(attr, label=attr, field=True, dc = partial(self.connectFactors, 'lip', attr))
+            if 'sx' in attr or 'sy' in attr or 'sz' in attr:
+                cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 1.0,dc = partial(self.connectFactors, 'lip', attr))
+            else:
+                cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 100.0,dc = partial(self.connectFactors, 'lip', attr))
         #-}
         
         cmds.tabLayout(tabs,
@@ -496,6 +502,11 @@ class UI(Core.Core):
                       )
         
         #self.updateSelfLocData()
+        
+        #-load face factor slider
+        if cmds.objExists('faceFactors'):
+            self.updateFactorSlider()
+        
         self.loadSession()
     
     def importFacialLoc(self, *args):
@@ -522,7 +533,10 @@ class UI(Core.Core):
         reload(FaceFactor)
         fcf = FaceFactor.FaceFactor(configFile = self.configFile)
         faceFactorNode = fcf.create()
-
+        
+        #- update for slider in UI
+        self.updateFactorSlider()
+        
     def importControlPanel(self, *args):
         """
         importing the halp panel
@@ -1194,12 +1208,12 @@ class UI(Core.Core):
     def selectEyelidVertexes(self, *args):
         """
         """
-        Util.Util.orderedVert('eye')
+        Util.Util.orderedVertUpLo('eye')
         
     def selectLipVertexes(self, *args):
         """
         """
-        Util.Util.orderedVert('lip')
+        Util.Util.orderedVertUpLo('lip')
         
     def createLipJoint(self, *args):
         """
