@@ -86,7 +86,7 @@ class Func(Base.Base):
         upCVs = cmds.ls(upCrv + '.cv[*]', fl = 1)
         loCVs = cmds.ls(loCrv + '.cv[*]', fl = 1)
         cvNum = len(upCVs) 
-           
+        
         lipCrvStartPos = cmds.xform (upCVs[0], q=1, ws =1, t = 1)
         lipCrvEndPos = cmds.xform (upCVs[cvNum-1], q=1, ws =1, t = 1)
         nCrvPoc = cmds.shadingNode('pointOnCurveInfo', asUtility =True, n = 'cnt' + name + '_poc')
@@ -97,72 +97,87 @@ class Func(Base.Base):
         
         lipCrvStart = cmds.group (em = 1, n = name + 'Start' + self.grpSuffix)
         cmds.xform(lipCrvStart, ws = 1, t = lipCrvStartPos)
-        rCorner = cmds.joint(n= 'rCorner'+ name + self.jntSuffix, p= lipCrvStartPos)
+        rCorner = cmds.joint(n= self.prefix[1] + 'Corner'+ name + self.jntSuffix, p= lipCrvStartPos)
         
         uplipCrvMid = cmds.group (em = 1, n = 'up' + name + 'Mid' + self.grpSuffix) 
         cmds.xform(uplipCrvMid, ws = 1, t = list(lipCrvMidPos[0])) 
         midUpJnt = cmds.joint(n = 'cntUp' + name + self.jntSuffix, relative = True, p = [ 0, 0, 0])  
-    
+      
         lolipCrvMid = cmds.group (em = 1, n = 'lo' + name + 'Mid' + self.grpSuffix) 
         cmds.xform(lolipCrvMid, ws = 1, t = list(lipCrvMidPos[0])) 
         midLoJnt = cmds.joint(n = 'cntLo' + name + self.jntSuffix, relative = True, p = [ 0, 0, 0])
-    
+        
         lipCrvEnd = cmds.group (em = 1, n = name + 'End' + self.grpSuffix) 
         cmds.xform(lipCrvEnd, ws = 1, t = lipCrvEndPos) 
-        lCorner = cmds.joint(n= 'lCorner' + name + self.jntSuffix, relative = True, p = [ 0, 0, 0])  
-    
+        lCorner = cmds.joint(n= self.prefix[0] + 'Corner' + name + self.jntSuffix, relative = True, p = [ 0, 0, 0])  
+              
         indiGrp = cmds.group(lipCrvStart, uplipCrvMid, lolipCrvMid, lipCrvEnd, upCrv, loCrv, n = name + '_indiGrp') 
         cmds.parent(indiGrp, 'upLipCrv' + self.grpSuffix)
-    
+       
         #skinning
         upSkin = cmds.skinCluster(rCorner, midUpJnt, lCorner, upCrv, toSelectedBones = 1)    
         loSkin = cmds.skinCluster(rCorner, midLoJnt, lCorner, loCrv, toSelectedBones = 1)
-    
+
         numVal = { 0: 0.15, 1:0.85, 2:0.98, 4: 0.98, 5:0.85, 6:0.15 }
         for key, val in numVal.items():
-            print upSkin[0], '...', upCVs[key], '...', midUpJnt, '..', val
             cmds.skinPercent(upSkin[0], upCVs[key], tv =(midUpJnt, val))
             cmds.skinPercent(loSkin[0], loCVs[key], tv =(midLoJnt, val))    
-        
+
         ctlCrvs = { 'JawOpen':'lowJaw_dir', 'TyLip':'jaw_UDLR' }
+        
         if name in ctlCrvs.keys():
-            cornerMult = cmds.shadingNode('multiplyDivide',   asUtility=True, n = name + 'Corner_mult')
-            dampMult   = cmds.shadingNode('multiplyDivide',   asUtility=True, n = name + 'damp_mult')
-            txAvg      = cmds.shadingNode('plusMinusAverage', asUtility=True, n = name + 'TX_plus')
-            #endAvg = cmds.shadingNode('plusMinusAverage', asUtility=True, n = name + 'TY' + str(i) +'_plus')  
-            # corner tx value
-            cmds.connectAttr(midLoJnt+ '.tx', cornerMult+ '.input1X')  
-            cmds.connectAttr(midLoJnt+ '.ty', cornerMult+ '.input1Y')  
-            cmds.connectAttr(midLoJnt+ '.ty', cornerMult+ '.input1Z')  
+            cornerMult = cmds.shadingNode ('multiplyDivide', asUtility = True, n = name + 'Corner_mult' )
+            dampMult = cmds.shadingNode('multiplyDivide', asUtility = True, n = name + 'damp_mult' )
+            #endAvg = cmds.shadingNode('plusMinusAverage', asUtility = True, n = name + 'TY' + str(i) +'_plus')  
             
-            cmds.setAttr(cornerMult + '.input2X', .5)#lipCorners.tx follow midLoJnt.tx
-            cmds.setAttr(cornerMult + '.input2Y', .06)#lipLCorner.tx inner when jaw open 
-            cmds.setAttr(cornerMult + '.input2Z', -.06)#lipRCorner.tx inner when jaw open
+            #- corner tx value
+            cmds.connectAttr(midLoJnt+ '.tx', cornerMult + '.input1X' )  
+            cmds.connectAttr(midLoJnt+ '.ty', cornerMult + '.input1Y' )  
+            cmds.connectAttr(midLoJnt+ '.ty', cornerMult + '.input1Z' )  
             
-            cmds.connectAttr(cornerMult + '.outputY', txAvg + '.input3D[0].input3Dy')
-            cmds.connectAttr(cornerMult + '.outputZ', txAvg + '.input3D[0].input3Dz')
-            cmds.connectAttr(cornerMult + '.outputX', txAvg + '.input3D[1].input3Dy')
-            cmds.connectAttr(cornerMult + '.outputX', txAvg + '.input3D[1].input3Dz')
-            cmds.connectAttr(txAvg + '.output3Dy', lCorner + '.tx')
-            cmds.connectAttr(txAvg + '.output3Dz', rCorner + '.tx')
+            cmds.setAttr(cornerMult + '.input2X',  .5)   #lipCorners.tx follow midLoJnt.tx
+            cmds.setAttr(cornerMult + '.input2Y',  .06)  #lipLCorner.tx inner when jaw open 
+            cmds.setAttr(cornerMult + '.input2Z', -.06)  #lipRCorner.tx inner when jaw open
             
-            # corner ty value
-            cmds.connectAttr(midLoJnt+ '.tx', dampMult + '.input1X')  
-            cmds.connectAttr(midLoJnt+ '.ty', dampMult + '.input1Y')  
-            cmds.connectAttr(midLoJnt+ '.ty', dampMult + '.input1Z') 
+            if name == "JawOpen":
+                txAvg = cmds.shadingNode('plusMinusAverage', asUtility = True, n = name + 'TX_plus')
+                cmds.connectAttr(cornerMult + '.outputY', txAvg + '.input3D[0].input3Dy' )
+                cmds.connectAttr(cornerMult + '.outputZ', txAvg + '.input3D[0].input3Dz' )
+                cmds.connectAttr(cornerMult + '.outputX', txAvg + '.input3D[1].input3Dy' )
+                cmds.connectAttr(cornerMult + '.outputX', txAvg + '.input3D[1].input3Dz' )
+                cmds.connectAttr(txAvg + '.output3Dy', lCorner + '.tx' )
+                cmds.connectAttr(txAvg + '.output3Dz', rCorner + '.tx' )
             
-            cmds.setAttr(dampMult+ '.input2X', .1) # lipCenter.tx follow jaw
-            cmds.setAttr(dampMult+ '.input2Y', .5) # lipCorners.ty follow jaw
+            else:
+                cmds.connectAttr(cornerMult + '.outputY', lCorner + '.tx', f=1  )
+                cmds.connectAttr(cornerMult + '.outputZ', rCorner + '.tx', f=1  )
+                cmds.connectAttr(cornerMult + '.outputX', lCorner + '.tz', f=1  )  
+                cmds.connectAttr(cornerMult + '.outputX', rCorner + '.tz', f=1  )            
+            
+            #- corner ty value
+            cmds.connectAttr(midLoJnt+ '.tx', dampMult + '.input1X' )  
+            cmds.connectAttr(midLoJnt+ '.ty', dampMult + '.input1Y' )  
+            cmds.connectAttr(midLoJnt+ '.ty', dampMult + '.input1Z' ) 
+            
+            cmds.setAttr(dampMult+ '.input2X', .1)  # lipCenter.tx follow jaw
+            cmds.setAttr(dampMult+ '.input2Y', .5)  # lipCorners.ty follow jaw
             cmds.setAttr(dampMult+ '.input2Z', .01) # lipCenter.ty follow jaw
-            
-            cmds.connectAttr(dampMult + '.outputX',  midUpJnt+'.tx')
+            if name == "JawOpen":        
+                cmds.connectAttr(dampMult + '.outputX',  midUpJnt+'.tx')
+            else:
+                cmds.connectAttr(dampMult + '.outputX',  midUpJnt+'.tz')
+                
             cmds.connectAttr(dampMult + '.outputZ',  midUpJnt+'.ty')
             cmds.connectAttr(dampMult + '.outputY',  lCorner+'.ty')
             cmds.connectAttr(dampMult + '.outputY',  rCorner+'.ty')        
-            # connect curve joint with controller 
-            '''cmds.connectAttr(ctlCrvs[name] + '.tx', midLoJnt + '.tx')
-            cmds.connectAttr(ctlCrvs[name] + '.ty', midLoJnt + '.ty')
-            cmds.connectAttr(ctlCrvs[name] + '.tz', midLoJnt + '.tz')'''
+            
+            #- connect curve joint with controller 
+            '''
+            cmds.connectAttr ( ctlCrvs[name] + '.tx', midLoJnt + '.tx')
+            cmds.connectAttr ( ctlCrvs[name] + '.ty', midLoJnt + '.ty')
+            cmds.connectAttr ( ctlCrvs[name] + '.tz', midLoJnt + '.tz')
+            '''
+        
         return midLoJnt
 
     def curveOnEdgeLoop(self):
