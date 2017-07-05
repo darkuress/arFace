@@ -99,8 +99,29 @@ class Joints(Base.Base):
         self.allBaseJnts.append(null)
         self.allBaseJnts.append(rNull)
         
+        self.__eyeWideJntLabel()
+        
         return self.allBaseJnts
 
+    def __eyeWideJntLabel(self):    
+        """
+        labeling wide joint label after creating joints
+        """
+        lWideLid = cmds.ls(self.prefix[0] + "*Wide*" + self.jntSuffix, fl=1, type = "transform")
+        rWideLid = cmds.ls(self.prefix[1] + "*Wide*" + self.jntSuffix, fl=1, type = "transform")
+        for i, j in enumerate(lWideLid):
+            #print i, j
+            cmds.setAttr(j + ".side", 1)
+            cmds.setAttr(j + ".type", 18)
+            cmds.setAttr(j + ".otherType", str(i).zfill(2), type = "string")        
+        
+        for id, k in enumerate(rWideLid):
+            #print id, k
+            cmds.setAttr(k + ".side", 2)
+            cmds.setAttr(k + ".type", 18)
+            cmds.setAttr(k + ".otherType", str(id).zfill(2), type = "string")
+        
+        
     def createCnrJoints(self):
         pass
 

@@ -622,7 +622,7 @@ class UI(Core.Core):
         if cmds.optionVar(ex='arFacePrefs'):
             import json
             self.session = json.loads(cmds.optionVar(q = 'arFacePrefs'))
-            self.updateLocFields(self.session)
+            self.locData = self.updateLocFields(self.session)
 
     def updateLocFields(self, locData, *args):
         """
@@ -681,7 +681,8 @@ class UI(Core.Core):
         else:
             insertText = ''      
         cmds.textField(self.lipCnrVertsTextField, e = True, tx = insertText)
-                
+        
+        return locData
         
     def updateEyebrowVtxTextField(self, *args):
         """

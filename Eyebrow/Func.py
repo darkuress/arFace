@@ -90,8 +90,13 @@ class Func(Base.Base):
         cmds.setAttr(browCond + ".secondTerm", 0 )
         cmds.setAttr(browCond + ".operation", 2 )  #greater than 
 
-        cmds.connectAttr('browReverse_mult.outputX', browCond+".colorIfTrueR")
-        cmds.connectAttr('browReverse_mult.outputZ', browCond+".colorIfFalseR")
+        if jnt.startswith(self.prefix[1]):
+            cmds.connectAttr("browFactor.browUp_scale"  , browCond+".colorIfTrueR")
+            cmds.connectAttr("browFactor.browDown_scale", browCond+ ".colorIfFalseR")
+ 
+        else:    
+            cmds.connectAttr('browReverse_mult.outputX', browCond+".colorIfTrueR")
+            cmds.connectAttr('browReverse_mult.outputZ', browCond+".colorIfFalseR")
          
         cmds.connectAttr(addBrowCtl + ".output3Dy", jntMult + ".input1Y")
         cmds.connectAttr(browCond+".outColorR", jntMult + ".input2Y")

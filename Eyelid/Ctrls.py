@@ -351,13 +351,28 @@ class Ctrls(Func.Func, Base.Base):
                     valA = self.jumperPanelName + '.' + uploPrefix[:2] + 'valA'
                     valB = self.jumperPanelName + '.' + uploPrefix[:2] + 'valB'
                     pushX = self.jumperPanelName + '.'+ uploPrefix[:2] + "lidPushX"
-                    pushA0 = self.prefix[0] + uploPrefix[2:] +'LidPush'+ AB[0] +'_crvShape.cv[%s].yValue'%str(i)  
-                    pushB0 = self.prefix[0] + uploPrefix[2:] +'LidPush'+ AB[1] + '_crvShape.cv[%s].yValue'%str(i)  
-                    pushC0 = self.prefix[0] + uploPrefix[2:] +'LidPush'+ CD[0] + '_crvShape.cv[%s].yValue'%str(i)  
-                    pushD0 = self.prefix[0] + uploPrefix[2:] +'LidPush'+ CD[1] + '_crvShape.cv[%s].yValue'%str(i)  
+                    ###
+                    #pushA0 = self.prefix[0] + uploPrefix[2:] +'LidPush'+ AB[0] + '_crvShape.cv[%s].yValue'%str(i)  
+                    #pushB0 = self.prefix[0] + uploPrefix[2:] +'LidPush'+ AB[1] + '_crvShape.cv[%s].yValue'%str(i)  
+                    #pushC0 = self.prefix[0] + uploPrefix[2:] +'LidPush'+ CD[0] + '_crvShape.cv[%s].yValue'%str(i)  
+                    #pushD0 = self.prefix[0] + uploPrefix[2:] +'LidPush'+ CD[1] + '_crvShape.cv[%s].yValue'%str(i)  
                     
-                    pushMath = cmds.expression(n=uploPrefix+"pushCrv_math%s"%str(i+1), s=" %s=%s*((-%s+1)/2*%s +(%s+1)/2*%s) + %s*((-%s+1)/2*%s +(%s+1)/2*%s)"%(lid0, valA, pushX, pushA0, pushX, pushB0, valB, pushX, pushC0, pushX, pushD0), 
-                    o = self.jumperPanelName + '.' + uploPrefix + 'Push_Lid%s'%str(i), ae =1) 
+                    #pushMath = cmds.expression(n=uploPrefix+"pushCrv_math%s"%str(i+1), s=" %s=%s*((-%s+1)/2*%s +(%s+1)/2*%s) + %s*((-%s+1)/2*%s +(%s+1)/2*%s)"%(lid0, valA, pushX, pushA0, pushX, pushB0, valB, pushX, pushC0, pushX, pushD0), 
+                    #o = self.jumperPanelName + '.' + uploPrefix + 'Push_Lid%s'%str(i), ae =1) 
+                    ###
+                    pushA0 = self.prefix[0] + uploPrefix[2:] + 'LidPushA_crvShape.cv[%s].yValue' %str(i)  
+                    pushB0 = self.prefix[0] + uploPrefix[2:] + 'LidPushB_crvShape.cv[%s].yValue' %str(i)  
+                    pushC0 = self.prefix[0] + uploPrefix[2:] + 'LidPushC_crvShape.cv[%s].yValue' %str(i)  
+                    pushD0 = self.prefix[0] + uploPrefix[2:] + 'LidPushD_crvShape.cv[%s].yValue' %str(i)  
+                    
+                    if uploPrefix.startswith(self.prefix[0]):
+                        pushMath = cmds.expression (n=uploPrefix + "pushCrv_math%s" %str(i+1), s=" %s=%s*((-%s+1)/2*%s + (%s+1)/2*%s) + %s*((-%s+1)/2*%s + (%s+1)/2*%s)"%(lid0, valA, pushX, pushA0, pushX, pushB0, valB, pushX, pushC0, pushX, pushD0), 
+                        o = self.jumperPanelName + '.' + uploPrefix + 'Push_Lid%s' %str(i), ae =1) 
+         
+                    elif uploPrefix.startswith(self.prefix[1]):
+                        pushMath = cmds.expression (n=uploPrefix + "pushCrv_math%s" %str(i+1), s=" %s=%s*((-%s+1)/2*%s + (%s+1)/2*%s) + %s*((-%s+1)/2*%s + (%s+1)/2*%s)"%(lid0, valA, pushX, pushB0, pushX, pushA0, valB, pushX, pushD0, pushX, pushC0), 
+                        o = self.jumperPanelName + '.' + uploPrefix + 'Push_Lid%s' %str(i), ae =1) 
+                    
             
             corners = [self.prefix[0] + 'inner',self.prefix[0] + 'outer', self.prefix[1] + 'inner',self.prefix[1] + 'outer']
         

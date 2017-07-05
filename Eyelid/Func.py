@@ -162,13 +162,13 @@ class Func(Base.Base):
             #eyeDirections
             eyeBallMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = LR + 'eyeBall_mult')
             #eyeBall rotX (up/down)
-            cmds.connectAttr(LR + "eyeCtl.ty", eyeBallMult + '.input1Y')
+            cmds.connectAttr(LR + "eye" + self.ctlSuffix + ".ty", eyeBallMult + '.input1Y')
             cmds.connectAttr(self.faceFactors['eyelid'] + '.eyeBallRotX_scale', blinkMinus + '.input1X')
             cmds.setAttr(blinkMinus + '.input2X', -1 )
             cmds.connectAttr(blinkMinus + '.outputX', eyeBallMult + '.input2Y')
             cmds.connectAttr(eyeBallMult + '.outputY', LR + 'eyeballRot.rx')
             #eyeBall rotY (left/rigt)
-            cmds.connectAttr(LR + "eyeCtl.tx", eyeBallMult + '.input1X')
+            cmds.connectAttr(LR + "eye" + self.ctlSuffix + ".tx", eyeBallMult + '.input1X')
             cmds.connectAttr(self.faceFactors['eyelid'] + '.eyeBallRotY_scale', eyeBallMult + '.input2X')
             cmds.connectAttr(eyeBallMult + '.outputX', LR + 'eyeballRot.ry') 
                        
