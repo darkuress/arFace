@@ -155,42 +155,70 @@ class Ctrls(Func.Func):
         cmds.connectAttr(jawCloseTranMult + '.outputY', 'jawClose' + self.jntSuffix + '.ty')
             
         tySumCheekIn = cmds.shadingNode('plusMinusAverage', asUtility = 1, n = 'cheekXIn_sum')
-        cmds.connectAttr(UDLRTscaleMult + '.outputX', tySumCheekIn + '.input2D[0].input2Dx') 
-        cmds.connectAttr(swivelTranYMult + '.outputX', tySumCheekIn + '.input2D[1].input2Dx')
-        cmds.connectAttr(UDLRTscaleMult + '.outputZ', tySumCheekIn + '.input2D[0].input2Dy')
-        cmds.connectAttr(swivelTranYMult + '.outputZ', tySumCheekIn + '.input2D[1].input2Dy')
-    
-        cheekIn_reverse = cmds.shadingNode('multiplyDivide', asUtility = 1, n = 'cheekTX_reverse')
-        cmds.connectAttr(tySumCheekIn + '.output2Dx', cheekIn_reverse + '.input1X')
-        cmds.setAttr(cheekIn_reverse + '.input2X', -1)
+        midCheekMult = cmds.shadingNode('multiplyDivide', asUtility=True, n = "midCheekIn" )
+        loCheekMult  = cmds.shadingNode('multiplyDivide', asUtility=True, n = "loCheekIn" )
         
-        midCheekRX = [ 'l_midCheekRotX', 'r_midCheekRotX' ]
-        loCheekRX = [ 'l_loCheekRotX', 'r_loCheekRotX' ]    
+        #- midCheek in plus 
+        cmds.connectAttr("lowJaw_dir.ty", midCheekMult +".input1X")
+        cmds.connectAttr(self.faceFactors['cheek'] + ".midCheek_in", midCheekMult +".input2X")
+        cmds.connectAttr(midCheekMult +".outputX",  tySumCheekIn+".input3D[0].input3Dx")
+        cmds.connectAttr("jaw_UDLR.ty", midCheekMult +".input1Y")
+        cmds.connectAttr(self.faceFactors['cheek'] + ".midCheek_in", midCheekMult +".input2Y")
+        cmds.connectAttr(midCheekMult +".outputY", tySumCheekIn+".input3D[1].input3Dx")
+        cmds.connectAttr("swivel_ctrl.ty", midCheekMult +".input1Z")
+        cmds.connectAttr(self.faceFactors['cheek'] + ".midCheek_in", midCheekMult +".input2Z")
+        cmds.connectAttr(midCheekMult +".outputZ", tySumCheekIn+".input3D[2].input3Dx")
+
+        #- loCheek in plus 
+        cmds.connectAttr("lowJaw_dir.ty", loCheekMult +".input1X" )
+        cmds.connectAttr(self.faceFactors['cheek'] + ".loCheek_in", loCheekMult +".input2X" )
+        cmds.connectAttr(loCheekMult +".outputX",  tySumCheekIn+".input3D[0].input3Dy" )
+        cmds.connectAttr("jaw_UDLR.ty", loCheekMult +".input1Y" )
+        cmds.connectAttr(self.faceFactors['cheek'] + ".loCheek_in", loCheekMult +".input2Y" )
+        cmds.connectAttr(loCheekMult +".outputY", tySumCheekIn+".input3D[1].input3Dy" )
+        cmds.connectAttr("swivel_ctrl.ty", loCheekMult +".input1Z" )
+        cmds.connectAttr(self.faceFactors['cheek'] + ".loCheek_in", loCheekMult +".input2Z" )
+        cmds.connectAttr(loCheekMult +".outputZ", tySumCheekIn+".input3D[2].input3Dy" )
+
+        #- reverse to right side
+        cheekInReverse = cmds.shadingNode ('multiplyDivide', asUtility = 1, n = 'cheekTX_reverse')
+        cmds.connectAttr(tySumCheekIn + '.output3Dx', cheekInReverse + '.input1X' )
+        cmds.connectAttr(tySumCheekIn + '.output3Dy', cheekInReverse + '.input1Y' )
+        cmds.setAttr(cheekInReverse + '.input2', -1,-1,-1 )
+        
+        midCheekRX = [self.prefix[0] + 'midCheekRotX', self.prefix[1] + 'midCheekRotX' ]
+        loCheekRX = [self.prefix[0] + 'loCheekRotX', self.prefix[1] + 'loCheekRotX' ]    
+        
         for cheek in midCheekRX + loCheekRX:
-            cheekSum = cmds.shadingNode('plusMinusAverage', asUtility= True, n = cheek[ :-4] + '_sum')
-            cheekRx_addD = cmds.shadingNode('addDoubleLinear', asUtility= True, n = cheek[ :-4] + '_add')
+            cheekSum = cmds.shadingNode ('plusMinusAverage', asUtility= True, n = cheek[ :-4] + '_sum')
+            #lowCheekSum = cheek[:2] + "lowCheekMinus"
+            lowCheekSum = cmds.shadingNode ('plusMinusAverage', asUtility= True, n = cheek[:2] + "lowCheekMinus")
+            cheekRxAddD = cmds.shadingNode ('addDoubleLinear', asUtility= True, n = cheek[ :-4] + '_add')
             cmds.connectAttr(swivelTranXMult + '.outputX', cheekSum + '.input3D[0].input3Dx')
             cmds.connectAttr(cheekSum + '.output3Dx', cheek + '.tx') # swivel.tx        
             cmds.connectAttr(swivelTranYMult + '.outputY', cheekSum + '.input3D[0].input3Dy')
-            cmds.connectAttr(jawCloseTranMult + '.outputY', cheekSum + '.input3D[1].input3Dy') #jaw_UDLRIO.ty --> jawClose' + self.jntSuffix + '.ty 
+            cmds.connectAttr(jawCloseTranMult + '.outputY', cheekSum + '.input3D[1].input3Dy') #jaw_UDLRIO.ty --> jawClose_jnt.ty 
             cmds.connectAttr(cheekSum + '.output3Dy', cheek + '.ty') # swivel.ty   
             cmds.connectAttr(swivelTranXMult + '.outputY', cheekSum + '.input3D[0].input3Dz')
-            cmds.connectAttr(jawCloseRotMult + '.outputY', cheekSum + '.input3D[1].input3Dz') # jawClose' + self.jntSuffix + '.ry <--jawOpen.tx *(jawOpen_jawCloseRY) 
+            cmds.connectAttr(jawCloseRotMult + '.outputY', cheekSum + '.input3D[1].input3Dz') # jawClose_jnt.ry <--jawOpen.tx *(jawOpen_jawCloseRY) 
             cmds.connectAttr(cheekSum + '.output3Dz', cheek + '.ry') # swivel.tx
             cmds.connectAttr(swivelTranXMult + '.outputZ', cheek + '.rz') # swivel.tx
-            cmds.connectAttr(jawCloseRotMult + '.outputX', cheekRx_addD + '.input1') #'jawClose' + self.jntSuffix + '.rx' <--'lowJaw_dir.ty'          
-            cmds.connectAttr(jawCloseTranMult + '.outputX', cheek + '.tz')  #jaw_UDLRIO.tx --> jawClose' + self.jntSuffix + '.tz
+            cmds.connectAttr(jawCloseRotMult + '.outputX', cheekRxAddD + '.input1') #'jawClose_jnt.rx' <--'lowJaw_dir.ty'          
+            cmds.connectAttr(jawCloseTranMult + '.outputX', cheek + '.tz')  #jaw_UDLRIO.tx --> jawClose_jnt.tz
             
-            if 'l_' in cheek:
-                cmds.connectAttr(tySumCheekIn + '.output2Dx',  cheekSum + '.input3D[1].input3Dx')
-            elif 'r_' in cheek:
-                cmds.connectAttr( cheekIn_reverse + '.outputX',  cheekSum + '.input3D[1].input3Dx')
+            if self.prefix[0] + 'mid' in cheek:
+                cmds.connectAttr(tySumCheekIn + '.output3Dx',  cheekSum + '.input3D[1].input3Dx')
+                cmds.connectAttr(mouthTyMult + '.outputY', cheekRxAddD + '.input2')
+                cmds.connectAttr(cheekRxAddD + '.output', cheek + '.rx' )            
+            elif self.prefix[1] + 'mid' in cheek:
+                cmds.connectAttr(cheekInReverse + '.outputX',  cheekSum + '.input3D[1].input3Dx')
+                cmds.connectAttr(mouthTyMult + '.outputY', cheekRxAddD + '.input2')
+                cmds.connectAttr(cheekRxAddD + '.output', cheek + '.rx')# jawClose_jnt.rx <-- jawOpen.ty *(jawOpen_jawCloseRX)  
                 
-            if '_mid' in cheek:
-                cmds.connectAttr(mouthTyMult + '.outputY', cheekRx_addD + '.input2')              
-            elif '_lo' in cheek:
-                cmds.connectAttr(mouthTyMult + '.outputZ', cheekRx_addD + '.input2')            
-            cmds.connectAttr(cheekRx_addD + '.output', cheek + '.rx')  # jawClose' + self.jntSuffix + '.rx <-- jawOpen.ty *(jawOpen_jawCloseRX) 
+            elif self.prefix[0] + 'lo' in cheek:
+                cmds.connectAttr(tySumCheekIn + '.output3Dy',  lowCheekSum + '.input3D[4].input3Dx')
+            else:
+                cmds.connectAttr(cheekInReverse + '.outputY',  lowCheekSum + '.input3D[4].input3Dx')
 
     def __lipCrvToJoint(self):
         """

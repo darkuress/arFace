@@ -488,6 +488,14 @@ class UI(Core.Core):
                 cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 1.0,dc = partial(self.connectFactors, 'lip', attr))
             else:
                 cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 100.0,dc = partial(self.connectFactors, 'lip', attr))
+ 
+        cmds.rowColumnLayout(numberOfColumns = 2)  
+        cmds.text('Cheek ', bgc = [0.5, 0.5, 0])
+        cmds.separator( height=20, width = 600, style='in' )
+        cmds.setParent('..')
+        for attr in self.cheekFactorList:
+            cmds.floatSliderGrp(attr, label=attr, field=True, minValue = 0, maxValue = 1.0, dc = partial(self.connectFactors, 'cheek', attr))
+ 
         #-}
         
         cmds.tabLayout(tabs,
@@ -1312,18 +1320,16 @@ class UI(Core.Core):
         for attr in self.lipFactorList:
             val = cmds.getAttr(self.faceFactors['lip'] + '.' + attr)
             cmds.floatSliderGrp(attr, e = True, v = val)
-
+        for attr in self.cheekFactorList:
+            val = cmds.getAttr(self.faceFactors['cheek'] + '.' + attr)
+            cmds.floatSliderGrp(attr, e = True, v = val)
+            
     def connectFactors(self, part, factor, *args):
         """
         manipulate faceFactor with slider
         """
         val = cmds.floatSliderGrp(factor, q = True, v = True)
-        if part == 'brow':
-            cmds.setAttr(self.faceFactors['eyebrow'] + '.' + factor, val)
-        elif part == 'eyelid':
-            cmds.setAttr(self.faceFactors['eyelid'] + '.' + factor, val)
-        elif part == 'lip':
-            cmds.setAttr(self.faceFactors['lip'] + '.' + factor, val)
+        cmds.setAttr(self.faceFactors[part] + '.' + factor, val)
             
     def loadInMaya(self, *args):
         """

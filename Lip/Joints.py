@@ -381,8 +381,9 @@ class Joints(Func.Func):
             cheekWorld = cmds.group(em =1, n= prefix + 'cheekWorld', p ='supportRig')
             cmds.parent (cheekList, cheekWorld)
             inverseMatrix = cmds.shadingNode('decomposeMatrix', asUtility=1, n = prefix +'inverseMat' )
-            #plusAvg = cmds.shadingNode( 'plusMinusAverage')
-            cmds.connectAttr(self.headGeo + '.inverseMatrix', inverseMatrix + '.inputMatrix' )
+            
+            #cmds.connectAttr(self.headGeo + '.inverseMatrix', inverseMatrix + '.inputMatrix' )
+            cmds.connectAttr('headSkel.worldInverseMatrix', inverseMatrix + '.inputMatrix' )
             cmds.connectAttr(inverseMatrix + '.outputTranslate', cheekWorld + '.translate' )
             cmds.connectAttr(inverseMatrix + '.outputRotate', cheekWorld + '.rotate' )
             cmds.connectAttr(inverseMatrix + '.outputScale', cheekWorld + '.scale' )

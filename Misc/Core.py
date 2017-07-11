@@ -108,6 +108,7 @@ class Core(object):
                                'txSum_lipJntY_ry', 'txSum_lipJntY_rz', 'mouth_midCheekRY', 'mouth_midCheekRZ',
                                'mouth_midCheekRX', 'mouth_loCheekRY', 'mouth_loCheekRZ', 'mouth_loCheekRX', 
                                'YZPoc_rollJntT_ty', 'YZPoc_rollJntT_tz']
+        self.cheekFactorList = ['midCheek_in', 'loCheek_in']
         
 		#- Use this for custom setting
         #- need to read json
@@ -133,7 +134,8 @@ class Core(object):
         self.faceFactors = {'main'    : 'faceFactors',
                             'eyebrow' : 'browFactor',
                             'eyelid'  : 'lidFactor',
-                            'lip'      : 'lipFactor'}
+                            'lip'     : 'lipFactor',
+                            'cheek'   : 'cheekFactor'}
         
         #if self.locData.has_key('setupLoc'):
         #    if self.locData['setupLoc'].has_key('headSkelPos'):

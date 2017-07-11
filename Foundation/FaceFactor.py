@@ -32,6 +32,7 @@ class FaceFactor(Core.Core, Util.Util):
         self.__browFactor()
         self.__lidFactor()
         self.__lipFactor()
+        self.__cheekFactor()
         
         return self.node
         
@@ -137,4 +138,14 @@ class FaceFactor(Core.Core, Util.Util):
         #lipRoll 
         cmds.addAttr(self.lipFactor, longName= 'YZPoc_rollJntT_ty', attributeType='float', dv =1.5 )
         cmds.addAttr(self.lipFactor, longName= 'YZPoc_rollJntT_tz', attributeType='float', dv =2 )
-        
+
+
+    def __cheekFactor(self):
+        """
+        cheeck factor
+        """
+        self.cheekFactor = cmds.createNode('transform', n = self.faceFactors['cheek'])
+        cmds.parent(self.cheekFactor, self.node)        
+        cmds.addAttr(self.cheekFactor, longName= 'midCheek_in', attributeType='float', dv = 0.2 )
+        cmds.addAttr(self.cheekFactor, longName= 'loCheek_in', attributeType='float', dv = 1)
+            
