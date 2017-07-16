@@ -46,6 +46,8 @@ class UI(Core.Core):
         cmds.menuItem(label = '---------------')
         cmds.menuItem(label = 'Create Panel Camera', c = partial(self.createPanelCam))
         cmds.menuItem(label = 'Create Curve Camera', c = partial(self.createCurveCam))
+        cmds.menuItem(label = '---------------')
+        cmds.menuItem(label = 'Set Range Tool', c = partial(self.importRangeTool))
         
         cmds.menu(label='Help')
         cmds.menuItem(label='Ask sshin')
@@ -1307,6 +1309,15 @@ class UI(Core.Core):
 
         FaceSkinUI.faceSkinUI()
 
+    def importRangeTool(self, *args):
+        """
+        import Range tool
+        """
+        from arFace import RangeToolUI
+        reload(RangeToolUI)
+
+        RangeToolUI.RangeToolUI()
+        
     def updateFactorSlider(self, *args):
         """
         update slider values
